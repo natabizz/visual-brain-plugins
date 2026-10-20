@@ -159,7 +159,7 @@ def main():
         name = label if a.blind else f"{len(tiles) + 1:02d}"
         tile.save(board_dir / f"{name}.jpg", quality=85)
         names.append(f"{name}.jpg")
-        key[label] = {"id": k, "file": (p if not isinstance(p, tuple) else "tile #" + p[1] + " " + p[2]), "masked": k in masks}
+        key[label] = {"id": k, "file": (p if not isinstance(p, tuple) else "tile #" + p[1] + " " + p[2]), "masked": (k in masks) and not isinstance(p, tuple)}
         tiles.append((label, tile))
 
     if not tiles:
