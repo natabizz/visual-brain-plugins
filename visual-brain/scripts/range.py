@@ -356,8 +356,10 @@ def main(argv):
     seen = set()
     for r, (name, prod, how, opts, photo) in enumerate(rows):
         safe = re.sub(r"[^\w.-]+", "-", name).strip("-.") or "variant-%d" % (r + 1)
-        if safe.lower() in seen:
-            safe = "%s-%d" % (safe, r + 1)
+        base, k = safe, 2
+        while safe.lower() in seen:
+            safe = "%s-%d" % (base, k)
+            k += 1
         seen.add(safe.lower())
         y = pad + r * (tile + 34 + pad)
         d.text((pad, y + 4), name, fill=(28, 26, 25), font=f)

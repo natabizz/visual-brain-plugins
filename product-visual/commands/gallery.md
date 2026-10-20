@@ -38,11 +38,11 @@ One brief per frame in `briefs/<channel>/frame-NN.md` from `_brief.md`, every fi
 1. `product-visual:rival-director` on the first frame's and the hero frame's briefs (file paths), as the strongest competing product. Mark the frames the rival saw "copyable" or not from its answer; the other frames "not tested".
 2. `product-visual:skeptical-buyer` on the plan (file paths): each objection has a frame that answers it, or is listed as open.
 3. Claim to proof on every planned message: a claim without proof is removed from the image.
-4. `product-visual:gate-judge` with the file paths and `wiki/brand/visual-guide.md`: Gate PV, PV.1 to PV.6, PV.8, PV.10 to PV.15. Findings into `issues.md`; what the inputs can't fix goes to "To check and decide".
+4. `product-visual:gate-judge` with the file paths and `wiki/brand/visual-guide.md`: Gate PV, the checks on the files: PV.1 to PV.6, PV.8, PV.10 to PV.13, PV.15. Findings into `issues.md`; what the inputs can't fix goes to "To check and decide". PV.14 runs on the page in step 4.
 
 ## 4. The page
 
-Update the Carriers, Storyboard and What to do next sections of `projects/product-visual/outputs/<product>.src.html` (from `${CLAUDE_PLUGIN_ROOT}/frameworks/product-book-template.html`) for this channel: the carrier for the channel's kind (framework, Channels), clean, with "To shoot" tiles where photos are missing; the frames in order, each card with all its fields and the image in hand or the "To shoot" tile; the views table; the actions and the shot list. Keep the other sections. Images as `src="file:<path>"`, then build with `embed.py` as `/product-visual:new` step 8 does. Share it the same way.
+Update the Carriers, Storyboard and What to do next sections of `projects/product-visual/outputs/<product>.src.html` (from `${CLAUDE_PLUGIN_ROOT}/frameworks/product-book-template.html`) for this channel: the carrier for the channel's kind (framework, Channels), clean, with "To shoot" tiles where photos are missing; the frames in order, each card with all its fields and the image in hand or the "To shoot" tile; the views table; the actions and the shot list. Keep the other sections. Images as `src="file:<path>"`, then build with `embed.py` as `/product-visual:new` step 8 does. Share it the same way. Before building, run the `product-visual:gate-judge` agent on the page source (the `.src.html`, never the built page), the gallery file and the framework: PV.14; fix, then build.
 
 ## 5. Close
 

@@ -101,7 +101,7 @@ In `gallery-<channel>.md`, under "What to do next": up to six actions grouped no
 
 ## 7. Judge
 
-Run the `product-visual:gate-judge` agent with the paths of `product.md`, `audience.md`, `market.md`, `positioning.md`, `direction.md`, the gallery file, the briefs, the test results, `wiki/brand/visual-guide.md` and `${CLAUDE_PLUGIN_ROOT}/frameworks/product-visual.md`: Gate PV, checks PV.1 to PV.6, PV.8, PV.10 to PV.15 (PV.14 runs on the page in step 8). Rewrite what the inputs can fix; what they can't goes to "To check and decide" in plain words. Every finding into `issues.md`. Set `stage: planned` in `product.md` when no blocking check fails.
+Run the `product-visual:gate-judge` agent with the paths of `product.md`, `audience.md`, `market.md`, `positioning.md`, `direction.md`, the gallery file, the briefs, the test results, `wiki/brand/visual-guide.md` and `${CLAUDE_PLUGIN_ROOT}/frameworks/product-visual.md`: Gate PV, the checks on the files: PV.1 to PV.6, PV.8, PV.10 to PV.13, PV.15. PV.14 is a check on the page and runs in step 8. Rewrite what the inputs can fix; what they can't goes to "To check and decide" in plain words. Every finding into `issues.md`. Set `stage: planned` in `product.md` when no blocking check fails.
 
 ## 8. The page
 
@@ -109,7 +109,7 @@ Copy `${CLAUDE_PLUGIN_ROOT}/frameworks/product-book-template.html` to `projects/
 - Option palettes: `bash "${CLAUDE_PLUGIN_ROOT}/scripts/py" "${CLAUDE_PLUGIN_ROOT}/scripts/palette.py" --colors 6 <the option's images>`; use "Palette for the set".
 - Carriers, by the main channel's kind (framework, Channels): a marketplace search card next to three competitor cards (their real titles and prices, dated) and the gallery; or the own site's product page first screen and gallery strip; or a search result among three competitors; or a social carousel in a phone. Columns: "as everyone", "now" (when live) and each option. Only real titles, prices and facts on mockups. Clean carriers: the brand's columns take only the product's own images, the first image a clean photo; a missing photo is a "To shoot" color tile; competitors only in "as everyone" and as competitor cards.
 - The storyboard section: one card per frame with all its fields, the views table under it. Then "What to do next" and the shot list.
-- Run PV.14 yourself on the filled page before building: no other brand's image in a brand column, no line that isn't the brand's own or a sourced fact.
+- Run PV.14 on the filled page source before building: first yourself (no other brand's image in a brand column, no line that isn't the brand's own or a sourced fact), then the `product-visual:gate-judge` agent with the path of the `.src.html` (never the built page: it holds image data), the gallery file and the framework: PV.14. Fix, then build.
 - Images: `src="file:<path>"`. Build: `bash "${CLAUDE_PLUGIN_ROOT}/scripts/py" "${CLAUDE_PLUGIN_ROOT}/scripts/embed.py" --max 760 --out projects/product-visual/outputs/<product>.html projects/product-visual/outputs/<product>.src.html`. Never paste image data or print it in the chat.
 - Plain words: no IDs, codes or tags. Quotes cited by platform, product and date. Check every claim on the page against the files.
 

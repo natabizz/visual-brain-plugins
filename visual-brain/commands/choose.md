@@ -5,7 +5,7 @@ argument-hint: "<your choice, for example: C, with the cast from B; proof frames
 
 # /visual-brain:choose
 
-The owner has looked at the directions and chosen. Turn the choice into the brand's working guide. No new market research and no new panel.
+The owner has looked at the directions and chosen. Turn the choice into the brand's working guide. No new market research; the panel runs again only on a final collage it has not seen (step 8b).
 
 Read `${CLAUDE_PLUGIN_ROOT}/frameworks/visual-brain.md` first: "Inputs" (photo folders), "Directions", "Every variant", "Carriers", "What to do next", "Visual language of the chosen direction", "Gate VB", "Writing the page".
 
