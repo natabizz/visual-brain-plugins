@@ -15,7 +15,7 @@ Read `${CLAUDE_PLUGIN_ROOT}/frameworks/product-visual.md` first (The chosen dire
 2. **Which positioning and direction?** The ones in Decisions. If none is chosen yet, use the recommended ones and tag the gallery (inferred). If the owner names another option now, record it in Decisions with the date.
 3. **The brand's chosen direction:** read `wiki/brand/visual-guide.md` as the framework's "The chosen direction" lists (the look, the cast and its lead, the caption rule, what was handed to Product Visual, the first shoot list, Decisions). If it changed since the product's last run (its `last_updated`), say so in one line and follow the new one.
 4. **Find it yourself:** the channel's kind (framework, Channels) and its rules (image count, sizes, first image rules) from the channel's own page with URL and date, into `product.md`; a third-party guide only tagged as such; real photos and drafts in `raw/visuals/products/<product>/`.
-5. If `gallery-<channel>.md` exists, this is a re-plan: keep its Decisions. A changed plan sets `stage: planned` in `product.md`, and a `release-<channel>.md` for the old plan is marked "superseded, needs QA" at the top: an approval covers the plan it was given for.
+5. If `gallery-<channel>.md` exists, this is a re-plan: keep its Decisions. A changed plan sends a product at `checked` back to `chosen` in `product.md` (or to `planned` when nothing is chosen yet), and a `release-<channel>.md` for the old plan is marked "superseded, needs QA" at the top: an approval covers the plan it was given for.
 6. **One ask, only if needed:** if the rules page can't be reached, or photos the plan obviously needs are missing, one message saying what will change and what you need (the rules link or a screenshot; "drag photos from Finder into this chat"), ending with **"Waiting for you:"**. Otherwise go straight on. Never from memory.
 
 ## 1. The plan
@@ -35,7 +35,7 @@ One brief per frame in `briefs/<channel>/frame-NN.md` from `_brief.md`, every fi
 
 ## 3. Tests and judge
 
-1. `product-visual:rival-director` on the first frame's and the hero frame's briefs (file paths), as the strongest competing product. Mark each frame copyable or not from its answer.
+1. `product-visual:rival-director` on the first frame's and the hero frame's briefs (file paths), as the strongest competing product. Mark the frames the rival saw "copyable" or not from its answer; the other frames "not tested".
 2. `product-visual:skeptical-buyer` on the plan (file paths): each objection has a frame that answers it, or is listed as open.
 3. Claim to proof on every planned message: a claim without proof is removed from the image.
 4. `product-visual:gate-judge` with the file paths and `wiki/brand/visual-guide.md`: Gate PV, PV.1 to PV.6, PV.8, PV.10 to PV.15. Findings into `issues.md`; what the inputs can't fix goes to "To check and decide".
