@@ -57,9 +57,9 @@ Then open a new chat in your Marketing Brain folder (commands load when a chat s
 Known limits:
 - Built for physical products. A brand without product photos still gets directions, but its panel judges references, and the page says so.
 - The tests (audience panel, rival, skeptical buyer, judge) are AI simulations: they show what reads clearly and what is distinct, not what sells.
-- A channel's image rules behind a sign-in (a vendor portal) need your screenshot; until then the count and the first frame are marked as waiting.
+- A channel's image rules behind a sign-in (a vendor portal) need your screenshot; until then the count and the first frame are marked "needs confirmation".
 - Facts come only from sources: a label, a document, a measurement. Anything unproven stays off the images and is listed as open.
-- Tested end to end on one brand (physical products, marketplace and own site). Other categories and channels are untested; runs on them are welcome.
+- Tested on one brand (physical products, marketplace and own site). Other categories and channels are untested; runs on them are welcome.
 
 ## Privacy
 

@@ -225,12 +225,12 @@ Offer the human version of the audience panel once: five people from the audienc
 | VB.6 Observations, not orders | Are judgments written as observations or options with their basis, and facts (discrepancies) with both sources? | Blocking |
 | VB.7 Own work judged equally | Is the brand's own material held to the same standard as competitors'? | Flag |
 | VB.8 Readable | Does the page open with a short version, carry no internal codes, and end with sources? (a check on the page) | Flag |
-| VB.9 Shown on carriers | Is every direction shown on the brand's main carriers (the social media grid and the site first screen, or the ones the ICP put in their place, with the reason on the page), next to "as everyone" (and "now" when it exists)? | Blocking |
+| VB.9 Shown on carriers | Is every direction shown on the brand's main carriers (the social media grid and the site first screen, or the ones the ICP put in their place, with the reason on the page), next to "as everyone" (and "now" when it exists)? (a check on the page) | Blocking |
 | VB.10 No invented copy | Is every line on a mockup the brand's own line or a fact from its files, marked temporary? | Blocking |
 | VB.11 Identity left alone | Does the guide leave the logo, typeface and palette design alone, and show the brand's own assets used differently? | Flag |
 | VB.12 Clean carriers | In the brand's own columns ("now" and each direction; "as everyone" is the shelf by design), do grids and site mockups hold only clean frames of the brand, with "To shoot" tiles where frames are missing, and no other brand's images? (a check on the page) | Blocking |
 | VB.13 Actionable | Does the guide hold "What to do next" (actions by priority, each with its basis) and the first shoot list? | Blocking |
-| VB.14 Whole range | When the brand has several variants: does the recommended or chosen direction have a pair, a tile-size check and an example for every variant, and does the grid show at least three variants (or every variant, when the brand has fewer)? | Blocking |
+| VB.14 Whole range | When the brand has several variants: does the recommended or chosen direction have a pair, a tile-size check and an example for every variant, and does the grid show at least three variants (or every variant, when the brand has fewer)? (a check on the page) | Blocking |
 | VB.15 In hand first | Does every "To shoot" tile and shoot-list frame say why no indexed own photo fits, and does the cast in it follow the cast rule? | Blocking |
 | VB.16 Panel clean | Did the panel see only the brand's own images and "To shoot" tiles on its blind boards, and was any test artifact followed by a rerun? | Blocking |
 | VB.17 Status stated | Do the market table, the discrepancies, the test results and the short version of the guide carry their statuses (confirmed, assumption, owner's decision, simulation)? | Blocking |
