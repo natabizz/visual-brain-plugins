@@ -92,7 +92,7 @@ For the main channel, on the recommended positioning and direction (tagged (infe
 - **The first frame** follows the channel's first image rules; where they differ from the chosen look (a plain white ground on a marketplace, say), the look starts at the second frame, and the file says so with the rule's source.
 - **The cast and the caption** from the chosen direction: only its cast, its lead on the first frame, its caption rule on brand frames, the measurements only on the proof frames handed over. **The signature** on every frame with the cast where the channel allows text (framework, "The signature on every frame").
 - **Which line is yours:** with more than one line, one frame that tells them apart, with each line's facts and price; never dropped for the count.
-- **Not a repeat of ourselves:** against the brand's own galleries indexed in step 0 and `market.md`: every carried format says what changed; at least three frames that no competing gallery and none of the brand's own galleries shows, named in the file.
+- **Not a repeat of ourselves:** against the brand's own galleries indexed in step 0 and `market.md`: every carried format says what changed, or the reason it stays; at least three frames that no competing gallery and none of the brand's own galleries shows (every frame, when the set has fewer than four), named in the file; a carried format says what changed, or the reason it stays.
 - **Views check:** the views this product's buyers need to see, from the ranked needs and their questions; each covered by a frame, or moved to the listing text with the reason.
 - **Proof frames handed over** by Visual Brain each get a frame, or the file says why not.
 - One brief per frame in `briefs/<channel>/frame-NN.md` from `briefs/_brief.md`.
@@ -131,4 +131,4 @@ At most five lines, in this order:
 - The page link; the files are in `projects/product-visual/<product>/`.
 - **"Waiting for you:"** which positioning and which direction do you choose?
 
-On the answer: record both in Decisions with the date and set `stage: chosen`. If the positioning differs from the recommended one, redo steps 5 and 6 on it; if only the direction differs, redo step 6 (or run `/product-visual:gallery <product> <channel>`). Rebuild the page and say so in one line.
+On the answer: record both in Decisions with the date and set `stage: chosen`. If the positioning differs from the recommended one, redo steps 5 to 8 on it; if only the direction differs, redo steps 6 to 8 (or run `/product-visual:gallery <product> <channel>`, which judges and rebuilds). The judge runs again on the new plan: an earlier result covers the plan it was given.

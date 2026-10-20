@@ -97,6 +97,8 @@ def main():
         print("Too big for one page: lower --max or use fewer images.")
     for p in missing:
         print(f"  could not open: {p} (shown as a gray tile; convert it to JPEG and rebuild)")
+    if missing:
+        sys.exit(2)
 
 
 if __name__ == "__main__":

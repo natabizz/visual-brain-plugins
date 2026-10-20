@@ -204,6 +204,8 @@ _session = None
 def cutout(path):
     global _session
     im0 = open_photo(path)
+    if im0.mode == "P" and "transparency" in im0.info:
+        im0 = im0.convert("RGBA")
     if im0.mode in ("RGBA", "LA") and im0.getextrema()[-1][0] < 250:
         im0 = im0.convert("RGBA")
         im0.thumbnail((1200, 1200))

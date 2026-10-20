@@ -167,7 +167,7 @@ Rules for mockups:
 - Text on a mockup is only a line the brand already uses or a fact from its product files, in the customer's language, and the note under the carrier says it is temporary. Never an invented claim, price or review.
 - Follow the brand's own layout rules (where text may sit, what may cover the product). Text never covers the person, the animal or the product unless the brand's rules allow it.
 - A mockup is a sketch of the direction, not a site design. The note says so.
-- **Clean frames only.** Grids and site mockups take photos without text overlays, badges, infographics or screenshots of listings, and never another brand's images. When a direction has fewer clean frames than tiles, the missing tile is a color tile from the direction's palette with "To shoot:" and what exactly (in the page language): it shows the gap and becomes the shot list.
+- **Clean frames only.** In the brand's own columns ("now" and each direction; "as everyone" shows the shelf by design), grids and site mockups take photos without text overlays, badges, infographics or screenshots of listings, and never another brand's images. When a direction has fewer clean frames than tiles, the missing tile is a color tile from the direction's palette with "To shoot:" and what exactly (in the page language): it shows the gap and becomes the shot list.
 - **In hand first.** Before a tile becomes "To shoot", look through the indexed own photos for that variant and that cast member. A tile is "To shoot" only when none fits, and the shoot list says why (wrong variant, text on it, a pose against a rule, the product redrawn). A background-replaced preview may fill a tile only when the page captions it as a preview.
 - **The whole range.** When the brand has several variants, the grid shows at least three of them in turn (or all it has), and the site's row of four shows more than one. Nine tiles of one variant fail VB.14.
 - **After the choice,** the chosen direction's column comes right after "as everyone" and "now"; the other directions' columns move into a collapsed block "Other directions (not chosen)" under the carrier.
@@ -219,21 +219,22 @@ Offer the human version of the audience panel once: five people from the audienc
 |---|---|---|
 | VB.1 Audience-grounded | Does every direction and every visual-language line cite audience evidence (a quote, a pattern with links, a brand they name)? | Blocking |
 | VB.2 Market-located | Does every direction say where it sits on the map and which shelf brands it moves away from, with images? | Blocking |
-| VB.3 Not a rival's | Did the rival test run on every direction and the signature, with the result on the page? | Blocking |
+| VB.3 Not a rival's | Did the rival test run on every direction and the signature, with the result in the guide and the tests file? | Blocking |
 | VB.4 Images, not adjectives | Does every visual-language line have a reference image, and every palette value a sampled source? | Blocking |
-| VB.5 References collected | Was every owner-named reference collected, or is "could not get, tried X" on the page? | Blocking |
+| VB.5 References collected | Was every owner-named reference collected, or is "could not get, tried X" in the guide? | Blocking |
 | VB.6 Observations, not orders | Are judgments written as observations or options with their basis, and facts (discrepancies) with both sources? | Blocking |
 | VB.7 Own work judged equally | Is the brand's own material held to the same standard as competitors'? | Flag |
-| VB.8 Readable | Does the page open with a short version, carry no internal codes, and end with sources? | Flag |
+| VB.8 Readable | Does the page open with a short version, carry no internal codes, and end with sources? (a check on the page) | Flag |
 | VB.9 Shown on carriers | Is every direction shown on the brand's main carriers (the social media grid and the site first screen, or the ones the ICP put in their place, with the reason on the page), next to "as everyone" (and "now" when it exists)? | Blocking |
 | VB.10 No invented copy | Is every line on a mockup the brand's own line or a fact from its files, marked temporary? | Blocking |
-| VB.11 Identity left alone | Does the page leave the logo, typeface and palette design alone, and show the brand's own assets used differently? | Flag |
-| VB.12 Clean carriers | Do grids and site mockups hold only clean frames of the brand, with "To shoot" tiles where frames are missing, and no other brand's images? | Blocking |
-| VB.13 Actionable | Does the page end with "What to do next" (actions by priority, each with its basis) and the first shoot list? | Blocking |
+| VB.11 Identity left alone | Does the guide leave the logo, typeface and palette design alone, and show the brand's own assets used differently? | Flag |
+| VB.12 Clean carriers | In the brand's own columns ("now" and each direction; "as everyone" is the shelf by design), do grids and site mockups hold only clean frames of the brand, with "To shoot" tiles where frames are missing, and no other brand's images? (a check on the page) | Blocking |
+| VB.13 Actionable | Does the guide hold "What to do next" (actions by priority, each with its basis) and the first shoot list? | Blocking |
 | VB.14 Whole range | When the brand has several variants: does the recommended or chosen direction have a pair, a tile-size check and an example for every variant, and does the grid show at least three variants (or every variant, when the brand has fewer)? | Blocking |
 | VB.15 In hand first | Does every "To shoot" tile and shoot-list frame say why no indexed own photo fits, and does the cast in it follow the cast rule? | Blocking |
 | VB.16 Panel clean | Did the panel see only the brand's own images and "To shoot" tiles on its blind boards, and was any test artifact followed by a rerun? | Blocking |
-| VB.17 Status stated | Do the market table, the discrepancies, the test results and the short version carry their statuses (confirmed, assumption, owner's decision, simulation), and does the page's first screen say what the recommendation stands on and what is not known yet? | Blocking |
+| VB.17 Status stated | Do the market table, the discrepancies, the test results and the short version of the guide carry their statuses (confirmed, assumption, owner's decision, simulation)? | Blocking |
+| VB.18 First screen | Does the page's first screen say what the recommendation stands on and what is not known yet? (a check on the page) | Blocking |
 
 A failed blocking check is rewritten from the inputs. What the inputs can't fix goes on the page under "To check and decide", in plain words.
 

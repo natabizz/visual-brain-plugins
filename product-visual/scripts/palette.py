@@ -81,8 +81,8 @@ def main():
         print(f + ("  (transparent pixels left out)" if cut else ""))
         for hx, share, rgb in distinct_colors(px, a.colors):
             print(f"  {hx}  {share:5.1%}{note(rgb)}")
-        step = max(1, len(px) // PER_IMAGE)
-        pooled.extend(px[::step])
+        n = min(PER_IMAGE, len(px))
+        pooled.extend(px[int(i * len(px) / n)] for i in range(n))  # the same count from every image
     if not pooled:
         return
     print("Palette for the set (distinct colors, use these, named by role):")

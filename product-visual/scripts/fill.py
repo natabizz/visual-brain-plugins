@@ -87,6 +87,7 @@ def main():
         print("Could not open (shown as gray tiles):")
         for m in missing:
             print("  " + m)
+        sys.exit(2)
 
 
 if __name__ == "__main__":

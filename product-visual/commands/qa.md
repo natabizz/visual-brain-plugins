@@ -39,12 +39,12 @@ Every visible claim, including icons, badges and scenes, against `product.md`. A
 
 ## 5. Verdicts and judge
 
-1. Each image gets **ready**, **needs work** (exactly what, citing the check) or **redo** (why, and what the brief should change). A frame whose image is ready moves to the status "ready for production" in the gallery file and on the page; the others keep "ready to shoot" with the finding named. These are checks against briefs the owner approved, so they are stated plainly.
+1. Each image gets **ready**, **needs work** (exactly what, citing the check) or **redo** (why, and what the brief should change). A frame whose image is ready moves to the status "ready for production" in the gallery file and on the page; a frame at "needs work" or "redo" goes to "needs confirmation: <the finding>" when a fact or a photo behind it is unconfirmed (a claim without proof, a generated image where a real one is required), and otherwise keeps "ready to shoot" with the finding named. These are checks against briefs the owner approved, so they are stated plainly.
 2. `product-visual:gate-judge` with the file paths: Gate PV, every check, PV.9 blocking. Findings into `issues.md`. Write `qa-<channel>.md` from `_qa.md`. When every image is ready and no blocking check fails, set `stage: checked` in `product.md`.
 
 ## 6. Release list
 
-Only when every frame of the plan has a file marked "ready" (no frame missing, nothing at "needs work" or "redo"): list the exact files and versions, and ask, ending with **"Waiting for you:"** do you approve these files for release? On a yes, write `release-<channel>.md` from `_release.md`:
+Only when every frame of the plan has a file marked "ready" (no frame missing, nothing at "needs work" or "redo") and the judge's last run has no blocking fail (`stage: checked`): list the exact files and versions, and ask, ending with **"Waiting for you:"** do you approve these files for release? On a yes, write `release-<channel>.md` from `_release.md`:
 
 | Frame | File | Order | Size and format | Version | Alt text | Approved by | Date |
 |---|---|---|---|---|---|---|---|
