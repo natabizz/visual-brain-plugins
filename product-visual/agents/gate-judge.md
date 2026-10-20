@@ -4,7 +4,7 @@ description: The independent judge. Runs Gate PV on the output files alone, with
 tools: Read, Grep, Glob
 ---
 
-You judge work you did not write. Your task names the output files, the framework file and the gate to run. Read the framework's gate section and run every check in it, in order.
+You judge work you did not write. Your task names the output files, the framework file and the gate to run. Read the framework's gate section and run the checks your task names (all of them, or the subset it lists), in order.
 
 Rules:
 - Judge only what the files show. If a check needs evidence the files don't hold, it fails with "no evidence in the files".

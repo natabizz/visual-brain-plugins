@@ -107,7 +107,7 @@ The center of the method. For this product, the audience's needs, ranked:
 | **Trigger** | What makes them buy now | a new season, a gift, a trip |
 | **Vibe** | What their world looks like and what they respond to | from the Visual Brain's audience |
 
-Sources, in this order: the brand's own reviews and questions for this or similar products; competitor reviews and questions for this product type; forums and social posts where the audience talks; the ICP. Each need gets a count (how many sources say it), a quote, and the source IDs. Rank by how often it comes up and how much it blocks a purchase.
+Sources, in this order: the brand's own reviews and questions for this or similar products; competitor reviews and questions for this product type; forums and social posts where the audience talks; the ICP. Each need gets a count (how many sources say it), a quote, and the source IDs, and each quote its scope: the product it is about (this one, an earlier one of the brand's, a competitor's, the category), its date, and whether it is a direct signal or a question carried over by analogy. Rank by how often it comes up and how much it blocks a purchase; signals about this product outrank the carried-over ones, which are never written as findings against it.
 
 ## Positioning and UVP
 
@@ -209,6 +209,7 @@ Each test is run by an agent that did not write the work. AI simulations are lab
 - **Plain words.** No frame IDs, gate codes or tags on the pages; the `.md` files keep them. Images get plain captions.
 - **Observations and options, not orders.** "What it does for the buyer", "what it misses", "worth considering", "options". Discrepancies (facts that contradict each other) are stated as facts, with both sources. The owner decides. QA is the exception: there the images are checked against briefs the owner approved, so each image is "ready", "needs work" (what exactly) or "redo" (why).
 - **Basis next to every claim,** in a small gray line.
+- **No taste verdicts and no claims beyond the sample.** "None of the eight competing products looked at", never "nobody"; what an image shows, what a brand promises and what buyers confirm are kept apart; discrepancies are "the sources disagree", with a note when an overlap may be intended or a difference may be rounding.
 - **Short version first:** three sentences.
 
 ## Talking to the owner

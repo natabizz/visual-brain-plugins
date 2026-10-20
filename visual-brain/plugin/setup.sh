@@ -12,6 +12,8 @@ if [ "$PWD" = "$ROOT" ]; then
 fi
 DATE="$(date +%Y-%m-%d-%H%M%S)"
 ARCH="projects/visual-brain/archive"
+# A free name in the archive: never overwrites an earlier copy.
+free() { local p="$1" n=1; while [ -e "$p" ]; do p="${1%.md}-$n.md"; n=$((n+1)); done; printf '%s' "$p"; }
 
 [ -f CLAUDE.md ] || { printf '# CLAUDE.md\n\nInstructions Claude reads in this folder.\n' > CLAUDE.md; cm_new="created"; }
 
@@ -29,7 +31,7 @@ done < "$ROOT/plugin/gitignore-block.txt"
 # 2. An older Visual Brain project file (0.4, with product commands) is kept in the archive and replaced.
 old=""
 if [ -f projects/visual-brain/visual-brain.md ] && grep -qE '/visual-brain:(listing|audit)' projects/visual-brain/visual-brain.md; then
-  mkdir -p "$ARCH"; mv projects/visual-brain/visual-brain.md "$ARCH/visual-brain-project-$DATE.md"; old="project file archived"
+  mkdir -p "$ARCH"; mv projects/visual-brain/visual-brain.md "$(free "$ARCH/visual-brain-project-$DATE.md")"; old="project file archived"
 fi
 
 # 3. Template files, skipping anything that exists.
@@ -44,7 +46,7 @@ mkdir -p raw/visuals/own raw/visuals/screens raw/visuals/direction raw/visuals/b
 # 4. The Visual Brain section in CLAUDE.md: add it, or replace an older one (a copy is kept).
 if grep -qE '^## Visual Brain' CLAUDE.md; then
   if grep -qE '/visual-brain:(listing|audit)' CLAUDE.md; then
-    mkdir -p "$ARCH"; cp CLAUDE.md "$ARCH/CLAUDE-$DATE.md"
+    mkdir -p "$ARCH"; CM_COPY="$(free "$ARCH/CLAUDE-$DATE.md")"; cp CLAUDE.md "$CM_COPY"
     python3 - "$ROOT/plugin/claude-md-section.md" <<'PY'
 import re, sys
 new = open(sys.argv[1]).read().strip("\n") + "\n"
@@ -56,13 +58,22 @@ else:
     s = s.rstrip("\n") + "\n\n" + new
 open("CLAUDE.md", "w").write(s)
 PY
-    cm="updated (the old section is kept in $ARCH/CLAUDE-$DATE.md)"
+    cm="updated (the old section is kept in $CM_COPY)"
   else cm="already there"; fi
 else
   printf '\n' >> CLAUDE.md; cat "$ROOT/plugin/claude-md-section.md" >> CLAUDE.md; cm="added"
 fi
 
 echo "Folder: $TARGET"
+# Built pages added to git by an earlier version keep their images in the repository: say so, change nothing.
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  tracked="$(git ls-files 'projects/*/outputs/*.html' 2>/dev/null | grep -v '\.src\.html$' || true)"
+  if [ -n "$tracked" ]; then
+    echo "Tracked by git from an earlier version (built pages carry their images):"
+    printf '  %s\n' $tracked
+    echo "  To stop tracking them (the files stay on disk): git rm --cached <file>, then commit."
+  fi
+fi
 echo ".gitignore block (images and built pages stay local): $gi"
 echo "Files created: $created. Existing files kept: $kept.${old:+ Older Visual Brain $old.}"
 [ -n "${cm_new:-}" ] && echo "CLAUDE.md: $cm_new"

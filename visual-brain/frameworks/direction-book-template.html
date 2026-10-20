@@ -560,6 +560,7 @@ details.others>summary:focus-visible{outline:2px solid var(--red);outline-offset
 <div class="lb" id="lb" hidden><button type="button" id="lbClose">{{Close}}</button><img id="lbImg" alt=""></div>
 <!-- embed:images -->
 <script>
+window.addEventListener('beforeprint',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
 (function(){
   var lb=document.getElementById('lb'),im=document.getElementById('lbImg');
   document.addEventListener('click',function(e){

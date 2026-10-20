@@ -34,6 +34,15 @@ if grep -qE '^## Product Visual' CLAUDE.md; then cm="already there"; else
   printf '\n' >> CLAUDE.md; cat "$ROOT/plugin/claude-md-section.md" >> CLAUDE.md; cm="added"; fi
 
 echo "Folder: $TARGET"
+# Built pages added to git by an earlier version keep their images in the repository: say so, change nothing.
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  tracked="$(git ls-files 'projects/*/outputs/*.html' 2>/dev/null | grep -v '\.src\.html$' || true)"
+  if [ -n "$tracked" ]; then
+    echo "Tracked by git from an earlier version (built pages carry their images):"
+    printf '  %s\n' $tracked
+    echo "  To stop tracking them (the files stay on disk): git rm --cached <file>, then commit."
+  fi
+fi
 echo ".gitignore block (images and built pages stay local): $gi"
 echo "Files created: $created. Existing files kept: $kept."
 [ -n "${cm_new:-}" ] && echo "CLAUDE.md: $cm_new"

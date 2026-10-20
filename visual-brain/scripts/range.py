@@ -353,7 +353,12 @@ def main(argv):
     d = ImageDraw.Draw(sheet)
     f, fs = font(18), font(13)
     used_photo = False
+    seen = set()
     for r, (name, prod, how, opts, photo) in enumerate(rows):
+        safe = re.sub(r"[^\w.-]+", "-", name).strip("-.") or "variant-%d" % (r + 1)
+        if safe.lower() in seen:
+            safe = "%s-%d" % (safe, r + 1)
+        seen.add(safe.lower())
         y = pad + r * (tile + 34 + pad)
         d.text((pad, y + 4), name, fill=(28, 26, 25), font=f)
         d.rectangle((pad, y + 32, pad + 40, y + 72), fill=prod)
@@ -366,7 +371,7 @@ def main(argv):
                 used_photo = True
                 if prev:
                     os.makedirs(prev, exist_ok=True)
-                    on_backdrop(cut, rgb, 1200).save(os.path.join(prev, "%s-%s.jpg" % (re.sub(r"[^A-Za-z0-9._-]+", "-", name).strip("-") or "variant", oname[0])), quality=90)
+                    on_backdrop(cut, rgb, 1200).save(os.path.join(prev, "%s-%s.jpg" % (safe, oname[0])), quality=90)
             sheet.paste(t, (x, y))
             d.text((x, y + tile + 6), "%s %s  %s" % (oname.split(",")[0], hexs(rgb), "pass" if ok else "too close"), fill=(28, 26, 25) if ok else (163, 34, 44), font=fs)
     sheet.save(out, quality=88)
