@@ -48,6 +48,19 @@ Then open a new chat in your Marketing Brain folder (commands load when a chat s
 | `/product-visual:page <product> [language]` | A product's page again, in another language |
 | `/product-visual:audit`, `qa`, `ai-read`, `review` | A live gallery, finished images, how AI reads a listing, dated results |
 
+## Your first run, and what to expect
+
+1. In your Marketing Brain folder, with `wiki/brand/icp.md` and `wiki/brand/positioning-messaging.md` drafted: `/visual-brain:setup`, then `/visual-brain:brand`. It gathers what it can, asks once for what only you can give (a photo folder, brands you look up to), then runs for about half an hour. You get `wiki/brand/visual-guide.md` and one page: the market, two or three directions on your carriers, the tests, a recommendation and what to do next.
+2. Choose: `/visual-brain:choose <your choice>`. The guide and the page are rewritten for it.
+3. A product: `/product-visual:setup`, then `/product-visual:new <product> <channel>`. You get the product's positioning, a direction, a storyboard with a brief and a readiness status per frame, and one page.
+
+Known limits:
+- Built for physical products. A brand without product photos still gets directions, but its panel judges references, and the page says so.
+- The tests (audience panel, rival, skeptical buyer, judge) are AI simulations: they show what reads clearly and what is distinct, not what sells.
+- A channel's image rules behind a sign-in (a vendor portal) need your screenshot; until then the count and the first frame are marked as waiting.
+- Facts come only from sources: a label, a document, a measurement. Anything unproven stays off the images and is listed as open.
+- Tested end to end on one brand (physical products, marketplace and own site). Other categories and channels are untested; runs on them are welcome.
+
 ## Privacy
 
 Your images stay on your computer: `raw/visuals/` and the built pages, which carry the images inside them, are git-ignored; the Markdown files and the pages' `.src.html` sources are tracked. Customer quotes carry no names or emails. Pages show other brands' images for internal review only. Before sharing a Visual Brain page outside your team, rebuild it with `public`; Product Visual pages show competitor cards and are for internal review.
