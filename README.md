@@ -19,7 +19,7 @@ Each run ends with one page in your language (`/visual-brain:page en` makes an E
 
 ## Install
 
-In Claude: **Settings → Plugins → Add → Add marketplace**, choose GitHub, enter `<owner>/visual-brain-plugins`, then add both plugins.
+In Claude: **Settings → Plugins → Add → Add marketplace**, choose GitHub, enter `natabizz/visual-brain-plugins`, then add both plugins.
 
 Or download the zips from `dist/` and use **Customize → Plugins → Add → Upload plugin**.
 
