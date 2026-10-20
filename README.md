@@ -2,6 +2,8 @@
 
 The visual layer on top of the CXL Marketing Brain. The Marketing Brain says who the brand is for and what it says; these two plugins say how it should look, next to everyone else on the shelf.
 
+Built for brands of physical products whose buyers choose by looking: marketplaces, the brand's own site and social media. Software and services are not covered.
+
 **Beta.** Tested on one brand so far. Feedback and runs on other brands are welcome.
 
 | Plugin | What it gives you |
