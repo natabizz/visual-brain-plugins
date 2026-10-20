@@ -9,16 +9,16 @@ Build the visual side of one product from zero: people first, frames last.
 
 Read `${CLAUDE_PLUGIN_ROOT}/frameworks/product-visual.md` in full first: needs, positioning, direction, the gallery rules, the tests, Gate PV, how to write the page. Apply the Marketing Brain's `frameworks/quality-rules.md` Gate 0 to text lines when the workspace has it.
 
-Talk to the owner in the language they write in. Write the files and the page in the language of the brand's customer-facing copy.
+Talk to the owner in the language they write in. Write the `.md` files in the language of the brand's customer-facing copy, and the page in the language the owner writes in (customer quotes stay verbatim with a short translation; text on mockups stays in the customer's language).
 
-Keep the chat short: one line per step ("Step 3 of 8: competing products, 6 found"). When you need the owner, the message ends with a line that starts **"Waiting for you:"** with the exact question, and nothing after it.
+Keep the chat short: one line per step ("Step 3 of 10: competing products, 6 found"). When you need the owner, the message ends with a line that starts **"Waiting for you:"** with the exact question, and nothing after it.
 
 Agents can't list a folder: always give them file paths.
 
 ## 0. Before you run
 
 1. **Setup, every time.** Run `bash "${CLAUDE_PLUGIN_ROOT}/plugin/setup.sh" "$PWD"`. It never overwrites the owner's files. Mention its output in one line only if it changed something.
-2. **Which product.** If no product was named, list the products in `projects/product-visual/` and end with **"Waiting for you:"** which product? The slug is the product name, lowercase, hyphens (`wool-beanie`).
+2. **Which product.** If no product was named, list the products in `projects/product-visual/` and end with **"Waiting for you:"** which product? The slug is the product name, lowercase, hyphens (`ceramic-mug`).
 3. **The product folder.** If `projects/product-visual/<product>/` exists, read every file in it: this is a rebuild, and Decisions are kept. If not, copy `projects/product-visual/_template/` to it and add the product to the table in `projects/product-visual/product-visual.md`.
 4. **An earlier job.** If `projects/visual-brain/jobs/<product>-*/` exists (an earlier Visual Brain version), read it and carry over, citing "earlier job, <file>": facts from its `facts-sheet.md` with their original sources, its AI-reading panel into `ai-read-<channel>.md`, its open issues into `issues.md`, its audit findings as evidence. Never delete the old folder.
 5. **The brand.** Read `wiki/brand/icp.md`, `wiki/brand/positioning-messaging.md`, `wiki/brand/voice-guide.md` and `wiki/brand/vocabulary.md` when present, and `wiki/brand/visual-guide.md` with `projects/visual-brain/landscape/audience.md` and `landscape.md`.
@@ -28,7 +28,7 @@ Agents can't list a folder: always give them file paths.
    - A chosen direction: read what the framework lists under "The chosen direction" (the look, the cast and its lead, the caption rule, what was handed to Product Visual, what to do next and the first shoot list, the owner's Decisions, the rival tests) and note each with its section, for `product.md`'s inputs.
 6. **Find it yourself, without asking:**
    - **Facts:** search the workspace for the product's name and its variants: `raw/strategy/`, `raw/brand/`, `raw/voc/`, product facts files, size charts, label photos, spec sheets, the hub and the ICP. Note each fact with its file.
-   - **Photos:** image files of this product in `raw/visuals/` and elsewhere in the workspace.
+   - **Photos:** a folder the owner names, in the command or the chat, is read in place as the framework's "Photo folders" describes: every image opened and indexed by variant, by who is in it, and by real photo or generated draft. Then image files of this product in `raw/visuals/` and elsewhere in the workspace.
    - **Its pages:** if the product is already live anywhere, find the pages.
    - **Reviews and questions:** the brand's own for this or the nearest product, in `raw/voc/` and on its pages.
    - **Competing products:** the same product type from the shelf and reference brands in `landscape.md` and the hub, and a buyer search on the main channel. Aim for five to eight.
@@ -38,7 +38,7 @@ Agents can't list a folder: always give them file paths.
    - **Found:** facts (with sources), photos (count), pages, reviews, competing products (one line why each), the owner's direction.
    - **Missing:** in plain words. Separate the **essentials** (what it is, material, sizes and how to choose, variants, price) from the optional.
    - **Blocked:** pages that refuse automated viewing: "if you can, attach screenshots of their galleries".
-   - **Questions, only what you could not find,** numbered, at most five. Always include, unless already answered: where the product lives and which place comes first ("a marketplace (which one), your own site, Google, social or ads, or something else; the others can follow"), and "Do you have real photos of the product? Drag them from Finder into this chat." Moodboards and ideas: welcome, never required.
+   - **Questions, only what you could not find,** numbered, at most five. Always include, unless already answered: where the product lives and which place comes first ("a marketplace (which one), your own site, Google, social or ads, or something else; the others can follow"), and "Where are the product's real photos? A folder on your computer (its path), or drag them into this chat." When a named folder mixes real photos and generated images that can't be told apart by looking, ask which are which. Moodboards and ideas: welcome, never required.
    - "Say go to continue with what I found."
    - Last line: **"Waiting for you:"** the questions in one line, or go.
 8. **Go.** Say in one line what arrived and where it was filed (framework, "Files from the owner"). Convert HEIC to JPEG when filing (`sips -s format jpeg <in> --out <out.jpg>`). If an essential fact is still missing, continue and mark everything that depends on it "(limited: no facts)": those claims stay off the images.

@@ -15,6 +15,11 @@ fi
 touch .gitignore
 if grep -qx 'raw/visuals/\*' .gitignore; then gi="already there"; else
   printf '\n' >> .gitignore; cat "$ROOT/plugin/gitignore-block.txt" >> .gitignore; gi="added"; fi
+# Lines added in later versions go in once each.
+while IFS= read -r line; do
+  case "$line" in ''|'#'*) continue ;; esac
+  grep -qxF -- "$line" .gitignore || { printf '%s\n' "$line" >> .gitignore; gi="updated"; }
+done < "$ROOT/plugin/gitignore-block.txt"
 
 created=0; kept=0
 while IFS= read -r -d '' src; do
@@ -28,7 +33,7 @@ if grep -qE '^## Product Visual' CLAUDE.md; then cm="already there"; else
   printf '\n' >> CLAUDE.md; cat "$ROOT/plugin/claude-md-section.md" >> CLAUDE.md; cm="added"; fi
 
 echo "Folder: $TARGET"
-echo ".gitignore block for raw/visuals/: $gi"
+echo ".gitignore block (images and built pages stay local): $gi"
 echo "Files created: $created. Existing files kept: $kept."
 [ -n "${cm_new:-}" ] && echo "CLAUDE.md: $cm_new"
 echo "CLAUDE.md Product Visual section: $cm"

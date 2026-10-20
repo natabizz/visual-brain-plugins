@@ -12,7 +12,7 @@ Read `${CLAUDE_PLUGIN_ROOT}/frameworks/product-visual.md` first. Talk to the own
 ## 0. Before you run
 
 1. If the product or channel is missing, list the products in `projects/product-visual/` and end with **"Waiting for you:"** which one? Read `projects/product-visual/<product>/`. Without `gallery-<channel>.md` and `briefs/<channel>/`, stop: QA checks images against a plan. Point to `/product-visual:gallery`.
-2. **The images:** attached in the chat (dragged from Finder), or already in `raw/visuals/products/<product>/drafts/<channel>/` or `finished/<channel>/`. File each attachment there named by its frame number (`01.jpg`), as the framework says. An attachment without a file path can only be looked at: say which checks can't run on it. If an image is missing, QA runs on the rest and lists the missing frames.
+2. **The images:** attached in the chat (dragged from Finder), or already in `raw/visuals/products/<product>/drafts/<channel>/` or `finished/<channel>/`. File each attachment there named by its frame number in the gallery plan (`01.jpg`, `02.jpg`). An attachment without a file path can only be looked at: say which checks can't run on it. If an image is missing, QA runs on the rest and lists the missing frames.
 3. Say which version of each image you check (file name and modified date), and go.
 
 ## 1. True to the product
@@ -46,11 +46,11 @@ Every visible claim, including icons, badges and scenes, against `product.md`. A
 
 Only when nothing is left at "needs work" or "redo": list the exact files and versions, and ask, ending with **"Waiting for you:"** do you approve these files for release? On a yes, write `release-<channel>.md` from `_release.md`:
 
-| Frame | File | Order | Size and format | Version | Approved by | Date |
-|---|---|---|---|---|---|---|
+| Frame | File | Order | Size and format | Version | Alt text | Approved by | Date |
+|---|---|---|---|---|---|---|---|
 
-Add alt text per image when the channel supports it, from the facts. This command does not upload or publish. Any change to an approved file sends it back through QA.
+Alt text per image when the channel supports it, from the facts; otherwise "not used". This command does not upload or publish. Any change to an approved file sends it back through QA.
 
 ## 7. The page and close
 
-Copy `${CLAUDE_PLUGIN_ROOT}/frameworks/review-template.html` to `projects/product-visual/outputs/<product>-<channel>-qa.html` and fill it in QA mode; images as `src="file:<path>"`, then `fill.py` as `/product-visual:new` step 8 does. Then at most five lines: the verdict count, what's left to do, how the main image read on the shelf compared with before, the page link, and **next:** the owner uploads, then `/product-visual:ai-read <product> <channel>` on the live listing and `/product-visual:review` once there are dated results.
+Copy `${CLAUDE_PLUGIN_ROOT}/frameworks/review-template.html` to `projects/product-visual/outputs/<product>-<channel>-qa.html` and fill it in QA mode; images as `src="file:<path>"`, then `bash "${CLAUDE_PLUGIN_ROOT}/scripts/py" "${CLAUDE_PLUGIN_ROOT}/scripts/fill.py" --max 480 <page>`. Share as `/product-visual:new` step 8 does. Then at most five lines: the verdict count, what's left to do, how the main image read on the shelf compared with before, the page link, and **next:** the owner uploads, then `/product-visual:ai-read <product> <channel>` on the live listing and `/product-visual:review` once there are dated results.

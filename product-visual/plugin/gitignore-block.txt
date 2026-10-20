@@ -2,3 +2,8 @@
 # reference images are third-party material; own photos are large). The .md files cite them by ID.
 raw/visuals/*
 !raw/visuals/README.md
+# Built pages carry those images inside them; their .src.html sources are tracked.
+projects/*/outputs/*.html
+!projects/*/outputs/*.src.html
+# A Visual Brain run in progress.
+projects/visual-brain/.run-lock

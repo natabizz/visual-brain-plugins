@@ -5,7 +5,7 @@ status: template
 stage: hypothesis
 last_updated: ""
 sources: []
-tags: [visual-brain, visual-identity]
+tags: [visual-brain, visual-direction]
 ---
 
 # Visual Direction
@@ -109,6 +109,7 @@ For: <the chosen direction, or the recommended one (inferred) until the owner ch
 
 | Line | The brand's way | Reference frames |
 |---|---|---|
+| Mood | | |
 | Palette | | |
 | Light | | |
 | Setting | | |

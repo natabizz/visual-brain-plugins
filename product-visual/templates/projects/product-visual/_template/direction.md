@@ -19,7 +19,7 @@ Inside the brand's look (`wiki/brand/visual-guide.md`).
 |---|---|---|
 
 - **How it looks:** mood, setting, casting, light, styling, color story
-- **Board:** `raw/visuals/boards/<date>-<product>-a/`
+- **Board:** `raw/visuals/boards/<date>-<product>-panel-<n>/`
 - **Why it fits the audience:**
 - **How it differs:**
 - **What it asks for:**

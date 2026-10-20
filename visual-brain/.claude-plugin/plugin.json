@@ -1,10 +1,13 @@
 {
   "name": "visual-brain",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "The brand's visual direction from the Marketing Brain's audience and position: the visual market, two or three directions shown on the brand's carriers next to how everyone looks, tested on an audience panel and a rival, checked across every color of the range, built from the owner's photo folder. One page in the owner's language. Product galleries live in Product Visual.",
   "author": {
     "name": "Natalia Bizyukova"
   },
+  "homepage": "https://github.com/natabizz/visual-brain-plugins",
+  "repository": "https://github.com/natabizz/visual-brain-plugins",
+  "license": "MIT",
   "keywords": [
     "visual-direction",
     "brand",

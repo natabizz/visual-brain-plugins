@@ -1,5 +1,5 @@
 ---
-description: Visual Brain. Build the brand's visual direction from its audience, its position and the visual market (shelf competitors, references, adjacent aesthetics): two or three directions shown in pictures and on the brand's carriers (social media grid, site first screen) next to how everyone looks, into wiki/brand/visual-guide.md plus one page.
+description: "Visual Brain. Build the brand's visual direction from its audience, its position and the visual market (shelf competitors, references, adjacent aesthetics): two or three directions shown in pictures and on the brand's carriers (social media grid, site first screen) next to how everyone looks, into wiki/brand/visual-guide.md plus one page."
 argument-hint: "[quick | full]"
 ---
 
@@ -13,7 +13,7 @@ Talk to the owner in the language they write in. Write the `.md` files in the la
 
 The `.md` files are the brain; the page is a view of them. Write the files first.
 
-Keep the chat short: one line per step ("Step 2 of 10: the market, 14 brands"). No commentary on each image. When you need the owner, the message ends with a line that starts **"Waiting for you:"** with the exact question, and nothing after it.
+Keep the chat short: one line per step ("Step 2 of 10: the market, 10 brands"). No commentary on each image. When you need the owner, the message ends with a line that starts **"Waiting for you:"** with the exact question, and nothing after it.
 
 Agents can't list a folder: always give them file paths.
 
@@ -86,7 +86,7 @@ Choose two axes from what the brands actually differ on. Place every brand, with
 
 Skip this step, and say so on the page, if the brand has no images.
 1. The brand's own visual language by the same eight lines, from its own images, and its place on the map.
-2. **Recognition test.** Three or four images each from the brand and from two shelf brands. Decide logo boxes by looking at each image and write them to `raw/visuals/boards/<date>-recognition-masks.json`. Build a blind board: `bash "${CLAUDE_PLUGIN_ROOT}/scripts/py" "${CLAUDE_PLUGIN_ROOT}/scripts/board.py" --out raw/visuals/boards/<date>-recognition --blind --masks <masks file> --cols 4 <ID=path> ...`. Run the `visual-brain:fresh-eyes` agent with the file paths the script printed (the board and its letter tiles): "Group these images by brand. Say which group looks most consistent and which least, and why." Score against `key.json`, which only you read.
+2. **Recognition test.** Three or four images each from the brand and from two shelf brands. Decide logo boxes by looking at each image and write them to `raw/visuals/boards/<date>-recognition-masks.json`. Build a blind board: `bash "${CLAUDE_PLUGIN_ROOT}/scripts/py" "${CLAUDE_PLUGIN_ROOT}/scripts/board.py" --out raw/visuals/boards/<date>-recognition --blind --masks <masks file> --cols 4 <ID=path> ...`. Run the `visual-brain:fresh-eyes` agent with the file paths the script printed (the board and its lettered tiles): "Group these images by brand. Say which group looks most consistent and which least, and why." Score against `key.json`, which only you read.
 3. **Strengths, where it lags, discrepancies,** as the framework defines them. Judge the brand's own material as strictly as the competitors'.
 4. **The site now:** when the brand has a live site, file the screenshot of its first screen under `raw/visuals/screens/site/<date>/` with a row in `frames.md`, and note up to three observations (the brand's own layout rules, the description for search and AI against the position).
 
@@ -94,7 +94,7 @@ Skip this step, and say so on the page, if the brand has no images.
 
 1. Draft two or three directions as the framework describes. Each must answer the audience (cite `audience.md`), sit somewhere on the map (cite the empty space or the move), and differ from the others in more than color. When the owner has a direction already (boards, a moodboard), its strongest part is one direction and what it lacks for this audience is another.
 2. For each direction, in `visual-guide.md`: the name, the one line, three words yes and three no, six collage images (the brand's own clean frames first, frames from the owner's boards count as own, at most two references, marked; no infographics or text-heavy listing frames), how to shoot (three rules), the signature or "none", why, how it differs, what it asks for, the risk.
-3. **Palette per direction:** `bash "${CLAUDE_PLUGIN_ROOT}/scripts/py" "${CLAUDE_PLUGIN_ROOT}/scripts/palette.py" --colors 6 <the direction's images>`. Take the six colors under "Palette for the set" and name each by its role in plain words. When the brand sells a range and the direction sets a rule per variant, the palette is the set of pairs from step 5b.
+3. **Palette per direction:** `bash "${CLAUDE_PLUGIN_ROOT}/scripts/py" "${CLAUDE_PLUGIN_ROOT}/scripts/palette.py" --colors 6 <the direction's images>`. Take the colors under "Palette for the set" (up to six, already distinct) and name each by its role in plain words. When the brand sells a range and the direction sets a rule per variant, the palette is the set of pairs from step 5b.
 4. **Audience panel.** Decide the logo boxes of the panel images by looking (brand names printed on images count as logos), and write them to `raw/visuals/boards/<date>-panel-masks.json`. For each direction, a board of six images without labels, logos masked: `board.py --out raw/visuals/boards/<date>-panel-<n> --no-labels --masks <masks file> --cols 3 <ID=path> ...`. Shuffle which direction becomes board 1, 2 and 3, copy the boards to `raw/visuals/boards/<date>-panel/board-1.jpg` and so on, and write which is which to `raw/visuals/boards/<date>-panel-key.json` (outside that folder). Run the `visual-brain:audience-panel` agent with `projects/visual-brain/landscape/audience.md` and the board file paths. Record both ranks ("stops me" and "answers my worry") and its words.
 5. **Rival test.** Run the `visual-brain:rival-director` agent as the strongest shelf brand, with the panel board paths, the hub's positioning line, and a two-line description of each direction.
 6. Mark one direction **recommended**, with the reason and what it takes from the others. A direction is a look: never recommend one for its proof frames (size cards, how-to grids); those go to "What to do next" and to Product Visual. Weigh the "stops me" rank and the rival's verdict. If the recommended one is not first on "stops me", or the rival could wear it, say why it is still recommended, or recommend another.
@@ -147,7 +147,7 @@ At most five lines in the chat, in this order:
 - The recommended direction in one line, and the other options by name.
 - What was not seen, if anything, and how to add it.
 - The page link; the files are in `wiki/brand/visual-guide.md` and `projects/visual-brain/landscape/`. For colleagues: `/visual-brain:page en` makes the English page.
-- Next: choose (a direction, or a combination: the look of one, the cast of another), here or later with `/visual-brain:choose <your choice>`; then `/product-visual:new <product>` builds a product's visual on it.
+- Next: choose (a direction, or a combination: the look of one, the cast of another), here or later with `/visual-brain:choose <your choice>`; then `/product-visual:new <product>` (the Product Visual plugin, from the same marketplace) builds a product's visual on it.
 - **"Waiting for you:"** which direction do you choose? A combination is fine.
 
 On the answer: do what `/visual-brain:choose` does (its command file: `${CLAUDE_PLUGIN_ROOT}/commands/choose.md`) and say so in one line.
@@ -155,5 +155,5 @@ On the answer: do what `/visual-brain:choose` does (its command file: `${CLAUDE_
 ## Connect it to the repo
 
 Only if missing, never overwriting the owner's text:
-1. `CLAUDE.md`'s Visual Brain section holds the line: **`wiki/brand/visual-guide.md` is this repo's visual identity.** Read it before briefing, generating, choosing or judging any image.
+1. `CLAUDE.md`'s Visual Brain section holds the line: **`wiki/brand/visual-guide.md` is this repo's visual direction.** Read it before briefing, generating, choosing or judging any image.
 2. `AGENTS.md`, if the repo has one, gets the same line.

@@ -1,6 +1,6 @@
 ---
 name: gate-judge
-description: The independent judge. Runs the gate your task names (Gate VB for the brand, Gate PV for a product) on the output files alone, without the drafting conversation, and reports every fail with evidence.
+description: The independent judge. Runs Gate VB on the brand's output files alone, without the drafting conversation, and reports every fail with evidence.
 tools: Read, Grep, Glob
 ---
 

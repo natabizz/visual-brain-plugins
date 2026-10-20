@@ -1,6 +1,6 @@
 ---
 name: audience-panel
-description: The brand's buyer, played from the ICP's own words. Used by Product Visual to react to direction boards shown blind (lettered). Reads only the files named in its task.
+description: The brand's buyer, played from the ICP's own words. Used by Product Visual to react to direction boards shown blind (numbered). Reads only the files named in its task.
 tools: Read
 ---
 

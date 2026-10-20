@@ -1,3 +1,6 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{Brand}} Visual Direction</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,7 +85,7 @@ section{padding-block:clamp(48px,7vw,88px);border-bottom:1px solid var(--line)}
 .vibe-list b{font:700 17px/1.2 var(--f-display)}
 .quote{font-size:14px}
 .quote q{quotes:"\201C" "\201D";font-style:normal}
-.quote .ru{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.quote .tr{display:block;color:var(--muted);font-size:13px;margin-top:2px}
 .quote .src{display:block;color:var(--muted);font-size:12px;margin-top:2px}
 .pains{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 @media (max-width:820px){.pains{grid-template-columns:1fr}}
@@ -246,7 +249,7 @@ details.others>summary:focus-visible{outline:2px solid var(--red);outline-offset
   - {{...}} marks a slot. Blocks marked REPEAT are copied once per item; remove unused blocks.
   - Images: src="file:<workspace path>". Then build with scripts/embed.py (each image stored once).
   - Plain words: no frame IDs, gate codes or tags. Captions say brand, what it shows, where and when.
-  - Observations with their basis, never orders. Tests are labelled as AI simulations.
+  - Observations with their basis, never orders. Tests are labeled as AI simulations.
   - Mockup text: only lines the brand already uses, or facts from its product files. Mark it temporary.
     A value still to confirm is a placeholder: <span class="ph">[{{size to confirm}}]</span>, never final copy.
   - AFTER THE CHOICE: the cover image comes from the chosen look. Copy the direction block below as
@@ -336,12 +339,12 @@ details.others>summary:focus-visible{outline:2px solid var(--red);outline-offset
   </div>
   <div class="vibe-list">
     <!-- REPEAT: 5 vibe words, each with a verbatim quote or an observed pattern. -->
-    <div><b>{{vibe word}}</b><span class="quote"><q>{{verbatim quote}}</q><span class="ru">{{translation, only when the page language differs}}</span><span class="src">{{platform, product, date}}</span></span></div>
+    <div><b>{{vibe word}}</b><span class="quote"><q>{{verbatim quote}}</q><span class="tr">{{translation, only when the page language differs}}</span><span class="src">{{platform, product, date}}</span></span></div>
   </div>
   <p class="eyebrow" style="margin-bottom:12px">{{Three pains the picture must answer}}</p>
   <div class="pains">
     <!-- REPEAT: 3 -->
-    <div><h3>{{pain}}</h3><span class="quote"><q>{{verbatim quote}}</q><span class="ru">{{translation}}</span><span class="src">{{platform, product, date}}</span></span></div>
+    <div><h3>{{pain}}</h3><span class="quote"><q>{{verbatim quote}}</q><span class="tr">{{translation}}</span><span class="src">{{platform, product, date}}</span></span></div>
   </div>
   <p class="note">{{Where they look, and what is not known from the brand's own data. Source: the Marketing Brain buyer profile.}}</p>
 </section>
@@ -544,7 +547,7 @@ details.others>summary:focus-visible{outline:2px solid var(--red);outline-offset
     <!-- REPEAT: 10 -->
     <div class="shot-card"><span class="n">1</span><b>{{what it shows}}</b><span>{{who, where, light}}</span><span class="cap">{{the need it answers}}</span><span class="st todo">{{To shoot}}</span><!-- or <span class="st have">{{In hand}}</span> --></div>
   </div>
-  <p class="note">{{Handed to Product Visual: the proof frames the audience asked for (size, fit, how it stays on).}}</p>
+  <p class="note">{{Handed to Product Visual: the proof frames the audience asked for (size, fit, how it is used).}}</p>
 </section>
 
 <footer>

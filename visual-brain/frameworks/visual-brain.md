@@ -8,7 +8,7 @@ tags: [visual-brain, visual-direction]
 
 # Visual Brain: the brand's visual direction, built from its audience
 
-Visual Brain shows where a brand's look can go. It sits on top of the Marketing Brain: it takes who the buyer is and where the brand stands, studies what this audience responds to and what the market already looks like, and proposes two or three visual directions that attract this audience and that competitors can't wear. Each direction is shown in pictures, on the carriers the brand actually uses (an social media grid, the site's first screen), next to how everyone else looks.
+Visual Brain shows where a brand's look can go. It sits on top of the Marketing Brain: it takes who the buyer is and where the brand stands, studies what this audience responds to and what the market already looks like, and proposes two or three visual directions that attract this audience and that competitors can't wear. Each direction is shown in pictures, on the carriers the brand actually uses (a social media grid, the site's first screen), next to how everyone else looks.
 
 It works at brand level only. A brand without a single product photo can use it. Everything about one product (what it proves, which frames its gallery needs, whether the images are true to it) belongs to the companion plugin, Product Visual, which reads this plugin's output.
 
@@ -28,13 +28,14 @@ It works at brand level only. A brand without a single product photo can use it.
 
 | Path | Holds | In git? |
 |---|---|---|
-| `wiki/brand/visual-guide.md` | The brand's visual identity: the file Claude reads before any visual work | yes |
+| `wiki/brand/visual-guide.md` | The brand's visual direction: the file Claude reads before any visual work | yes |
 | `projects/visual-brain/landscape/audience.md` | The audience in pictures: vibe, what they love to see, where they look, what puts them off | yes |
 | `projects/visual-brain/landscape/landscape.md` | The visual market: every brand looked at, its visual language, the map | yes |
 | `projects/visual-brain/landscape/frames.md` | Index of every image looked at | yes |
 | `projects/visual-brain/landscape/tests-<date>.md` | Audience panel, rival test, recognition test, the judge | yes |
-| `projects/visual-brain/outputs/visual-direction.html` | The page, in the owner's language; `visual-direction.src.html` beside it is the source with image paths | yes |
-| `projects/visual-brain/outputs/visual-direction.<lang>.html` | The same page in another language, built by `/visual-brain:page <lang>` | yes |
+| `projects/visual-brain/outputs/visual-direction.html` | The page, in the owner's language, with the images inside it | no, local only |
+| `projects/visual-brain/outputs/visual-direction.src.html` | The page's source, with image paths | yes |
+| `projects/visual-brain/outputs/visual-direction.<lang>.html` | The same page in another language, built by `/visual-brain:page <lang>` | no, local only |
 | `projects/visual-brain/archive/` | Earlier versions of the guide, kept before a rewrite | yes |
 | `raw/visuals/` | Image files: own, screens, references, boards | no, local only |
 
@@ -55,7 +56,7 @@ It works at brand level only. A brand without a single product photo can use it.
 
 **Files from the owner** come as chat attachments or pasted links, never "put it in a folder". If the session gives a file path, copy the file into `raw/visuals/` (the brand's own images to `own/`, product photos to `products/<product>/photos/`, screenshots to `screens/<source>/<date>/`, references and moodboards to `direction/`), convert HEIC to JPEG on the way (`sips -s format jpeg`), and add a row to `frames.md`. If it gives no path, look at it, add it to `frames.md` as "chat attachment, <date>", ask once to drag the file from Finder into the chat, and say which checks can't run on it until then.
 
-**Photo folders.** When the owner names a folder (a path on the computer, its subfolders included), read the photos where they are: never move, rename or delete them. Open every image. Index each one in `frames.md` with: the variant it shows (the color as seen, or the line), who is in it (which animal or person, told apart by the marks the owner gave: eye color, coat, size), clean or with text on it, and what the owner said it is (a real photo, a retouched one, a generated draft). Copy only the frames the page uses into `raw/visuals/own/<line>/`, keeping the original file name in `frames.md`. PDF selections count only for variants with no separate photos. A folder that changed since the last run is read again before a choice is written.
+**Photo folders.** When the owner names a folder (a path on the computer, its subfolders included), read the photos where they are: never move, rename or delete them. Open every image. Index each one in `frames.md` with: the variant it shows (the color as seen, or the line), who is in it (which person or animal, told apart by the marks the owner gave: eye or hair color, size), clean or with text on it, and what the owner said it is (a real photo, a retouched one, a generated draft). Copy only the frames the page uses into `raw/visuals/own/<line>/`, keeping the original file name in `frames.md`. PDF selections count only for variants with no separate photos. A folder that changed since the last run is read again before a choice is written.
 
 **Blocked pages.** Some sites and most social networks refuse automated viewing. Then say which pages, ask for screenshots in the chat, and continue. Never describe an image you have not opened.
 
@@ -127,7 +128,7 @@ Two or three visual territories, never one, and different in more than color. Wh
 - **a name and one line** a photographer could picture;
 - **three words yes and three words no**, so a stranger can tell an image in from an image out;
 - **a collage:** six images, the brand's own best clean frames first (frames from the owner's boards count as own), at most two from references or adjacent brands, marked as such; plus the palette and one line the brand already uses, set in the brand's own font (template block "scape"). No listing infographics, badges or text-heavy frames in a collage;
-- **a palette:** six colors sampled from the direction's images (`scripts/palette.py`, "Palette for the set"), each named by its role in plain words. When the brand sells a range and the direction sets a rule per variant (a backdrop in the piece's own color, say), the palette is the set of pairs from "Every variant", never one variant's colors standing for the brand;
+- **a palette:** up to six distinct colors sampled from the direction's images (`scripts/palette.py`, "Palette for the set"), each named by its role in plain words. When the brand sells a range and the direction sets a rule per variant (a backdrop in the piece's own color, say), the palette is the set of pairs from "Every variant", never one variant's colors standing for the brand;
 - **how to shoot:** three rules specific enough for a photographer or an image generator;
 - **the signature:** the recognition device, or a plain "none" when the direction has none;
 - **why it fits the audience:** the vibe words, loves and pains it answers, with their evidence;
@@ -144,13 +145,13 @@ The owner chooses, and may combine: the look of one direction, the cast of anoth
 When the brand sells a range (colorways, lines, flavors), a direction must hold across it, not on one variant, and the owner must be able to see that even when photos of most variants don't exist yet. For the recommended direction, and again for the chosen one, the page shows one row per variant:
 - **The pair:** the product's color (sampled from a real photo of that variant with a box around the product, or taken from the product file) and the backdrop or ground the direction's rule gives it, as hex. `scripts/range.py` computes both.
 - **The check at tile size:** `range.py` measures how far the product's color sits from its backdrop (CIEDE2000 15 or more, lightness gap 10 or more). Below that, the product's edge sinks into the backdrop in a marketplace tile or a feed thumbnail. Then it shows three more backdrops (deeper and quieter, lifted, a quiet neutral), and the page says which pass.
-- **The example, in this order:** the brand's own clean photo of that variant on the rule's backdrop or close to it; the brand's own photo with only the background replaced by the rule's color (`range.py --previews`, when the cut-out library is installed; the product and the animal untouched; captioned "preview: background replaced"); a reference showing the same device on another brand, marked; a "To shoot" tile in the backdrop's own color, with the frame described.
+- **The example, in this order:** the brand's own clean photo of that variant on the rule's backdrop or close to it; the brand's own photo with only the background replaced by the rule's color (`range.py --previews`, when the cut-out library is installed; the product and whoever is in the frame untouched; captioned "preview: background replaced"); a reference showing the same device on another brand, marked; a "To shoot" tile in the backdrop's own color, with the frame described.
 - **Options side by side:** for the lead variant, and for any variant that fails the check, the passing backdrops on the same real photo, next to each other, so the owner chooses by eye, not by hex. A variant that passes shows its example only: the options sheet is not repeated for it.
 - **The owner's eye decides the format.** A pair the owner likes may stay for large formats (the site's hero, social, a lookbook) even when it fails the tile check: at full size the edge reads. The tile formats (a marketplace search, a small grid) then take a passing option, and the page shows both, each labeled with where it is used.
 
 A brand with one variant gets one row and its check. A brand with no photos at all gets the pairs from its product colors, references and "To shoot" tiles: still the whole system, with what to shoot named. The previews show the idea; they are never published as product images.
 
-## Carriers: the same thing, four ways
+## Carriers: the same thing, three ways
 
 The page shows each direction where the buyer will meet it, next to how the category looks, so the difference is seen, not explained.
 
@@ -174,7 +175,7 @@ Rules for mockups:
 The page ends with recommendations a person can act on, for the owner and for anyone running the plugin. For the recommended direction (and again for the chosen one):
 - **Actions, by priority:** up to eight, grouped "now", "next", "later". Each says what to do, why (its basis on the page: a pain, a gap, a test result, a discrepancy), and what it takes (a shoot, a fix on the site, a decision). Fixes found in "Where you are now" (a size table that disagrees with itself, text over the product, an old description for search and AI) go here.
 - **The first shoot list:** the nine frames of the first social media grid and the site's hero, each with what it shows, who (which animal or person), where, light, and the need it answers. Built from what is in hand: frames already in hand are named with their file; the rest are marked "to shoot", each with the reason no photo in hand fits. Who goes in a "to shoot" frame follows the cast rule (the lead in the first frame, everyone in turn, two of different builds where size matters), never at random, and the list says why each one. The backdrop of each frame is the pair from "Every variant" that passed the check.
-- **Handed to Product Visual:** the proof frames the audience asked for (size, fit, how it stays on), as a short list for `/product-visual:new`.
+- **Handed to Product Visual:** the proof frames the audience asked for (size, fit, how it is used), as a short list for `/product-visual:new`.
 
 ## Depth
 
@@ -236,7 +237,7 @@ A failed blocking check is rewritten from the inputs. What the inputs can't fix 
 
 The page is a direction book: it reads like a brand presentation, one idea per screen, images large, one to three lines of text each. Template: `frameworks/direction-book-template.html`. Order: cover with the thesis and a three-line summary; the market (a wall of shelf images, three patterns, the references, three things nobody does); the audience (five vibe words with quotes, three pains); where the brand is now (its images, strong and worth a look, the site now); the directions, each recommended or chosen one with its "Every variant" rows; the carriers; the tests; the choice; what to do next and the first shoot list; sources.
 
-- **After the choice:** the cover image comes from the chosen look; the chosen direction's section comes first, with its "Every variant" rows; the directions not chosen sit in one collapsed block "Other directions (not chosen)" (`<details class="more">`), kept, not deleted. Placeholders on mockups (a size still to confirm, a name not yet given) are shown as placeholders, in grey brackets ("Name · [size?]"), never as final copy and never left empty.
+- **After the choice:** the cover image comes from the chosen look; the chosen direction's section comes first, with its "Every variant" rows; the directions not chosen sit in one collapsed block "Other directions (not chosen)" (`<details class="more others">`), kept, not deleted. Placeholders on mockups (a size still to confirm, a name not yet given) are shown as placeholders, in gray brackets ("Name · [size?]"), never as final copy and never left empty.
 - **Detail on demand.** Each list shows its three strongest items; the rest sit under "All observations" (a `<details>` block), so the page stays short and nothing found is lost.
 
 - **Language.** The page is written in the language the owner writes in. The `.md` files stay in the language of the brand's customer copy. Customer quotes stay verbatim, with a short translation under them when the page language differs. Text inside mockups stays in the customer's language. `/visual-brain:page <lang>` builds the same page in another language (for colleagues, for example) from the same files, without new research.
@@ -249,8 +250,8 @@ The page is a direction book: it reads like a brand presentation, one idea per s
 
 ## Talking to the owner
 
-- **Before:** one summary of what was found and what could not be got, up to four optional questions (references, what must not change, wants and don't-wants, a list of brands AI assistants recommend), then "say go". Never block on optional inputs.
-- **During:** one line per stage ("Step 3 of 7: the market, 18 brands"). No running commentary on each image.
+- **Before:** one summary of what was found and what could not be got, up to six optional questions (the photo folder, references, what must not change, wants and don't-wants, a list of brands AI assistants recommend, the brand's social accounts), then "say go". Never block on optional inputs.
+- **During:** one line per stage ("Step 2 of 10: the market, 10 brands"). No running commentary on each image.
 - **When you need the owner:** end the message with a line that starts **"Waiting for you:"** and the exact question, so it can't be mistaken for the end of the run.
 - **After:** at most five lines and the page link. The detail lives on the page and in the files.
 

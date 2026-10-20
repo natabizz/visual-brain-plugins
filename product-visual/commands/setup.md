@@ -10,7 +10,7 @@ Add Product Visual to the workspace in this folder.
    - Say in one line which are drafted. Missing ICP or hub: Marketing Brain exercises 1 and 2 come first. Missing visual guide: recommend `/visual-brain:brand`; Product Visual still works and marks brand-look checks "(limited: no brand look)".
 2. **Run the setup script** and show its output:
    `bash "${CLAUDE_PLUGIN_ROOT}/plugin/setup.sh" "<this folder's absolute path>"`
-   If bash is not available (Windows without Git Bash), point to `winget install Git.Git` and stop.
+   If bash is not available (Windows), say in one line that the plugin is built for macOS and Linux, and stop.
 3. **Say the next step** in at most three lines:
    - "To build a product's visual from zero: `/product-visual:new <product>`. It finds what it can and asks only for what it can't."
    - "Product photos, a label, a size chart, a moodboard: attach them in the chat when it asks."

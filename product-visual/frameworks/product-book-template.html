@@ -1,3 +1,6 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{Product}} Visual</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,7 +85,7 @@ section{padding-block:clamp(48px,7vw,88px);border-bottom:1px solid var(--line)}
 .vibe-list b{font:700 17px/1.2 var(--f-display)}
 .quote{font-size:14px}
 .quote q{quotes:"\201C" "\201D";font-style:normal}
-.quote .ru{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.quote .tr{display:block;color:var(--muted);font-size:13px;margin-top:2px}
 .quote .src{display:block;color:var(--muted);font-size:12px;margin-top:2px}
 .pains{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 @media (max-width:820px){.pains{grid-template-columns:1fr}}
@@ -329,7 +332,7 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:4px}
     <!-- REPEAT per need, most important first. Bar width = count / highest count. -->
     <div class="need"><span class="n">1</span>
       <div><span class="kind">{{Pain / Desire / Objection / Trigger}}</span> <b>{{the need in plain words}}</b>
-        <span class="quote" style="display:block;margin-top:6px"><q>{{verbatim quote}}</q><span class="ru">{{translation, only when the page language differs}}</span><span class="src">{{platform, product, date}}</span></span>
+        <span class="quote" style="display:block;margin-top:6px"><q>{{verbatim quote}}</q><span class="tr">{{translation, only when the page language differs}}</span><span class="src">{{platform, product, date}}</span></span>
         <div class="bar"><i style="width:{{0-100}}%"></i></div></div>
       <span class="count">{{N}} {{sources}}</span></div>
   </div>
@@ -474,7 +477,7 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:4px}
   <div class="frames board">
     <!-- REPEAT per frame: the image in hand in a .fig, or the "shoot" tile -->
     <div class="frame">
-      <div class="top"><span class="num">1</span><span class="job">{{its job: stop / which size / will it stay on}}</span></div>
+      <div class="top"><span class="num">1</span><span class="job">{{its job: stop / which size / does it fit}}</span></div>
       <div class="fig" style="aspect-ratio:1"><img src="file:{{image in hand}}" alt="{{what it shows}}"></div>
       <!-- or: <div class="shoot" style="background:{{#HEX}};color:{{#HEX}}"><b>{{To shoot}}</b>{{what exactly}}</div> -->
       <dl>
@@ -534,7 +537,7 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:4px}
 <footer>
   <b style="color:var(--ink)">{{Sources}}</b>
   <ul><!-- REPEAT --><li>{{facts, buyer sources, competing products and pages, tests, with dates}}</li></ul>
-  <p>{{Full notes: projects/product-visual/{{product}}/. Other brands' images are shown for internal review only. Generated images, if any, show the idea, not the product.}}</p>
+  <p>{{Full notes: projects/product-visual/<product>/. Other brands' images are shown for internal review only. Generated images, if any, show the idea, not the product.}}</p>
 </footer>
 </div>
 

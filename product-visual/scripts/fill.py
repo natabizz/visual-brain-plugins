@@ -6,7 +6,7 @@ workspace, or absolute). This script swaps every such src for a small data URI a
 It never prints image data, so nothing large lands in the chat.
 
 Usage:
-  py fill.py --max 480 projects/visual-brain/outputs/visual-identity.html
+  py fill.py --max 480 projects/product-visual/outputs/<product>-<channel>-audit.html
   py fill.py --max 480 --out page-filled.html page.html
 
 Opens images with Pillow; falls back to macOS sips (HEIC, odd formats); an image that can't be

@@ -19,6 +19,11 @@ ARCH="projects/visual-brain/archive"
 touch .gitignore
 if grep -qx 'raw/visuals/\*' .gitignore; then gi="already there"; else
   printf '\n' >> .gitignore; cat "$ROOT/plugin/gitignore-block.txt" >> .gitignore; gi="added"; fi
+# Lines added in later versions go in once each.
+while IFS= read -r line; do
+  case "$line" in ''|'#'*) continue ;; esac
+  grep -qxF -- "$line" .gitignore || { printf '%s\n' "$line" >> .gitignore; gi="updated"; }
+done < "$ROOT/plugin/gitignore-block.txt"
 
 # 2. An older Visual Brain project file (0.4, with product commands) is kept in the archive and replaced.
 old=""
@@ -57,7 +62,7 @@ else
 fi
 
 echo "Folder: $TARGET"
-echo ".gitignore block for raw/visuals/: $gi"
+echo ".gitignore block (images and built pages stay local): $gi"
 echo "Files created: $created. Existing files kept: $kept.${old:+ Older Visual Brain $old.}"
 [ -n "${cm_new:-}" ] && echo "CLAUDE.md: $cm_new"
 echo "CLAUDE.md Visual Brain section: $cm"

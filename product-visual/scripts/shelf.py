@@ -10,12 +10,12 @@ Writes:
   <out>/masks.json              the masks used, so a later run can reuse them
 
 Usage:
-  python3 shelf.py --out raw/visuals/shelf/2026-10-17-hats --size 360 \
+  python3 shelf.py --out raw/visuals/shelf/2026-10-17-mugs --size 360 \
       [--masks masks.json] [--cols 2] [--seed 7] \
-      OWN-amazon-hat-01=raw/visuals/own/hat-01.jpg CMP-acme-amazon-hat-01=raw/visuals/screens/acme-01.png
+      OWN-amazon-mug-01=raw/visuals/own/mug-01.jpg CMP-acme-amazon-mug-01=raw/visuals/screens/acme-01.png
 
 masks.json maps a frame ID to boxes in fractions of width and height:
-  {"CMP-acme-amazon-hat-01": [[0.70, 0.02, 0.98, 0.12]]}
+  {"CMP-acme-amazon-mug-01": [[0.70, 0.02, 0.98, 0.12]]}
 
 Needs Pillow: the plugin setup installs it.
 """
@@ -84,8 +84,16 @@ def main():
     grid_dir.mkdir(parents=True, exist_ok=True)
 
     key, tiles = {}, []
-    for letter, (fid, path) in zip(string.ascii_uppercase, pairs):
-        img = Image.open(path).convert("RGB")
+    for fid, path in pairs:
+        try:
+            img = Image.open(path).convert("RGB")
+        except Exception as e:
+            print(f"Skipped, can't open: {path} ({e.__class__.__name__}); convert it to JPEG first")
+            continue
+        if len(tiles) >= len(string.ascii_uppercase):
+            print(f"Skipped, more than {len(string.ascii_uppercase)} images: {path}")
+            continue
+        letter = string.ascii_uppercase[len(tiles)]
         if fid in masks:
             img = apply_masks(img, masks[fid])  # boxes are fractions of the original image
         img = fit_square(img, a.size)
@@ -93,6 +101,8 @@ def main():
         key[letter] = {"frame_id": fid, "file": path, "masked": fid in masks}
         tiles.append((letter, img))
 
+    if not tiles:
+        sys.exit("No image could be opened.")
     label_h, gap = 28, 12
     cols = max(1, a.cols)
     rows = (len(tiles) + cols - 1) // cols

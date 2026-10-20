@@ -29,7 +29,7 @@ It works wherever the product lives: a marketplace, the brand's own site, search
 
 ## Install
 
-In Claude (desktop or claude.ai): **Customize → Plugins → Add → Upload plugin**, choose the zip. Or from GitHub, in a Claude Code session:
+In Claude (desktop or claude.ai): **Customize → Plugins → Add → Add marketplace → Add from a repository**, enter `natabizz/visual-brain-plugins`; or **Customize → Plugins → Add → Upload plugin** with the zip from `dist/`. In a Claude Code session:
 ```
 /plugin marketplace add natabizz/visual-brain-plugins
 /plugin install product-visual@visual-brain-plugins
@@ -42,7 +42,7 @@ After installing or updating, open a new chat: commands load when a chat starts.
 
 ## Privacy
 
-Image files stay on your computer (`raw/visuals/` is git-ignored). Review quotes are kept without names, emails or order numbers. Other brands' images are shown on the pages for internal review only.
+Image files stay on your computer: `raw/visuals/` and the built pages, which carry the images inside them, are git-ignored. Review quotes are kept without names, emails or order numbers. Other brands' images are shown on the pages for internal review only.
 
 ## Author
 

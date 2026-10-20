@@ -7,7 +7,7 @@ tags: [visual-brain]
 
 # Visual Brain
 
-The brand's visual identity: who we shoot for, what the market looks like, and the direction that sets the brand apart.
+The brand's visual direction: who we shoot for, what the market looks like, and the direction that sets the brand apart.
 
 ## How to start
 
@@ -22,7 +22,7 @@ Attach them in the chat when the command asks, or paste links. Nothing is requir
 
 ## Where things are
 
-- `wiki/brand/visual-guide.md`: the visual identity.
+- `wiki/brand/visual-guide.md`: the visual direction.
 - `projects/visual-brain/landscape/`: the audience, the market, the frames, the tests.
 - `projects/visual-brain/outputs/visual-direction.html`: the page (source with image paths: `visual-direction.src.html`; other languages: `visual-direction.<lang>.html`).
 

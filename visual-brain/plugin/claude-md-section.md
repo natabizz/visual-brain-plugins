@@ -5,5 +5,5 @@
 - The look is built from `wiki/brand/icp.md` (the audience) and `wiki/brand/positioning-messaging.md` (the position), against the visual market in `projects/visual-brain/landscape/`.
 - Until the owner chooses a direction, the guide's visual language is the recommended direction and is tagged (inferred).
 - Product galleries, product positioning and image checks live in Product Visual (`/product-visual:new`), which reads this guide.
-- Image files live in `raw/visuals/` and never go to git. Competitor and reference images are evidence, never material to copy.
+- Image files live in `raw/visuals/` and never go to git; nor do the built pages, which carry the images inside them (their `.src.html` sources do). Competitor and reference images are evidence, never material to copy.
 - Nothing is published, uploaded, or paid for (image generation included) without the owner's yes.

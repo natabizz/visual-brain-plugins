@@ -38,7 +38,7 @@ One brief per frame in `briefs/<channel>/frame-NN.md` from `_brief.md`, every fi
 1. `product-visual:rival-director` on the first frame's and the hero frame's briefs (file paths), as the strongest competing product. Mark each frame copyable or not from its answer.
 2. `product-visual:skeptical-buyer` on the plan (file paths): each objection has a frame that answers it, or is listed as open.
 3. Claim to proof on every planned message: a claim without proof is removed from the image.
-4. `product-visual:gate-judge` with the file paths and `wiki/brand/visual-guide.md`: Gate PV, PV.1 to PV.6, PV.8, PV.11 to PV.15. Findings into `issues.md`; what the inputs can't fix goes to "To check and decide".
+4. `product-visual:gate-judge` with the file paths and `wiki/brand/visual-guide.md`: Gate PV, PV.1 to PV.6, PV.8, PV.10 to PV.15. Findings into `issues.md`; what the inputs can't fix goes to "To check and decide".
 
 ## 4. The page
 

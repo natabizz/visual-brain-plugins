@@ -32,6 +32,7 @@ Prints a table to paste into the guide, and writes a sheet at tile size.
 """
 import math
 import os
+import re
 import sys
 
 try:
@@ -82,10 +83,10 @@ def hexs(rgb):
     return "#%02X%02X%02X" % tuple(rgb)
 
 def parse_hex(s):
-    s = s.strip().lstrip("#")
-    if len(s) != 6:
-        raise ValueError("not a hex color: " + s)
-    return tuple(int(s[i:i + 2], 16) for i in (0, 2, 4))
+    h = s.strip().lstrip("#")
+    if not re.fullmatch(r"[0-9A-Fa-f]{6}", h):
+        sys.exit("Not a hex color (six digits, like #A3222C): " + s.strip())
+    return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
 
 def de2000(l1, l2):
     L1, a1, b1 = l1
@@ -223,10 +224,13 @@ def on_backdrop(cut, rgb, size):
 def shape_tile(prod, rgb, size):
     t = Image.new("RGB", (size, size), rgb)
     d = ImageDraw.Draw(t)
-    r = size * 0.22
-    cx, cy = size / 2, size * 0.56
-    d.ellipse((cx - r, cy - r * 0.9, cx + r, cy + r * 0.9), fill=prod)          # the piece
-    d.ellipse((cx - r * 0.38, cy - r * 1.55, cx + r * 0.38, cy - r * 0.8), fill=prod)  # a pom-pom or a top
+    w, h = size * 0.42, size * 0.5
+    cx, cy = size / 2, size * 0.52
+    box = (cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2)
+    if hasattr(d, "rounded_rectangle"):
+        d.rounded_rectangle(box, radius=size * 0.05, fill=prod)  # a neutral stand-in for the product
+    else:
+        d.rectangle(box, fill=prod)
     return t
 
 def font(sz):
@@ -268,11 +272,13 @@ def main(argv):
             prod = parse_hex(src)
             how = "from the product file"
         else:
-            if "@" in src:
-                photo, b = src.rsplit("@", 1)
-                box = tuple(float(x) for x in b.split(","))
-            else:
-                photo = src
+            photo = src
+            m = re.match(r"^(.*)@\s*([0-9.]+)\s*,\s*([0-9.]+)\s*,\s*([0-9.]+)\s*,\s*([0-9.]+)\s*$", src)
+            if m and not os.path.exists(src):
+                photo = m.group(1)
+                box = tuple(float(m.group(k)) for k in range(2, 6))
+                if not all(0 <= b <= 1 for b in box) or box[0] >= box[2] or box[1] >= box[3]:
+                    sys.exit("The box after @ is x0,y0,x1,y1 as fractions of the photo, each from 0 to 1: " + src)
             if not os.path.exists(photo):
                 sys.exit("No such photo: " + photo)
             prod = sample(photo, box)
@@ -317,7 +323,7 @@ def main(argv):
     sheet.save(out, quality=88)
     print("Sheet: %s (%s)" % (out, "real photos, background replaced; the product untouched" if used_photo else "plain shapes in the product color; real-photo previews need the cut-out library (rembg)"))
     if prev is not None and not used_photo:
-        print("No previews: the cut-out library (rembg) is not installed and no cut-out PNG was given, or no variant was given as a photo. To enable: bash plugin/ensure-cutout.sh (about 200 MB, ask the owner first).")
+        print("No previews: the cut-out library (rembg) is not installed and no cut-out PNG was given, or no variant was given as a photo. To enable: bash %s (about 200 MB, ask the owner first)." % os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "plugin", "ensure-cutout.sh"))
 
 if __name__ == "__main__":
     main(sys.argv[1:])

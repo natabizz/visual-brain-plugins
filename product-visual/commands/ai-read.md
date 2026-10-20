@@ -18,8 +18,8 @@ Read `${CLAUDE_PLUGIN_ROOT}/frameworks/product-visual.md` first. Talk to the own
 ## 1. The question panel
 
 If `ai-read-<channel>.md` already has a panel, reuse it unchanged, so runs compare; otherwise start it from `_ai-read.md`. A new panel has six core questions:
-1. What is this product, and what is it for?
-2. Who or what is it for?
+1. What is this product, and what does it do?
+2. Who is it for (and who or what it is used with, when that matters)?
 3. What is it made of?
 4. How do I choose the size?
 5. How is it different from [the brand's neighboring line, when there is one]?

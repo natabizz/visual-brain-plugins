@@ -82,7 +82,7 @@ def main():
     board_dir = out / "board"
     board_dir.mkdir(parents=True, exist_ok=True)
     letters = list(string.ascii_uppercase) + [f"A{c}" for c in string.ascii_uppercase]
-    key, tiles = {}, []
+    key, tiles, names = {}, [], []
     for i, (k, p) in enumerate(items):
         label = letters[len(tiles)] if a.blind else k
         img = open_image(p)
@@ -96,6 +96,7 @@ def main():
         tile = square(img, a.size)
         name = label if a.blind else f"{len(tiles) + 1:02d}"
         tile.save(board_dir / f"{name}.jpg", quality=85)
+        names.append(f"{name}.jpg")
         key[label] = {"id": k, "file": p, "masked": k in masks}
         tiles.append((label, tile))
 
@@ -113,7 +114,7 @@ def main():
     sheet.save(board_dir / "board.jpg", quality=85)
     (out / "key.json").write_text(json.dumps({"size": a.size, "blind": a.blind, "labels": key}, indent=2))
     print(f"Board: {len(tiles)} images, {board_dir / 'board.jpg'}")
-    files = ", ".join(str(board_dir / f) for f in ["board.jpg"])
+    files = ", ".join(str(board_dir / f) for f in ["board.jpg"] + names)
     print(f"Give the agent these files by path: {files} (never {out / 'key.json'})")
 
 

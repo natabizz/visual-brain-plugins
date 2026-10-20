@@ -6,5 +6,5 @@
 - Order for a new product: `/product-visual:new`, then `/product-visual:gallery` per channel, `/product-visual:qa` on the finished images, `/product-visual:ai-read`, `/product-visual:review`. For a live listing: `/product-visual:audit`.
 - Product facts come only from `product.md`, each with its source. Text on a live listing is not a source.
 - Fit, size, material, construction and tests are never shown with a generated image. The product is never redrawn, recolored or regenerated.
-- Image files live in `raw/visuals/` and never go to git.
+- Image files live in `raw/visuals/` and never go to git; nor do the built pages, which carry the images inside them (their `.src.html` sources do).
 - Nothing is published, uploaded, or paid for (image generation included) without the owner's yes.

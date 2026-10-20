@@ -2,7 +2,7 @@
 type: framework
 version: 2
 source: Product Visual, Natalia Bizyukova
-used_by: /product-visual:new, /product-visual:gallery, /product-visual:audit, /product-visual:qa, /product-visual:ai-read, /product-visual:review
+used_by: /product-visual:new, /product-visual:gallery, /product-visual:audit, /product-visual:qa, /product-visual:ai-read, /product-visual:review, /product-visual:page, /product-visual:setup
 tags: [product-visual, product-images]
 ---
 
@@ -24,6 +24,8 @@ It is not only for online stores. The product may live on a marketplace, on the 
 | `/product-visual:qa <product> <channel>` | Finished images, before upload | the QA, the release list, its page |
 | `/product-visual:ai-read <product> <channel>` | How AI reads the listing, before and after a change | the AI reading |
 | `/product-visual:review <product> <channel>` | After publication, on dated results | the results and one next action |
+| `/product-visual:page <product> [language]` | The product page again, in the owner's language or another one | the page, from the files |
+| `/product-visual:setup` | Once per workspace | the product folder template, the local-only image folder, a section in CLAUDE.md |
 
 ## Where things live
 
@@ -37,11 +39,12 @@ It is not only for online stores. The product may live on a marketplace, on the 
 | `.../gallery-<channel>.md` and `briefs/<channel>/` | The gallery plan and one brief per frame | yes |
 | `.../audit-<channel>.md`, `qa-<channel>.md`, `ai-read-<channel>.md`, `results-<channel>.md`, `release-<channel>.md` | Checks and results | yes |
 | `.../issues.md` | Every finding, never deleted | yes |
-| `projects/product-visual/outputs/` | The pages | yes |
+| `projects/product-visual/outputs/*.src.html` | The pages' sources, with image paths | yes |
+| `projects/product-visual/outputs/*.html` | The built pages, with the images inside them | no, local only |
 | `raw/visuals/products/<product>/` | `photos/` (real photos), `drafts/<channel>/`, `finished/<channel>/` | no, local only |
 | `raw/visuals/screens/<brand>/<date>/` and `raw/visuals/boards/` | Other brands' images, boards for tests | no, local only |
 
-The product's slug is lowercase with hyphens: `wool-beanie`. The channel is where the product's images are seen: `amazon`, `chewy`, `etsy`, `site`, `google`, `instagram`, `ads`, or a short name for what the owner names (`catalog`).
+The product's slug is lowercase with hyphens: `ceramic-mug`. The channel is where the product's images are seen: `amazon`, `etsy`, `walmart`, `site`, `google`, `instagram`, `ads`, or a short name for what the owner names (`catalog`).
 
 Every image looked at gets a row in `projects/visual-brain/landscape/frames.md` (created by setup if Visual Brain is not installed): `OWN-<channel>-<product>-<nn>`, `CMP-<brand>-<channel>-<product>-<nn>`, `REF-<brand>-<source>-<subject>-<nn>`.
 
@@ -53,13 +56,15 @@ Every image looked at gets a row in `projects/visual-brain/landscape/frames.md` 
 | The brand's look and the chosen direction | no, but strongly recommended | `wiki/brand/visual-guide.md` from Visual Brain (`stage: chosen` after `/visual-brain:choose`); without it, everything that depends on it is marked "(limited: no brand look)" |
 | Where the product lives | yes | the owner, asked once if the workspace doesn't say: a marketplace (which), the brand's own site, search, social or ads, or something else |
 | Product facts: what it is, material as on the label, origin, measurements, sizes and how to choose, variants, price, care | yes, the essentials | product files in the workspace, label photos, specs, the owner in the chat |
-| Real photos of the product | no for `new` (the gallery then plans a shoot); yes for `audit` and `qa` | attached in the chat; `raw/visuals/products/<product>/photos/` |
+| Real photos of the product | no for `new` (the gallery then plans a shoot); yes for `audit` and `qa` | a folder the owner names (read in place); attached in the chat; `raw/visuals/products/<product>/photos/` |
 | A moodboard or ideas | no | attached in the chat; treated as direction, tested like everything else |
 | Reviews and questions | no | `raw/voc/`; the product's own pages; competitor products' reviews |
 
 **Find first, ask last.** Gather from the workspace and the web first; ask once, in one message, for what only the owner can give. Optional inputs never block: continue and mark what depends on them "(limited: no X)".
 
 **Files from the owner** come as chat attachments or pasted links. If the session gives a file path, copy the file into `raw/visuals/products/<product>/` (photos to `photos/`, drafts to `drafts/<channel>/`, finished images to `finished/<channel>/`, moodboards to `raw/visuals/direction/`), convert HEIC to JPEG on the way (`sips -s format jpeg`), and add a row to `frames.md`. If it gives no path, look at it, add it as "chat attachment, <date>", ask once to drag the file from Finder into the chat, and say which checks can't run on it until then (the shelf, boards, pixel checks and the page need the file itself).
+
+**Photo folders.** When the owner names a folder (a path on the computer, its subfolders included), read the photos where they are: never move, rename or delete them. Open every image. Index each one in `projects/visual-brain/landscape/frames.md` with: the variant it shows (the color as seen, or the line), who is in it (which person or animal, told apart by the marks the owner gave), clean or with text on it, and what it is (a real photo, a retouched one, a generated draft), as the owner said or asked once. Generated drafts never stand in for real photos in proof frames. Copy only the frames the page uses into `raw/visuals/products/<product>/photos/`, keeping the original file name in `frames.md`. Near-duplicates (the same frame exported twice) count once.
 
 **People in research.** Images of private people (review photos, forum and social posts) are described in words with a link, never saved or shown. Quotes keep no names, emails or order numbers, and are cited on the pages by platform, product and date.
 
@@ -68,7 +73,7 @@ Every image looked at gets a row in `projects/visual-brain/landscape/frames.md` 
 **Channel rules** (image count, sizes, what the main image may show) come from the channel's own current help page, saved with its URL and date, or from the owner (a screenshot when the page is behind a sign-in). Never from memory. A third-party guide may point to a rule but is tagged "(third-party: <site>, <date>)" and never decides a blocking rule alone.
 
 **The chosen direction.** When Visual Brain has run, the product follows the direction the owner chose. Read from `visual-guide.md`:
-- **The look:** the "Chosen" section and section 5, Visual language (backdrop, light, pose, styling, composition, type on images, palette).
+- **The look:** the "Chosen" section and the Visual language section (backdrop, light, pose, styling, composition, type on images, palette).
 - **The cast:** who may appear (named animals or people), who is the lead, and whether one may be swapped for another.
 - **The caption rule:** what is written under brand images (for example "Name · size") and what only product cards carry (for example the measurements).
 - **What was handed over:** "Handed to Product Visual" (or a "Product cards" section): the proof frames the audience asked for and how they look.
@@ -82,7 +87,7 @@ If the guide is in `format: visual-brain-2` but has no chosen direction yet, say
 
 | Kind | Examples | What the storyboard plans | Carrier on the page |
 |---|---|---|---|
-| Marketplace | Amazon, Chewy, Etsy, Walmart | The listing gallery: the main image, then the rest in the buyer's order | The product's card in a search next to three competitors, and its gallery |
+| Marketplace | Amazon, Etsy, Walmart, a category marketplace | The listing gallery: the main image, then the rest in the buyer's order | The product's card in a search next to three competitors, and its gallery |
 | Own site | The brand's product page | The product page gallery and the first screen of the page | The product page's first screen (image, name, price, button) and the gallery strip |
 | Search | Google Shopping, image results | The image that shows in the results, and the page it opens | The result card among three competitors for the buyer's search |
 | Social and ads | An Instagram carousel, an ad set | A carousel or a set of ads, first frame first | A phone with the carousel's frames in order |
@@ -134,7 +139,7 @@ The storyboard is the gallery planned frame by frame, before anything is shot or
 
 | Field | What it says |
 |---|---|
-| Job | Its step on the buyer's path, in a few words ("stop", "which size", "will it stay on") |
+| Job | Its step on the buyer's path, in a few words ("stop", "which size", "does it fit") |
 | Need | The need it serves, with a buyer's quote and its source |
 | In frame | What is in it: the product on the animal or person, the product alone, a detail, two sizes side by side, hands showing how, the product in a real place, what arrives in the box |
 | View | From where: front, three-quarter, side, back, top, close-up of a named detail; the crop |
@@ -146,7 +151,7 @@ The storyboard is the gallery planned frame by frame, before anything is shot or
 | Route | Shoot, retouch, background only, layout |
 | Copyable | Whether the strongest competitor could make the same frame tomorrow, from the rival tests; the first frame carries at least one thing it can't |
 
-- **Views check.** From the ranked needs and the buyers' questions, list the views this product's buyer needs to see (for a hat, for example: how it sits from the front and the side, the openings or the fastening close up, the back, two head sizes side by side, how to put it on, the product alone). Each view is covered by a frame, or moved to the listing text with the reason (the count limit). A view nobody asks for gets no frame.
+- **Views check.** From the ranked needs and the buyers' questions, list the views this product's buyer needs to see (for a bag, for example: the front and the side, the closure and the strap close up, the inside, two sizes side by side, how it is carried, the product alone). Each view is covered by a frame, or moved to the listing text with the reason (the count limit). A view nobody asks for gets no frame.
 - **The cast and the caption** follow the chosen direction: only the cast it names, the lead where it says, the caption rule on brand images, and the measurements only where the handed-over proof frames put them.
 - **Briefs:** one per frame, standalone: a designer, photographer or image tool can work from it without the chat.
 - **What is never generated:** anything that shows fit, size, a material, a test or the product's construction. The product is never redrawn, recolored or regenerated; backgrounds and settings may be.
@@ -163,13 +168,13 @@ Each test is run by an agent that did not write the work. AI simulations are lab
 
 | Test | Agent | Where | Question |
 |---|---|---|---|
-| Audience panel | `product-visual:audience-panel` | new, gallery | Shown the direction boards blind, two ranks kept apart: which stops you (the pull of the pictures), which answers your worry? And what puts you off? |
+| Audience panel | `product-visual:audience-panel` | new | Shown the direction boards blind, two ranks kept apart: which stops you (the pull of the pictures), which answers your worry? And what puts you off? |
 | Skeptical buyer | `product-visual:skeptical-buyer` | new, gallery, audit, qa | Three reasons not to buy, from real objections; which frame should have answered each |
 | Rival test | `product-visual:rival-director` | new, gallery, audit, qa | Could the strongest competing product wear this direction, hero frame or image tomorrow? |
-| Claim to proof | (the command) | all | Every visible claim, including those made by icons and scenes, against the facts |
+| Claim to proof | (the command) | new, gallery, audit, qa | Every visible claim, including those made by icons and scenes, against the facts |
 | Blind shelf | `product-visual:fresh-eyes` | audit, qa | The main image among competing mains for the buyer's search, logos masked, at thumbnail size: what is it, who for, which would you open? (`scripts/shelf.py`) |
 | AI reading | `product-visual:fresh-eyes`, `product-visual:ai-shopper` | audit, qa, ai-read | Mode A: what AI reads from the images, then images and text, scored against the facts. Mode B: the open web. Never mixed. |
-| Judge | `product-visual:gate-judge` | all | Gate PV on the output files alone |
+| Judge | `product-visual:gate-judge` | new, gallery, audit, qa | Gate PV on the output files alone |
 
 ## Gate PV
 
@@ -200,10 +205,10 @@ Each test is run by an agent that did not write the work. AI simulations are lab
 - **Clean carriers.** The brand's own columns take the product's own images only, never another brand's. The first image (search card, site hero, carousel cover) is a clean photo without badges or text over the product; the rest of a gallery mockup shows the planned frames as planned (a size card is a size card). Where a photo is missing, a color tile from the direction's palette says "To shoot:" and what exactly, in the page language. Competitors appear only in the "as everyone" column and as competitor cards.
 - **The storyboard on the page:** one card per frame in order, with the image in hand (or the "To shoot" tile), and the fields Job, Need with its quote, In frame and View, Who, Text, Look, Proof, Route, and a "copyable" mark when the rival could make it. The views check sits under the cards as a short table: view, the frame that covers it, or "in the listing text" with the reason.
 - **What to do next:** now, next, later with each action's basis, then the shot list grouped by setup.
-- **Images** go in as `src="file:<path>"` in a `.src.html` source; `scripts/embed.py` builds the page and stores each image once (`scripts/fill.py` still works for the review pages). Image data is never pasted or printed in the chat. Options are shown as their separate images, not as composite boards.
+- **Images** go in as `src="file:<path>"` in a `.src.html` source; `scripts/embed.py` builds the page and stores each image once (the audit and QA pages use `scripts/fill.py`). Image data is never pasted or printed in the chat. Options are shown as their separate images, not as composite boards.
 - **Plain words.** No frame IDs, gate codes or tags on the pages; the `.md` files keep them. Images get plain captions.
 - **Observations and options, not orders.** "What it does for the buyer", "what it misses", "worth considering", "options". Discrepancies (facts that contradict each other) are stated as facts, with both sources. The owner decides. QA is the exception: there the images are checked against briefs the owner approved, so each image is "ready", "needs work" (what exactly) or "redo" (why).
-- **Basis next to every claim,** in a small grey line.
+- **Basis next to every claim,** in a small gray line.
 - **Short version first:** three sentences.
 
 ## Talking to the owner

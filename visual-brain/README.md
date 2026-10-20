@@ -46,7 +46,7 @@ To show your own photos on each proposed backdrop, Visual Brain can install a cu
 
 ## Install
 
-In Claude (desktop or claude.ai): **Customize → Plugins → Add → Upload plugin**, choose the zip. Or from GitHub, in a Claude Code session:
+In Claude (desktop or claude.ai): **Customize → Plugins → Add → Add marketplace → Add from a repository**, enter `natabizz/visual-brain-plugins`; or **Customize → Plugins → Add → Upload plugin** with the zip from `dist/`. In a Claude Code session:
 ```
 /plugin marketplace add natabizz/visual-brain-plugins
 /plugin install visual-brain@visual-brain-plugins
@@ -57,7 +57,7 @@ Needs: the Marketing Brain's `icp.md` and `positioning-messaging.md` drafted. Th
 
 ## Privacy
 
-Image files stay on your computer (`raw/visuals/` is git-ignored). Images of private people found in research are described with a link, never saved or shown. Other brands' images are shown on the page for internal review only.
+Image files stay on your computer: `raw/visuals/` and the built pages, which carry the images inside them, are git-ignored. Images of private people found in research are described with a link, never saved or shown. Other brands' images are shown on the page for internal review only.
 
 ## Author
 
