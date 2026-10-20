@@ -12,6 +12,13 @@ tags: [product-visual, positioning]
 
 For <who>, against <what they use now>, <product> is <what>, because <why this one>.
 
+## The brand's lines, for whom
+
+When the brand has more than one line of this kind: for whom this line is and for whom the other, in buyer terms, with the facts behind it.
+
+| Line | For whom | What they get that the other line doesn't | Price | Basis |
+|---|---|---|---|---|
+
 ## UVP options
 
 ### A. <name>
@@ -32,8 +39,8 @@ For <who>, against <what they use now>, <product> is <what>, because <why this o
 
 ## Claims
 
-| Claim | Allowed? | Source |
-|---|---|---|
+| Claim | Allowed? | Source | Status (confirmed, assumption, owner's decision, simulation) |
+|---|---|---|---|
 
 ## Skeptical buyer
 

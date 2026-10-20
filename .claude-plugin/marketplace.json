@@ -2,17 +2,19 @@
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "visual-brain-plugins",
   "description": "Visual Brain and Product Visual: the visual layer on top of the CXL Marketing Brain.",
-  "owner": { "name": "Natalia Bizyukova" },
+  "owner": {
+    "name": "Natalia Bizyukova"
+  },
   "plugins": [
     {
       "name": "visual-brain",
-      "description": "The brand's visual direction, from its audience and the visual market, shown on its carriers and checked across every color of the range.",
+      "description": "The brand's visual direction, from its audience and the visual market, shown on its carriers, recommended by five questions and checked across every color of the range.",
       "source": "./visual-brain",
       "category": "productivity"
     },
     {
       "name": "product-visual",
-      "description": "A product's images planned frame by frame from what its buyers need to see, in the brand's chosen look, for any channel.",
+      "description": "A product's images planned frame by frame from what its buyers need to see, in the brand's chosen look, never a repeat of the brand's own galleries, with a readiness status per frame.",
       "source": "./product-visual",
       "category": "productivity"
     }

@@ -33,6 +33,8 @@ A designer, photographer or image tool can work from this page alone.
 | Reference images, and what to take from each | |
 | What competitors show here, and how this frame differs | |
 | Could the strongest competitor make it tomorrow (rival test) | |
+| New, or carried from the brand's own galleries (what changed) | |
+| Status (concept, needs confirmation: what, ready to shoot, ready for production) | |
 | Proof shown, and its source | |
 | Channel, size, format | |
 | Route (shoot, retouch, generate background only, layout) | |

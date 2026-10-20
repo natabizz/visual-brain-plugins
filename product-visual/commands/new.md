@@ -28,71 +28,76 @@ Agents can't list a folder: always give them file paths.
    - A chosen direction: read what the framework lists under "The chosen direction" (the look, the cast and its lead, the caption rule, what was handed to Product Visual, what to do next and the first shoot list, the owner's Decisions, the rival tests) and note each with its section, for `product.md`'s inputs.
 6. **Find it yourself, without asking:**
    - **Facts:** search the workspace for the product's name and its variants: `raw/strategy/`, `raw/brand/`, `raw/voc/`, product facts files, size charts, label photos, spec sheets, the hub and the ICP. Note each fact with its file.
-   - **Photos:** a folder the owner names, in the command or the chat, is read in place as the framework's "Photo folders" describes: every image opened and indexed by variant, by who is in it, and by real photo or generated draft. Then image files of this product in `raw/visuals/` and elsewhere in the workspace.
+   - **Photos:** a folder the owner names, in the command or the chat, is read in place as the framework's "Photo folders" describes: every image opened and indexed by variant, by who is in it, and by what it is, decided from the evidence (real, retouched, likely generated, unclear). Then image files of this product in `raw/visuals/` and elsewhere in the workspace.
+   - **The brand's other lines:** the brand's other products of the same kind (framework, "The brand's own lines"): their facts, prices and live galleries, from the product files, the hub and the brand's store. Each goes into `market.md` as a shelf neighbor.
+   - **The brand's own galleries,** for the "not a repeat of ourselves" test: the live galleries of its other lines and products, `raw/visuals/own/`, earlier Product Visual galleries. Index their frames; note the formats they use.
    - **Its pages:** if the product is already live anywhere, find the pages.
    - **Reviews and questions:** the brand's own for this or the nearest product, in `raw/voc/` and on its pages.
    - **Competing products:** the same product type from the shelf and reference brands in `landscape.md` and the hub, and a buyer search on the main channel. Aim for five to eight.
    - **The owner's direction:** moodboards and notes for this product in `raw/visuals/direction/`, `raw/strategy/`, `raw/brand/`.
    - **Probe access now:** try each competing product page (`curl -sL -o /dev/null -w "%{http_code}"`, or a web fetch). Note which refuse, so screenshots can be asked for once, now.
 7. **One short summary, then wait:**
-   - **Found:** facts (with sources), photos (count), pages, reviews, competing products (one line why each), the owner's direction.
+   - **Found:** facts (with sources), photos (count, and how many are real, likely generated, unclear), pages, reviews, competing products (one line why each), the brand's other lines (and how they differ, as far as the files say), the owner's direction.
    - **Missing:** in plain words. Separate the **essentials** that apply to this product (for a physical product: what it is, material, sizes and how to choose, variants, price; for a digital product or a service, what it is, what is included, who it is for, price) from the optional; a field that doesn't apply is marked "not applicable", never filled.
    - **Blocked:** pages that refuse automated viewing: "if you can, attach screenshots of their galleries".
-   - **Questions, only what you could not find,** numbered, at most five. Always include, unless already answered: where the product lives and which place comes first ("a marketplace (which one), your own site, Google, social or ads, or something else; the others can follow"), and "Where are the product's real photos? A folder on your computer (its path), or drag them into this chat." When a named folder mixes real photos and generated images that can't be told apart by looking, ask which are which. Moodboards and ideas: welcome, never required.
+   - **Questions, only what you could not find,** numbered, at most five. Always include, unless already answered: where the product lives and which place comes first ("a marketplace (which one), your own site, Google, social or ads, or something else; the others can follow"), and "Where are the product's real photos? A folder on your computer (its path), or drag them into this chat." Ask about photos only for the series marked "unclear", by series: "the files in <folder or series>: real photos, retouched, or generated?" Moodboards and ideas: welcome, never required.
    - "Say go to continue with what I found."
    - Last line: **"Waiting for you:"** the questions in one line, or go.
 8. **Go.** Say in one line what arrived and where it was filed (framework, "Files from the owner"). Convert HEIC to JPEG when filing (`sips -s format jpeg <in> --out <out.jpg>`). If an essential fact is still missing, continue and mark everything that depends on it "(limited: no facts)": those claims stay off the images.
 
 ## 1. Facts
 
-Fill `product.md`'s Facts table, one source per value. Text on a live listing is not a source. Where two sources disagree, write both under Discrepancies (a size chart against a card that names a size, two charts on two channels). Record the main channel's kind (framework, Channels) and its rules (count, sizes, first image rules) from the channel's own page, with URL and date; behind a sign-in, ask once for a screenshot; a third-party guide only tagged as such.
+Fill `product.md`'s Facts table, one source per value and a status per value (confirmed, assumption, owner's decision; framework, "Facts have sources and a status"). Text on a live listing is not a source. Where two sources disagree, write both under Discrepancies (a size chart against a card that names a size, two charts on two channels). Record the main channel's kind (framework, Channels) and its rules (count, sizes, first image rules) from the channel's own page, with URL and date; behind a sign-in, ask once for a screenshot; a third-party guide only tagged as such.
 
 ## 2. Who it is for, and what they need
 
 Write `audience.md`:
 1. **Who:** the segment from `icp.md` this product serves first, and who else, with evidence. Who it is not for.
-2. **Needs, ranked:** pains, desires, objections, triggers, from the sources in the framework's order. Read the competing products' reviews and questions on their pages (or the proxy files in `raw/voc/`). Each need: count, a verbatim quote cited by platform, product and date, and the source IDs. No customer names, emails or order numbers. Review photos and posts of private people are described, never saved.
+2. **Needs, ranked:** pains, desires, objections, triggers, from the sources in the framework's order. Read the competing products' reviews and questions on their pages (or the proxy files in `raw/voc/`). Each need: count, a verbatim quote cited by platform, product and date, and the source IDs, with its scope (this product, an earlier one of the brand's, a competitor's, the category). Under the ranked list, the count basis table: need, unique sources, products, platforms, links; one review may serve several needs, and the table says so. No customer names, emails or order numbers. Review photos and posts of private people are described, never saved.
 3. **Vibe:** from the Visual Brain's `audience.md`, and what is specific to this product (a season, an occasion, a use).
 4. **Quotes for the panel:** the most telling verbatim quotes, for the audience panel and the skeptic.
 
 ## 3. What competitors say and show
 
-Write `market.md`. For each competing product:
+Write `market.md`. The brand's other lines of this kind come first, as shelf neighbors (framework, "The brand's own lines"): their facts with sources and status, their price, their gallery frame by frame, and the differences between the lines as facts; a difference a buyer can't see or a price gap without a visible reason goes to "Open". Then, for each competing product:
 - **What it says:** title, the main promise, claims with proof status as visible on the page, price, rating and review count with the date.
 - **What it shows:** its whole gallery, saved to `raw/visuals/screens/<brand>/<date>/` and indexed in `projects/visual-brain/landscape/frames.md` (in the columns the table already has). Image URLs with `curl -L`, then a connected browser tool, then the owner's screenshots. Never work around a refusal. Open every image.
-- **Which ranked needs its gallery answers,** and which it leaves open.
-Then the patterns: what most galleries do, and **the needs no gallery looked at answers.**
+- **Which ranked needs its gallery answers,** and which it leaves open; what its page says in text that its images don't show, as a separate line; the signals for it and against it in its reviews, apart.
+Then the patterns: what most galleries do, **the needs no gallery looked at answers,** and **the formats the brand's own galleries already use** (for the "not a repeat" test).
 
 ## 4. Positioning and UVP
 
 Write `positioning.md`:
-1. The product's job in one sentence: for whom, against what, why this one.
+1. The product's job in one sentence: for whom, against what, why this one. With more than one line: for whom this line is and for whom the other, in buyer terms, from the facts in `market.md`; "factory" or "hand-made" is not a benefit by itself, what it does for the buyer is.
 2. **Two or three UVP options,** each with the need it answers, what makes it true, the proof, and how competitors talk about it.
 3. **Recommended,** with the reason.
 4. **Messages:** main and up to three supporting, in the voice guide's words.
-5. **Claims allowed and not allowed,** each with its source.
+5. **Claims allowed and not allowed,** each with its source and status. More information for choosing is a fact; a better outcome from it (fit, fewer returns) is a hypothesis and is written as one.
 6. Run the `product-visual:skeptical-buyer` agent with the paths of `positioning.md`, `audience.md` and `market.md`. Record its reasons; an objection no UVP answers goes under "Open".
 
 ## 5. Visual direction
 
 Write `direction.md`:
-1. Two or three options, as the framework describes: hero story, supporting stories (each tied to a need or the UVP), how it looks within the brand's look, why it fits, how it differs, what it asks for, risk. With a chosen brand direction, the options keep its look and cast and differ in what the images tell.
-2. **Images per option:** six to nine, listed in `direction.md`: the product's own clean photos first where they show the idea; references and competitors where they don't, marked as such. The page shows them one by one.
-3. **Audience panel:** decide the logo boxes of these images by looking, and write them to `raw/visuals/boards/<date>-<product>-masks.json`. For each option, a board without labels, logos masked: `bash "${CLAUDE_PLUGIN_ROOT}/scripts/py" "${CLAUDE_PLUGIN_ROOT}/scripts/board.py" --out raw/visuals/boards/<date>-<product>-panel-<n> --no-labels --masks <masks file> --cols 3 <ID=path> ...`. Shuffle which option becomes board 1, 2, 3, copy them to `raw/visuals/boards/<date>-<product>-panel/board-1.jpg` and so on, and keep the mapping in `raw/visuals/boards/<date>-<product>-panel-key.json` (outside that folder). Run the `product-visual:audience-panel` agent with the path of `audience.md` and the board paths. It returns two ranks: "stops me" and "answers my worry"; record both.
+1. Two or three options, as the framework describes: hero story, supporting stories (each tied to a need or the UVP), how it looks within the brand's look, why it fits, how it differs, what it asks for, risk. With a chosen brand direction, the options keep its look and cast and differ in what the images tell. At least one option is a different story, not another arrangement of the proof (framework, "Visual direction").
+2. **Images per option:** six to nine, listed in `direction.md`: the product's own clean photos first where they show the idea; where none does, a "To shoot" tile with the frame described. References and competitors that show the idea are listed in the file, marked, for the page; they are never on the panel's boards.
+3. **Audience panel:** boards hold only the brand's own images and "To shoot" tiles (framework, Tests). Decide the logo boxes of these images by looking, and write them to `raw/visuals/boards/<date>-<product>-masks.json`. For each option, a board without labels, logos masked: `bash "${CLAUDE_PLUGIN_ROOT}/scripts/py" "${CLAUDE_PLUGIN_ROOT}/scripts/board.py" --out raw/visuals/boards/<date>-<product>-panel-<n> --no-labels --masks <masks file> --cols 3 <ID=path> ...`. Shuffle which option becomes board 1, 2, 3, copy them to `raw/visuals/boards/<date>-<product>-panel/board-1.jpg` and so on, and keep the mapping in `raw/visuals/boards/<date>-<product>-panel-key.json` (outside that folder). Run the `product-visual:audience-panel` agent with the path of `audience.md` and the board paths. It returns two ranks: "stops me" and "answers my worry"; record both, as "the simulation suggests". References the options rely on are shown to the panel in a second, labeled message ("another brand's image, for the idea"), never on the boards. If the panel's answer shows it read something as the brand's that isn't (a test artifact), fix the boards and run the panel again; record both runs.
 4. **Rival test:** the `product-visual:rival-director` agent as the strongest competing product, with the board paths, the recommended UVP, a two-line description of each option, and that product's own material: the path of `market.md` (its entry) and the paths of its gallery images.
-5. **Recommended,** with the reason, weighing the "stops me" rank, the "answers my worry" rank and the rival test. If the panel did not rank it first on either, or the rival could wear it, say why it stays, or recommend another.
+5. **Recommended,** by the framework's five questions (clear, advantage, believable, recognizable, producible), each answered with its evidence in a table, weighted by the main channel's kind. The panel's ranks and the rival's verdict are evidence, not the verdict. If the recommended option is not first on the questions the channel weights most, say why it stays, or recommend another.
 
 ## 6. The storyboard
 
 For the main channel, on the recommended positioning and direction (tagged (inferred) until the owner chooses), write `gallery-<channel>.md` from `_gallery.md` as the framework's "The storyboard" describes:
 - **Count** and why: the ranked needs and stories, the channel's dated limit, the owner's number.
-- **One card per frame,** in the order of the buyer's path: job, need with its quote, in frame, view, who, text, look, proof, the image in hand or "To shoot: what", route, copyable.
+- **One card per frame,** in the order of the buyer's path: job, need with its quote, in frame, view, who, text, look, proof, the image in hand or "To shoot: what", route, copyable, new or carried, status with its dependencies.
 - **The first frame** follows the channel's first image rules; where they differ from the chosen look (a plain white ground on a marketplace, say), the look starts at the second frame, and the file says so with the rule's source.
-- **The cast and the caption** from the chosen direction: only its cast, its lead on the first frame, its caption rule on brand frames, the measurements only on the proof frames handed over.
+- **The cast and the caption** from the chosen direction: only its cast, its lead on the first frame, its caption rule on brand frames, the measurements only on the proof frames handed over. **The signature** on every frame with the cast where the channel allows text (framework, "The signature on every frame").
+- **Which line is yours:** with more than one line, one frame that tells them apart, with each line's facts and price; never dropped for the count.
+- **Not a repeat of ourselves:** against the brand's own galleries indexed in step 0 and `market.md`: every carried format says what changed; at least three frames that no competing gallery and none of the brand's own galleries shows, named in the file.
 - **Views check:** the views this product's buyers need to see, from the ranked needs and their questions; each covered by a frame, or moved to the listing text with the reason.
 - **Proof frames handed over** by Visual Brain each get a frame, or the file says why not.
 - One brief per frame in `briefs/<channel>/frame-NN.md` from `briefs/_brief.md`.
 - Where the plan needs a real photo the owner doesn't have, the frame says "To shoot", and the shot list goes at the end of the gallery file, grouped by setup and joined to the brand's first shoot list where a setup repeats.
+- **Status per frame:** concept, needs confirmation (what exactly), ready to shoot, or ready for production, with its dependencies; under the table, "What blocks readiness": each open item and the frames it holds back.
 - Run the `product-visual:rival-director` agent on the first frame's and the hero frame's briefs, and the `product-visual:skeptical-buyer` agent on the plan (file paths). Mark the frames the rival saw "copyable" or not from its answer; the other frames "not tested". Each objection either has a frame that answers it or is listed as open.
 
 ## 6b. What to do next
@@ -101,14 +106,16 @@ In `gallery-<channel>.md`, under "What to do next": up to six actions grouped no
 
 ## 7. Judge
 
-Run the `product-visual:gate-judge` agent with the paths of `product.md`, `audience.md`, `market.md`, `positioning.md`, `direction.md`, the gallery file, the briefs, the test results, `wiki/brand/visual-guide.md` and `${CLAUDE_PLUGIN_ROOT}/frameworks/product-visual.md`: Gate PV, the checks on the files: PV.1 to PV.6, PV.8, PV.10 to PV.13, PV.15. PV.14 is a check on the page and runs in step 8. Rewrite what the inputs can fix; what they can't goes to "To check and decide" in plain words. Every finding into `issues.md`. Set `stage: planned` in `product.md` when no blocking check fails.
+Run the `product-visual:gate-judge` agent with the paths of `product.md`, `audience.md`, `market.md`, `positioning.md`, `direction.md`, the gallery file, the briefs, the test results, `wiki/brand/visual-guide.md` and `${CLAUDE_PLUGIN_ROOT}/frameworks/product-visual.md`: Gate PV, the checks on the files: PV.1 to PV.6, PV.8, PV.10 to PV.13, PV.15 to PV.20. PV.14 is a check on the page and runs in step 8. Rewrite what the inputs can fix; what they can't goes to "To check and decide" in plain words. Every finding into `issues.md`. Set `stage: planned` in `product.md` when no blocking check fails.
 
 ## 8. The page
 
 Copy `${CLAUDE_PLUGIN_ROOT}/frameworks/product-book-template.html` to `projects/product-visual/outputs/<product>.src.html` and fill it from the files, in the language the owner writes in. Keep its style, structure and script; follow the instructions in its first comment; delete the template comments and unused blocks.
+- The first screen is the decision (framework, "Writing the pages"): recommended positioning and direction with their basis, what the buyer must understand, the evidence, what is not known yet and which frames it holds back, three next actions.
+- Statuses visible: the readiness label on every frame card; the status mark on facts, claims and test results; "new" or "carried" on every frame.
 - Option palettes: `bash "${CLAUDE_PLUGIN_ROOT}/scripts/py" "${CLAUDE_PLUGIN_ROOT}/scripts/palette.py" --colors 6 <the option's images>`; use "Palette for the set".
 - Carriers, by the main channel's kind (framework, Channels): a marketplace search card next to three competitor cards (their real titles and prices, dated) and the gallery; or the own site's product page first screen and gallery strip; or a search result among three competitors; or a social carousel in a phone. Columns: "as everyone", "now" (when live) and each option. Only real titles, prices and facts on mockups. Clean carriers: the brand's columns take only the product's own images, the first image a clean photo; a missing photo is a "To shoot" color tile; competitors only in "as everyone" and as competitor cards.
-- The storyboard section: one card per frame with all its fields, the views table under it. Then "What to do next" and the shot list.
+- The storyboard section: one card per frame with all its fields, the views table under it, then "What blocks readiness". The brand's other lines appear with the competitors, and the "which line is yours" frame in the storyboard. Then "What to do next" and the shot list.
 - Run PV.14 on the filled page source before building: first yourself (no other brand's image in a brand column, no line that isn't the brand's own or a sourced fact), then the `product-visual:gate-judge` agent with the path of the `.src.html` (never the built page: it holds image data), the gallery file and the framework: PV.14. Fix, then build.
 - Images: `src="file:<path>"`. Build: `bash "${CLAUDE_PLUGIN_ROOT}/scripts/py" "${CLAUDE_PLUGIN_ROOT}/scripts/embed.py" --max 760 --out projects/product-visual/outputs/<product>.html projects/product-visual/outputs/<product>.src.html`. Never paste image data or print it in the chat.
 - Plain words: no IDs, codes or tags. Quotes cited by platform, product and date. Check every claim on the page against the files.
@@ -119,7 +126,7 @@ Show it: if this session can publish an Artifact, publish it as a private artifa
 
 At most five lines, in this order:
 - The recommended positioning and direction in one line each, and the other options by name.
-- The storyboard: number of frames, how many need a shoot, and the first action under "now".
+- The storyboard: number of frames, how many are new, how many need a shoot, how many are ready to shoot, and the first action under "now".
 - What was missing, if anything.
 - The page link; the files are in `projects/product-visual/<product>/`.
 - **"Waiting for you:"** which positioning and which direction do you choose?

@@ -17,6 +17,9 @@ tags: [visual-brain, visual-direction]
 - **Your audience:**
 - **The market:**
 - **The direction:**
+- **It stands on:** <facts confirmed; which results are simulations>
+- **Not known yet:** <open items and what they hold back>
+- **Carriers shown, and why:**
 
 ## 1. Who we shoot for
 
@@ -77,6 +80,16 @@ Left out when the brand has no images.
 
 Which, why, and what it takes from the others.
 
+| Question | A | B | C | Evidence |
+|---|---|---|---|---|
+| 1. Clear at a glance | | | | |
+| 2. Advantage visible | | | | |
+| 3. Believable | | | | |
+| 4. Recognizable on a second meeting | | | | |
+| 5. Producible again and again | | | | |
+
+Weighted by the brand's main carrier. The simulations' ranks and the rival's verdict are evidence, not the verdict.
+
 ### Every variant
 
 For the recommended direction, and again for the chosen one, when the brand sells a range. From `scripts/range.py` (sheet: `raw/visuals/boards/<date>-range.jpg`). Pass: the piece reads against its backdrop at tile size.
@@ -86,7 +99,7 @@ For the recommended direction, and again for the chosen one, when the brand sell
 
 ## Carriers
 
-Text on mockups: the brand's own lines or facts from its files, in the customer's language, temporary.
+Chosen from where the audience looks (which, and why). Text on mockups: the brand's own lines or facts from its files, in the customer's language, temporary.
 
 ### Social media grid
 

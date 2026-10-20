@@ -1,6 +1,6 @@
 ---
 type: framework
-version: 2
+version: 3
 source: Product Visual, Natalia Bizyukova
 used_by: /product-visual:new, /product-visual:gallery, /product-visual:audit, /product-visual:qa, /product-visual:ai-read, /product-visual:review, /product-visual:page, /product-visual:setup
 tags: [product-visual, product-images]
@@ -56,6 +56,7 @@ Every image looked at gets a row in `projects/visual-brain/landscape/frames.md` 
 | The brand's look and the chosen direction | no, but strongly recommended | `wiki/brand/visual-guide.md` from Visual Brain (`stage: chosen` after `/visual-brain:choose`); without it, everything that depends on it is marked "(limited: no brand look)" |
 | Where the product lives | yes | the owner, asked once if the workspace doesn't say: a marketplace (which), the brand's own site, search, social or ads, or something else |
 | Product facts: what it is, material as on the label, origin, measurements, sizes and how to choose, variants, price, care (only those that apply; the rest "not applicable") | yes, the essentials that apply | product files in the workspace, label photos, specs, the owner in the chat |
+| The brand's other lines of the same kind (a second line of the same product, an earlier model still on sale) | yes when the brand has one: their facts, galleries and prices | product files, the hub, the brand's live store; asked once if the workspace doesn't say |
 | Real photos of the product | no for `new` (the gallery then plans a shoot); yes for `audit` and `qa` | a folder the owner names (read in place); attached in the chat; `raw/visuals/products/<product>/photos/` |
 | A moodboard or ideas | no | attached in the chat; treated as direction, tested like everything else |
 | Reviews and questions | no | `raw/voc/`; the product's own pages; competitor products' reviews |
@@ -64,11 +65,11 @@ Every image looked at gets a row in `projects/visual-brain/landscape/frames.md` 
 
 **Files from the owner** come as chat attachments or pasted links. If the session gives a file path, copy the file into `raw/visuals/products/<product>/` (photos to `photos/`, drafts to `drafts/<channel>/`, finished images to `finished/<channel>/`, moodboards to `raw/visuals/direction/`), convert HEIC to JPEG on the way (`sips -s format jpeg`), and add a row to `frames.md`. If it gives no path, look at it, add it as "chat attachment, <date>", ask once to drag the file from Finder into the chat, and say which checks can't run on it until then (the shelf, boards, pixel checks and the page need the file itself).
 
-**Photo folders.** When the owner names a folder (a path on the computer, its subfolders included), read the photos where they are: never move, rename or delete them. Open every image. Index each one in `projects/visual-brain/landscape/frames.md` with: the variant it shows (the color as seen, or the line), who is in it (which person or animal, told apart by the marks the owner gave), clean or with text on it, and what it is (a real photo, a retouched one, a generated draft), as the owner said or asked once. Generated drafts never stand in for real photos in proof frames. Copy only the frames the page uses into `raw/visuals/products/<product>/photos/`, keeping the original file name in `frames.md`. Near-duplicates (the same frame exported twice) count once.
+**Photo folders.** When the owner names a folder (a path on the computer, its subfolders included), read the photos where they are: never move, rename or delete them. Open every image. Index each one in `projects/visual-brain/landscape/frames.md` with: the variant it shows (the color as seen, or the line), who is in it (which person or animal, told apart by the marks the owner gave), clean or with text on it, and what it is: a real photo, a retouched one, or a generated draft. Decide it from the evidence first (a generator's name in the file name or the folder, no camera data in the file, a render's look, a detail the real product doesn't have) and from what the owner said; mark each one "real", "retouched", "likely generated" or "unclear", and ask the owner only about the unclear ones, by series, never one by one. "Likely generated" and "unclear" count as drafts: they may show an idea, never fit, size, material or construction, and never stand in a proof frame or a finished gallery. Copy only the frames the page uses into `raw/visuals/products/<product>/photos/`, keeping the original file name in `frames.md`. Near-duplicates (the same frame exported twice) count once.
 
 **People in research.** Images of private people (review photos, forum and social posts) are described in words with a link, never saved or shown. Quotes keep no names, emails or order numbers, and are cited on the pages by platform, product and date.
 
-**Facts have sources.** A label photo, a factory spec, a measurement the owner took, an approved document. Text on a live listing is not a source: it is one of the things being checked. A fact without a source stays blank with a question.
+**Facts have sources and a status.** A label photo, a factory spec, a measurement the owner took, an approved document. Text on a live listing is not a source: it is one of the things being checked. A fact without a source stays blank with a question. Every fact, claim and test result carries one of four statuses, in the files and on the page: **confirmed** (a source that would stand up to a buyer's question: a label, a document, a dated measurement, a dated page), **assumption** (reasoned from the facts, not yet checked), **owner's decision** (a rule the owner set), **simulation** (an AI panel, rival or skeptic result: a hypothesis to check with real people). Nothing marked assumption or simulation goes on an image or into a message as a fact.
 
 **Channel rules** (image count, sizes, what the main image may show) come from the channel's own current help page, saved with its URL and date, or from the owner (a screenshot when the page is behind a sign-in). Never from memory. A third-party guide may point to a rule but is tagged "(third-party: <site>, <date>)" and never decides a blocking rule alone.
 
@@ -95,6 +96,14 @@ If the guide is in `format: visual-brain-2` but has no chosen direction yet, say
 
 The storyboard's logic is the same for every kind: needs first, frames in the buyer's order, one job per frame. What the channel changes: the count, its dated rules, the first frame's job (stop the scroll in a feed; win the click in a search; say what it is at a glance on a shelf), and the carrier on the page. A brand that sells through retailers only, or has no store yet, picks the place its buyers will meet the product first; the storyboard is the product's set of images for that place.
 
+## The brand's own lines: neighbors on the shelf
+
+When the brand sells more than one line of the same kind (a hand-made and a factory line, an earlier model and a new one), the buyer will see them side by side in the brand's own store and in search. Each other line is a shelf neighbor:
+- `market.md` carries it like a competing product: its facts (what it is made of, where and how it is made, colors, sizes, price, as sourced), its gallery looked at frame by frame, and the differences between the lines stated as facts with their status. Price is part of the comparison; a difference without a reason a buyer can see is an open item.
+- `positioning.md` says, in buyer terms, for whom this line is and for whom the other: what each buys that the other doesn't (a material, a feel, a price, a color, a consistency). "Factory" or "hand-made" is not a benefit by itself; what it does for the buyer is.
+- The storyboard carries one frame that tells the lines apart ("which one is yours"), and the AI reading asks how the lines differ.
+- The brand's own galleries for its other lines are also the material of the "not a repeat of ourselves" test (The storyboard).
+
 ## Needs: what the audience must see
 
 The center of the method. For this product, the audience's needs, ranked:
@@ -115,20 +124,31 @@ The product's place: for whom, against what, and why this one.
 - **Two or three UVP options.** Each: the need it answers (from the ranked list), what the product has that makes it true (from the facts), the proof available (document, photo, review, or none), and how competitors talk about the same thing.
 - One is **recommended**, with the reason. The owner chooses.
 - **Messages:** the main message, and up to three supporting ones, in the voice guide's words and the vocabulary.
-- **Claims:** allowed (with proof) and not allowed (no proof, or the facts say otherwise).
+- **Claims:** allowed (with proof) and not allowed (no proof, or the facts say otherwise). More information for choosing (two measurements instead of one, a named model with its size) is a fact; a better outcome from it (a better fit, fewer returns) is a hypothesis until dated results say so, and is written as one.
+- **With more than one line:** for whom this line is and for whom the brand's other line, in buyer terms (The brand's own lines).
 
 ## Visual direction for the product
 
-Inside the brand's look, two or three options. When the brand has a chosen direction, the look is already set: the options differ in what the product's images tell (the hero story, which proof leads, which of the cast and in what situation), not in the brand's look.
+Inside the brand's look, two or three options. When the brand has a chosen direction, the look is already set: the options differ in what the product's images tell (the hero story, which proof leads, which of the cast and in what situation), not in the brand's look. At least one option tells a different story, not another arrangement of the proof: the same facts seen from the buyer's day, from how the product is made, from the cast's world, from the moment it is used. It is scored like the others, never dropped for being harder to shoot.
 
 Each option:
 - **The hero story:** the one idea the whole gallery tells, in one line.
 - **Supporting stories:** three to five, each tied to a ranked need or the UVP.
 - **How it looks:** mood, setting, casting, light, styling, color story, within the brand's visual language; where it departs from it, say why.
-- **Board:** six to nine images: the product's own clean photos first, then the owner's moodboard, references and competitor products, the last two marked as such.
+- **Board:** six to nine images: the product's own clean photos first, then the owner's moodboard; references and competitor products are listed in the file, marked as such, and shown to the owner on the page, but never on the panel's blind boards (Tests).
 - **Why it fits the audience,** **how it differs** from the competing galleries (with images), **what it asks for** (shoot, casting, locations, retouching, generation), **risk.**
 
-One is **recommended**, with the reason: what stops the audience (the panel's "stops me" rank), what answers their worry (the second rank), and what the rival can't wear. The owner chooses.
+One is **recommended**, by five questions answered with evidence, each with its basis next to it:
+
+| Question | Evidence |
+|---|---|
+| 1. Clear: at a glance, is it plain what this is and who it is for? | the blind panel's reading, the first frame |
+| 2. Advantage: does it show what this product has that the alternatives don't? | the UVP, the competing galleries, the brand's other line |
+| 3. Believable: is there a reason to believe on the images themselves? | proof frames from confirmed facts, not claims |
+| 4. Recognizable: would the buyer know the brand on a second meeting? | the signature device, the cast, the look |
+| 5. Producible: can the brand make these images again and again with its cast and means? | the shot list, what it asks for |
+
+The weight follows the main channel: on a marketplace or in search, clear and believable first; in a feed or an ad, what stops the scroll (the panel's "stops me" rank) and recognizable first; on the brand's own site, clear, advantage and recognizable. The panel's two ranks and the rival's verdict are evidence for questions 1 to 4, never the verdict themselves, and are written as "the simulation suggests". The owner chooses.
 
 ## The storyboard (the gallery)
 
@@ -150,9 +170,14 @@ The storyboard is the gallery planned frame by frame, before anything is shot or
 | Image | The nearest image in hand: a real photo, a reference marked as one, or "To shoot: what exactly" |
 | Route | Shoot, retouch, background only, layout |
 | Copyable | Whether the strongest competitor could make the same frame tomorrow, from the rival tests ("not tested" for frames the rival didn't see); the first frame carries at least one thing it can't |
+| New or carried | "New": no competing gallery and none of the brand's own galleries shows it. "Carried, changed": a format the brand already uses, and what changed in it. "Carried": the same format as before, with the reason it stays |
+| Status | Readiness: **concept** (the idea; a fact or a photo it rests on is not confirmed), **needs confirmation** (what exactly: a photo's provenance, a channel rule, a fact, a measurement), **ready to shoot** (the brief is complete and every fact on it confirmed), **ready for production** (the image exists and passed QA). Its dependencies named |
 
 - **Views check.** From the ranked needs and the buyers' questions, list the views this product's buyer needs to see (for a bag, for example: the front and the side, the closure and the strap close up, the inside, two sizes side by side, how it is carried, the product alone). Each view is covered by a frame, or moved to the listing text with the reason (the count limit). A view no buyer asks for gets no frame.
 - **The cast and the caption** follow the chosen direction: only the cast it names, the lead where it says, the caption rule on brand images, and the measurements only where the handed-over proof frames put them.
+- **The signature on every frame.** The direction's signature device (from `visual-guide.md`: a named cast with its caption, an owned object, a recurring setting) appears on every frame that shows the cast, in the form the caption rule sets, wherever the channel allows text on that image; where the main image may carry no text, the signature starts on the next frame and the file says so with the rule's source.
+- **Which line is yours.** With more than one line (The brand's own lines), one frame tells them apart in buyer terms, with the facts and the price of each; it is never dropped for the count.
+- **Not a repeat of ourselves.** Before the plan, read the brand's own galleries: its live listings for its other lines and products, `raw/visuals/own/`, earlier Product Visual galleries. A format the brand already uses (a fitting card, a four-step how-to, a flat lay) may return only changed in what it shows or how, and the card says what changed; the same format unchanged needs a reason. The storyboard names at least three frames that no competing gallery and none of the brand's own galleries shows, and the page says which frames are new and which are carried.
 - **Briefs:** one per frame, standalone: a designer, photographer or image tool can work from it without the chat.
 - **What is never generated:** anything that shows fit, size, a material, a test or the product's construction. The product is never redrawn, recolored or regenerated; backgrounds and settings may be.
 
@@ -161,6 +186,7 @@ The storyboard is the gallery planned frame by frame, before anything is shot or
 The product page ends with what to do, for the owner and for anyone running the plugin:
 - **Actions, by priority:** up to six, grouped "now", "next", "later". Each says what to do, why (its basis: a need, a gap, a test, a discrepancy in the product's facts) and what it takes. A fix in the facts that buyers see today (a size chart that disagrees with itself, a claim without proof) goes first under "now".
 - **The shot list:** every "to shoot" frame grouped by setup (who, where, light, backdrop), so one session covers them, and joined to the brand's first shoot list where the same setup appears.
+- **What blocks readiness:** the open items that keep frames at "concept" or "needs confirmation", each with the frames it holds back, so the owner sees what one answer unlocks.
 
 ## Tests
 
@@ -168,7 +194,8 @@ Each test is run by an agent that did not write the work. AI simulations are lab
 
 | Test | Agent | Where | Question |
 |---|---|---|---|
-| Audience panel | `product-visual:audience-panel` | new | Shown the direction boards blind, two ranks kept apart: which stops you (the pull of the pictures), which answers your worry? And what puts you off? |
+| Audience panel | `product-visual:audience-panel` | new | Shown the direction boards blind, two ranks kept apart: which stops you (the pull of the pictures), which answers your worry? And what puts you off? Blind boards hold only the brand's own images and "To shoot" tiles: a reference or a competitor's image is never on a blind board, because the panel would read it as the brand's. References are shown to the panel apart, labeled "another brand's image, for the idea". A test artifact (the panel reads a reference as the brand's, a mask slipped, a board held another option's frame) means the test runs again on corrected boards, and both runs are recorded |
+| Not a repeat of ourselves | (the command) | new, gallery | Which frames no competing gallery and none of the brand's own galleries shows; which formats are carried from the brand's own galleries and what changed |
 | Skeptical buyer | `product-visual:skeptical-buyer` | new, gallery, audit, qa | Three reasons not to buy, from real objections; which frame (or, on a positioning, which message) should have answered each |
 | Rival test | `product-visual:rival-director` | new, gallery, audit, qa | Could the strongest competing product wear this direction, hero frame or image tomorrow? |
 | Claim to proof | (the command) | new, gallery, audit, qa | Every visible claim, including those made by icons and scenes, against the facts |
@@ -195,13 +222,20 @@ Each test is run by an agent that did not write the work. AI simulations are lab
 | PV.13 Chosen look | Do the frames follow the chosen direction: its look, its cast, its caption rule and the proof frames handed over, or say why one departs? | Blocking when a direction is chosen, else flag |
 | PV.14 Clean carriers | Do the mockups hold only the product's own clean photos, with "To shoot" tiles where photos are missing, and never another brand's images in the brand's own columns? Is every line on them the brand's own or a sourced fact? | Blocking |
 | PV.15 Views covered | Is every view the ranked needs ask for covered by a frame, or moved to the listing text with the reason? | Blocking |
+| PV.16 Lines told apart | When the brand has more than one line of this kind: does positioning say for whom each is, and does the storyboard carry the frame that tells them apart? | Blocking when there is more than one line |
+| PV.17 Not a repeat | Does the storyboard name at least three frames no competing gallery and none of the brand's own galleries shows, and say what changed in every carried format? | Blocking |
+| PV.18 Status stated | Does every frame carry a readiness status with what it depends on, and every fact, claim and test result one of the four statuses? | Blocking |
+| PV.19 Signature carried | Does the signature device appear on every frame with the cast where the channel allows text, or does the file say why not with the rule's source? | Flag |
+| PV.20 Panel clean | Did the panel see only the brand's own images and "To shoot" tiles on its blind boards, and was any test artifact followed by a rerun? | Blocking |
 
 ## Writing the pages
 
 - The product page is a product book, in the same visual system as the Visual Brain direction book: one idea per screen, images large, one to three lines of text. Template: `frameworks/product-book-template.html` (new, gallery). Audit and QA pages use `frameworks/review-template.html`.
 - **Language.** Pages are written in the language the owner writes in; the `.md` files stay in the language of the brand's customer copy. Customer quotes stay verbatim, with a short translation under them when the page language differs. Text inside mockups stays in the customer's language. `/product-visual:page <product> <lang>` builds the product page in another language (for example English for colleagues) from the same files.
-- **Order of the product page:** cover, who it is for, competitors, positioning, the direction options, carriers, the storyboard, tests and choice, what to do next, sources.
-- **Carriers.** The product page shows the product where the buyer meets it on the main channel, by its kind (Channels): a marketplace search card next to three competitors and the gallery; the own site's product page first screen and gallery strip; a search result among three competitors; a social carousel in a phone. Columns: as everyone, now (when live) and each option. Mockup text is only the product's real title, price and facts, or a line the brand already uses, marked temporary. Never an invented claim, rating or review count.
+- **The first screen is the decision.** Under the title: the recommended positioning and direction, one line each with their basis; what the buyer must understand or feel, from the top needs; the evidence it stands on (how many facts confirmed, which proof frames rest on confirmed facts); what is not known yet and which frames it holds back; the three next actions. Then the rest.
+- **Order of the product page:** cover (the decision), who it is for, competitors and the brand's other lines, positioning, the direction options, carriers, the storyboard, tests and choice, what to do next, sources.
+- **Statuses are visible.** Each frame card shows its readiness status; each fact and test result its status mark (confirmed, assumption, owner's decision, simulation), in a small label, in the page language.
+- **Carriers.** The product page shows the product where the buyer meets it on the main channel, by its kind (Channels): a marketplace search card next to three competitors and the gallery, titled "<channel> search, <date>" when the cards come from that search and "a comparison with chosen competitors (titles and prices from their own pages, <date>)" when the real search could not be seen; the own site's product page first screen and gallery strip; a search result among three competitors; a social carousel in a phone. Columns: as everyone, now (when live) and each option. Mockup text is only the product's real title, price and facts, or a line the brand already uses, marked temporary. Never an invented claim, rating or review count.
 - **Clean carriers.** The brand's own columns take the product's own images only, never another brand's. The first image (search card, site hero, carousel cover) is a clean photo without badges or text over the product; the rest of a gallery mockup shows the planned frames as planned (a size card is a size card). Where a photo is missing, a color tile from the direction's palette says "To shoot:" and what exactly, in the page language. Competitors appear only in the "as everyone" column and as competitor cards.
 - **The storyboard on the page:** one card per frame in order, with the image in hand (or the "To shoot" tile), and the fields Job, Need with its quote, In frame and View, Who, Text, Look, Proof, Route, and a "copyable" mark when the rival could make it. The views check sits under the cards as a short table: view, the frame that covers it, or "in the listing text" with the reason.
 - **What to do next:** now, next, later with each action's basis, then the shot list grouped by setup.
@@ -210,7 +244,11 @@ Each test is run by an agent that did not write the work. AI simulations are lab
 - **Observations and options, not orders.** "What it does for the buyer", "what it misses", "worth considering", "options". Discrepancies (facts that contradict each other) are stated as facts, with both sources. The owner decides. QA is the exception: there the images are checked against briefs the owner approved, so each image is "ready", "needs work" (what exactly) or "redo" (why).
 - **Basis next to every claim,** in a small gray line.
 - **No taste verdicts and no claims beyond the sample.** "None of the eight competing products looked at", never "nobody"; what an image shows, what a brand promises and what buyers confirm are kept apart; discrepancies are "the sources disagree", with a note when an overlap may be intended or a difference may be rounding.
+- **Absent from the images is not absent from the page.** "No gallery shows the model's size" and "the page names it in the text" are two different findings, and both are written. For every competing product, the signals for it and against it are shown apart: positive reviews on a point count as much as complaints.
+- **Counts have a basis.** Every count on the page ("31 reviews") carries, in its small line, what was counted: unique reviews, which products, which platforms, and that one review may serve several needs; `audience.md` holds the table need, unique sources, products, links.
+- **Simulations are written as simulations.** "The simulation suggests", never "the buyer would"; a panel's first click is a hypothesis, not a reason on its own.
 - **Short version first:** three sentences.
+- **Print.** The page prints whole: collapsed blocks open, and no card or image is cut between pages (the template's print rules). A PDF of the page is checked for the last page before it is shared.
 
 ## Talking to the owner
 

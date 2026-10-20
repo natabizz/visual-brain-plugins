@@ -54,6 +54,16 @@ section{padding-block:clamp(48px,7vw,88px);border-bottom:1px solid var(--line)}
 .summary{display:grid;gap:12px;margin-top:26px}
 .summary div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;padding-top:12px;border-top:1px solid var(--line)}
 .summary b{font-weight:600}
+.mark{font:500 10.5px/1 var(--f-mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-left:6px}
+/* print: whole cards and images, open sections */
+@media print{
+  body{background:#fff;color:#000;padding:0}
+  section{padding-block:24px}
+  .fig,.dir-body,.summary,.carrier,.need,.card,.range-row,.shot-card,table{break-inside:avoid;page-break-inside:avoid}
+  details{display:block}
+  #lb{display:none!important}
+  .fig img{cursor:default}
+}
 @media (max-width:480px){.summary div{grid-template-columns:1fr;gap:2px}}
 
 /* wall */
@@ -250,6 +260,9 @@ details.others>summary:focus-visible{outline:2px solid var(--red);outline-offset
   - Images: src="file:<workspace path>". Then build with scripts/embed.py (each image stored once).
   - Plain words: no frame IDs, gate codes or tags. Captions say brand, what it shows, where and when.
   - Observations with their basis, never orders. Tests are labeled as AI simulations.
+  - Status marks: facts, claims and test results carry a small label (confirmed / assumption / owner's
+    decision / simulation) with the .mark class; test lines read "the simulation suggests".
+  - The cover's summary is the decision: fill every row from the files.
   - Mockup text: only lines the brand already uses, or facts from its product files. Mark it temporary.
     A value still to confirm is a placeholder: <span class="ph">[{{size to confirm}}]</span>, never final copy.
   - AFTER THE CHOICE: the cover image comes from the chosen look. Copy the direction block below as
@@ -278,7 +291,12 @@ details.others>summary:focus-visible{outline:2px solid var(--red);outline-offset
       <div class="summary">
         <div><b>{{Market}}</b><span>{{What the shelf looks like, in one line}}</span></div>
         <div><b>{{Empty space}}</b><span>{{What none of the brands looked at does, and the audience would value}}</span></div>
-        <div><b>{{Recommended}}</b><span>{{Direction letter, name, one line why}}</span></div>
+        <div><b>{{Recommended}}</b><span>{{Direction letter, name, one line why}} <span class="cap">{{its basis: the five questions, the main carrier}}</span></span></div>
+        <div><b>{{The buyer must see}}</b><span>{{what the audience must see or feel, from its vibe and pains}}</span></div>
+        <div><b>{{It stands on}}</b><span>{{N facts confirmed of M; the tests are simulations; which lines rest on assumptions}}</span></div>
+        <div><b>{{Not known yet}}</b><span>{{the open items and what they hold back: which photos are real, a reference not seen, a variant without a photo}}</span></div>
+        <div><b>{{Next three}}</b><span>{{three actions, the owner's first}}</span></div>
+        <div><b>{{Carriers}}</b><span>{{which carriers the page shows and why (where the audience looks)}}</span></div>
       </div>
     </div>
     <div>

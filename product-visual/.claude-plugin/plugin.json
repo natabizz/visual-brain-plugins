@@ -1,7 +1,7 @@
 {
   "name": "product-visual",
-  "version": "0.3.2",
-  "description": "A product's visual from what its audience needs to see: needs, positioning and UVP, a visual direction with options, then a frame-by-frame storyboard with a brief per frame, on one page in the owner's language. For marketplaces, the brand's site, search, social and ads. Follows the direction chosen in Visual Brain. Also audits galleries, checks finished images and how AI reads a listing.",
+  "version": "0.4.0",
+  "description": "A product's visual from what its audience needs to see: needs, positioning and UVP, a visual direction with options, then a frame-by-frame storyboard with a brief and a readiness status per frame, on one page in the owner's language. For marketplaces, the brand's site, search, social and ads. Follows the direction chosen in Visual Brain; never repeats the brand's own galleries. Also audits galleries, checks finished images and how AI reads a listing.",
   "author": {
     "name": "Natalia Bizyukova"
   },

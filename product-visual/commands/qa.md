@@ -39,7 +39,7 @@ Every visible claim, including icons, badges and scenes, against `product.md`. A
 
 ## 5. Verdicts and judge
 
-1. Each image gets **ready**, **needs work** (exactly what, citing the check) or **redo** (why, and what the brief should change). These are checks against briefs the owner approved, so they are stated plainly.
+1. Each image gets **ready**, **needs work** (exactly what, citing the check) or **redo** (why, and what the brief should change). A frame whose image is ready moves to the status "ready for production" in the gallery file and on the page; the others keep "ready to shoot" with the finding named. These are checks against briefs the owner approved, so they are stated plainly.
 2. `product-visual:gate-judge` with the file paths: Gate PV, every check, PV.9 blocking. Findings into `issues.md`. Write `qa-<channel>.md` from `_qa.md`. When every image is ready and no blocking check fails, set `stage: checked` in `product.md`.
 
 ## 6. Release list

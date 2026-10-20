@@ -19,6 +19,13 @@ Who it is not for:
 | # | Kind (pain, desire, objection, trigger) | Need, in plain words | Count | Quote | Sources |
 |---|---|---|---|---|---|
 
+## Count basis
+
+One review may serve several needs; the table says what was counted.
+
+| Need | Unique sources | Products | Platforms | Links |
+|---|---|---|---|---|
+
 ## Vibe
 
 ## Quotes for the panel

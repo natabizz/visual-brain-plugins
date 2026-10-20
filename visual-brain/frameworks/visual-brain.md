@@ -1,6 +1,6 @@
 ---
 type: framework
-version: 4
+version: 5
 source: Visual Brain, Natalia Bizyukova
 used_by: /visual-brain:brand, /visual-brain:choose, /visual-brain:page
 tags: [visual-brain, visual-direction]
@@ -52,11 +52,13 @@ It works at brand level only. A brand without a single product photo can use it.
 | A moodboard, reference boards (Figma, Pinterest) or a brand book | no | attached or linked in the chat; `raw/visuals/direction/`. Each frame is taken one by one (with a connected Figma tool, one screenshot per frame; without one, the owner exports the frames as images and drags them into the chat) and counts as the brand's own material, first in collages and grids, only when it is the brand's own photo or asset; any other image on a board (another brand's, a stock photo, a found image) is a reference and is marked as one. Text and fonts on them are references, never judged, unless the owner says they are final. An old brand book the owner says is out of date is not followed |
 | The brand's site and its social accounts | no | found, then asked once: "Does the brand or the product have Instagram or other social accounts? Links." Only accounts the owner confirms as the brand's or the product's are the brand's "now" |
 
+**Facts have a status.** Every fact, claim and test result carries one of four statuses, in the files and on the page: **confirmed** (a source that would stand up to a buyer's question), **assumption** (reasoned, not yet checked), **owner's decision** (a rule the owner set), **simulation** (an AI panel, rival or recognition result: a hypothesis to check with real people). Nothing marked assumption or simulation goes on a mockup as a fact.
+
 **Find first, ask last.** The command gathers everything it can from the workspace and the web before it asks. It asks once, in one short message, for what only the owner can give, and never blocks on an optional input: it goes on and marks what is missing "(limited: no X)".
 
 **Files from the owner** come as chat attachments or pasted links, never "put it in a folder". If the session gives a file path, copy the file into `raw/visuals/` (the brand's own images to `own/`, product photos to `products/<product>/photos/`, screenshots to `screens/<source>/<date>/`, references and moodboards to `direction/`), convert HEIC to JPEG on the way (`sips -s format jpeg`), and add a row to `frames.md`. If it gives no path, look at it, add it to `frames.md` as "chat attachment, <date>", ask once to drag the file from Finder into the chat, and say which checks can't run on it until then.
 
-**Photo folders.** When the owner names a folder (a path on the computer, its subfolders included), read the photos where they are: never move, rename or delete them. Open every image. Index each one in `frames.md` with: the variant it shows (the color as seen, or the line), who is in it (which person or animal, told apart by the marks the owner gave: eye or hair color, size), clean or with text on it, and what the owner said it is (a real photo, a retouched one, a generated draft). Copy only the frames the page uses into `raw/visuals/own/<line>/`, keeping the original file name in `frames.md`. PDF selections count only for variants with no separate photos. A folder that changed since the last run is read again before a choice is written.
+**Photo folders.** When the owner names a folder (a path on the computer, its subfolders included), read the photos where they are: never move, rename or delete them. Open every image. Index each one in `frames.md` with: the variant it shows (the color as seen, or the line), who is in it (which person or animal, told apart by the marks the owner gave: eye or hair color, size), clean or with text on it, and what it is: a real photo, a retouched one, or a generated draft, decided from the evidence first (a generator's name in the file name or folder, no camera data in the file, a render's look, a detail the real product doesn't have) and from what the owner said; marked "real", "retouched", "likely generated" or "unclear", with the owner asked only about the unclear ones, by series. "Likely generated" and "unclear" frames show an idea; they never stand in a grid or site mockup as the brand's photo, and never in a proof frame. Copy only the frames the page uses into `raw/visuals/own/<line>/`, keeping the original file name in `frames.md`. PDF selections count only for variants with no separate photos. A folder that changed since the last run is read again before a choice is written.
 
 **Blocked pages.** Some sites and most social networks refuse automated viewing. Then say which pages, ask for screenshots in the chat, and continue. Never describe an image you have not opened.
 
@@ -136,7 +138,7 @@ Two or three visual territories, never one, and different in more than color. Wh
 - **what it asks for and the risk:** casting, locations, production level; what could go wrong, who it could lose;
 - **the test results:** the panel's rank and words, the rival's verdict.
 
-One is marked **recommended**, with the reason, and with what it takes from the others. A direction is a look, not a proof format: frames that prove the product (a size card, a how-to grid, a fabric close-up with text) belong to Product Visual's galleries, so a direction is never recommended for its proof frames alone. The recommendation weighs what stops the audience (the panel's "stops me" rank) and what a rival can't wear; what answers their worry is carried into "What to do next" and into Product Visual.
+One is marked **recommended**, with the reason, and with what it takes from the others. A direction is a look, not a proof format: frames that prove the product (a size card, a how-to grid, a fabric close-up with text) belong to Product Visual's galleries, so a direction is never recommended for its proof frames alone. The recommendation answers five questions with evidence, each with its basis next to it: 1. Clear: at a glance, is it plain what the brand sells and who it is for? 2. Advantage: does the look show what this brand has that the shelf doesn't (its position, its cast, its method)? 3. Believable: does it give a reason to believe, or only a mood? 4. Recognizable: would the buyer know the brand on a second meeting (the signature, the cast, the look)? 5. Producible: can the brand make these images again and again with its cast and means? The weight follows the brand's main carrier: in a feed, what stops the scroll (the panel's "stops me" rank) and recognizable first; on a marketplace or the site, clear and believable first. The panel's ranks and the rival's verdict are evidence for questions 1 to 4, never the verdict, and are written as "the simulation suggests". What answers the audience's worry is carried into "What to do next" and into Product Visual.
 
 The owner chooses, and may combine: the look of one direction, the cast of another, proof moved to product cards. The choice is recorded as given. Until then, the visual language section is written for the recommended direction and tagged (inferred).
 
@@ -153,7 +155,7 @@ A brand with one variant gets one row and its check. A brand with no photos at a
 
 ## Carriers: the same thing, three ways
 
-The page shows each direction where the buyer will meet it, next to how the category looks, so the difference is seen, not explained.
+The page shows each direction where the buyer will meet it, next to how the category looks, so the difference is seen, not explained. The carriers come from where the audience looks (`icp.md`, "where they spend time", and the brand's live channels): the social media grid and the site first screen are the default pair, and either is replaced by the carrier the audience actually meets (a marketplace card, a newsletter, a retailer's page) when the ICP says the default one is not where they look; the page says which carriers were chosen and why.
 
 | Carrier | Columns | Built from |
 |---|---|---|
@@ -175,7 +177,7 @@ Rules for mockups:
 The page ends with recommendations a person can act on, for the owner and for anyone running the plugin. For the recommended direction (and again for the chosen one):
 - **Actions, by priority:** up to eight, grouped "now", "next", "later". Fixes to facts buyers see today (a size chart that disagrees with another, a claim without proof) come first under "now", before anything about the look; one action checks the chosen direction with real buyers (the panel and the rival are simulations). Each says what to do, why (its basis on the page: a pain, a gap, a test result, a discrepancy), and what it takes (a shoot, a fix on the site, a decision). Fixes found in "Where you are now" (a size table that disagrees with itself, text over the product, an old description for search and AI) go here.
 - **The first shoot list:** the nine frames of the first social media grid and the site's hero, each with what it shows, who (which animal or person), where, light, and the need it answers. Built from what is in hand: frames already in hand are named with their file; the rest are marked "to shoot", each with the reason no photo in hand fits. Who goes in a "to shoot" frame follows the cast rule (the lead in the first frame, everyone in turn, two of different builds where size matters), never at random, and the list says why each one. The backdrop of each frame is the pair from "Every variant" that passed the check.
-- **Handed to Product Visual:** the proof frames the audience asked for (size, fit, how it is used), as a short list for `/product-visual:new`.
+- **Handed to Product Visual:** the proof frames the audience asked for (size, fit, how it is used), as a short list for `/product-visual:new`, with a note of which formats the brand's existing galleries already use (so a product gallery changes them rather than repeats them), and the brand's lines of the same kind with how they differ, when there are several.
 
 ## Depth
 
@@ -204,7 +206,7 @@ Every test is run by an agent that did not write the work, and every result says
 
 | Test | Agent | Question | Fails when |
 |---|---|---|---|
-| Audience panel | `visual-brain:audience-panel` | Shown the direction boards blind (numbered, no names, logos masked), as the ICP buyer: two ranks, kept apart: what stops you, and what answers your worry; what feels off, and why | The recommended direction is not first on "stops me", and the page does not say why it is still recommended |
+| Audience panel | `visual-brain:audience-panel` | Shown the direction boards blind (numbered, no names, logos masked), as the ICP buyer: two ranks, kept apart: what stops you, and what answers your worry; what feels off, and why. Blind boards hold only the brand's own images and "To shoot" tiles: a reference or a shelf brand's image is never on a blind board, because the panel would read it as the brand's; references are shown apart, labeled "another brand's image, for the idea". A test artifact (the panel reads a reference as the brand's, a mask slipped) means the test runs again on corrected boards, and both runs are recorded | The recommended direction is not first on "stops me", and the page does not say why it is still recommended; or the boards held another brand's image |
 | Rival test | `visual-brain:rival-director` | As the strongest shelf brand: could you adopt this direction tomorrow and keep it true? | A recommended direction or signature a rival could wear unchanged |
 | Recognition | `visual-brain:fresh-eyes` | Only when the brand has images: 9 to 12 images from three brands, shuffled and masked: group them by brand | The brand's own images are not grouped together (the look is not consistent) |
 | Judge | `visual-brain:gate-judge` | Runs the gate below on the output files alone | Any blocking check fails |
@@ -223,19 +225,21 @@ Offer the human version of the audience panel once: five people from the audienc
 | VB.6 Observations, not orders | Are judgments written as observations or options with their basis, and facts (discrepancies) with both sources? | Blocking |
 | VB.7 Own work judged equally | Is the brand's own material held to the same standard as competitors'? | Flag |
 | VB.8 Readable | Does the page open with a short version, carry no internal codes, and end with sources? | Flag |
-| VB.9 Shown on carriers | Is every direction shown on the social media grid and the site first screen, next to "as everyone" (and "now" when it exists)? | Blocking |
+| VB.9 Shown on carriers | Is every direction shown on the brand's main carriers (the social media grid and the site first screen, or the ones the ICP put in their place, with the reason on the page), next to "as everyone" (and "now" when it exists)? | Blocking |
 | VB.10 No invented copy | Is every line on a mockup the brand's own line or a fact from its files, marked temporary? | Blocking |
 | VB.11 Identity left alone | Does the page leave the logo, typeface and palette design alone, and show the brand's own assets used differently? | Flag |
 | VB.12 Clean carriers | Do grids and site mockups hold only clean frames of the brand, with "To shoot" tiles where frames are missing, and no other brand's images? | Blocking |
 | VB.13 Actionable | Does the page end with "What to do next" (actions by priority, each with its basis) and the first shoot list? | Blocking |
 | VB.14 Whole range | When the brand has several variants: does the recommended or chosen direction have a pair, a tile-size check and an example for every variant, and does the grid show at least three variants (or every variant, when the brand has fewer)? | Blocking |
 | VB.15 In hand first | Does every "To shoot" tile and shoot-list frame say why no indexed own photo fits, and does the cast in it follow the cast rule? | Blocking |
+| VB.16 Panel clean | Did the panel see only the brand's own images and "To shoot" tiles on its blind boards, and was any test artifact followed by a rerun? | Blocking |
+| VB.17 Status stated | Does every fact, claim and test result carry one of the four statuses, and does the page's first screen say what the recommendation stands on and what is not known yet? | Blocking |
 
 A failed blocking check is rewritten from the inputs. What the inputs can't fix goes on the page under "To check and decide", in plain words.
 
 ## Writing the page
 
-The page is a direction book: it reads like a brand presentation, one idea per screen, images large, one to three lines of text each. Template: `frameworks/direction-book-template.html`. Order: cover with the thesis and a three-line summary; the market (a wall of shelf images, three patterns, the references, three things none of the brands looked at does); the audience (five vibe words with quotes, three pains); where the brand is now (its images, strong and worth a look, the site now); the directions, each recommended or chosen one with its "Every variant" rows; the carriers; the tests; the choice; what to do next and the first shoot list; sources.
+The page is a direction book: it reads like a brand presentation, one idea per screen, images large, one to three lines of text each. Template: `frameworks/direction-book-template.html`. Order: cover with the thesis and the decision (the recommended direction and its basis in one line; what the buyer must see or feel; what it stands on: how many facts confirmed, which tests are simulations; what is not known yet; the next three actions; the carriers chosen and why); the market (a wall of shelf images, three patterns, the references, three things none of the brands looked at does); the audience (five vibe words with quotes, three pains); where the brand is now (its images, strong and worth a look, the site now); the directions, each recommended or chosen one with its "Every variant" rows; the carriers; the tests; the choice; what to do next and the first shoot list; sources.
 
 - **After the choice:** the cover image comes from the chosen look; the chosen direction's section comes first, with its "Every variant" rows; the directions not chosen sit in one collapsed block "Other directions (not chosen)" (`<details class="more others">`), kept, not deleted. Placeholders on mockups (a size still to confirm, a name not yet given) are shown as placeholders, in gray brackets ("Name · [size?]"), never as final copy and never left empty.
 - **Detail on demand.** Each list shows its three strongest items; the rest sit under "All observations" (a `<details>` block), so the page stays short and nothing found is lost.
@@ -248,7 +252,10 @@ The page is a direction book: it reads like a brand presentation, one idea per s
 - **Claims scoped to the sample.** "None of the 10 brands looked at", never "nobody does this"; what a brand does rarely in the frames seen is said that way. What the brand would gain from a device it alone uses is written as a hypothesis to check, not as a result.
 - **Three things kept apart:** what an image shows, what the brand promises, and what buyers confirm (a complaint, a review). A cast of several builds or types is an observation, not proof of fit or of its failure.
 - **Quotes carry their scope:** product, date, and whether they are about this product, an earlier one of the brand's, or the category. A complaint about an earlier product or a rival's is a question for this one, not a finding against it.
-- **Every claim has its basis next to it:** which images, which brands, which quotes.
+- **Every claim has its basis next to it:** which images, which brands, which quotes, and its status mark (confirmed, assumption, owner's decision, simulation) in a small label.
+- **Absent from the images is not absent from the page.** "No shelf brand shows it in its images" and "two name it in their text" are two findings, both written. Signals for a brand and against it are shown apart.
+- **Simulations are written as simulations.** "The simulation suggests", never "the buyer would".
+- **Print.** The page prints whole: collapsed blocks open, no card or image cut between pages (the template's print rules); a PDF is checked for its last page before it is shared.
 - **Generated images** of the brand, when used, are said to show the idea, not finished photos.
 - Competitor and reference images are shown for internal review only; the footer says so.
 

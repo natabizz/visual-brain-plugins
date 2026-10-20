@@ -12,21 +12,21 @@ tags: [product-visual, product]
 
 The single reference for what is true about this product. Every value names its source: a label photo, a factory spec, a measurement the owner took, an approved document. Text on a live listing is not a source.
 
-| Field | Value | Source | Checked on |
-|---|---|---|---|
-| What it is | | | |
-| Line, and how it differs from the brand's other lines | | | |
-| Variants (colors, sizes) | | | |
-| Material, as on the label | | | |
-| Made in, as on the label | | | |
-| How it is made | | | |
-| Measurements of the product | | | |
-| How to choose the size | | | |
-| Size chart | | | |
-| Price | | | |
-| Care | | | |
-| Who it is for | | | |
-| Who it is not for | | | |
+| Field | Value | Source | Status | Checked on |
+|---|---|---|---|---|
+| What it is | | | | |
+| Line, and how it differs from the brand's other lines | | | | |
+| Variants (colors, sizes) | | | | |
+| Material, as on the label | | | | |
+| Made in, as on the label | | | | |
+| How it is made | | | | |
+| Measurements of the product | | | | |
+| How to choose the size | | | | |
+| Size chart | | | | |
+| Price | | | | |
+| Care | | | | |
+| Who it is for | | | | |
+| Who it is not for | | | | |
 
 ## Real photos
 

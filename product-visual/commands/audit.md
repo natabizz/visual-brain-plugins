@@ -31,7 +31,7 @@ For each image of ours, in `audit-<channel>.md` (from `_audit.md`):
 - **Claims:** every visible claim, including icons, badges and scenes, with proof status. A claim with no proof, or one the facts contradict, is a discrepancy, stated as a fact with both sources.
 - **Worth considering:** one or two options, each with its basis. Not orders: the owner decides.
 
-Then the gallery as a whole: **needs no gallery looked at answers** (opportunity), **needs competitors answer and we don't** (where we lag), **images that answer no need.** Judge our images as strictly as the competitors'.
+Then the gallery as a whole: **needs no gallery looked at answers** (opportunity), **needs competitors answer and we don't** (where we lag), **images that answer no need,** and, when the brand has more than one line, **whether a buyer can tell this line from the brand's other one** from the galleries alone. What a competitor's page says in text that its images don't show is a separate line. Judge our images as strictly as the competitors'.
 
 ## 3. Tests
 

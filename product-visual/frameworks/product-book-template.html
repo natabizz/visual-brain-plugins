@@ -259,6 +259,28 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:4px}
 .frame .shoot b{font-size:10px}
 .frame .copy{justify-self:start;font:600 10.5px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:99px;background:var(--red-soft);color:var(--red)}
 .frame .tags{display:flex;flex-wrap:wrap;gap:6px}
+.lbl{display:inline-block;font:600 10.5px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:99px;background:var(--line);color:var(--muted)}
+.lbl.ok{background:var(--ok-soft);color:var(--ok)}
+.lbl.warn{background:var(--red-soft);color:var(--red)}
+.lbl.new{background:var(--ink);color:var(--paper)}
+.mark{font:500 10.5px/1 var(--f-mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-left:6px}
+/* the decision, on the first screen */
+.decision{display:grid;gap:10px;margin-top:26px}
+.decision div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;padding-top:10px;border-top:1px solid var(--line)}
+.decision b{font-weight:600}
+@media (max-width:480px){.decision div{grid-template-columns:1fr;gap:2px}}
+.blocks{margin-top:28px}
+/* print: whole cards and images, open sections */
+@media print{
+  body{background:#fff;color:#000;padding:0}
+  section{break-inside:auto;page-break-inside:auto;padding-block:24px}
+  .frame,.fig,.shot-card,.need,.card,.carrier,.uvp,.dir-body,.decision,.summary,table{break-inside:avoid;page-break-inside:avoid}
+  .frames.board{display:block}
+  .frame{margin-bottom:16px}
+  details{display:block}
+  #lb{display:none!important}
+  .fig img{cursor:default}
+}
 .views{margin-top:28px}
 .views td:first-child{white-space:normal}
 /* what to do next */
@@ -293,6 +315,14 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:4px}
     or social) and delete the others.
   - With a brand direction chosen in Visual Brain, follow its cast and caption rule on every frame.
   - The product is never redrawn: fit, size, material and construction are shown only in real photos.
+  - Statuses are visible: every frame card carries one readiness label (concept / needs confirmation:
+    what / ready to shoot / ready for production) and a new-or-carried label; facts, claims and test
+    results carry a small mark (confirmed / assumption / owner's decision / simulation), with the
+    .mark class. Simulations are written as "the simulation suggests".
+  - The first screen is the decision: fill every row of the .decision block from the files.
+  - The brand's other lines sit with the competitors (section 2) and get the "which line is yours"
+    frame in the storyboard. The carrier's title says "<channel> search, <date>" or "a comparison
+    with chosen competitors (titles and prices from their own pages, <date>)".
 -->
 <div class="wrap">
 <div class="topbar">
@@ -307,10 +337,15 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:4px}
       <p class="eyebrow">{{What buyers need to see}}</p>
       <h1 style="margin-top:14px">{{The thesis in one line}}</h1>
       <p class="lead" style="margin-top:18px">{{What the page is built from: buyer sources, competing products, the brand's direction. The tests are AI simulations.}}</p>
-      <div class="summary">
+      <div class="decision">
         <div><b>{{Who}}</b><span>{{who it is for, and the one need that matters most}}</span></div>
-        <div><b>{{What to say}}</b><span>{{the recommended positioning in one line}}</span></div>
-        <div><b>{{What to show}}</b><span>{{the recommended direction's hero story, and the gallery in one line}}</span></div>
+        <div><b>{{What to say}}</b><span>{{the recommended positioning in one line}} <span class="cap">{{its basis}}</span></span></div>
+        <div><b>{{What to show}}</b><span>{{the recommended direction's hero story, and the gallery in one line}} <span class="cap">{{its basis: the five questions, the channel}}</span></span></div>
+        <div><b>{{The buyer must understand}}</b><span>{{the top three needs, in buyer words}}</span></div>
+        <div><b>{{It stands on}}</b><span>{{N facts confirmed of M; which proof frames rest on confirmed facts; which rest on assumptions or simulations}}</span></div>
+        <div><b>{{Not known yet}}</b><span>{{the open items and the frames they hold back, for example "which photos are real: frames 1, 6"; "the channel's image rules: the count and frame 1"}}</span></div>
+        <div><b>{{Next three}}</b><span>{{three actions, the owner's first}}</span></div>
+        <div><b>{{Readiness}}</b><span>{{N frames: n ready to shoot, n need confirmation, n concept; n new, n carried}}</span></div>
       </div>
     </div>
     <div>
@@ -345,9 +380,14 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:4px}
     <p class="eyebrow">2 · {{What competitors say and show}}</p>
     <h2>{{What the competing galleries do}}</h2>
   </div>
+  <!-- The brand's other lines first, when it has any: the same block, titled with the line's name -->
+  <div class="refrow">
+    <div><h3>{{the brand's other line}}</h3><p class="small muted" style="margin-top:6px"><b>{{Is}}:</b> {{what it is made of, where and how; colors; price (date)}}<br><b>{{Differs from this product}}:</b> {{the differences as facts, with status marks}}<br><b>{{For whom}}:</b> {{from positioning: for whom each line is}}</p>
+    <div class="strip"><!-- REPEAT: up to 6 of its gallery images --><div class="fig"><img src="file:{{gallery image}}" alt="{{what it shows}}"></div></div>
+  </div>
   <!-- REPEAT per competing product -->
   <div class="refrow">
-    <div><h3>{{brand, product}}</h3><p class="small muted" style="margin-top:6px"><b>{{Says}}:</b> {{main promise}}<br><b>{{Shows}}:</b> {{what the gallery answers}}<br><b>{{Leaves open}}:</b> {{needs it misses}}</p><p class="cap">{{price, rating, reviews, date}}</p></div>
+    <div><h3>{{brand, product}}</h3><p class="small muted" style="margin-top:6px"><b>{{Says}}:</b> {{main promise}}<br><b>{{Shows}}:</b> {{what the gallery answers}}<br><b>{{Leaves open}}:</b> {{needs it misses}}<br><b>{{Says in text, not in images}}:</b> {{what the page states that the gallery does not show}}<br><b>{{Reviews}}:</b> {{signals for it; signals against it}}</p><p class="cap">{{price, rating, reviews, date}}</p></div>
     <div class="strip"><!-- REPEAT: up to 6 gallery images, in their order --><div class="fig"><img src="file:{{gallery image}}" alt="{{what it shows}}"></div></div>
   </div>
   <div class="gap">
@@ -488,13 +528,18 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:4px}
         <div><dt>{{Look}}</dt><dd>{{backdrop, light, color}}</dd></div>
         <div><dt>{{Proof}}</dt><dd>{{what makes it true, and the source}}</dd></div>
       </dl>
-      <div class="tags"><span class="route">{{Shoot / Retouch / Layout / Background only}}</span><!-- when the rival could make it: <span class="copy">{{Copyable}}</span> --></div>
+      <div class="tags"><span class="route">{{Shoot / Retouch / Layout / Background only}}</span><!-- when the rival could make it: <span class="copy">{{Copyable}}</span> --><span class="lbl new">{{New}}</span><!-- or: <span class="lbl">{{Carried, changed: what}}</span> --><span class="lbl warn">{{Needs confirmation: what}}</span><!-- or: <span class="lbl ok">{{Ready to shoot}}</span> / <span class="lbl">{{Concept}}</span> / <span class="lbl ok">{{Ready for production}}</span> --></div>
     </div>
   </div>
   <div class="tbl views"><table>
     <thead><tr><th>{{View the buyer needs}}</th><th>{{Why}}</th><th>{{Frame}}</th></tr></thead>
     <tbody><!-- REPEAT --><tr><td>{{view}}</td><td>{{need, short quote}}</td><td>{{frame number, or "in the listing text": why}}</td></tr></tbody>
   </table></div>
+  <div class="tbl blocks"><table>
+    <thead><tr><th>{{What blocks readiness}}</th><th>{{Frames it holds back}}</th><th>{{What would resolve it}}</th></tr></thead>
+    <tbody><!-- REPEAT --><tr><td>{{open item}}</td><td>{{frames}}</td><td>{{the answer, the screenshot, the measurement}}</td></tr></tbody>
+  </table></div>
+  <p class="cap" style="margin-top:14px">{{Not a repeat of ourselves: the brand's own galleries read (which, date); frames none of them and no competing gallery shows: N, M, K; carried formats and what changed.}}</p>
 </section>
 
 <!-- 7 TESTS AND CHOICE -->
