@@ -27,8 +27,8 @@ Summary of `projects/visual-brain/landscape/audience.md`: vibe, what they love t
 
 ## 2. The visual market
 
-| Brand | Group (shelf, reference, adjacent) | Mood in one line | Speaks to | Price point | Frames |
-|---|---|---|---|---|---|
+| Brand | Group (shelf, reference, adjacent) | Mood in one line | Speaks to | Price point | Frames | Status |
+|---|---|---|---|---|---|---|
 
 ### Map
 
@@ -54,8 +54,8 @@ Left out when the brand has no images.
 
 ### Discrepancies
 
-| What | Source 1 | Source 2 |
-|---|---|---|
+| What | Source 1 | Source 2 | Status |
+|---|---|---|---|
 
 ## 4. Directions
 
@@ -71,8 +71,8 @@ Left out when the brand has no images.
 - **How it differs:**
 - **What it asks for:**
 - **Risk:**
-- **Audience panel:**
-- **Rival test:**
+- **Audience panel:** <the simulation suggests ...; on the brand's images, or on references>
+- **Rival test:** <simulation>
 
 ### B. <name>
 

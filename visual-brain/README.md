@@ -19,7 +19,7 @@ One page that reads like a brand presentation, in the language you write in:
    **Every color:** when you sell a range (colorways, lines), one row per variant for the recommended and the chosen direction: the piece's color and the backdrop the direction gives it, checked at the size of a marketplace tile, with your own photo of that variant, or your photo with only the background replaced (a preview), or a reference, or exactly what to shoot. Even with photos of one color only, you see the system for all of them.
 6. **How it looks:** the carriers where your audience actually looks (a social media grid and the site first screen by default), as everyone, as you are now, and in each direction.
 7. **Tests and choice:** how an audience panel and a rival reacted, the recommendation by five questions (clear at a glance, advantage visible, believable, recognizable on a second meeting, producible again and again), and what to check before choosing.
-8. **What to do next:** actions by priority, each with its reason, and the first shoot list: the nine frames of the first grid and the site hero, built from the photos you already have first.
+8. **What to do next:** actions by priority, each with its reason, and the first shoot list: the first set on your main carrier (nine grid frames by default) and the site hero, built from the photos you already have first.
 
 Behind the page: `wiki/brand/visual-guide.md` (the file Claude reads before any visual work) and `projects/visual-brain/landscape/` (the audience, the market, every image looked at, the tests).
 

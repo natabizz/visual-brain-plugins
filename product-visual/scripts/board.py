@@ -7,7 +7,11 @@ file names are hidden behind letters, and the key is written OUTSIDE the board f
 
 Usage:
   py board.py --out raw/visuals/boards/<name> [--size 360] [--cols 3] [--blind] [--no-labels] [--seed 7]
-              [--masks masks.json] LABEL_OR_ID=path ...
+              [--masks masks.json] LABEL_OR_ID=path ...  LABEL_OR_ID="#HEX a frame not yet shot" ...
+
+An item whose value starts with #RRGGBB is a tile: a plain color square with the words after the
+color printed small on it, for a frame planned but not yet taken ("To shoot"). Tiles sit on a
+board like images, so a blind board never needs another brand's picture to fill a gap.
 
 Writes <out>/board/board.jpg, one tile per image, and <out>/key.json.
 Give an agent the file paths (agents can't list a folder), never key.json.
@@ -17,6 +21,7 @@ painted gray before resizing (to hide logos in a blind test).
 import argparse
 import json
 import random
+import re
 import shutil
 import string
 import subprocess
@@ -54,6 +59,42 @@ def upright(img):
         return img
 
 
+def tile_image(spec, size):
+    """A plain color square with a few words on it: a frame planned, not yet taken."""
+    _, hexcolor, words = spec
+    rgb = tuple(int(hexcolor[i:i + 2], 16) for i in (0, 2, 4))
+    t = Image.new("RGB", (size, size), rgb)
+    lum = 0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]
+    ink = (28, 26, 25) if lum > 140 else (240, 236, 232)
+    d = ImageDraw.Draw(t)
+    fs = max(12, size // 16)
+    f = None
+    try:
+        from PIL import ImageFont
+        for path in ("/System/Library/Fonts/Helvetica.ttc", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"):
+            if Path(path).exists():
+                f = ImageFont.truetype(path, fs)
+                break
+        if f is None:
+            f = ImageFont.load_default()
+    except Exception:
+        pass
+    per_line = max(8, int(size * 0.84 / (fs * 0.55)))
+    lines, line = [], ""
+    for w in words.split():
+        if len(line) + len(w) + 1 > per_line:
+            lines.append(line); line = w
+        else:
+            line = (line + " " + w).strip()
+    if line:
+        lines.append(line)
+    y = size * 0.08
+    for ln in lines[:8]:
+        d.text((size * 0.08, y), ln, fill=ink, font=f)
+        y += fs * 1.35
+    return t
+
+
 def square(img, size):
     img = img.convert("RGB")
     img.thumbnail((size, size))
@@ -81,6 +122,10 @@ def main():
         if "=" not in it:
             sys.exit(f"Expected LABEL_OR_ID=path, got: {it}")
         k, p = it.split("=", 1)
+        m = re.match(r"^\s*#([0-9A-Fa-f]{6})\b\s*(.*)$", p)
+        if m:
+            items.append((k, ("tile", m.group(1), m.group(2).strip())))
+            continue
         if not Path(p).is_file():
             print(f"Skipped, not a file: {p}")
             continue
@@ -102,7 +147,7 @@ def main():
     key, tiles, names = {}, [], []
     for i, (k, p) in enumerate(items):
         label = letter(len(tiles)) if a.blind else k
-        img = open_image(p)
+        img = tile_image(p, a.size) if isinstance(p, tuple) else open_image(p)
         if img is None:
             print(f"Skipped, can't open: {p}")
             continue
@@ -114,7 +159,7 @@ def main():
         name = label if a.blind else f"{len(tiles) + 1:02d}"
         tile.save(board_dir / f"{name}.jpg", quality=85)
         names.append(f"{name}.jpg")
-        key[label] = {"id": k, "file": p, "masked": k in masks}
+        key[label] = {"id": k, "file": (p if not isinstance(p, tuple) else "tile #" + p[1] + " " + p[2]), "masked": k in masks}
         tiles.append((label, tile))
 
     if not tiles:
