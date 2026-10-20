@@ -1,0 +1,26 @@
+---
+description: Visual Brain. Record the owner's choice of direction (one direction, or a combination such as the look of one and the cast of another), then rewrite the visual language, what to do next and the page for it, without new research.
+argument-hint: "<your choice, for example: C, with the cast from B; proof frames go to product pages> [photos: <folder path>]"
+---
+
+# /visual-brain:choose
+
+The owner has looked at the directions and chosen. Turn the choice into the brand's working guide. No new market research and no new panel.
+
+Read `${CLAUDE_PLUGIN_ROOT}/frameworks/visual-brain.md` first: "Inputs" (photo folders), "Directions", "Every variant", "Carriers", "What to do next", "Visual language of the chosen direction", "Gate VB", "Writing the page".
+
+0. **One run at a time.** If `projects/visual-brain/.run-lock` exists and is less than three hours old, another chat is working on these files: say so in one line, with the command and time it holds, and stop, unless the owner says that run is finished. Otherwise write the lock (the command and the time) and delete it when this run closes, also when it stops early.
+1. **Check the files.** `wiki/brand/visual-guide.md` must have `format: visual-brain-2` and filled directions. If not, say in one line that `/visual-brain:brand` comes first, and stop.
+2. **The choice.** Take it from the argument or the owner's last message. If it is missing, list the directions by letter and name and end with **"Waiting for you:"** which one, or which combination? If a part of it can be read two ways, ask that one thing.
+2b. **The photos, again.** The chosen look is built from the brand's own photos, so read them before writing: the folder named in the argument or the owner's message, the folders and boards already in `frames.md`, and `raw/visuals/own/`. Index every photo not yet in `frames.md` by variant and cast (framework, "Photo folders"). If no folder is known, ask once, in one line, ending with **"Waiting for you:"** the folder path or a board link, or "go" to work with what is there. Say in one line how many photos per variant are in hand.
+3. **Record it** in Decisions, in the owner's words, with the date: what is taken from which direction (look, cast, proof, palette), and what goes to Product Visual. Set `stage: chosen`.
+4. **The chosen direction.** Write it as one direction in `visual-guide.md` under "Recommended" renamed "Chosen": its name (keep the owner's words when they give one), the one line, yes and no words, the collage (own clean frames first, from more than one variant when the brand has a range), the palette (re-run `scripts/palette.py` on the new collage when it changed; with a range, the pairs from step 4b), how to shoot, the signature. When the choice combines directions, the signature is usually what the combination owns that none of the rivals can wear: say what it is, and run the `visual-brain:rival-director` agent once on it, with the board paths and a two-line description.
+4b. **Every variant.** Run `/visual-brain:brand` step 5b for the chosen direction: one row per variant with its pair, the tile-size check (`scripts/range.py`), the passing options when the rule's backdrop fails, and the example in the framework's order. Look at the sheet before writing.
+5. **Visual language** for the chosen direction: rewrite section 5 of the guide, every line with a reference frame; remove the (inferred) tags the choice settles.
+6. **Carriers** for the chosen direction: the social media grid and the site first screen, clean frames only, in hand first, the whole range (at least three variants in the grid), "To shoot" tiles only where no indexed photo fits.
+7. **What to do next** for the chosen direction: actions by priority (now, next, later), each with its basis; the first shoot list (nine grid frames and the site hero), built from the photos in hand, each "to shoot" frame with its reason, its cast by the cast rule and its backdrop from step 4b; the proof frames handed to Product Visual.
+8. **The page.** Update `projects/visual-brain/outputs/visual-direction.src.html`: the cover's summary, thesis and image (from the chosen look); a "Chosen" section placed before the other directions, with its "Every variant" rows and the options sheet; its carriers column right after "as everyone" and "now"; "What to do next" and the shoot list. The directions not chosen and their carrier columns move into one collapsed block "Other directions (not chosen)", kept as they were. Placeholders on mockups show as placeholders. Build with `scripts/embed.py` as `/visual-brain:brand` step 9 does, and share the same way. If English or other language pages exist, say that `/visual-brain:page <lang>` refreshes them.
+
+9. **Judge, always.** Run the `visual-brain:gate-judge` agent with the paths of `visual-guide.md`, `frames.md`, the tests file and the framework: VB.9, VB.10, VB.12 to VB.15. Rewrite what the files can fix, and write its result to the tests file with the date. Do not close before the tests file has this date's row for each of these checks.
+
+Close in three lines: what was recorded, the first two actions, and the next command: `/product-visual:new <product>`.

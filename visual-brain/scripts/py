@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Runs a plugin script with the Python that has Pillow: the plugin's own venv when setup made one, else python3.
+V="$HOME/.visual-brain/venv/bin/python3"
+if [ -x "$V" ]; then exec "$V" "$@"; else exec python3 "$@"; fi

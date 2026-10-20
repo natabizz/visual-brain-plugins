@@ -1,0 +1,569 @@
+<title>{{Brand}} Visual Direction</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Golos+Text:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Poppins:wght@500;700;800&display=swap">
+<style>
+/* Layout: a brand book you scroll. Each section is one board: a big image field and one to three lines of text. */
+:root{
+  --paper:#F1EFEC; --sheet:#FFFFFF; --ink:#1C1A19; --muted:#6B645E; --line:#DAD5CF;
+  --red:#A3222C; --red-soft:#F3E3E2; --ok:#2F6B4F; --ok-soft:#E3EFE8;
+  --f-display:"Unbounded","Golos Text",system-ui,sans-serif;
+  --f-body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --f-brand:"Poppins","Golos Text",system-ui,sans-serif;
+  --w:1180px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#151413; --sheet:#1E1C1B; --ink:#EEEAE6; --muted:#A39B94; --line:#36322F;
+  --red:#E06A71; --red-soft:#3A2224; --ok:#7CC4A0; --ok-soft:#1F3229; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#151413; --sheet:#1E1C1B; --ink:#EEEAE6; --muted:#A39B94; --line:#36322F;
+  --red:#E06A71; --red-soft:#3A2224; --ok:#7CC4A0; --ok-soft:#1F3229; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:400 16px/1.55 var(--f-body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:var(--w);margin:0 auto}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;text-wrap:balance;margin:0}
+h1{font-size:clamp(30px,5.2vw,58px);line-height:1.05}
+h2{font-size:clamp(24px,3.4vw,38px);line-height:1.1}
+h3{font-size:clamp(18px,2vw,22px);line-height:1.2}
+p{margin:0}
+.lead{font-size:clamp(17px,1.7vw,20px);max-width:62ch}
+.eyebrow{font:500 12px/1.3 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+.small{font-size:13.5px}
+.topbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:18px;border-bottom:1px solid var(--line)}
+section{padding-block:clamp(48px,7vw,88px);border-bottom:1px solid var(--line)}
+.sec-head{display:grid;gap:14px;margin-bottom:32px;max-width:820px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:820px){.grid2,.grid3{grid-template-columns:1fr}}
+.fig{border-radius:6px;overflow:hidden;background:var(--line)}
+.fig img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+.cap{font-size:12.5px;color:var(--muted);margin-top:6px}
+
+/* cover */
+.cover{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:36px;align-items:end}
+@media (max-width:820px){.cover{grid-template-columns:1fr}}
+.cover .fig{aspect-ratio:4/3.4}
+.summary{display:grid;gap:12px;margin-top:26px}
+.summary div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;padding-top:12px;border-top:1px solid var(--line)}
+.summary b{font-weight:600}
+@media (max-width:480px){.summary div{grid-template-columns:1fr;gap:2px}}
+
+/* wall */
+.wall{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.wall .fig{aspect-ratio:1}
+@media (max-width:640px){.wall{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.obs{display:grid;gap:0;margin-top:22px}
+.obs li{list-style:none;padding:12px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px}
+.obs ol, ul.obs{padding:0;margin:0}
+.obs .n{font:500 13px/1.6 var(--f-mono);color:var(--muted)}
+.refrow{display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:start;padding-block:18px;border-top:1px solid var(--line)}
+.refrow .strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.refrow .strip .fig{aspect-ratio:3/4}
+@media (max-width:820px){.refrow{grid-template-columns:1fr}.refrow .strip{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.gap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
+@media (max-width:820px){.gap{grid-template-columns:1fr}}
+.gap div{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:18px;display:grid;gap:8px;align-content:start}
+.gap .k{font:600 12px/1.3 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+
+/* audience */
+.vibe{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.vibe span{font:600 15px/1 var(--f-body);padding:10px 14px;border:1px solid var(--ink);border-radius:999px;cursor:help;position:relative}
+.vibe span:focus{outline:2px solid var(--red);outline-offset:2px}
+.tip{display:block;font-size:13px;color:var(--muted);margin-top:4px}
+.vibe-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-bottom:34px}
+@media (max-width:900px){.vibe-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.vibe-list{grid-template-columns:1fr}}
+.vibe-list div{border-top:2px solid var(--ink);padding-top:10px;display:grid;gap:6px;min-width:0}
+.vibe-list b{font:700 17px/1.2 var(--f-display)}
+.quote{font-size:14px}
+.quote q{quotes:"\201C" "\201D";font-style:normal}
+.quote .ru{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.quote .src{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.pains{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:820px){.pains{grid-template-columns:1fr}}
+.pains div{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:18px;display:grid;gap:10px;align-content:start}
+
+/* now */
+.nowstrip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.nowstrip .fig{aspect-ratio:3/4}
+@media (max-width:640px){.nowstrip{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.two-lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:28px}
+@media (max-width:820px){.two-lists{grid-template-columns:1fr}}
+.two-lists h3{margin-bottom:6px}
+.chip{display:inline-block;font:600 11.5px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;padding:6px 9px;border-radius:4px}
+.chip.keep{background:var(--ok-soft);color:var(--ok)}
+.chip.look{background:var(--red-soft);color:var(--red)}
+.chip.rec{background:var(--ink);color:var(--paper)}
+.facts li{list-style:none;padding:10px 0;border-top:1px solid var(--line)}
+.facts{padding:0;margin:0}
+.site-now{margin-top:28px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:820px){.site-now{grid-template-columns:1fr}}
+
+/* directions */
+.dir{display:grid;gap:26px}
+.dir-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:end}
+.dir-head .letter{font:800 clamp(56px,9vw,110px)/.8 var(--f-display);color:var(--line)}
+.dir-idea{font-size:clamp(18px,2vw,22px);max-width:60ch}
+.words{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px}
+.words b{font-weight:600}
+.scape{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:clamp(70px,9vw,118px);gap:6px}
+.scape .fig{border-radius:4px}
+.s-big{grid-column:span 3;grid-row:span 3}
+.s-tall{grid-column:span 1;grid-row:span 2}
+.s-wide{grid-column:span 2;grid-row:span 2}
+.s-sq{grid-column:span 1;grid-row:span 1}
+.s-pal{grid-column:span 3;grid-row:span 1;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-radius:4px;overflow:hidden}
+.s-pal i{display:block}
+.s-type{grid-column:span 3;grid-row:span 1;display:grid;align-content:center;padding:0 18px;border-radius:4px;font:700 clamp(16px,2vw,26px)/1.1 var(--f-brand);letter-spacing:-.01em}
+@media (max-width:640px){
+  .scape{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:84px}
+  .s-big{grid-column:span 4;grid-row:span 3}.s-wide{grid-column:span 2}.s-pal,.s-type{grid-column:span 4}}
+.pal-legend{display:flex;flex-wrap:wrap;gap:6px 16px;font:400 12.5px/1.4 var(--f-mono);color:var(--muted)}
+.pal-legend span{display:inline-flex;align-items:center;gap:6px}
+.pal-legend i{width:12px;height:12px;border-radius:2px;display:inline-block;border:1px solid var(--line)}
+.dir-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media (max-width:900px){.dir-body{grid-template-columns:1fr}}
+.dir-body h3{font-size:15px;font-family:var(--f-body);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.dir-body ol{margin:0;padding-left:20px;display:grid;gap:6px}
+.dir-body p+p{margin-top:8px}
+.verdict{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.verdict{grid-template-columns:1fr}}
+.verdict div{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-size:14px;display:grid;gap:6px}
+.verdict .t{font:600 12px/1.3 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.dir.rec .dir-head .letter{color:var(--red)}
+
+/* carriers */
+.carrier-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+@media (max-width:1000px){.carrier-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.carrier-row{grid-template-columns:1fr}}
+.col-label{display:flex;gap:8px;align-items:center;margin-bottom:10px;font:600 13px/1.2 var(--f-body)}
+.phone{background:#111;border-radius:28px;padding:10px;max-width:300px;margin:0 auto}
+.screen{background:#fff;border-radius:20px;overflow:hidden;color:#111;font-family:var(--f-brand)}
+.ig-top{display:flex;align-items:center;gap:8px;padding:12px 12px 8px}
+.ig-top .av{width:30px;height:30px;border-radius:50%;background:#111;display:grid;place-items:center;overflow:hidden}
+.ig-top .av img{width:22px;filter:invert(1)}
+.ig-top b{font:600 12.5px/1.2 var(--f-brand)}
+.ig-top small{display:block;font:400 10.5px/1.2 var(--f-brand);color:#777}
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.ig-grid .t{aspect-ratio:4/5;overflow:hidden;position:relative;background:#ddd}
+.ig-grid .t img{width:100%;height:100%;object-fit:cover}
+.ig-grid .tx{display:flex;align-items:flex-end;padding:8px;font:700 12px/1.1 var(--f-brand);letter-spacing:-.01em}
+.ig-grid .tcap{position:absolute;left:0;right:0;bottom:0;padding:3px 5px;background:rgba(255,255,255,.92);color:#111;font:600 9.5px/1.2 var(--f-brand);text-align:center}
+.ig-grid .tcap .ph,.s-band .ph{opacity:.6}
+.browser{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;color:#111}
+.b-bar{display:flex;align-items:center;gap:6px;padding:7px 10px;background:#ECEAE7;border-bottom:1px solid #dcd8d3}
+.b-bar i{width:8px;height:8px;border-radius:50%;background:#c9c4be;display:block}
+.b-bar span{margin-left:8px;font:400 11px/1 var(--f-mono);color:#6b645e}
+.s-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px}
+.s-head img{height:22px;width:auto}
+.s-head nav{display:flex;gap:10px;font:500 10.5px/1 var(--f-brand);color:#333}
+@media (max-width:420px){.s-head nav{display:none}}
+.s-hero{aspect-ratio:16/9;overflow:hidden}
+.s-hero img{width:100%;height:100%;object-fit:cover}
+.s-band{padding:12px 14px 14px;display:grid;gap:8px}
+.s-band b{font:800 clamp(15px,1.5vw,19px)/1.1 var(--f-brand);letter-spacing:-.01em}
+.s-band .btn{justify-self:start;font:600 10px/1 var(--f-brand);letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border-radius:99px}
+.s-row{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:0 14px 14px}
+.s-row div{aspect-ratio:1;overflow:hidden;border-radius:3px}
+.s-row img{width:100%;height:100%;object-fit:cover}
+.note{margin-top:14px;font-size:13px;color:var(--muted)}
+
+/* tests + choice */
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+.tbl{overflow-x:auto}
+th,td{text-align:left;vertical-align:top;padding:12px 10px;border-top:1px solid var(--line)}
+th{font:600 12px/1.3 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td:first-child{font-weight:600;white-space:nowrap}
+.rank{font:700 20px/1 var(--f-display)}
+.choice{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px}
+@media (max-width:820px){.choice{grid-template-columns:1fr}}
+.choice ol{margin:0;padding-left:20px;display:grid;gap:8px}
+.ask{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:20px;display:grid;gap:12px;align-content:start}
+footer{padding-block:40px 60px;font-size:13px;color:var(--muted);display:grid;gap:10px}
+footer ul{margin:0;padding-left:18px;display:grid;gap:4px}
+
+/* lightbox */
+.ig-grid .shoot{display:flex;flex-direction:column;justify-content:flex-end;gap:3px;padding:7px;font:600 9.5px/1.25 var(--f-body)}
+.ig-grid .shoot b{font:700 9px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+.s-hero.shoot{display:grid;place-items:center;text-align:center;padding:16px;font:600 13px/1.35 var(--f-body)}
+details.more{margin-top:8px}
+details.more summary{cursor:pointer;font:600 13px/1.3 var(--f-body);color:var(--muted);padding:8px 0}
+details.more summary:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.next{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.next{grid-template-columns:1fr}}
+.next>div{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:18px;display:grid;gap:10px;align-content:start}
+.next ol{margin:0;padding-left:20px;display:grid;gap:10px}
+.next li span{display:block;font-size:12.5px;color:var(--muted)}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:20px}
+.shot-card{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:14px;display:grid;gap:6px;align-content:start;font-size:14px}
+.shot-card .n{font:700 20px/1 var(--f-display)}
+.shot-card .st{justify-self:start;font:600 11px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:99px}
+.st.have{background:var(--ok-soft);color:var(--ok)}
+.st.todo{background:var(--red-soft);color:var(--red)}
+.lb[hidden]{display:none}
+.lb{position:fixed;inset:0;background:rgba(10,9,9,.88);display:grid;place-items:center;z-index:50;padding:24px}
+.lb img{max-height:88vh;max-width:92vw;border-radius:6px}
+.lb button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px));background:#fff;color:#111;border:0;border-radius:99px;padding:8px 14px;font:600 13px/1 var(--f-body);cursor:pointer}
+@media (prefers-reduced-motion:no-preference){.fig img{transition:transform .4s ease}.fig:hover img{transform:scale(1.03)}}
+/* every variant: one row per variant of the range (pair, tile check, example, options) */
+.range{display:grid;gap:12px;margin-top:6px}
+.range-row{display:grid;grid-template-columns:minmax(0,190px) 170px minmax(0,1fr);gap:16px;align-items:start;padding:14px;background:var(--sheet);border:1px solid var(--line);border-radius:8px}
+@media (max-width:760px){.range-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.ropts{grid-column:1/-1}}
+.rv{display:grid;gap:7px;align-content:start;font-size:14px}
+.pair{display:flex;width:96px;height:44px;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.pair i{flex:1}
+.hex{font:400 12px/1.35 var(--f-mono);color:var(--muted)}
+.chk{justify-self:start;font:600 11px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:99px}
+.chk.ok{background:var(--ok-soft);color:var(--ok)}
+.chk.no{background:var(--red-soft);color:var(--red)}
+.rx{position:relative;aspect-ratio:1;border-radius:6px;overflow:hidden}
+.rx.shoot{display:flex;flex-direction:column;justify-content:flex-end;gap:4px;padding:10px;font:600 12px/1.3 var(--f-body)}
+.rx.shoot b{font:700 10px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+.pv{position:absolute;left:6px;bottom:6px;font:600 10px/1.2 var(--f-body);background:rgba(255,255,255,.92);color:#111;padding:4px 6px;border-radius:4px;pointer-events:none}
+.ropts{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
+.ropts figure{margin:0;display:grid;gap:4px}
+.ropts .fig{aspect-ratio:1}
+.ropts figcaption{font:400 11.5px/1.3 var(--f-mono);color:var(--muted)}
+/* placeholders on mockups: a value still to confirm, shown as one */
+.ph{opacity:.7}
+/* after the choice: the directions not chosen, kept but collapsed */
+details.others{margin-top:8px;border-top:1px solid var(--line)}
+details.others>summary{font:600 16px/1.3 var(--f-body);color:var(--ink);padding:18px 0;cursor:pointer}
+details.others>summary:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+</style>
+<!--
+  Visual Brain: direction book template (format visual-brain-2, page v3).
+  How to fill it:
+  - Write every label and line in the PAGE LANGUAGE (the language the owner writes in, or the one
+    /visual-brain:page was given). Customer quotes stay verbatim in their language, with a short
+    translation under them when the page language differs. Text inside mockups (Instagram tiles,
+    site band, buttons) stays in the customer language.
+  - {{...}} marks a slot. Blocks marked REPEAT are copied once per item; remove unused blocks.
+  - Images: src="file:<workspace path>". Then build with scripts/embed.py (each image stored once).
+  - Plain words: no frame IDs, gate codes or tags. Captions say brand, what it shows, where and when.
+  - Observations with their basis, never orders. Tests are labelled as AI simulations.
+  - Mockup text: only lines the brand already uses, or facts from its product files. Mark it temporary.
+    A value still to confirm is a placeholder: <span class="ph">[{{size to confirm}}]</span>, never final copy.
+  - AFTER THE CHOICE: the cover image comes from the chosen look. Copy the direction block below as
+    <section id="chosen">, with the chip "Chosen" and its EVERY VARIANT rows, and place it before the
+    directions. Wrap the directions not chosen in one <details class="more others"><summary>{{Other
+    directions (not chosen)}}</summary> ... </details>, kept as they were. In each carrier, the chosen
+    column comes right after "as everyone" and "now"; the other directions' columns go into the same
+    kind of collapsed block under the carrier row.
+  - Follow the brand's own layout rules on mockups (for example, where text may sit on a photo).
+  - --f-brand: the brand's own font when it is on Google Fonts (add it to the <link>); otherwise keep
+    the stand-in and say so in the carriers note.
+-->
+<div class="wrap">
+<div class="topbar">
+  <span class="eyebrow">{{Brand}} · {{visual direction}}</span>
+  <span class="eyebrow">Visual Brain · {{date}}</span>
+</div>
+
+<!-- COVER -->
+<section>
+  <div class="cover">
+    <div>
+      <p class="eyebrow">{{Where the look can go}}</p>
+      <h1 style="margin-top:14px">{{The thesis in one line: what the recommended direction lets the brand own}}</h1>
+      <p class="lead" style="margin-top:18px">{{Two sentences: what the page is built from (audience, market, the brand's own material). Logo, colors and fonts stay; the page shows how to use them differently. For a brand without an identity: the chosen direction is the brief for a designer.}}</p>
+      <div class="summary">
+        <div><b>{{Market}}</b><span>{{What the shelf looks like, in one line}}</span></div>
+        <div><b>{{Empty space}}</b><span>{{What nobody does that the audience would value}}</span></div>
+        <div><b>{{Recommended}}</b><span>{{Direction letter, name, one line why}}</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="fig"><img src="file:{{the brand's strongest own image, or the recommended direction's lead image}}" alt="{{what it shows}}"></div>
+      <p class="cap">{{brand, what it shows, where and when}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- 1 MARKET -->
+<section id="market">
+  <div class="sec-head">
+    <p class="eyebrow">1 · {{Market}}</p>
+    <h2>{{What everyone looks like}}</h2>
+    <p class="lead">{{Which brands and channels, date}}</p>
+  </div>
+  <div class="wall">
+    <!-- REPEAT: 12 shelf images, several brands mixed. -->
+    <div class="fig"><img src="file:{{shelf image}}" alt="{{brand, what it shows}}"></div>
+  </div>
+  <p class="cap">{{brands shown}}</p>
+  <ul class="obs">
+    <!-- REPEAT: 3 patterns, each with who does it. -->
+    <li><span class="n">01</span><span>{{pattern, with the brands that use it}}</span></li>
+  </ul>
+  <div style="margin-top:44px">
+    <p class="eyebrow" style="margin-bottom:6px">{{References}}</p>
+    <!-- REPEAT per reference brand (owner-named first). A brand that could not be collected gets one line: what was tried. -->
+    <div class="refrow">
+      <div><h3>{{reference brand}}</h3><p class="small muted" style="margin-top:6px">{{its look in two lines}}</p></div>
+      <div class="strip">
+        <!-- REPEAT: 6 images -->
+        <div class="fig"><img src="file:{{reference image}}" alt="{{what it shows}}"></div>
+      </div>
+    </div>
+  </div>
+  <!-- OPTIONAL, when the workspace has a list of brands AI assistants name: -->
+  <div style="margin-top:36px">
+    <p class="eyebrow" style="margin-bottom:6px">{{Who AI assistants name}}</p>
+    <div class="tbl"><table>
+      <thead><tr><th>{{Brand}}</th><th>{{Mentions}}</th><th>{{Group}}</th></tr></thead>
+      <tbody><!-- REPEAT: the most named, up to 8 --><tr><td>{{brand}}</td><td>{{count}}</td><td>{{group}}</td></tr></tbody>
+    </table></div>
+    <p class="note">{{Whether the owner's references appear in AI answers at all; what the most named brands make easy to read; the source, its date, and which brands the owner checked.}}</p>
+  </div>
+  <div class="gap">
+    <!-- REPEAT: 3 gaps, each checked against the frames looked at. -->
+    <div><span class="k">{{Nobody does this}}</span><h3>{{gap}}</h3><p class="small">{{the basis: which frames, which brands}}</p></div>
+  </div>
+</section>
+
+<!-- 2 AUDIENCE -->
+<section id="audience">
+  <div class="sec-head">
+    <p class="eyebrow">2 · {{Who it is for}}</p>
+    <h2>{{The buyer in one line}}</h2>
+    <p class="lead">{{Who, what they buy, when}}</p>
+  </div>
+  <div class="vibe-list">
+    <!-- REPEAT: 5 vibe words, each with a verbatim quote or an observed pattern. -->
+    <div><b>{{vibe word}}</b><span class="quote"><q>{{verbatim quote}}</q><span class="ru">{{translation, only when the page language differs}}</span><span class="src">{{platform, product, date}}</span></span></div>
+  </div>
+  <p class="eyebrow" style="margin-bottom:12px">{{Three pains the picture must answer}}</p>
+  <div class="pains">
+    <!-- REPEAT: 3 -->
+    <div><h3>{{pain}}</h3><span class="quote"><q>{{verbatim quote}}</q><span class="ru">{{translation}}</span><span class="src">{{platform, product, date}}</span></span></div>
+  </div>
+  <p class="note">{{Where they look, and what is not known from the brand's own data. Source: the Marketing Brain buyer profile.}}</p>
+</section>
+
+<!-- 3 WHERE YOU ARE NOW. Leave out, and say so in one line, when the brand has no images. -->
+<section id="now">
+  <div class="sec-head">
+    <p class="eyebrow">3 · {{Where you are now}}</p>
+    <h2>{{What the brand's look is today}}</h2>
+    <p class="lead">{{What was looked at. Text and fonts on the owner's reference boards are references, not judged, unless the owner says they are final.}}</p>
+  </div>
+  <div class="nowstrip">
+    <!-- REPEAT: 6 of the brand's own images -->
+    <div class="fig"><img src="file:{{own image}}" alt="{{what it shows}}"></div>
+  </div>
+  <div class="two-lists">
+    <div>
+      <h3><span class="chip keep">{{Strong}}</span></h3>
+      <ul class="facts"><!-- REPEAT: the 3 strongest --><li><b>{{strength}}.</b> {{basis}}</li></ul>
+      <!-- OPTIONAL, when there are more: --><details class="more"><summary>{{All observations}} ({{N}})</summary><ul class="facts"><li>{{the rest, one line each}}</li></ul></details>
+    </div>
+    <div>
+      <h3><span class="chip look">{{Worth a look}}</span></h3>
+      <ul class="facts"><!-- REPEAT: the 3 most important; facts that contradict each other name both sources --><li><b>{{observation}}.</b> {{basis}}</li></ul>
+      <!-- OPTIONAL, when there are more: --><details class="more"><summary>{{All observations}} ({{N}})</summary><ul class="facts"><li>{{the rest, one line each}}</li></ul></details>
+    </div>
+  </div>
+  <!-- Only when the brand has a live site: its home page now. Social: only the brand's own account. -->
+  <div class="site-now">
+    <div>
+      <div class="browser"><div class="b-bar"><i></i><i></i><i></i><span>{{domain}}</span></div><img src="file:{{home page screenshot}}" alt="{{what it shows}}"></div>
+      <p class="cap">{{domain, date}}</p>
+    </div>
+    <div>
+      <h3 style="margin-bottom:8px">{{The site now}}</h3>
+      <ul class="facts"><!-- REPEAT: up to 3 --><li>{{observation with its basis}}</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- 4 DIRECTIONS. REPEAT this section per direction (2 or 3). Add class "rec" and the chip to the recommended one.
+     After the choice, see AFTER THE CHOICE in the first comment: a "chosen" section first, the rest collapsed. -->
+<section id="dir-a">
+  <div class="dir">
+    <div class="dir-head">
+      <div style="display:grid;gap:10px">
+        <p class="eyebrow">4 · {{Direction}} A <!-- recommended only: · <span class="chip rec">{{Recommended}}</span> --></p>
+        <h2>{{name}}</h2>
+        <p class="dir-idea">{{one line a photographer could picture}}</p>
+      </div>
+      <span class="letter" aria-hidden="true">A</span>
+    </div>
+    <div class="words"><span><b>{{Yes}}:</b> {{three words}}</span><span><b>{{No}}:</b> {{three words}}</span></div>
+    <div class="scape">
+      <div class="fig s-big"><img src="file:{{lead image}}" alt=""></div>
+      <div class="fig s-tall"><img src="file:{{image}}" alt=""></div>
+      <div class="fig s-tall"><img src="file:{{image}}" alt=""></div>
+      <div class="fig s-tall"><img src="file:{{image}}" alt=""></div>
+      <div class="fig s-wide"><img src="file:{{image}}" alt=""></div>
+      <div class="fig s-sq"><img src="file:{{detail image: the signature element if it is visual}}" alt=""></div>
+      <div class="s-pal" aria-label="{{palette}}"><!-- REPEAT: 6 sampled colors --><i style="background:{{#HEX}}"></i></div>
+      <div class="s-type" style="background:{{#HEX}};color:{{#HEX}}">{{a line the brand already uses}}</div>
+    </div>
+    <div class="pal-legend"><!-- REPEAT: 6 --><span><i style="background:{{#HEX}}"></i>{{#HEX}} {{name by role}}</span><span class="muted">{{colors sampled from the images}}</span></div>
+    <!-- EVERY VARIANT: on the recommended and the chosen direction when the brand sells a range (scripts/range.py).
+         One row per variant. The example, in this order: the brand's own photo of it on the backdrop; a preview with
+         the background replaced (caption it with .pv); a reference, marked; or a "To shoot" tile in the backdrop's color. -->
+    <div class="range">
+      <p class="eyebrow">{{Every color: one backdrop per variant, checked at tile size}}</p>
+      <!-- REPEAT per variant -->
+      <div class="range-row">
+        <div class="rv"><b>{{variant}}</b><span class="pair" aria-hidden="true"><i style="background:{{#product}}"></i><i style="background:{{#backdrop}}"></i></span><span class="hex">{{piece}} {{#product}} · {{backdrop}} {{#backdrop}}</span><span class="chk ok">{{reads at tile size}}</span><!-- or <span class="chk no">{{too close at tile size}}</span> --></div>
+        <div class="fig rx"><img src="file:{{own photo of this variant on its backdrop}}" alt="{{what it shows}}"></div>
+        <!-- a preview: <div class="fig rx"><img src="file:{{preview}}" alt=""><span class="pv">{{preview: background replaced}}</span></div>
+             a reference: <div class="fig rx"><img src="file:{{reference}}" alt=""><span class="pv">{{reference}}: {{brand}}</span></div>
+             nothing yet: <div class="rx shoot" style="background:{{#backdrop}};color:{{#HEX}}"><b>{{To shoot}}</b>{{what exactly, who}}</div> -->
+        <div class="ropts"><!-- OPTIONAL, for the lead variant and any that fails the check: the passing backdrops on the same real photo -->
+          <figure><div class="fig"><img src="file:{{preview on option}}" alt=""></div><figcaption>{{option}} {{#HEX}}</figcaption></figure>
+        </div>
+      </div>
+      <p class="note">{{How the check works, in one line: the piece's color against its backdrop, at the size of a marketplace tile. Previews show the idea, not finished photos.}}</p>
+    </div>
+    <div class="dir-body">
+      <div><h3>{{How to shoot}}</h3><ol><li>{{rule}}</li><li>{{rule}}</li><li>{{rule}}</li></ol></div>
+      <div><h3>{{Signature}}</h3><p>{{the recognition device; say so plainly when there is none}}</p></div>
+      <div><h3>{{Why, and the risk}}</h3><p>{{audience evidence and the place on the market}}</p><p class="muted">{{risk; what it asks for}}</p></div>
+    </div>
+    <div class="verdict">
+      <div><span class="t">{{Audience panel}} · {{stops me}}: {{rank}} · {{answers my worry}}: {{rank}}</span><span>{{the panel's own words}}</span></div>
+      <div><span class="t">{{Rival}} · {{could wear it / could not}}</span><span>{{the rival's reason}}</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 CARRIERS: INSTAGRAM. Columns: as everyone (shelf), now (only the brand's own account), then each direction. -->
+<section id="instagram">
+  <div class="sec-head">
+    <p class="eyebrow">5 · {{How it looks}}</p>
+    <h2>{{Social media grid}}</h2>
+    <p class="lead">{{The same carrier: as everyone, now, and in each direction.}}</p>
+  </div>
+  <div class="carrier-row">
+    <!-- REPEAT per column -->
+    <div>
+      <p class="col-label">{{column name}}</p>
+      <div class="phone"><div class="screen">
+        <div class="ig-top"><div class="av"><img src="file:{{brand icon, transparent PNG; leave empty for the shelf column}}" alt=""></div><div><b>{{handle}}</b><small>{{bio line the brand already uses}}</small></div></div>
+        <div class="ig-grid">
+          <!-- REPEAT: 9 tiles of clean brand frames only (no infographics, text-heavy listing frames or other brands' images).
+               One text tile at most: <div class="t tx" style="background:{{#HEX}};color:{{#HEX}}">{{brand line}}</div>
+               A missing frame: <div class="t shoot" style="background:{{#HEX from the palette}};color:{{#HEX}}"><b>{{To shoot}}</b>{{what exactly}}</div> -->
+          <div class="t"><img src="file:{{image}}" alt=""></div>
+          <!-- with the brand's caption rule: <div class="t"><img src="file:{{image}}" alt=""><span class="tcap">{{Name}} · {{size}}</span></div>
+               a size still to confirm: <span class="tcap">{{Name}} · <span class="ph">[{{size?}}]</span></span>, never left empty -->
+        </div>
+      </div></div>
+    </div>
+  </div>
+  <p class="note">{{Mockup text is temporary: the brand's own lines and product facts.}}</p>
+</section>
+
+<!-- 5 CARRIERS: SITE FIRST SCREEN. Columns: now (when a site exists), then each direction. -->
+<section id="site">
+  <div class="sec-head">
+    <p class="eyebrow">5 · {{How it looks}}</p>
+    <h2>{{Site first screen}}</h2>
+    <p class="lead">{{Now and in each direction.}}</p>
+  </div>
+  <div class="carrier-row">
+    <div>
+      <p class="col-label">{{Now}}</p>
+      <div class="browser"><div class="b-bar"><i></i><i></i><i></i><span>{{domain}}</span></div><img src="file:{{home page screenshot}}" alt=""></div>
+    </div>
+    <!-- REPEAT per direction -->
+    <div>
+      <p class="col-label">{{direction letter and name}}</p>
+      <div class="browser">
+        <div class="b-bar"><i></i><i></i><i></i><span>{{domain}}</span></div>
+        <div class="s-head"><img src="file:{{logo, transparent PNG}}" alt="{{Brand}}"><nav><span>{{nav}}</span><span>{{nav}}</span><span>{{nav}}</span></nav></div>
+        <div class="s-hero"><img src="file:{{hero image}}" alt=""></div>
+        <!-- No clean hero frame yet: <div class="s-hero shoot" style="background:{{#HEX}};color:{{#HEX}}">{{To shoot}}: {{what exactly}}</div> -->
+        <div class="s-band" style="background:{{#HEX}};color:{{#HEX}}"><b>{{brand line}}</b><span class="btn" style="background:{{#HEX}};color:{{#HEX}}">{{button}}</span></div>
+        <div class="s-row" style="background:{{#HEX}}"><div><img src="file:{{image}}" alt=""></div><div><img src="file:{{image}}" alt=""></div><div><img src="file:{{image}}" alt=""></div><div><img src="file:{{image}}" alt=""></div></div>
+      </div>
+    </div>
+  </div>
+  <p class="note">{{These are sketches of a direction, not a site design. Where each mockup line comes from.}}</p>
+</section>
+
+<!-- 6 TESTS -->
+<section id="tests">
+  <div class="sec-head">
+    <p class="eyebrow">6 · {{Tests}}</p>
+    <h2>{{What the buyer and the rival said}}</h2>
+    <p class="lead">{{How the boards were shown. These are AI simulations from the buyer profile, not people.}}</p>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>{{Direction}}</th><th>{{Audience panel}}</th><th>{{Rival}} ({{brand}})</th></tr></thead>
+    <tbody><!-- REPEAT per direction, in panel order --><tr><td>{{letter · name}}</td><td><span class="rank">{{rank}}</span> {{the panel's words}}</td><td>{{could wear it or not, and why}}</td></tr></tbody>
+  </table></div>
+  <div class="two-lists">
+    <div><h3 style="margin-bottom:8px">{{Weak spots in all directions}}</h3><ul class="facts"><li>{{weak spot with its basis}}</li></ul></div>
+    <div><h3 style="margin-bottom:8px">{{What the buyer wants from the first pick}}</h3><ul class="facts"><li>{{the panel's last line}}</li></ul></div>
+  </div>
+</section>
+
+<!-- 7 CHOICE -->
+<section id="choice">
+  <div class="sec-head">
+    <p class="eyebrow">7 · {{Choice}}</p>
+    <h2>{{Recommended: letter and name}}</h2>
+  </div>
+  <div class="choice">
+    <div>
+      <ol><!-- REPEAT: 3 or 4 reasons; say what is taken from the other directions --><li>{{reason}}</li></ol>
+      <p class="note">{{What happens after the choice}}</p>
+    </div>
+    <div class="ask">
+      <h3>{{To check before choosing}}</h3>
+      <!-- REPEAT: up to 3 questions only the owner can answer -->
+      <p><b>{{topic}}.</b> {{question}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8 WHAT TO DO NEXT -->
+<section id="next">
+  <div class="sec-head">
+    <p class="eyebrow">8 · {{What to do next}}</p>
+    <h2>{{For the recommended (or chosen) direction}}</h2>
+    <p class="lead">{{Actions by priority, each with its basis on this page.}}</p>
+  </div>
+  <div class="next">
+    <div><h3>{{Now}}</h3><ol><!-- REPEAT --><li>{{action}}<span>{{why: the basis}} · {{what it takes}}</span></li></ol></div>
+    <div><h3>{{Next}}</h3><ol><li>{{action}}<span>{{why}} · {{what it takes}}</span></li></ol></div>
+    <div><h3>{{Later}}</h3><ol><li>{{action}}<span>{{why}} · {{what it takes}}</span></li></ol></div>
+  </div>
+  <p class="eyebrow" style="margin-top:36px">{{The first shoot list: nine grid frames and the site hero}}</p>
+  <div class="shots">
+    <!-- REPEAT: 10 -->
+    <div class="shot-card"><span class="n">1</span><b>{{what it shows}}</b><span>{{who, where, light}}</span><span class="cap">{{the need it answers}}</span><span class="st todo">{{To shoot}}</span><!-- or <span class="st have">{{In hand}}</span> --></div>
+  </div>
+  <p class="note">{{Handed to Product Visual: the proof frames the audience asked for (size, fit, how it stays on).}}</p>
+</section>
+
+<footer>
+  <b style="color:var(--ink)">{{Sources}}</b>
+  <ul><!-- REPEAT: files and pages, with dates --><li>{{source}}</li></ul>
+  <p>{{Generated images, if any, show the idea, not finished photos. Other brands' images are a moodboard for internal choice, not for publication. Palette colors are sampled from the images and approximate.}}</p>
+</footer>
+</div>
+
+<div class="lb" id="lb" hidden><button type="button" id="lbClose">{{Close}}</button><img id="lbImg" alt=""></div>
+<!-- embed:images -->
+<script>
+(function(){
+  var lb=document.getElementById('lb'),im=document.getElementById('lbImg');
+  document.addEventListener('click',function(e){
+    var t=e.target;
+    if(t.tagName==='IMG'&&t.closest('.fig')){im.src=t.src;im.alt=t.alt;lb.hidden=false;return}
+    if(t===lb||t.id==='lbClose'){lb.hidden=true}
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.hidden=true});
+})();
+</script>

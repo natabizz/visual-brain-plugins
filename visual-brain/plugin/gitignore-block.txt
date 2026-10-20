@@ -1,0 +1,4 @@
+# Visual Brain and Product Visual: image files stay on this computer (competitor and
+# reference images are third-party material; own photos are large). The .md files cite them by ID.
+raw/visuals/*
+!raw/visuals/README.md
