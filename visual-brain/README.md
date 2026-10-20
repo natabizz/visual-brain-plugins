@@ -48,8 +48,8 @@ To show your own photos on each proposed backdrop, Visual Brain can install a cu
 
 In Claude (desktop or claude.ai): **Customize → Plugins → Add → Upload plugin**, choose the zip. Or from GitHub, in a Claude Code session:
 ```
-/plugin marketplace add <owner>/visual-brain
-/plugin install visual-brain@visual-brain
+/plugin marketplace add natabizz/visual-brain-plugins
+/plugin install visual-brain@visual-brain-plugins
 ```
 Then, in your Marketing Brain workspace: `/visual-brain:setup`, then `/visual-brain:brand`.
 

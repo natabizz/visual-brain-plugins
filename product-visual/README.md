@@ -31,8 +31,8 @@ It works wherever the product lives: a marketplace, the brand's own site, search
 
 In Claude (desktop or claude.ai): **Customize → Plugins → Add → Upload plugin**, choose the zip. Or from GitHub, in a Claude Code session:
 ```
-/plugin marketplace add <owner>/product-visual
-/plugin install product-visual@product-visual
+/plugin marketplace add natabizz/visual-brain-plugins
+/plugin install product-visual@visual-brain-plugins
 ```
 Then, in your Marketing Brain workspace: `/product-visual:setup`, then `/product-visual:new <product>`.
 
