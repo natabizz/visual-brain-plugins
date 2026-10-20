@@ -11,7 +11,7 @@ Read `${CLAUDE_PLUGIN_ROOT}/frameworks/product-visual.md` first. Talk to the own
 
 ## 0. Before you run
 
-1. If the product or channel is missing, list the products in `projects/product-visual/` and end with **"Waiting for you:"** which one? Read `projects/product-visual/<product>/product.md`. Its key facts are required: what it is, material, measurements, sizes and how to choose, variants, who it is for. If they are blank, say which, and end with **"Waiting for you:"** attach the label, the size chart or the spec here.
+1. If the product or channel is missing, list the products in `projects/product-visual/` and end with **"Waiting for you:"** which one? Read `projects/product-visual/<product>/product.md`. Its key facts are required where they apply: what it is, who it is for, and for a physical product material, measurements, sizes and how to choose, variants. A fact that doesn't apply is "not applicable", and its question is left out of the panel. If a fact that applies is blank, say which, and end with **"Waiting for you:"** attach the label, the size chart or the spec here.
 2. **Mode:** `a`, `b` or `both` (default `both`).
 3. **Images and text** for mode A: the live gallery, or the drafts (attached in the chat or in `raw/visuals/products/<product>/drafts/<channel>/`), and the listing text saved as `raw/visuals/ai-read/<product>-<channel>/<date>/listing.txt` (next to the images folder, not inside it). Say which you read and its date.
 

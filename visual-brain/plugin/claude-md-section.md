@@ -6,4 +6,4 @@
 - Until the owner chooses a direction, the guide's visual language is the recommended direction and is tagged (inferred).
 - Product galleries, product positioning and image checks live in Product Visual (`/product-visual:new`), which reads this guide.
 - Image files live in `raw/visuals/` and never go to git; nor do the built pages, which carry the images inside them (their `.src.html` sources do). Competitor and reference images are evidence, never material to copy.
-- Nothing is published, uploaded, or paid for (image generation included) without the owner's yes.
+- Nothing is made public, shared, uploaded to a store or channel, or paid for (image generation included) without the owner's yes. Showing the owner a page as a private artifact only they can see is not sharing.

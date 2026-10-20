@@ -49,7 +49,7 @@ def distinct_colors(pixels, n):
             merged.append([count, rgb])
     merged.sort(reverse=True)
     total = sum(m[0] for m in merged) or 1
-    return [("#%02X%02X%02X" % rgb, count / total, rgb) for count, rgb in merged[:n]]
+    return [("#%02X%02X%02X" % rgb, count / total, rgb) for count, rgb in merged[:n] if count / total >= 0.005]
 
 
 def note(rgb):
@@ -66,6 +66,8 @@ def main():
     ap.add_argument("--colors", type=int, default=6)
     ap.add_argument("files", nargs="+")
     a = ap.parse_args()
+    if not 1 <= a.colors <= 32:
+        sys.exit("--colors must be between 1 and 32")
     pooled = []
     for f in a.files:
         try:

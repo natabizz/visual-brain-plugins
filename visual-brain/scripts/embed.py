@@ -31,6 +31,11 @@ def encode(path, max_px):
     try:
         from PIL import Image
         img = Image.open(path)
+        try:
+            from PIL import ImageOps
+            img = ImageOps.exif_transpose(img)  # a phone photo, the way it was shot
+        except Exception:
+            pass
         if path.suffix.lower() == ".png" and img.mode in ("RGBA", "LA", "P") and "A" in img.convert("RGBA").getbands():
             rgba = img.convert("RGBA")
             if rgba.getextrema()[3][0] < 255:  # really transparent somewhere

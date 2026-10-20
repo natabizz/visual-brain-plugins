@@ -55,7 +55,7 @@ Every image looked at gets a row in `projects/visual-brain/landscape/frames.md` 
 | The buyer and the brand's position | yes | `wiki/brand/icp.md`, `wiki/brand/positioning-messaging.md` |
 | The brand's look and the chosen direction | no, but strongly recommended | `wiki/brand/visual-guide.md` from Visual Brain (`stage: chosen` after `/visual-brain:choose`); without it, everything that depends on it is marked "(limited: no brand look)" |
 | Where the product lives | yes | the owner, asked once if the workspace doesn't say: a marketplace (which), the brand's own site, search, social or ads, or something else |
-| Product facts: what it is, material as on the label, origin, measurements, sizes and how to choose, variants, price, care | yes, the essentials | product files in the workspace, label photos, specs, the owner in the chat |
+| Product facts: what it is, material as on the label, origin, measurements, sizes and how to choose, variants, price, care (only those that apply; the rest "not applicable") | yes, the essentials that apply | product files in the workspace, label photos, specs, the owner in the chat |
 | Real photos of the product | no for `new` (the gallery then plans a shoot); yes for `audit` and `qa` | a folder the owner names (read in place); attached in the chat; `raw/visuals/products/<product>/photos/` |
 | A moodboard or ideas | no | attached in the chat; treated as direction, tested like everything else |
 | Reviews and questions | no | `raw/voc/`; the product's own pages; competitor products' reviews |
@@ -149,7 +149,7 @@ The storyboard is the gallery planned frame by frame, before anything is shot or
 | Proof | What makes the frame true, and its source (a measurement, a label, a document, a review) |
 | Image | The nearest image in hand: a real photo, a reference marked as one, or "To shoot: what exactly" |
 | Route | Shoot, retouch, background only, layout |
-| Copyable | Whether the strongest competitor could make the same frame tomorrow, from the rival tests; the first frame carries at least one thing it can't |
+| Copyable | Whether the strongest competitor could make the same frame tomorrow, from the rival tests ("not tested" for frames the rival didn't see); the first frame carries at least one thing it can't |
 
 - **Views check.** From the ranked needs and the buyers' questions, list the views this product's buyer needs to see (for a bag, for example: the front and the side, the closure and the strap close up, the inside, two sizes side by side, how it is carried, the product alone). Each view is covered by a frame, or moved to the listing text with the reason (the count limit). A view nobody asks for gets no frame.
 - **The cast and the caption** follow the chosen direction: only the cast it names, the lead where it says, the caption rule on brand images, and the measurements only where the handed-over proof frames put them.
@@ -169,7 +169,7 @@ Each test is run by an agent that did not write the work. AI simulations are lab
 | Test | Agent | Where | Question |
 |---|---|---|---|
 | Audience panel | `product-visual:audience-panel` | new | Shown the direction boards blind, two ranks kept apart: which stops you (the pull of the pictures), which answers your worry? And what puts you off? |
-| Skeptical buyer | `product-visual:skeptical-buyer` | new, gallery, audit, qa | Three reasons not to buy, from real objections; which frame should have answered each |
+| Skeptical buyer | `product-visual:skeptical-buyer` | new, gallery, audit, qa | Three reasons not to buy, from real objections; which frame (or, on a positioning, which message) should have answered each |
 | Rival test | `product-visual:rival-director` | new, gallery, audit, qa | Could the strongest competing product wear this direction, hero frame or image tomorrow? |
 | Claim to proof | (the command) | new, gallery, audit, qa | Every visible claim, including those made by icons and scenes, against the facts |
 | Blind shelf | `product-visual:fresh-eyes` | audit, qa | The main image among competing mains for the buyer's search, logos masked, at thumbnail size: what is it, who for, which would you open? (`scripts/shelf.py`) |

@@ -30,7 +30,7 @@ Behind the page: `wiki/brand/visual-guide.md` (the file Claude reads before any 
 | `/visual-brain:setup` | Prepares the workspace; safe to run again |
 | `/visual-brain:brand [quick \| full]` | The whole run: research, directions, tests, the page. Standard by default: about 10 brands, about half an hour to forty minutes. `quick`: up to 6 brands, about twenty minutes. `full`: 15 to 20 brands, about an hour |
 | `/visual-brain:choose <your choice> [photos: <folder>]` | Records your choice (one direction or a combination), reads your photo folder again, and rewrites the visual language, every color, what to do next and the page for it, without new research |
-| `/visual-brain:page [language]` | The same page in another language, for example `en` for colleagues, from the same files |
+| `/visual-brain:page [language] [public]` | The same page in another language, for example `en` for colleagues, from the same files |
 
 ## How it works
 

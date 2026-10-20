@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Optional: the cut-out library (rembg) that lets scripts/range.py show the owner's own photos on each
 # proposed backdrop (background only, the product untouched). About 200 MB on first use. Run only after the owner says yes.
-# rembg needs Python 3.10 or newer. The scripts run on the plugin venv (~/.visual-brain/venv) when it exists, else on
+# rembg needs Python 3.10 or newer. The scripts run on the plugin venv (~/.visual-brain/venv) when it has Pillow, else on
 # python3. When that Python is older, this looks for a newer one (python3.13 to 3.10, Homebrew) and rebuilds the
 # plugin venv on it, with Pillow and rembg.
 VDIR="$HOME/.visual-brain/venv"
 V="$VDIR/bin/python3"
-if [ -x "$V" ]; then RUN="$V"; else RUN="python3"; fi
+if [ -x "$V" ] && "$V" -c "import PIL" 2>/dev/null; then RUN="$V"; else RUN="python3"; fi
 ok310() { "$1" -c "import sys; sys.exit(0 if sys.version_info >= (3, 10) else 1)" 2>/dev/null; }
 has() { "$1" -c "import rembg, PIL" 2>/dev/null; }
 ready() { echo "Cut-out: installed. The first preview downloads the model once (about 170 MB)."; exit 0; }
@@ -39,8 +39,9 @@ if "$NEW" -m venv --clear "$T" 2>/dev/null && "$T/bin/python3" -m pip install --
   rm -rf "$VDIR.old"
   [ -d "$VDIR" ] && mv "$VDIR" "$VDIR.old"
   mv "$T" "$VDIR"
-  if has "$V"; then ready; fi
+  if has "$V"; then rm -rf "$VDIR.old"; ready; fi
   rm -rf "$VDIR"; [ -d "$VDIR.old" ] && mv "$VDIR.old" "$VDIR"
 fi
+rm -rf "$T"
 echo "Cut-out: could not install it automatically. $skip"
 exit 1

@@ -15,7 +15,8 @@ fi
 touch .gitignore
 if grep -qx 'raw/visuals/\*' .gitignore; then gi="already there"; else
   printf '\n' >> .gitignore; cat "$ROOT/plugin/gitignore-block.txt" >> .gitignore; gi="added"; fi
-# Lines added in later versions go in once each.
+# Lines added in later versions go in once each (after a newline, if the file doesn't end with one).
+[ -s .gitignore ] && [ -n "$(tail -c1 .gitignore)" ] && printf '\n' >> .gitignore
 while IFS= read -r line; do
   case "$line" in ''|'#'*) continue ;; esac
   grep -qxF -- "$line" .gitignore || { printf '%s\n' "$line" >> .gitignore; gi="updated"; }

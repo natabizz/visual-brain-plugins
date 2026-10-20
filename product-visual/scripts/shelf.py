@@ -86,12 +86,15 @@ def main():
     key, tiles = {}, []
     for fid, path in pairs:
         try:
-            img = Image.open(path).convert("RGB")
+            img = Image.open(path)
+            try:
+                from PIL import ImageOps
+                img = ImageOps.exif_transpose(img)  # a phone photo, the way it was shot
+            except Exception:
+                pass
+            img = img.convert("RGB")
         except Exception as e:
             print(f"Skipped, can't open: {path} ({e.__class__.__name__}); convert it to JPEG first")
-            continue
-        if len(tiles) >= len(string.ascii_uppercase):
-            print(f"Skipped, more than {len(string.ascii_uppercase)} images: {path}")
             continue
         letter = string.ascii_uppercase[len(tiles)]
         if fid in masks:

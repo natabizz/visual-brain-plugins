@@ -10,7 +10,7 @@ if [ "$PWD" = "$ROOT" ]; then
   echo "This is the plugin's own folder. Run setup in your brand workspace instead." >&2
   exit 1
 fi
-DATE="$(date +%Y-%m-%d)"
+DATE="$(date +%Y-%m-%d-%H%M%S)"
 ARCH="projects/visual-brain/archive"
 
 [ -f CLAUDE.md ] || { printf '# CLAUDE.md\n\nInstructions Claude reads in this folder.\n' > CLAUDE.md; cm_new="created"; }
@@ -19,7 +19,8 @@ ARCH="projects/visual-brain/archive"
 touch .gitignore
 if grep -qx 'raw/visuals/\*' .gitignore; then gi="already there"; else
   printf '\n' >> .gitignore; cat "$ROOT/plugin/gitignore-block.txt" >> .gitignore; gi="added"; fi
-# Lines added in later versions go in once each.
+# Lines added in later versions go in once each (after a newline, if the file doesn't end with one).
+[ -s .gitignore ] && [ -n "$(tail -c1 .gitignore)" ] && printf '\n' >> .gitignore
 while IFS= read -r line; do
   case "$line" in ''|'#'*) continue ;; esac
   grep -qxF -- "$line" .gitignore || { printf '%s\n' "$line" >> .gitignore; gi="updated"; }

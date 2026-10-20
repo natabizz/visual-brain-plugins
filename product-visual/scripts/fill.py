@@ -30,6 +30,11 @@ def to_jpeg(path, max_px):
     try:
         from PIL import Image
         img = Image.open(path)
+        try:
+            from PIL import ImageOps
+            img = ImageOps.exif_transpose(img)  # a phone photo, the way it was shot
+        except Exception:
+            pass
         img = img.convert("RGB")
         img.thumbnail((max_px, max_px))
         buf = io.BytesIO()

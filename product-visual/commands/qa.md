@@ -32,7 +32,7 @@ Every visible claim, including icons, badges and scenes, against `product.md`. A
 
 ## 4. Tests on the finished set
 
-1. **Blind shelf:** the new main image against the same competing mains and size as the audit's shelf, reusing the `masks.json` kept in that shelf's folder (or as `/product-visual:audit` step 3.1 if there was none). Compare with the earlier result.
+1. **Blind shelf:** the new main image against the same competing mains and size as the audit's shelf, reusing the `masks.json` kept in that shelf's folder for the competitors; for the new main image, and for any image that changed, look again and draw its logo boxes anew (or as `/product-visual:audit` step 3.1 if there was no shelf). Compare with the earlier result.
 2. **Rival test** on the main image and the hero frame.
 3. **Skeptical buyer** on the finished set: which objection is still unanswered?
 4. **AI reading, mode A** on the finished set, as a new dated run in `ai-read-<channel>.md`; compare with the earlier run.
@@ -44,7 +44,7 @@ Every visible claim, including icons, badges and scenes, against `product.md`. A
 
 ## 6. Release list
 
-Only when nothing is left at "needs work" or "redo": list the exact files and versions, and ask, ending with **"Waiting for you:"** do you approve these files for release? On a yes, write `release-<channel>.md` from `_release.md`:
+Only when every frame of the plan has a file marked "ready" (no frame missing, nothing at "needs work" or "redo"): list the exact files and versions, and ask, ending with **"Waiting for you:"** do you approve these files for release? On a yes, write `release-<channel>.md` from `_release.md`:
 
 | Frame | File | Order | Size and format | Version | Alt text | Approved by | Date |
 |---|---|---|---|---|---|---|---|

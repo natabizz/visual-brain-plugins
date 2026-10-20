@@ -15,7 +15,7 @@ Read `${CLAUDE_PLUGIN_ROOT}/frameworks/product-visual.md` first (The chosen dire
 2. **Which positioning and direction?** The ones in Decisions. If none is chosen yet, use the recommended ones and tag the gallery (inferred). If the owner names another option now, record it in Decisions with the date.
 3. **The brand's chosen direction:** read `wiki/brand/visual-guide.md` as the framework's "The chosen direction" lists (the look, the cast and its lead, the caption rule, what was handed to Product Visual, the first shoot list, Decisions). If it changed since the product's last run (its `last_updated`), say so in one line and follow the new one.
 4. **Find it yourself:** the channel's kind (framework, Channels) and its rules (image count, sizes, first image rules) from the channel's own page with URL and date, into `product.md`; a third-party guide only tagged as such; real photos and drafts in `raw/visuals/products/<product>/`.
-5. If `gallery-<channel>.md` exists, this is a re-plan: keep its Decisions.
+5. If `gallery-<channel>.md` exists, this is a re-plan: keep its Decisions. A changed plan sets `stage: planned` in `product.md`, and a `release-<channel>.md` for the old plan is marked "superseded, needs QA" at the top: an approval covers the plan it was given for.
 6. **One ask, only if needed:** if the rules page can't be reached, or photos the plan obviously needs are missing, one message saying what will change and what you need (the rules link or a screenshot; "drag photos from Finder into this chat"), ending with **"Waiting for you:"**. Otherwise go straight on. Never from memory.
 
 ## 1. The plan

@@ -33,7 +33,7 @@ except ImportError:
 def open_image(path):
     """Pillow first; macOS sips for HEIC and other formats Pillow can't read; None if neither works."""
     try:
-        return Image.open(path).convert("RGB")
+        return upright(Image.open(path)).convert("RGB")
     except Exception:
         pass
     if shutil.which("sips"):
@@ -41,8 +41,17 @@ def open_image(path):
             out = Path(tmp) / "t.jpg"
             if subprocess.run(["sips", "-s", "format", "jpeg", str(path), "--out", str(out)],
                               capture_output=True).returncode == 0:
-                return Image.open(out).convert("RGB")
+                return upright(Image.open(out)).convert("RGB")
     return None
+
+
+def upright(img):
+    """Turn a phone photo the way it was shot (its EXIF orientation), so masks and crops land right."""
+    try:
+        from PIL import ImageOps
+        return ImageOps.exif_transpose(img)
+    except Exception:
+        return img
 
 
 def square(img, size):
@@ -64,6 +73,8 @@ def main():
     ap.add_argument("--masks")
     ap.add_argument("items", nargs="+", help="LABEL_OR_ID=path")
     a = ap.parse_args()
+    if a.size < 40:
+        sys.exit("--size must be 40 or more")
 
     items = []
     for it in a.items:
@@ -81,10 +92,16 @@ def main():
     out = Path(a.out)
     board_dir = out / "board"
     board_dir.mkdir(parents=True, exist_ok=True)
-    letters = list(string.ascii_uppercase) + [f"A{c}" for c in string.ascii_uppercase]
+    def letter(n):  # A..Z, then AA, AB ...
+        s = ""
+        n += 1
+        while n:
+            n, r = divmod(n - 1, 26)
+            s = string.ascii_uppercase[r] + s
+        return s
     key, tiles, names = {}, [], []
     for i, (k, p) in enumerate(items):
-        label = letters[len(tiles)] if a.blind else k
+        label = letter(len(tiles)) if a.blind else k
         img = open_image(p)
         if img is None:
             print(f"Skipped, can't open: {p}")
@@ -100,6 +117,8 @@ def main():
         key[label] = {"id": k, "file": p, "masked": k in masks}
         tiles.append((label, tile))
 
+    if not tiles:
+        sys.exit("No image could be opened: no board was made.")
     cols = max(1, a.cols)
     rows = (len(tiles) + cols - 1) // cols
     pad, cap = 12, (0 if a.no_labels else 26)

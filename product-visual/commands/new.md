@@ -36,7 +36,7 @@ Agents can't list a folder: always give them file paths.
    - **Probe access now:** try each competing product page (`curl -sL -o /dev/null -w "%{http_code}"`, or a web fetch). Note which refuse, so screenshots can be asked for once, now.
 7. **One short summary, then wait:**
    - **Found:** facts (with sources), photos (count), pages, reviews, competing products (one line why each), the owner's direction.
-   - **Missing:** in plain words. Separate the **essentials** (what it is, material, sizes and how to choose, variants, price) from the optional.
+   - **Missing:** in plain words. Separate the **essentials** that apply to this product (for a physical product: what it is, material, sizes and how to choose, variants, price; for a digital product or a service, what it is, what is included, who it is for, price) from the optional; a field that doesn't apply is marked "not applicable", never filled.
    - **Blocked:** pages that refuse automated viewing: "if you can, attach screenshots of their galleries".
    - **Questions, only what you could not find,** numbered, at most five. Always include, unless already answered: where the product lives and which place comes first ("a marketplace (which one), your own site, Google, social or ads, or something else; the others can follow"), and "Where are the product's real photos? A folder on your computer (its path), or drag them into this chat." When a named folder mixes real photos and generated images that can't be told apart by looking, ask which are which. Moodboards and ideas: welcome, never required.
    - "Say go to continue with what I found."
@@ -79,7 +79,7 @@ Write `direction.md`:
 1. Two or three options, as the framework describes: hero story, supporting stories (each tied to a need or the UVP), how it looks within the brand's look, why it fits, how it differs, what it asks for, risk. With a chosen brand direction, the options keep its look and cast and differ in what the images tell.
 2. **Images per option:** six to nine, listed in `direction.md`: the product's own clean photos first where they show the idea; references and competitors where they don't, marked as such. The page shows them one by one.
 3. **Audience panel:** decide the logo boxes of these images by looking, and write them to `raw/visuals/boards/<date>-<product>-masks.json`. For each option, a board without labels, logos masked: `bash "${CLAUDE_PLUGIN_ROOT}/scripts/py" "${CLAUDE_PLUGIN_ROOT}/scripts/board.py" --out raw/visuals/boards/<date>-<product>-panel-<n> --no-labels --masks <masks file> --cols 3 <ID=path> ...`. Shuffle which option becomes board 1, 2, 3, copy them to `raw/visuals/boards/<date>-<product>-panel/board-1.jpg` and so on, and keep the mapping in `raw/visuals/boards/<date>-<product>-panel-key.json` (outside that folder). Run the `product-visual:audience-panel` agent with the path of `audience.md` and the board paths. It returns two ranks: "stops me" and "answers my worry"; record both.
-4. **Rival test:** the `product-visual:rival-director` agent as the strongest competing product, with the board paths, the recommended UVP, and a two-line description of each option.
+4. **Rival test:** the `product-visual:rival-director` agent as the strongest competing product, with the board paths, the recommended UVP, a two-line description of each option, and that product's own material: the path of `market.md` (its entry) and the paths of its gallery images.
 5. **Recommended,** with the reason, weighing the "stops me" rank, the "answers my worry" rank and the rival test. If the panel did not rank it first on either, or the rival could wear it, say why it stays, or recommend another.
 
 ## 6. The storyboard
@@ -93,7 +93,7 @@ For the main channel, on the recommended positioning and direction (tagged (infe
 - **Proof frames handed over** by Visual Brain each get a frame, or the file says why not.
 - One brief per frame in `briefs/<channel>/frame-NN.md` from `briefs/_brief.md`.
 - Where the plan needs a real photo the owner doesn't have, the frame says "To shoot", and the shot list goes at the end of the gallery file, grouped by setup and joined to the brand's first shoot list where a setup repeats.
-- Run the `product-visual:rival-director` agent on the first frame's and the hero frame's briefs, and the `product-visual:skeptical-buyer` agent on the plan (file paths). Mark each frame "copyable" or not from the rival's answer. Each objection either has a frame that answers it or is listed as open.
+- Run the `product-visual:rival-director` agent on the first frame's and the hero frame's briefs, and the `product-visual:skeptical-buyer` agent on the plan (file paths). Mark the frames the rival saw "copyable" or not from its answer; the other frames "not tested". Each objection either has a frame that answers it or is listed as open.
 
 ## 6b. What to do next
 
@@ -113,7 +113,7 @@ Copy `${CLAUDE_PLUGIN_ROOT}/frameworks/product-book-template.html` to `projects/
 - Images: `src="file:<path>"`. Build: `bash "${CLAUDE_PLUGIN_ROOT}/scripts/py" "${CLAUDE_PLUGIN_ROOT}/scripts/embed.py" --max 760 --out projects/product-visual/outputs/<product>.html projects/product-visual/outputs/<product>.src.html`. Never paste image data or print it in the chat.
 - Plain words: no IDs, codes or tags. Quotes cited by platform, product and date. Check every claim on the page against the files.
 
-Share it: if this session can publish an Artifact, publish it privately titled "[Product] Visual" and give the link; otherwise give the file path and say to open it in a browser.
+Show it: if this session can publish an Artifact, publish it as a private artifact titled "[Product] Visual" (only the owner sees it; sharing it is the owner's choice) and give the link; otherwise give the file path and say to open it in a browser.
 
 ## 9. Close
 

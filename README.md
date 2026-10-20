@@ -9,14 +9,14 @@ The visual layer on top of the CXL Marketing Brain. The Marketing Brain says who
 | **Visual Brain** | The brand's visual direction. It studies the audience and the visual market (shelf competitors, references, and the brands AI assistants recommend if you have that list), proposes two or three directions, and shows each one on a social media grid and a site first screen next to how everyone looks. A simulated audience panel, shown the directions blind, and a simulated rival creative director test them. It checks one backdrop per color of your range at marketplace-tile size, and after you choose, it writes the visual language and a shoot list built from the photos you already have. |
 | **Product Visual** | A product's images, planned frame by frame. Who the product is for and what they need to see, its positioning and UVP, a direction in the brand's chosen look, then a storyboard with a brief per frame for a marketplace, your site, search, or social. Also audits a live gallery and checks finished images before upload. |
 
-Each run ends with one page in your language (`/visual-brain:page en` makes an English one) and Markdown files Claude reads before any visual work.
+The brand run, the product run and the audit and QA checks each end with one page in your language (`/visual-brain:page en` makes an English one), plus Markdown files Claude reads before any visual work.
 
 ## Before you start
 
 - The Marketing Brain's ICP and positioning drafted (exercises 1 and 2).
 - A folder with your product photos helps most. Nothing is required: missing inputs are marked, not blocking.
 - Time: a standard run looks at about 10 brands, roughly half an hour to forty minutes. `/visual-brain:brand quick` is shorter, `/visual-brain:brand full` goes wider (15 to 20 brands, about an hour).
-- Built and tested on macOS. The image scripts need Python 3; setup installs the image library they use. HEIC photos are converted with the macOS `sips` tool; on other systems, export them as JPEG first.
+- Built and tested on macOS; Linux works without the HEIC step. The image scripts need Python 3; setup installs the image library they use. HEIC photos are converted with the macOS `sips` tool; elsewhere, export them as JPEG first. The blind-test agents use a Claude Code field that needs version 2.1.271 or later; older versions ignore it.
 
 ## Install
 

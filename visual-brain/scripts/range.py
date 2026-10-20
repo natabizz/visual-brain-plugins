@@ -7,7 +7,7 @@ still reads against that backdrop at thumbnail size. When it doesn't, it shows
 three more backdrops (deeper and quieter, lifted, a quiet neutral) and says which pass.
 
 Usage:
-  py range.py [--steps 20] [--tile 260] [--out sheet.jpg] [--previews DIR] VARIANT [VARIANT ...]
+  py range.py [--steps 20] [--tile 260] [--out sheet.jpg] [--previews DIR] [--own "Name=#hex" ...] VARIANT [VARIANT ...]
 
 VARIANT is one of:
   "Olive=#5E6B2F"                 the product color, as hex (from the product file)
@@ -17,10 +17,13 @@ VARIANT is one of:
                                   product color is sampled inside the box
   "Olive=path/to/photo.png"       a real photo without a box: the center third is sampled
 
-The rule (option A): the backdrop keeps the product's hue, a little less saturated, and
-sits --steps lightness units darker. B goes deeper and quieter, C lighter, D is a quiet
-neutral. A pass means the difference (CIEDE2000) is 15 or more and the lightness gap 10
-or more: below that, the product's edge sinks into the backdrop at thumbnail size.
+Option A is a tonal backdrop: the product's hue, a little less saturated, --steps lightness
+units darker. B goes deeper and quieter, C lighter, D is a quiet neutral. When the
+direction's rule gives another backdrop, pass it with --own "Name=#hex" (one per variant):
+it is checked as option E. A pass means the difference (CIEDE2000) is 15 or more and the
+lightness gap 10 or more. These are working thresholds for a color heuristic, not a
+standard: below them the product's edge tends to sink into the backdrop at thumbnail size.
+The sheet shows every pair at tile size, so the eye makes the final call.
 
 With --previews and a photo, the real photo is cut out and set on each backdrop
 (background only, the product untouched), if the cut-out library (rembg) is installed
@@ -126,10 +129,25 @@ def de2000(l1, l2):
     Rt = -math.sin(math.radians(2 * dth)) * Rc
     return math.sqrt((dLp / Sl) ** 2 + (dCp / Sc) ** 2 + (dHp / Sh) ** 2 + Rt * (dCp / Sc) * (dHp / Sh))
 
+
+def upright(img):
+    """Turn a phone photo the way it was shot (its EXIF orientation), so masks and crops land right."""
+    try:
+        from PIL import ImageOps
+        return ImageOps.exif_transpose(img)
+    except Exception:
+        return img
+
 # ---------- sampling ----------
 
+def open_photo(path):
+    try:
+        return upright(Image.open(path))
+    except Exception as e:
+        sys.exit("Can't open %s (%s). Convert it to JPEG first." % (path, e.__class__.__name__))
+
 def sample(path, box):
-    im = Image.open(path).convert("RGBA")
+    im = open_photo(path).convert("RGBA")
     w, h = im.size
     if box is None:
         box = (1 / 3, 1 / 3, 2 / 3, 2 / 3)
@@ -137,8 +155,8 @@ def sample(path, box):
     crop = im.crop((int(x0 * w), int(y0 * h), int(x1 * w), int(y1 * h))).resize((80, 80))
     px = crop.get_flattened_data() if hasattr(crop, "get_flattened_data") else crop.getdata()
     labs = [rgb_to_lab(p[:3]) for p in px if p[3] >= 128]  # a cut-out's empty pixels are skipped
-    if not labs:
-        sys.exit("No product pixels inside the box of " + path)
+    if len(labs) < 20:
+        sys.exit("Too few product pixels inside the box of %s: draw the box around the product." % path)
     labs.sort(key=lambda l: math.hypot(l[1], l[2]), reverse=True)
     top = labs[: len(labs) // 2]
     use = top if math.hypot(*_median(top)[1:]) > 15 else labs
@@ -156,10 +174,16 @@ def _median(labs):
 PASS_DE = 15.0   # below this the product's edge sinks into the backdrop at tile size
 PASS_DL = 10.0
 
-def backdrops(prod_rgb, steps):
+def check(prod_rgb, rgb):
+    lab_b, lab_p = rgb_to_lab(rgb), rgb_to_lab(prod_rgb)
+    de = de2000(lab_p, lab_b)
+    dl = abs(lab_p[0] - lab_b[0])
+    return de, dl, de >= PASS_DE and dl >= PASS_DL
+
+def backdrops(prod_rgb, steps, own=None):
     L, C, h = lab_to_lch(rgb_to_lab(prod_rgb))
     opts = [
-        ("A, the rule", (max(8.0, L - steps), C * 0.85, h)),
+        ("A, tonal", (max(8.0, L - steps), C * 0.85, h)),
         ("B, deeper and quieter", (max(6.0, L - steps * 1.7), C * 0.5, h)),
         ("C, lifted", (L + steps, C * 0.6, h)),
         ("D, quiet neutral", (L + 25 if L < 50 else L - 25, min(C, 5.0), h)),
@@ -168,10 +192,9 @@ def backdrops(prod_rgb, steps):
     for name, lch in opts:
         lch = (max(4.0, min(96.0, lch[0])), lch[1], lch[2])
         rgb = lab_to_rgb(lch_to_lab(lch))
-        lab_b, lab_p = rgb_to_lab(rgb), rgb_to_lab(prod_rgb)
-        de = de2000(lab_p, lab_b)
-        dl = abs(lab_p[0] - lab_b[0])
-        out.append((name, rgb, de, dl, de >= PASS_DE and dl >= PASS_DL))
+        out.append((name, rgb) + check(prod_rgb, rgb))
+    if own is not None:
+        out.append(("E, the direction's own", own) + check(prod_rgb, own))
     return out
 
 # ---------- previews ----------
@@ -180,7 +203,7 @@ _session = None
 
 def cutout(path):
     global _session
-    im0 = Image.open(path)
+    im0 = open_photo(path)
     if im0.mode in ("RGBA", "LA") and im0.getextrema()[-1][0] < 250:
         im0 = im0.convert("RGBA")
         im0.thumbnail((1200, 1200))
@@ -189,11 +212,15 @@ def cutout(path):
         from rembg import remove, new_session
     except ImportError:
         return None
-    if _session is None:
-        _session = new_session("u2net")
-    im = Image.open(path).convert("RGB")
-    im.thumbnail((1200, 1200))
-    return remove(im, session=_session)
+    try:
+        if _session is None:
+            _session = new_session("u2net")
+        im = im0.convert("RGB")
+        im.thumbnail((1200, 1200))
+        return remove(im, session=_session)
+    except Exception as e:
+        print("  note: the cut-out failed for %s (%s); a plain shape is used instead." % (os.path.basename(path), e.__class__.__name__))
+        return None
 
 def seamless(rgb, size):
     """A plain seamless: a touch lighter at the top, a touch darker at the floor."""
@@ -217,9 +244,11 @@ def on_backdrop(cut, rgb, size):
     shadow = shadow.filter(ImageFilter.GaussianBlur(max(4, cut.size[0] // 60)))
     bg.paste(Image.new("RGB", cut.size, (0, 0, 0)), (0, 0), shadow)
     bg.paste(cut, (0, 0), cut)
-    s = min(bg.size)
-    bg = bg.crop(((bg.width - s) // 2, (bg.height - s) // 2, (bg.width - s) // 2 + s, (bg.height - s) // 2 + s))
-    return bg.resize((size, size))
+    # The whole product stays in the square: the scene is fitted on a seamless square, never cropped.
+    s = int(max(bg.size) * 1.08)
+    sq = seamless(rgb, (s, s))
+    sq.paste(bg, ((s - bg.width) // 2, (s - bg.height) // 2))
+    return sq.resize((size, size))
 
 def shape_tile(prod, rgb, size):
     t = Image.new("RGB", (size, size), rgb)
@@ -246,21 +275,37 @@ def font(sz):
 
 def main(argv):
     steps, tile, out, prev = 20.0, 260, "range-sheet.jpg", None
+    owns = {}
     vars_ = []
     i = 0
     while i < len(argv):
         a = argv[i]
-        if a == "--steps":
-            steps = float(argv[i + 1]); i += 2; continue
-        if a == "--tile":
-            tile = int(argv[i + 1]); i += 2; continue
-        if a == "--out":
-            out = argv[i + 1]; i += 2; continue
-        if a == "--previews":
-            prev = argv[i + 1]; i += 2; continue
+        if a in ("--steps", "--tile", "--out", "--previews", "--own"):
+            if i + 1 >= len(argv):
+                sys.exit("%s needs a value" % a)
+            v = argv[i + 1]; i += 2
+            try:
+                if a == "--steps":
+                    steps = float(v)
+                elif a == "--tile":
+                    tile = int(v)
+                elif a == "--out":
+                    out = v
+                elif a == "--own":
+                    if "=" not in v:
+                        sys.exit("--own is Name=#hex (the direction's own backdrop for that variant): " + v)
+                    on, oh = v.split("=", 1)
+                    owns[on.strip()] = parse_hex(oh)
+                else:
+                    prev = v
+            except ValueError:
+                sys.exit("%s needs a number, got: %s" % (a, v))
+            continue
         vars_.append(a); i += 1
     if not vars_:
         sys.exit(__doc__)
+    if tile < 40 or steps <= 0:
+        sys.exit("--tile must be 40 or more and --steps more than 0")
 
     rows = []
     for v in vars_:
@@ -275,7 +320,7 @@ def main(argv):
             photo = src
             m = re.match(r"^(.*)@\s*([0-9.]+)\s*,\s*([0-9.]+)\s*,\s*([0-9.]+)\s*,\s*([0-9.]+)\s*$", src)
             if m and not os.path.exists(src):
-                photo = m.group(1)
+                photo = m.group(1).rstrip()
                 box = tuple(float(m.group(k)) for k in range(2, 6))
                 if not all(0 <= b <= 1 for b in box) or box[0] >= box[2] or box[1] >= box[3]:
                     sys.exit("The box after @ is x0,y0,x1,y1 as fractions of the photo, each from 0 to 1: " + src)
@@ -283,22 +328,26 @@ def main(argv):
                 sys.exit("No such photo: " + photo)
             prod = sample(photo, box)
             how = "sampled from " + os.path.basename(photo)
-        opts = backdrops(prod, steps)
+        opts = backdrops(prod, steps, owns.get(name.strip()))
         rows.append((name.strip(), prod, how, opts, photo))
 
     print("The range: one backdrop per variant, checked at %d px (pass: difference %.0f or more, lightness gap %.0f or more)" % (tile, PASS_DE, PASS_DL))
-    print("| Variant | Product color | A, the rule | B, deeper and quieter | C, lifted | D, quiet neutral |")
-    print("|---|---|---|---|---|---|")
+    has_own = any(len(r[3]) > 4 for r in rows)
+    print("| Variant | Product color | A, tonal | B, deeper and quieter | C, lifted | D, quiet neutral |" + (" E, the direction's own |" if has_own else ""))
+    print("|---|---|---|---|---|---|" + ("---|" if has_own else ""))
     for name, prod, how, opts, photo in rows:
         cells = ["%s %s (%.0f / %.0f)" % (hexs(rgb), "pass" if ok else "too close", de, dl) for oname, rgb, de, dl, ok in opts]
+        if has_own and len(opts) == 4:
+            cells.append("not given")
         print("| %s | %s (%s) | %s |" % (name, hexs(prod), how, " | ".join(cells)))
-        if not opts[0][4]:
-            good = [o[0].split(",")[0] for o in opts[1:] if o[4]]
-            print("  note: for %s the rule's backdrop is too close to the piece at tile size; %s." % (name, ("options that pass: " + ", ".join(good)) if good else "no option passes: change the light or the crop"))
+        rule = opts[-1] if len(opts) > 4 else opts[0]
+        if not rule[4]:
+            good = [o[0].split(",")[0] for o in opts if o[4] and o is not rule]
+            print("  note: for %s the rule's backdrop (%s) is too close to the piece at tile size; %s." % (name, rule[0].split(",")[0], ("options that pass: " + ", ".join(good)) if good else "no option passes: change the light or the crop"))
 
     # the sheet
     pad, label_w = 12, 170
-    W = label_w + 4 * (tile + pad) + pad
+    W = label_w + (5 if has_own else 4) * (tile + pad) + pad
     H = pad + len(rows) * (tile + 34 + pad)
     sheet = Image.new("RGB", (W, H), (246, 244, 241))
     d = ImageDraw.Draw(sheet)
@@ -317,7 +366,7 @@ def main(argv):
                 used_photo = True
                 if prev:
                     os.makedirs(prev, exist_ok=True)
-                    on_backdrop(cut, rgb, 1200).save(os.path.join(prev, "%s-%s.jpg" % (name.replace(" ", "-"), oname[0])), quality=90)
+                    on_backdrop(cut, rgb, 1200).save(os.path.join(prev, "%s-%s.jpg" % (re.sub(r"[^A-Za-z0-9._-]+", "-", name).strip("-") or "variant", oname[0])), quality=90)
             sheet.paste(t, (x, y))
             d.text((x, y + tile + 6), "%s %s  %s" % (oname.split(",")[0], hexs(rgb), "pass" if ok else "too close"), fill=(28, 26, 25) if ok else (163, 34, 44), font=fs)
     sheet.save(out, quality=88)
