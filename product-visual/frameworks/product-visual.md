@@ -151,7 +151,7 @@ The storyboard is the gallery planned frame by frame, before anything is shot or
 | Route | Shoot, retouch, background only, layout |
 | Copyable | Whether the strongest competitor could make the same frame tomorrow, from the rival tests ("not tested" for frames the rival didn't see); the first frame carries at least one thing it can't |
 
-- **Views check.** From the ranked needs and the buyers' questions, list the views this product's buyer needs to see (for a bag, for example: the front and the side, the closure and the strap close up, the inside, two sizes side by side, how it is carried, the product alone). Each view is covered by a frame, or moved to the listing text with the reason (the count limit). A view nobody asks for gets no frame.
+- **Views check.** From the ranked needs and the buyers' questions, list the views this product's buyer needs to see (for a bag, for example: the front and the side, the closure and the strap close up, the inside, two sizes side by side, how it is carried, the product alone). Each view is covered by a frame, or moved to the listing text with the reason (the count limit). A view no buyer asks for gets no frame.
 - **The cast and the caption** follow the chosen direction: only the cast it names, the lead where it says, the caption rule on brand images, and the measurements only where the handed-over proof frames put them.
 - **Briefs:** one per frame, standalone: a designer, photographer or image tool can work from it without the chat.
 - **What is never generated:** anything that shows fit, size, a material, a test or the product's construction. The product is never redrawn, recolored or regenerated; backgrounds and settings may be.

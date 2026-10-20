@@ -16,7 +16,7 @@ tags: [product-visual, audit]
 
 ## The gallery as a whole
 
-- Needs nobody answers:
+- Needs no gallery looked at answers:
 - Needs competitors answer and we don't:
 - Images that answer no need:
 

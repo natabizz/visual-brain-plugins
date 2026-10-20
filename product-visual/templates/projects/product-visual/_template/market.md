@@ -24,7 +24,7 @@ tags: [product-visual, competitors]
 
 ## Patterns
 
-## Needs nobody's gallery answers
+## Needs no gallery looked at answers
 
 ## Could not get
 

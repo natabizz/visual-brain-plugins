@@ -12,7 +12,7 @@ It works at brand level only, so a brand without a single product photo can use 
 
 One page that reads like a brand presentation, in the language you write in:
 1. **Cover:** the thesis and a three-line summary: the market, the empty space, the recommended direction.
-2. **The market:** a wall of what everyone looks like, three patterns, the brands you look up to, and three things nobody does.
+2. **The market:** a wall of what everyone looks like, three patterns, the brands you look up to, and three things none of the brands looked at does.
 3. **Who it is for:** five vibe words, each with a buyer's own quote, and three pains the picture must answer.
 4. **Where you are now:** your current images and site, what is strong and what is worth a look (left out if you have no images yet).
 5. **Directions:** two or three, each with a collage, a palette sampled from real images, three shooting rules, the signature, why it fits and the risk.

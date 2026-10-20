@@ -39,7 +39,7 @@ if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   tracked="$(git ls-files 'projects/*/outputs/*.html' 2>/dev/null | grep -v '\.src\.html$' || true)"
   if [ -n "$tracked" ]; then
     echo "Tracked by git from an earlier version (built pages carry their images):"
-    printf '  %s\n' $tracked
+    printf '%s\n' "$tracked" | sed 's/^/  /'
     echo "  To stop tracking them (the files stay on disk): git rm --cached <file>, then commit."
   fi
 fi

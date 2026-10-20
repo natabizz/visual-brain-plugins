@@ -61,7 +61,7 @@ Write `market.md`. For each competing product:
 - **What it says:** title, the main promise, claims with proof status as visible on the page, price, rating and review count with the date.
 - **What it shows:** its whole gallery, saved to `raw/visuals/screens/<brand>/<date>/` and indexed in `projects/visual-brain/landscape/frames.md` (in the columns the table already has). Image URLs with `curl -L`, then a connected browser tool, then the owner's screenshots. Never work around a refusal. Open every image.
 - **Which ranked needs its gallery answers,** and which it leaves open.
-Then the patterns: what most galleries do, and **the needs nobody's gallery answers.**
+Then the patterns: what most galleries do, and **the needs no gallery looked at answers.**
 
 ## 4. Positioning and UVP
 
