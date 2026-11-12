@@ -9,6 +9,8 @@ tags: [product-visual, audit]
 
 # Audit: <product> on <channel>
 
+Compared with this channel's competitor set in `market.md` (<date>, how found), or "(limited: no competitors for <channel>)". Page: `projects/product-visual/outputs/<product>-<channel>-audit.src.html`, built to `.html`.
+
 ## Each image
 
 | # | What it does for the buyer (need, quote) | What it misses | True to the product? | Claims (proof) | Worth considering |
@@ -17,7 +19,7 @@ tags: [product-visual, audit]
 ## The gallery as a whole
 
 - Needs no gallery looked at answers:
-- Needs competitors answer and we don't:
+- Needs this channel's competitors answer and we don't:
 - Images that answer no need:
 
 ## Blind shelf

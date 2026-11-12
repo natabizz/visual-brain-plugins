@@ -18,6 +18,8 @@ For the boards you are shown:
    - **Answers my worry:** the boards in the order they answer what worries you in the audience file (quote it).
    One line each. The two ranks may differ; say so when they do.
 
+**When the audience file is a trade buyer** (a store buyer, a retailer, a distributor: the task says B2B), you are that buyer, judging for your shelf and your customers. "Stops me" becomes "makes me open the catalog", and "answers my worry" becomes "answers what I worry about when I take on a new line" (sell-through, a clear range, price and minimums in sight, quote the file). End with: "What would make me ask for samples:" instead of the buy line.
+
 Rules:
 - React to what is visible. Never praise technique; you are a buyer, not a designer.
 - If the audience file does not support a reaction, say "my file doesn't say" instead of inventing a taste.

@@ -17,7 +17,7 @@ One page that reads like a brand presentation, in the language you write in:
 4. **Where you are now:** your current images and site, what is strong and what is worth a look (left out if you have no images yet).
 5. **Directions:** two or three, each with a collage, a palette sampled from real images, three shooting rules, the signature, why it fits and the risk.
    **Every color:** when you sell a range (colorways, lines), one row per variant for the recommended and the chosen direction: the piece's color and the backdrop the direction gives it, checked at the size of a marketplace tile, with your own photo of that variant, or your photo with only the background replaced (a preview), or a reference, or exactly what to shoot. Even with photos of one color only, you see the system for all of them.
-6. **How it looks:** the carriers where your audience actually looks (a social media grid and the site first screen by default), as everyone, as you are now, and in each direction.
+6. **How it looks:** the carriers where your buyers actually meet the brand, taken from the channels in your ICP and your live sales channels: the marketplace search tile first when you sell on Chewy, Etsy, Amazon or Faire; a social media grid and the site first screen only where they are real. As everyone, as you are now, and in each direction. A blank channel in your ICP is never filled with a default.
 7. **Tests and choice:** how an audience panel and a rival reacted, the recommendation by five questions (clear at a glance, advantage visible, believable, recognizable on a second meeting, producible again and again), and what to check before choosing.
 8. **What to do next:** actions by priority, each with its reason, and the first shoot list: the first set on your main carrier (nine grid frames by default) and the site hero, built from the photos you already have first.
 
@@ -38,8 +38,18 @@ Behind the page: `wiki/brand/visual-guide.md` (the file Claude reads before any 
 - **Observations, not orders.** Every judgment comes with its basis; facts that contradict each other in your own materials name both sources. Text and fonts on your reference boards are treated as references, not judged.
 - **No invented copy.** Mockups use only lines your brand already uses or facts from your files, marked temporary.
 - **Who AI names.** If you have a list of brands AI assistants recommend in your category (an AI visibility check), paste it in the chat: it becomes part of the market map, and the page says whether the brands you look up to show up in AI answers at all.
-- **Status on everything.** Every fact, claim and test result is marked confirmed, assumption, your decision or simulation, and the page's first screen says what the recommendation stands on and what is not known yet.
+- **Status on everything.** Every fact, claim and test result is marked confirmed, assumption, your decision or simulation, and the page's first screen says what the recommendation stands on and what is not known yet. If your workspace uses evidence labels ([И] [Д] [Ц] [В] [Г] [Н] [Р]), the files carry them too: an assumption names its evidence or its check, a simulation is a hypothesis with the test on real buyers that would confirm it, and every decision has its date, reason and the options rejected. The stage after the AI tests is called **simulated** (it was "tested" before 0.8.1): nothing has been seen by a real buyer yet.
 - **Tested by someone who didn't write it.** An audience panel played from your ICP's own words reacts to the directions shown blind, on your own images only; the strongest competitor's creative director says what it could wear tomorrow; an independent judge checks the result. All of these are AI simulations, and the page says so.
+
+## Who it is for
+
+| Business | Supported |
+|---|---|
+| Physical products sold to consumers (B2C): marketplaces, a store, social | Yes: the main case |
+| Physical products sold to the trade (B2B: retailers, distributors, store buyers) | Yes, at a minimum: the trade buyer and the end customer kept apart, wholesale carriers (Faire tile, line sheet cover), the panel plays the store buyer ("would I open the catalog, ask for samples") |
+| Services and software, B2B or B2C (agencies, SaaS, consulting, audits) | **Not supported.** Their main visual assets are screenshots, charts and report pages, which this plugin does not judge. The command stops and says so |
+
+It reads `business_type` from your ICP's front matter.
 
 ## Photo previews (optional)
 

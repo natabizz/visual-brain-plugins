@@ -12,7 +12,9 @@ tags: [product-visual, product]
 
 The single reference for what is true about this product. Every value names its source: a label photo, a factory spec, a measurement the owner took, an approved document. Text on a live listing is not a source.
 
-| Field | Value | Source | Status | Checked on |
+Status: confirmed, assumption, owner's decision, simulation, or not known yet, with its evidence label (framework, "Statuses and evidence labels"): `confirmed [И: label photo, 2026-05-02]`, `not known yet [Н: ask the factory for the spec sheet, this week]`.
+
+| Field | Value | Source | Status (label) | Checked on |
 |---|---|---|---|---|
 | What it is | | | | |
 | Line, and how it differs from the brand's other lines | | | | |
@@ -28,6 +30,20 @@ The single reference for what is true about this product. Every value names its 
 | Who it is for | | | | |
 | Who it is not for | | | | |
 
+## Trade (B2B)
+
+Filled when `business_type` in `wiki/brand/icp.md` is b2b or b2b2c; otherwise "not applicable". What a retail buyer checks before ordering. Unknown values stay blank with [Н] and how to get them; the line sheet shows them as "on request", never a guess.
+
+| Field | Value | Source | Status (label) | Checked on |
+|---|---|---|---|---|
+| Wholesale price (per unit, currency, tiers) | | | | |
+| MSRP | | | | |
+| MOQ (per order, per SKU) | | | | |
+| Case pack (units, carton size and weight) | | | | |
+| Lead time (in stock, made to order) | | | | |
+| GTIN or UPC, per variant | | | | |
+| Certifications and compliance documents (which, issued by, valid until) | | | | |
+
 ## Real photos
 
 | Photo | Shows | File |
@@ -40,7 +56,7 @@ The single reference for what is true about this product. Every value names its 
 
 ## Channels
 
-| Channel | Kind (marketplace, own site, search, social and ads, other) | Main? |
+| Channel | Kind (marketplace, own site, search, social and ads, wholesale, other) | Main? |
 |---|---|---|
 
 ## Channel rules
@@ -71,10 +87,12 @@ What this product follows from `wiki/brand/visual-guide.md`. Each line names its
 
 ## Owner direction
 
-| Owner line | Status (confirmed, in conflict, untested) | Evidence |
+| Owner line | Status (confirmed, in conflict, not checked yet) | Evidence |
 |---|---|---|
 
 ## Decisions
 
-| Date | Decision | By | Replaces |
-|---|---|---|---|
+Each decision is [Р]: its date, the reason, and the options rejected.
+
+| Date | Decision | By | Reason | Rejected options | Replaces |
+|---|---|---|---|---|---|

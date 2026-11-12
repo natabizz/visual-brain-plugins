@@ -5,6 +5,11 @@
   QA mode: each image gets a verdict pill (ready / needs work / redo) and its checks. Remove the blocks of the other mode.
   Plain words: no frame IDs, gate codes or tags. Every claim has its basis.
   Language: write the page, its labels and headings included, in the language the owner writes in, and set lang below to it.
+  Save the filled copy as projects/product-visual/outputs/<product>-<channel>-audit.src.html (or -qa.src.html), images as
+  src="file:<path>", and build it with scripts/embed.py --max 480: the source is kept so the page can be rebuilt.
+  Competitors: only this channel's own set in market.md (found on this channel, dated); none yet means "limited: no competitors".
+  Statuses: plain words on the page (confirmed, assumption, owner's decision, simulation, not known yet); the evidence labels stay in the .md files.
+  For a B2B product the skeptical buyer is a retail buyer: would they open the catalog, request samples, place an opening order.
 -->
 <html lang="en">
 <head>
@@ -187,7 +192,7 @@
 <header>
   <p class="eyebrow">Product Visual · [[gallery audit / image check]]</p>
   <h1>[[Product]] on [[Channel]]: [[one-line title]]</h1>
-  <p class="meta">[[Seen on date]] · [[N]] images · compared with [[N]] competing products</p>
+  <p class="meta">[[Seen on date]] · [[N]] images · compared with [[N]] competing products on [[Channel]] ([[how found, date]])</p>
   <p class="banner" role="note">[[What was seen and when; what could not be seen; which facts are missing; that the tests are AI simulations, not people.]]</p>
 </header>
 

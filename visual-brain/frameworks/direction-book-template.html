@@ -185,6 +185,17 @@ section{padding-block:clamp(48px,7vw,88px);border-bottom:1px solid var(--line)}
 .s-row div{aspect-ratio:1;overflow:hidden;border-radius:3px}
 .s-row img{width:100%;height:100%;object-fit:cover}
 .note{margin-top:14px;font-size:13px;color:var(--muted)}
+.mkt{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;color:#111;max-width:360px;margin:0 auto}
+.mkt-bar{padding:8px 10px;background:#F4F2EF;border-bottom:1px solid #dcd8d3;font:500 11px/1.2 var(--f-body);color:#555}
+.mkt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:8px}
+.mkt-t{display:grid;gap:4px;font:400 10.5px/1.25 var(--f-body);position:relative}
+.mkt-t .im{aspect-ratio:1;overflow:hidden;background:#eee;border-radius:4px}
+.mkt-t .im img{width:100%;height:100%;object-fit:cover}
+.mkt-t .ttl{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mkt-t .pr{font-weight:700}
+.mkt-t .rt{color:#777}
+.mkt-t.ours{outline:2px solid var(--red);outline-offset:2px;border-radius:4px}
+.mkt-t .shoot{aspect-ratio:1;display:grid;place-items:center;padding:8px;text-align:center;font:600 10.5px/1.2 var(--f-body);border-radius:4px}
 
 /* tests + choice */
 table{border-collapse:collapse;width:100%;font-size:14.5px}
@@ -263,9 +274,12 @@ details.others>summary:focus-visible{outline:2px solid var(--red);outline-offset
   - Status marks: facts, claims and test results carry a small label (confirmed / assumption / owner's
     decision / simulation) with the .mark class; test lines read "the simulation suggests".
   - The cover's summary is the decision: fill every row from the files.
-  - A carrier the ICP puts in place of a default one reuses the carrier-row block: the same columns,
-    the carrier's own shape (a marketplace card: image, title, price; a newsletter header: image and
-    one line), described in the note under it.
+  - Carriers come from where buyers find the brand (the guide's Carriers table, each with its source).
+    A marketplace search tile has its own block (#marketplace) and comes first when buyers find the
+    brand on a marketplace. The social grid and the site first screen are used only when the guide
+    chose them; delete the blocks it did not choose. Any other carrier reuses the carrier-row block:
+    the same columns, the carrier's own shape (a newsletter header: image and one line; a line sheet
+    cover for a B2B brand), described in the note under it.
   - Mockup text: only lines the brand already uses, or facts from its product files. Mark it temporary.
     A value still to confirm is a placeholder: <span class="ph">[{{size to confirm}}]</span>, never final copy.
   - AFTER THE CHOICE: the cover image comes from the chosen look. Copy the direction block below as
@@ -460,7 +474,36 @@ details.others>summary:focus-visible{outline:2px solid var(--red);outline-offset
   </div>
 </section>
 
-<!-- 5 CARRIERS: INSTAGRAM. Columns: as everyone (shelf), now (only the brand's own account), then each direction. -->
+<!-- 5 CARRIERS: MARKETPLACE SEARCH TILE. Use when buyers find the brand on a marketplace (the ICP's "where they find you", the brand's sales channels); then it comes first among the carriers.
+     One section per marketplace that matters, at most two. "As everyone": the first search results for the category query as a buyer sees them on a phone, with title, price and rating as seen and the date.
+     Each direction: the same row with the brand's tile in it (class "ours"), its main image in the direction, its title as the listing already uses it. A missing clean main image: a "To shoot" tile.
+     For a B2B brand, the same block shows the wholesale tile (Faire search, a retailer's buyer portal). -->
+<section id="marketplace">
+  <div class="sec-head">
+    <p class="eyebrow">5 · {{How it looks}}</p>
+    <h2>{{Marketplace search}}: {{marketplace}}</h2>
+    <p class="lead">{{Where the buyer first meets the brand: one tile among others. Query}} "{{query}}", {{date seen}}.</p>
+  </div>
+  <div class="carrier-row">
+    <!-- REPEAT per column: as everyone, now (the brand's live tile, when listed), then each direction -->
+    <div>
+      <p class="col-label">{{column name}}</p>
+      <div class="mkt">
+        <div class="mkt-bar">{{marketplace}} · {{query}}</div>
+        <div class="mkt-grid">
+          <!-- REPEAT: 4 tiles. In "as everyone": four shelf results as seen. In "now" and each direction: three shelf results and the brand's tile. -->
+          <div class="mkt-t"><div class="im"><img src="file:{{image}}" alt=""></div><span class="ttl">{{title as seen}}</span><span class="pr">{{price as seen}}</span><span class="rt">{{rating and count as seen}}</span></div>
+          <!-- the brand's tile: <div class="mkt-t ours"><div class="im"><img src="file:{{main image in the direction}}" alt=""></div><span class="ttl">{{the listing's own title}}</span><span class="pr">{{price from the product file}}</span><span class="rt">{{rating as seen}}</span></div>
+               no clean main image yet: <div class="mkt-t ours"><div class="shoot" style="background:{{#HEX}};color:{{#HEX}}">{{To shoot}}: {{what exactly}}</div>...</div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="note">{{Titles, prices and ratings of other sellers as seen on the date. The brand's tile is a sketch of the direction at the size the marketplace shows it.}}</p>
+</section>
+
+<!-- 5 CARRIERS: SOCIAL MEDIA GRID. Only when the guide chose it (the brand has an account the owner confirmed, or the ICP names the network with evidence).
+     Columns: as everyone (shelf), now (only the brand's own account), then each direction. -->
 <section id="instagram">
   <div class="sec-head">
     <p class="eyebrow">5 · {{How it looks}}</p>
@@ -487,7 +530,7 @@ details.others>summary:focus-visible{outline:2px solid var(--red);outline-offset
   <p class="note">{{Mockup text is temporary: the brand's own lines and product facts.}}</p>
 </section>
 
-<!-- 5 CARRIERS: SITE FIRST SCREEN. Columns: now (when a site exists), then each direction. -->
+<!-- 5 CARRIERS: SITE FIRST SCREEN. Only when the brand has a site or is building one. Columns: now (when a site exists), then each direction. -->
 <section id="site">
   <div class="sec-head">
     <p class="eyebrow">5 · {{How it looks}}</p>
