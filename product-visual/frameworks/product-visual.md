@@ -31,34 +31,36 @@ It is not only for online stores. The product may live on a marketplace, on the 
 
 | Path | Holds | In git? |
 |---|---|---|
-| `projects/product-visual/<product>/product.md` | Facts (each with a source), inputs, the owner's direction, decisions | yes |
+| `projects/product-visual/<product>/product.md` | Facts (each with a source), the Trade block for a B2B product, inputs, the owner's direction, decisions | yes |
 | `.../audience.md` | Who this product is for and what they need, ranked | yes |
-| `.../market.md` | Competing products: what they say and what they show | yes |
+| `.../market.md` | Competing products, one set per channel with its date and how it was found: what they say and what they show | yes |
 | `.../positioning.md` | The product's positioning, UVP options, messages, allowed and not allowed claims | yes |
 | `.../direction.md` | Visual direction options for the product, tests, the chosen one | yes |
 | `.../gallery-<channel>.md` and `briefs/<channel>/` | The gallery plan and one brief per frame | yes |
 | `.../audit-<channel>.md`, `qa-<channel>.md`, `ai-read-<channel>.md`, `results-<channel>.md`, `release-<channel>.md` | Checks and results | yes |
 | `.../issues.md` | Every finding, never deleted | yes |
-| `projects/product-visual/outputs/*.src.html` | The pages' sources, with image paths | yes |
+| `projects/product-visual/outputs/*.src.html` | The pages' sources (the product page, audit and QA pages), with image paths | yes |
 | `projects/product-visual/outputs/*.html` | The built pages, with the images inside them | no, local only |
 | `raw/visuals/products/<product>/` | `photos/` (real photos), `drafts/<channel>/`, `finished/<channel>/` | no, local only |
 | `raw/visuals/screens/<brand>/<date>/` and `raw/visuals/boards/` | Other brands' images, boards for tests | no, local only |
 
-The product's slug is lowercase with hyphens: `ceramic-mug`. The channel is where the product's images are seen: `amazon`, `etsy`, `walmart`, `site`, `google`, `instagram`, `ads`, or a short name for what the owner names (`catalog`).
+The product's slug is lowercase with hyphens: `ceramic-mug`. The channel is where the product's images are seen: `amazon`, `etsy`, `walmart`, `site`, `google`, `instagram`, `ads`, `wholesale` (Faire, a line sheet, a catalog page, a trade show), or a short name for what the owner names (`insert`).
 
-Every image looked at gets a row in `projects/visual-brain/landscape/frames.md` (created by setup if Visual Brain is not installed): `OWN-<channel>-<product>-<nn>`, `CMP-<brand>-<channel>-<product>-<nn>`, `REF-<brand>-<source>-<subject>-<nn>`.
+Every image looked at gets a row in `projects/visual-brain/landscape/frames.md` (created by setup if Visual Brain is not installed): `OWN-<channel>-<product>-<nn>`, `CMP-<brand>-<channel>-<product>-<nn>`, `REF-<brand>-<source>-<subject>-<nn>`. The index is shared with Visual Brain: its first seven columns are Visual Brain's (frame ID, brand, group, source URL, seen on, what it shows, file), and five more carry what a photo folder needs ("Photo folders" below): variant, who is in it, clean or text, provenance, original file name. A file with only the first seven gets the five added at the end of the header; older rows keep them blank, and a competitor's or reference image fills them only where they apply.
 
 ## Inputs
 
 | Input | Required? | Where it comes from |
 |---|---|---|
 | The buyer and the brand's position | yes | `wiki/brand/icp.md`, `wiki/brand/positioning-messaging.md` |
-| The brand's look and the chosen direction | no, but strongly recommended | `wiki/brand/visual-guide.md` from Visual Brain (`stage: chosen` after `/visual-brain:choose`); without it, everything that depends on it is marked "(limited: no brand look)" |
-| Where the product lives | yes | the owner, asked once if the workspace doesn't say: a marketplace (which), the brand's own site, search, social or ads, or something else |
+| The business type | yes, read, never asked when the file says it | `business_type` in the front matter of `wiki/brand/icp.md` (Business type) |
+| The brand's look and the chosen direction | no, but strongly recommended | `wiki/brand/visual-guide.md` from Visual Brain (`stage: chosen` after `/visual-brain:choose`; a guide at `stage: tested`, Visual Brain's name for `simulated` before 0.8.1, is read as `simulated`: not chosen yet); without it, everything that depends on it is marked "(limited: no brand look)" |
+| Where the product lives | yes | the owner, asked once if the workspace doesn't say: a marketplace (which), the brand's own site, search, social or ads, wholesale, or something else |
 | Product facts: what it is, material as on the label, origin, measurements, sizes and how to choose, variants, price, care (only those that apply; the rest "not applicable") | yes, the essentials that apply | product files in the workspace, label photos, specs, the owner in the chat |
+| Trade terms (B2B): wholesale price, MSRP, MOQ, case pack, lead time, GTIN or UPC, certifications and compliance documents | yes when the business type is b2b or b2b2c; unknown ones are [Н] | the brand's price lists, line sheets, Faire listing, factory documents, the owner |
 | The brand's other lines of the same kind (a second line of the same product, an earlier model still on sale) | yes when the brand has one: their facts, galleries and prices | product files, the hub, the brand's live store; asked once if the workspace doesn't say |
 | Real photos of the product | no for `new` (the gallery then plans a shoot); yes for `audit` and `qa` | a folder the owner names (read in place); attached in the chat; `raw/visuals/products/<product>/photos/` |
-| A moodboard or ideas | no | attached in the chat; treated as direction, tested like everything else |
+| A moodboard or ideas | no | attached in the chat; treated as direction, checked like everything else |
 | Reviews and questions | no | `raw/voc/`; the product's own pages; competitor products' reviews |
 
 **Find first, ask last.** Gather from the workspace and the web first; ask once, in one message, for what only the owner can give. Optional inputs never block: continue and mark what depends on them "(limited: no X)".
@@ -69,7 +71,19 @@ Every image looked at gets a row in `projects/visual-brain/landscape/frames.md` 
 
 **People in research.** Images of private people (review photos, forum and social posts) are described in words with a link, never saved or shown. Quotes keep no names, emails or order numbers, and are cited on the pages by platform, product and date.
 
-**Facts have sources and a status.** A label photo, a factory spec, a measurement the owner took, an approved document. Text on a live listing is not a source: it is one of the things being checked. A fact without a source stays blank with a question. Every fact, claim and test result carries one of four statuses, in the files and on the page: **confirmed** (a source that would stand up to a buyer's question: a label, a document, a dated measurement, a dated page), **assumption** (reasoned from the facts, not yet checked), **owner's decision** (a rule the owner set), **simulation** (an AI panel, rival or skeptic result: a hypothesis to check with real people). Nothing marked assumption or simulation goes on an image or into a message as a fact.
+**Facts have sources and a status.** A label photo, a factory spec, a measurement the owner took, an approved document. Text on a live listing is not a source: it is one of the things being checked. A fact without a source stays blank with a question. Every fact, claim and test result carries one of four statuses: **confirmed** (a source that would stand up to a buyer's question: a label, a document, a dated measurement, a dated page), **assumption** (reasoned from the facts, not yet checked), **owner's decision** (a rule the owner set), **simulation** (an AI panel, rival or skeptic result: a hypothesis to check with real people). Nothing marked assumption or simulation goes on an image or into a message as a fact.
+
+**Statuses and evidence labels.** The `.md` files carry the evidence label of the owner's research contract next to each status; the page may show the plain-word status only.
+
+| Status | Label in the `.md` files | What it must carry |
+|---|---|---|
+| confirmed | [И] a source (page, document, label), [Д] the brand's own data (a measurement, a count, an export), [Ц] a buyer's verbatim words | the source and its date; for [Д], what was measured, n and where from |
+| assumption | [В] when it cites the [И], [Д] or [Ц] it comes from; otherwise [Г] | [В]: the IDs it is drawn from; [Г]: a check plan (how, when) |
+| owner's decision | [Р] | the date, the reason, and the options rejected |
+| simulation | [Г] | a check plan that is a test with real buyers (a human panel, a click test, dated sales) |
+| not known yet | [Н] | a required field with nothing to fill it: how and when to collect it |
+
+A [В] that names no evidence is a [Г]. A [Г] without a check plan is not written. Every Decisions table has columns for the reason and the rejected options.
 
 **Channel rules** (image count, sizes, what the main image may show) come from the channel's own current help page, saved with its URL and date, or from the owner (a screenshot when the page is behind a sign-in). Never from memory. A third-party guide may point to a rule but is tagged "(third-party: <site>, <date>)" and never decides a blocking rule alone.
 
@@ -84,6 +98,15 @@ Every image looked at gets a row in `projects/visual-brain/landscape/frames.md` 
 
 If the guide is in `format: visual-brain-2` but has no chosen direction yet, say so once: `/visual-brain:choose` first, or "go" to work on the recommended direction, tagged (inferred) everywhere it is used.
 
+## Business type: who buys
+
+Read `business_type` from the front matter of `wiki/brand/icp.md`. Values seen: `b2c`, `b2b`, `b2b2c`, or free text. Missing or empty: work as `b2c` and say so in the summary.
+- **b2c:** a physical product bought by consumers. Everything in this framework as written.
+- **b2b:** a physical product bought by the trade (retailers, distributors, buyers for stores). `product.md` fills its Trade block; the Wholesale channel is offered as the main channel; the audience panel and the skeptical buyer play a retail buyer (Tests).
+- **b2b2c:** both. The Trade block and the Wholesale channel serve the retail buyer, the consumer channels serve the shopper; the agents play the retail buyer on the Wholesale channel and the shopper on the others.
+- **Free text:** read it the same way (physical goods sold to stores count as b2b, to consumers as b2c, to both as b2b2c); when it can't be read, ask once.
+- **Services and software are not supported.** Product Visual is for physical products. When `business_type` or the product says service, software, SaaS or an app, the command stops with this sentence: "Product Visual is for physical products: services and software are not supported."
+
 ## Channels: where the product lives
 
 | Kind | Examples | What the storyboard plans | Carrier on the page |
@@ -92,9 +115,22 @@ If the guide is in `format: visual-brain-2` but has no chosen direction yet, say
 | Own site | The brand's product page | The product page gallery and the first screen of the page | The product page's first screen (image, name, price, button) and the gallery strip |
 | Search | Google Shopping, image results | The image that shows in the results, and the page it opens | The result card among three competitors for the buyer's search |
 | Social and ads | An Instagram carousel, an ad set | A carousel or a set of ads, first frame first | A phone with the carousel's frames in order |
-| Other | A catalog, a retailer deck, a line sheet, a printed insert | As the owner describes it | As described, only when asked |
+| Wholesale (B2B) | A Faire listing, a line sheet, a catalog page, a trade show | The line sheet frame set (below); on Faire, its listing gallery under Faire's dated rules | The line sheet page; on Faire, the product's card in a Faire search next to three competing wholesale cards |
+| Other | A retailer deck, a printed insert, a place the owner names | As the owner describes it | As described, only when asked |
 
 The storyboard's logic is the same for every kind: needs first, frames in the buyer's order, one job per frame. What the channel changes: the count, its dated rules, the first frame's job (stop the scroll in a feed; win the click in a search; say what it is at a glance on a shelf), and the carrier on the page. A brand that sells through retailers only, or has no store yet, picks the place its buyers will meet the product first; the storyboard is the product's set of images for that place.
+
+**Competitors per channel.** Each channel has its own competitor set in `market.md`, collected on that channel and dated, with how it was found: on a marketplace or Faire, the channel's own search for the category as a buyer would type it (the query, the date, the order as shown), the first results of the same product type, plus shelf brands from `landscape.md` that sell there; on the own site, the competing brands' own product pages; in search, the results for the buyer's query; in social and ads, the competitors' own posts and ads (their accounts, the platform's ad library); for a line sheet or a trade show, competing brands' line sheets or Faire shops. A gallery, an audit, a shelf, a rival test or a carrier for channel X compares only against X's set, never another channel's (an Etsy gallery is not judged against Amazon listings). When X has no set yet, it is collected first; when it can't be collected (the search refuses automated viewing and no screenshots came), every comparison that needed it says "(limited: no competitors for X)".
+
+### Wholesale: the line sheet
+
+The retail buyer's path is different from a shopper's: notice the line, understand the range, check margin and terms, trust the supplier, order. The line sheet frame set follows it, one frame each, in this order:
+1. **Hero:** the product clean, as the buyer sees it first, in the brand's look.
+2. **All variants grid:** every color and size at once, each with its SKU and name, from real photos.
+3. **Specs and pack table:** measurements, material, care, case pack, GTIN or UPC, certifications.
+4. **Price and MOQ band:** wholesale price, MSRP, MOQ, lead time, and how to order.
+
+Every number on these frames comes from the Trade block with status confirmed; a value at [Н] shows "on request", never a guess. On Faire, the listing gallery follows Faire's own dated image rules, and the line sheet frames follow its first image where the count allows. A trade show (a booth panel, a sample card) is planned as the owner describes it, from the same four frames. The five questions weigh clear and believable first; on this channel, believable includes the terms a buyer needs to order being in sight.
 
 ## The brand's own lines: neighbors on the shelf
 
@@ -169,7 +205,7 @@ The storyboard is the gallery planned frame by frame, before anything is shot or
 | Proof | What makes the frame true, and its source (a measurement, a label, a document, a review) |
 | Image | The nearest image in hand: a real photo, a reference marked as one, or "To shoot: what exactly" |
 | Route | Shoot, retouch, background only, layout |
-| Copyable | Whether the strongest competitor could make the same frame tomorrow, from the rival tests ("not tested" for frames the rival didn't see); the first frame carries at least one thing it can't |
+| Copyable | Whether the strongest competitor on this channel could make the same frame tomorrow, from the rival tests ("not seen by the rival" for frames the rival didn't see); the first frame carries at least one thing it can't |
 | New or carried | "New": no competing gallery and none of the brand's own galleries shows it. "Carried, changed": a format the brand already uses, and what changed in it. "Carried": the same format as before, with the reason it stays |
 | Status | Readiness: **concept** (the idea; a fact or a photo it rests on is not confirmed), **needs confirmation** (what exactly: a photo's provenance, a channel rule, a fact, a measurement), **ready to shoot** (the brief is complete and every fact on it confirmed), **ready for production** (the image exists and passed QA). Its dependencies named |
 
@@ -203,30 +239,34 @@ Each test is run by an agent that did not write the work. AI simulations are lab
 | AI reading | `product-visual:fresh-eyes`, `product-visual:ai-shopper` | audit, qa, ai-read | Mode A: what AI reads from the images, then images and text, scored against the facts. Mode B: the open web. Never mixed. |
 | Judge | `product-visual:gate-judge` | new, gallery, audit, qa | Gate PV on the output files alone |
 
+**A retail buyer for B2B.** When the business type is `b2b`, or on the Wholesale channel for `b2b2c` (Business type), the command tells the audience panel and the skeptical buyer to play a retail buyer for a store, from the audience file's words. The panel's two ranks become "would open the catalog" (the pull of the pictures) and "would request samples or place an opening order" (answers what a buyer worries about when taking on a line: sell-through, a clear range, price, MOQ and lead time in sight). The skeptic gives three reasons not to open the catalog, request samples or place an opening order. The blind shelf and the AI reading stay as they are.
+
 ## Gate PV
 
-| Check | Question | Type |
-|---|---|---|
-| PV.1 Needs-grounded | Does every UVP option, story and frame cite a ranked need with its source? | Blocking |
-| PV.2 True to the facts | Does every message and visible claim check against a sourced fact? Is anything without proof kept off the images? | Blocking |
-| PV.3 Located | Do positioning and direction say how they differ from named competing products, with images? (In an audit without positioning or direction: does the audit say how the gallery differs from the competing galleries?) | Blocking |
-| PV.4 On brand | Does the direction follow `visual-guide.md`, and say why where it departs? | Blocking, or flag when there is no brand look |
-| PV.5 Not a rival's | Did the rival test run on the direction and the hero frame, with the result recorded? | Blocking |
-| PV.6 Honest count | Does every frame serve a need, within the channel's dated limit taken from the channel's own page or the owner? | Blocking |
-| PV.7 Product fidelity | Do the images (audit, qa) show the real product: variant, color, construction, scale? | Blocking |
-| PV.8 Observations, not orders | Are judgments observations or options with their basis, and discrepancies stated with both sources? | Blocking |
-| PV.9 Read correctly | Is the main image read correctly on the blind shelf, and do AI readers get the facts a buyer needs to choose? (audit: observation; qa: blocking) | Blocking at qa |
-| PV.10 Own work judged equally | Is the brand's own material held to the same standard as competitors'? | Flag |
-| PV.11 Standalone briefs | Could a designer start from each brief alone? | Flag |
-| PV.12 Readable | Short version first, no internal codes, sources at the end, overlay text legible at mobile size? | Flag |
-| PV.13 Chosen look | Do the frames follow the chosen direction: its look, its cast, its caption rule and the proof frames handed over, or say why one departs? | Blocking when a direction is chosen, else flag |
-| PV.14 Clean carriers | Do the mockups hold only the product's own clean photos, with "To shoot" tiles where photos are missing, and never another brand's images in the brand's own columns? Is every line on them the brand's own or a sourced fact? | Blocking |
-| PV.15 Views covered | Is every view the ranked needs ask for covered by a frame, or moved to the listing text with the reason? | Blocking |
-| PV.16 Lines told apart | When the brand has more than one line of this kind: does positioning say for whom each is, and does the storyboard carry the frame that tells them apart? | Blocking when there is more than one line |
-| PV.17 Not a repeat | Does the storyboard name at least three frames no competing gallery and none of the brand's own galleries shows (or every frame, when the set has fewer than four), and does every carried format say what changed, or the reason it stays unchanged? | Blocking |
-| PV.18 Status stated | Does every frame carry a readiness status with what it depends on, and every fact, claim and test result one of the four statuses? | Blocking |
-| PV.19 Signature carried | Does the signature device appear on every frame with the cast where the channel allows text, or does the file say why not with the rule's source? | Flag |
-| PV.20 Panel clean | Did the panel see only the brand's own images and "To shoot" tiles on its blind boards, and was any test artifact followed by a rerun? | Blocking |
+| Check | Question | Type | Runs in |
+|---|---|---|---|
+| PV.1 Needs-grounded | Does every UVP option, story and frame cite a ranked need with its source? | Blocking | new, gallery, audit |
+| PV.2 True to the facts | Does every message and visible claim check against a sourced fact? Is anything without proof kept off the images? | Blocking | new, gallery, audit, qa |
+| PV.3 Located | Do positioning and direction say how they differ from named competing products of the channel's own set, with images? (In an audit without positioning or direction: does the audit say how the gallery differs from the competing galleries?) | Blocking | new, gallery, audit |
+| PV.4 On brand | Does the direction follow `visual-guide.md`, and say why where it departs? | Blocking, or flag when there is no brand look | new, gallery |
+| PV.5 Not a rival's | Did the rival test run on the direction and the hero frame, with the result recorded? | Blocking | new, gallery, qa |
+| PV.6 Honest count | Does every frame serve a need, within the channel's dated limit taken from the channel's own page or the owner? | Blocking | new, gallery |
+| PV.7 Product fidelity | Do the images (audit, qa) show the real product: variant, color, construction, scale? | Blocking | audit, qa |
+| PV.8 Observations, not orders | Are judgments observations or options with their basis, and discrepancies stated with both sources? | Blocking | new, gallery, audit (QA states verdicts plainly) |
+| PV.9 Read correctly | Is the main image read correctly on the blind shelf, and do AI readers get the facts a buyer needs to choose? (audit: observation; qa: blocking) | Blocking at qa | audit (observation), qa |
+| PV.10 Own work judged equally | Is the brand's own material held to the same standard as competitors'? | Flag | new, gallery, audit, qa |
+| PV.11 Standalone briefs | Could a designer start from each brief alone? | Flag | new, gallery |
+| PV.12 Readable | Short version first, no internal codes, sources at the end, overlay text legible at mobile size? | Flag | new, gallery, audit, qa |
+| PV.13 Chosen look | Do the frames follow the chosen direction: its look, its cast, its caption rule and the proof frames handed over, or say why one departs? | Blocking when a direction is chosen, else flag | new, gallery, qa |
+| PV.14 Clean carriers | Do the mockups hold only the product's own clean photos, with "To shoot" tiles where photos are missing, and never another brand's images in the brand's own columns? Is every line on them the brand's own or a sourced fact? | Blocking | the page source only (`.src.html`), once it exists: new, gallery, qa |
+| PV.15 Views covered | Is every view the ranked needs ask for covered by a frame, or moved to the listing text with the reason? | Blocking | new, gallery |
+| PV.16 Lines told apart | When the brand has more than one line of this kind: does positioning say for whom each is, and does the storyboard carry the frame that tells them apart? | Blocking when there is more than one line | new, gallery |
+| PV.17 Not a repeat | Does the storyboard name at least three frames no competing gallery and none of the brand's own galleries shows (or every frame, when the set has fewer than four), and does every carried format say what changed, or the reason it stays unchanged? | Blocking | new, gallery |
+| PV.18 Status stated | Does every frame carry a readiness status with what it depends on, and every fact, claim and test result one of the four statuses with its evidence label and what the label must carry (a [В] with its evidence, a [Г] with its check plan, a [Р] with date, reason and rejected options, an [Н] with how to collect it)? | Blocking | new, gallery, qa |
+| PV.19 Signature carried | Does the signature device appear on every frame with the cast where the channel allows text, or does the file say why not with the rule's source? | Flag | new, gallery, qa |
+| PV.20 Panel clean | Did the panel see only the brand's own images and "To shoot" tiles on its blind boards, and was any test artifact followed by a rerun? | Blocking | new, where the panel ran |
+
+**Where each check runs.** "Runs in" lists the commands that give the judge each check; a check outside its command is not applicable, never a fail. Checks on the files run on the `.md` files and the test results. PV.14 is the only check on the page: it runs on the page's `.src.html` once that source exists, never on the built page (it holds image data) and never on the `.md` files.
 
 ## Writing the pages
 
@@ -234,12 +274,12 @@ Each test is run by an agent that did not write the work. AI simulations are lab
 - **Language.** Pages are written in the language the owner writes in; the `.md` files stay in the language of the brand's customer copy. Customer quotes stay verbatim, with a short translation under them when the page language differs. Text inside mockups stays in the customer's language. `/product-visual:page <product> <lang>` builds the product page in another language (for example English for colleagues) from the same files.
 - **The first screen is the decision.** Under the title: the recommended positioning and direction, one line each with their basis; what the buyer must understand or feel, from the top needs; the evidence it stands on (how many facts confirmed, which proof frames rest on confirmed facts); what is not known yet and which frames it holds back; the three next actions. Then the rest.
 - **Order of the product page:** cover (the decision), who it is for, competitors and the brand's other lines, positioning, the direction options, carriers, the storyboard, tests and choice, what to do next, sources.
-- **Statuses are visible.** Each frame card shows its readiness status; each fact and test result its status mark (confirmed, assumption, owner's decision, simulation), in a small label, in the page language.
+- **Statuses are visible.** Each frame card shows its readiness status; each fact and test result its status mark (confirmed, assumption, owner's decision, simulation, or not known yet), in a small label, in the page language. The evidence labels stay in the `.md` files.
 - **Carriers.** The product page shows the product where the buyer meets it on the main channel, by its kind (Channels): a marketplace search card next to three competitors and the gallery, titled "<channel> search, <date>" when the cards come from that search and "a comparison with chosen competitors (titles and prices from their own pages, <date>)" when the real search could not be seen; the own site's product page first screen and gallery strip; a search result among three competitors; a social carousel in a phone. Columns: as everyone, now (when live) and each option. Mockup text is only the product's real title, price and facts, or a line the brand already uses, marked temporary. Never an invented claim, rating or review count.
 - **Clean carriers.** The brand's own columns take the product's own images only, never another brand's. The first image (search card, site hero, carousel cover) is a clean photo without badges or text over the product; the rest of a gallery mockup shows the planned frames as planned (a size card is a size card). Where a photo is missing, a color tile from the direction's palette says "To shoot:" and what exactly, in the page language. Competitors appear only in the "as everyone" column and as competitor cards.
 - **The storyboard on the page:** one card per frame in order, with the image in hand (or the "To shoot" tile), and the fields Job, Need with its quote, In frame and View, Who, Text, Look, Proof, Route, and a "copyable" mark when the rival could make it. The views check sits under the cards as a short table: view, the frame that covers it, or "in the listing text" with the reason.
 - **What to do next:** now, next, later with each action's basis, then the shot list grouped by setup.
-- **Images** go in as `src="file:<path>"` in a `.src.html` source; `scripts/embed.py` builds the page and stores each image once (the audit and QA pages use `scripts/fill.py`). A build that reports a missing image (it exits with code 2 and names the file) is fixed before the page is shown: a gray tile is never a frame. Image data is never pasted or printed in the chat. Options are shown as their separate images, not as composite boards.
+- **Images** go in as `src="file:<path>"` in a `.src.html` source; `scripts/embed.py` builds the page and stores each image once. Every page has its source, the audit and QA pages too (`<product>-<channel>-audit.src.html`, `<product>-<channel>-qa.src.html`, built with `--max 480`), so `/product-visual:page` can rebuild any of them. A build that reports a missing image (it exits with code 2 and names the file) is fixed before the page is shown: a gray tile is never a frame. Image data is never pasted or printed in the chat. Options are shown as their separate images, not as composite boards.
 - **Plain words.** No frame IDs, gate codes or tags on the pages; the `.md` files keep them. Images get plain captions.
 - **Observations and options, not orders.** "What it does for the buyer", "what it misses", "worth considering", "options". Discrepancies (facts that contradict each other) are stated as facts, with both sources. The owner decides. QA is the exception: there the images are checked against briefs the owner approved, so each image is "ready", "needs work" (what exactly) or "redo" (why).
 - **Basis next to every claim,** in a small gray line.
@@ -259,13 +299,15 @@ Each test is run by an agent that did not write the work. AI simulations are lab
 
 ## Stage
 
-| Stage | Means |
-|---|---|
-| **hypothesis** | Essential facts missing, or the tests not run |
-| **planned** | Tests run, no blocking fail; positioning and direction not chosen yet |
-| **chosen** | The owner chose positioning and direction; dated in Decisions |
-| **checked** | QA passed on the finished images (`/product-visual:qa` sets it) |
-| **validated** | Dated results support it (`review`) |
+| Stage | Means | Readiness status (research workflow) |
+|---|---|---|
+| **hypothesis** | Essential facts missing, or the tests not run | Research candidate, incomplete: what is missing is named |
+| **planned** | The AI simulations ran (panel, rival, skeptic, judge), no blocking fail; positioning and direction not chosen yet | Research candidate: nothing here has been seen by a real buyer |
+| **chosen** | The owner chose positioning and direction; dated in Decisions as [Р] | Working strategy for a pilot: one shoot, one gallery on one channel, reversible |
+| **checked** | QA passed on the finished images (`/product-visual:qa` sets it) | Still a working strategy for a pilot: QA checks the images against the facts and briefs, not against buyers |
+| **validated** | Dated results support it (`review`) | Tested in market, with the caveat that a before and after never proves the images caused it |
+
+No stage here is "tested on buyers": that status needs a human panel or a buyer test with its protocol, and is what a simulation's [Г] check plan points to. Visual Brain's stage `tested` (before 0.8.1) is its `simulated`, and is read as that.
 
 ## Limits
 

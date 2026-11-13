@@ -54,6 +54,18 @@ It works at brand level only. A brand without a single product photo can use it.
 
 **Facts have a status.** Every fact, claim and test result carries one of four statuses, in the files and on the page: **confirmed** (a source that would stand up to a buyer's question), **assumption** (reasoned, not yet checked), **owner's decision** (a rule the owner set), **simulation** (an AI panel, rival or recognition result: a hypothesis to check with real people). Nothing marked assumption or simulation goes on a mockup as a fact.
 
+**Statuses and the evidence labels.** When the workspace uses the evidence labels of a research contract (a `frameworks/research-workflow.md` or a file that defines [И] [Д] [Ц] [В] [Г] [Н] [Р]), the `.md` files carry the label next to the status, and the page keeps the plain-word status:
+
+| Status | Label in the `.md` files | What it must carry |
+|---|---|---|
+| confirmed | [И] a page or document, [Д] the brand's own data, [Ц] a buyer's verbatim words | the source and the date seen; for [Д], what was counted and n |
+| assumption | [В] when it is reasoned from named evidence; otherwise [Г] | [В] cites the evidence it comes from; [Г] carries how and when it will be checked |
+| owner's decision | [Р] | the date, the reason, and the options rejected |
+| simulation | [Г] | the check with real people that would confirm it (the human panel, a click test, a sales result) |
+| not known | [Н] | a field that should be filled and can't be, with how to collect it |
+
+Without such a file the four statuses alone are enough. A line with [В] that names no evidence becomes [Г]. The short version of the guide opens with a confidence summary: how many lines carry each label, and which decisions stand on [Г].
+
 **Find first, ask last.** The command gathers everything it can from the workspace and the web before it asks. It asks once, in one short message, for what only the owner can give, and never blocks on an optional input: it goes on and marks what is missing "(limited: no X)".
 
 **Files from the owner** come as chat attachments or pasted links, never "put it in a folder". If the session gives a file path, copy the file into `raw/visuals/` (the brand's own images to `own/`, product photos to `products/<product>/photos/`, screenshots to `screens/<source>/<date>/`, references and moodboards to `direction/`), convert HEIC to JPEG on the way (`sips -s format jpeg`), and add a row to `frames.md`. If it gives no path, look at it, add it to `frames.md` as "chat attachment, <date>", ask once to drag the file from Finder into the chat, and say which checks can't run on it until then.
@@ -112,7 +124,7 @@ Then: **who it speaks to** (which part of the audience, with evidence) and **pri
 
 ## The map
 
-Two axes chosen from what the brands actually differ on, never from a stock template. Each axis is named by its two ends in plain words ("playful and loud" to "calm and refined"; "for everyone" to "made for one type"). Every brand is placed with a one-line reason. The map's job is to show **empty space**: a position the audience would value that no shelf brand holds. If there is no empty space, say so, and say where the least crowded position is.
+Two axes chosen from what the brands actually differ on, never from a stock template. Each axis is named by its two ends in plain words ("playful and loud" to "calm and refined"; "for everyone" to "made for one type"). Every brand is placed with a one-line reason. The map's job is to show **empty space**: a position no brand looked at holds. That it is empty is an observation about the sample; that the audience would value it is a hypothesis until demand is shown (buyers' words asking for it, search or sales data): the guide labels it [Г] with how it will be checked, and never calls it an opportunity on the strength of the map alone. If there is no empty space, say so, and say where the least crowded position is.
 
 ## Where the brand is now
 
@@ -155,12 +167,18 @@ A brand with one variant gets one row and its check. A brand with no photos at a
 
 ## Carriers: the same thing, three ways
 
-The page shows each direction where the buyer will meet it, next to how the category looks, so the difference is seen, not explained. The carriers come from where the audience looks (`icp.md`, "where they spend time", and the brand's live channels): the social media grid and the site first screen are the default pair, and either is replaced by the carrier the audience actually meets (a marketplace card, a newsletter, a retailer's page) when the ICP says the default one is not where they look; the page says which carriers were chosen and why.
+The page shows each direction where the buyer will meet it, next to how the category looks, so the difference is seen, not explained. The carriers come from where the buyer meets the brand, in this order:
+1. **Where they find you:** the channels in `icp.md` ("where they find you", the channels in the data) and the brand's live sales channels. A marketplace the buyers find the brand in (Chewy, Etsy, Amazon, Walmart, Faire) puts its **search tile** first: on a marketplace the buyer meets the brand as one small tile among others, before any page or post.
+2. **Where they spend time,** when the ICP fills it with evidence.
+3. **The defaults,** the social media grid and the site first screen, only where they are real: the grid when the brand has an account the owner confirmed or the ICP names the network with evidence; the site when the brand has one or is building one.
+
+A blank ICP field is never filled with a default: a network the data does not name is not a carrier. The page says which carriers were chosen, the source of each, and which defaults were left out and why.
 
 | Carrier | Columns | Built from |
 |---|---|---|
 | Social media grid, 3 by 3 (the brand's main network; an Instagram-style grid unless the owner names another) | As everyone (shelf images), now (only the brand's own account), each direction | Nine images per column; at most one text tile |
 | Site first screen | Now (a screenshot of the live home page, when there is a site), each direction | Logo, a hero image, a band with one line and a button under the image, a row of four images |
+| Marketplace search tile (one per marketplace that matters, at most two) | As everyone (the first search results for the category query, as a buyer sees them, dated), each direction (the brand's tile placed in the same row) | Main image, title as the listing uses it, price and rating as seen; the tile is judged at the size the marketplace shows it, on a phone |
 | Another carrier (a marketplace card, a newsletter header, an insert in the parcel) | As above | When the owner names it, or when the ICP puts it in place of a default one; shown with the carrier-row block in the carrier's own shape, described in the note under it |
 
 Rules for mockups:
@@ -206,7 +224,7 @@ Every test is run by an agent that did not write the work, and every result says
 
 | Test | Agent | Question | Fails when |
 |---|---|---|---|
-| Audience panel | `visual-brain:audience-panel` | Shown the direction boards blind (numbered, no names, logos masked), as the ICP buyer: two ranks, kept apart: what stops you, and what answers your worry; what feels off, and why. Blind boards hold only the brand's own images and "To shoot" tiles: a reference or a shelf brand's image is never on a blind board, because the panel would read it as the brand's; references are shown apart, labeled "another brand's image, for the idea". A "To shoot" tile on a board is a color tile from the direction's palette with the frame described in a few words (`board.py` makes one from `ID=#HEX` with the words after the ID). When the brand has fewer than three own clean images in all, the panel is shown the references apart, labeled, and its ranks are recorded as "made on references, not on the brand's images" and shown that way on the page. A test artifact (the panel reads a reference as the brand's, a mask slipped) means the test runs again on corrected boards, and both runs are recorded | The recommended direction is not first on "stops me", and the page does not say why it is still recommended; or the boards held another brand's image |
+| Audience panel | `visual-brain:audience-panel` | Shown the direction boards blind (numbered, no names, logos masked), as the ICP buyer (for a B2B brand, the trade buyer: "B2B: the trade buyer"): two ranks, kept apart: what stops you, and what answers your worry; what feels off, and why. Blind boards hold only the brand's own images and "To shoot" tiles: a reference or a shelf brand's image is never on a blind board, because the panel would read it as the brand's; references are shown apart, labeled "another brand's image, for the idea". A "To shoot" tile on a board is a color tile from the direction's palette with the frame described in a few words (`board.py` makes one from `ID=#HEX` with the words after the ID). When the brand has fewer than three own clean images in all, the panel is shown the references apart, labeled, and its ranks are recorded as "made on references, not on the brand's images" and shown that way on the page. A test artifact (the panel reads a reference as the brand's, a mask slipped) means the test runs again on corrected boards, and both runs are recorded | The recommended direction is not first on "stops me", and the page does not say why it is still recommended; or the boards held another brand's image |
 | Rival test | `visual-brain:rival-director` | As the strongest shelf brand: could you adopt this direction tomorrow and keep it true? | A recommended direction or signature a rival could wear unchanged |
 | Recognition | `visual-brain:fresh-eyes` | Only when the brand has images: 9 to 12 images from three brands, shuffled and masked: group them by brand | The brand's own images are not grouped together (the look is not consistent) |
 | Judge | `visual-brain:gate-judge` | Runs the gate below on the output files alone | Any blocking check fails |
@@ -225,7 +243,7 @@ Offer the human version of the audience panel once: five people from the audienc
 | VB.6 Observations, not orders | Are judgments written as observations or options with their basis, and facts (discrepancies) with both sources? | Blocking |
 | VB.7 Own work judged equally | Is the brand's own material held to the same standard as competitors'? | Flag |
 | VB.8 Readable | Does the page open with a short version, carry no internal codes, and end with sources? (a check on the page) | Flag |
-| VB.9 Shown on carriers | Is every direction shown on the brand's main carriers (the social media grid and the site first screen, or the ones the ICP put in their place, with the reason on the page), next to "as everyone" (and "now" when it exists)? (a check on the page) | Blocking |
+| VB.9 Shown on carriers | Is every direction shown on the carriers chosen in the guide (a marketplace search tile first when buyers find the brand on a marketplace; a grid or a site only where they are real), next to "as everyone" (and "now" when it exists), with the reason for each on the page? (a check on the page) | Blocking |
 | VB.10 No invented copy | Is every line on a mockup the brand's own line or a fact from its files, marked temporary? | Blocking |
 | VB.11 Identity left alone | Does the guide leave the logo, typeface and palette design alone, and show the brand's own assets used differently? | Flag |
 | VB.12 Clean carriers | In the brand's own columns ("now" and each direction; "as everyone" is the shelf by design), do grids and site mockups hold only clean frames of the brand, with "To shoot" tiles where frames are missing, and no other brand's images? (a check on the page) | Blocking |
@@ -233,8 +251,9 @@ Offer the human version of the audience panel once: five people from the audienc
 | VB.14 Whole range | When the brand has several variants: does the recommended or chosen direction have a pair, a tile-size check and an example for every variant, and does the grid show at least three variants (or every variant, when the brand has fewer)? (a check on the page) | Blocking |
 | VB.15 In hand first | Does every "To shoot" tile and shoot-list frame say why no indexed own photo fits, and does the cast in it follow the cast rule? | Blocking |
 | VB.16 Panel clean | Did the panel see only the brand's own images and "To shoot" tiles on its blind boards, and was any test artifact followed by a rerun? | Blocking |
-| VB.17 Status stated | Do the market table, the discrepancies, the test results and the short version of the guide carry their statuses (confirmed, assumption, owner's decision, simulation)? | Blocking |
+| VB.17 Status stated | Do the market table, the discrepancies, the test results and the short version of the guide carry their statuses (confirmed, assumption, owner's decision, simulation), and, when the workspace uses evidence labels, the label with what it must carry (a [Г] with its check, a [В] with its evidence, a [Р] with date, reason and rejected options)? Does the short version open with the confidence summary? | Blocking |
 | VB.18 First screen | Does the page's first screen say what the recommendation stands on and what is not known yet? (a check on the page) | Blocking |
+| VB.19 Carriers from channels | Are the carriers taken from where buyers find the brand (the ICP's channels, the brand's live sales channels), each with its source, with no default carrier standing in for a blank field, and the defaults left out named with the reason? Is an empty space on the map written as a hypothesis with its check? | Blocking |
 
 A failed blocking check is rewritten from the inputs. What the inputs can't fix goes on the page under "To check and decide", in plain words.
 
@@ -260,6 +279,17 @@ The page is a direction book: it reads like a brand presentation, one idea per s
 - **Generated images** of the brand, when used, are said to show the idea, not finished photos.
 - Competitor and reference images are shown for internal review only; the footer says so.
 
+## B2B: the trade buyer
+
+Read `business_type` in `icp.md`. The plugin covers physical products, sold to consumers (B2C) or to the trade (B2B: retailers, distributors, buyers for stores). Services and software are not supported: their main visual assets (screenshots, charts, report pages, decks) are not what this plugin judges, and the command stops with that sentence.
+
+For a B2B physical product, everything above holds, with these changes:
+- **Two audiences.** The trade buyer decides whether the product gets a shelf; the end customer decides whether it sells off that shelf. `audience.md` holds both, apart. The directions are judged first by the trade buyer and then checked against the end customer ("will this sell through for me").
+- **Carriers.** The wholesale tile (Faire search results or the retailer's buyer portal, in the marketplace-tile block), the line sheet or catalog cover, and the trade show booth or sample box when the owner names it. A social grid only where the ICP shows the trade buyer looks there.
+- **Shelf.** The brands the buyer already stocks or sees next to this one at the same wholesale channel and price band.
+- **Audience panel.** Plays the trade buyer from the ICP's words: "would I open this catalog, ask for samples, place an opening order", and what would stop that (no proof it sells through, no clear range, no price or MOQ in sight). The "stops me" rank becomes "makes me open it".
+- **What to do next** names the trade facts a buyer looks for before the look (wholesale price, MOQ, case pack, lead time) when they are missing from the brand's files, and hands them to Product Visual.
+
 ## Talking to the owner
 
 - **Before:** one summary of what was found and what could not be got, up to six optional questions (the photo folder, references, what must not change, wants and don't-wants, a list of brands AI assistants recommend, the brand's social accounts), then "say go". Never block on optional inputs.
@@ -272,9 +302,11 @@ The page is a direction book: it reads like a brand presentation, one idea per s
 | Stage | Means |
 |---|---|
 | **hypothesis** | Required inputs missing, or the tests not run |
-| **tested** | Tests run, no blocking fail, the owner has not chosen a direction yet |
+| **simulated** | The AI tests ran (panel, rival, recognition, judge), no blocking fail, the owner has not chosen a direction yet. Called `tested` before version 0.8.1; a file that says `tested` is read as `simulated`. Nothing here has been seen by a real buyer |
 | **chosen** | The owner chose a direction; the date is in Decisions |
 | **validated** | Product Visual's dated results support the direction; set only with the owner's yes, in Decisions |
+
+**Stages and readiness.** In a workspace that grades results by readiness (a research contract with statuses such as research candidate, working strategy for a pilot, tested on buyers, tested in market): hypothesis and simulated are a research candidate; chosen is a working direction for a limited, reversible pilot (a first shoot, one gallery), once the owner records it; validated needs real buyers or market results and is never set from simulations alone.
 
 ## Limits
 

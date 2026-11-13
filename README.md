@@ -2,13 +2,19 @@
 
 The visual layer on top of the CXL Marketing Brain. The Marketing Brain says who the brand is for and what it says; these two plugins say how it should look, next to everyone else on the shelf.
 
-Built for brands of physical products whose buyers choose by looking: marketplaces, the brand's own site and social media. Software and services are not covered.
+Built for brands of physical products whose buyers choose by looking: marketplaces, the brand's own site and social media.
+
+| Business | Supported |
+|---|---|
+| Physical products sold to consumers (B2C) | Yes: the main case |
+| Physical products sold to the trade (B2B: retailers, distributors) | Yes, at a minimum (since 0.8.1 and 0.4.1): the Trade block (wholesale price, MSRP, MOQ, case pack, lead time, GTIN, certifications), a Wholesale channel (Faire, line sheet, trade show), the panel and the skeptic as a store buyer |
+| Services and software, B2B or B2C | **Not supported.** The commands read `business_type` from the ICP and stop |
 
 **Beta.** Tested on one brand so far. Feedback and runs on other brands are welcome.
 
 | Plugin | What it gives you |
 |---|---|
-| **Visual Brain** | The brand's visual direction. It studies the audience and the visual market (shelf competitors, references, and the brands AI assistants recommend if you have that list), proposes two or three directions, and shows each one on a social media grid and a site first screen next to how everyone looks. A simulated audience panel, shown the directions blind on your own images, and a simulated rival creative director test them; one direction is recommended by five questions (clear, advantage, believable, recognizable, producible), and every fact and test result carries its status. It checks one backdrop per color of your range at marketplace-tile size, and after you choose, it writes the visual language and a shoot list built from the photos you already have. |
+| **Visual Brain** | The brand's visual direction. It studies the audience and the visual market (shelf competitors, references, and the brands AI assistants recommend if you have that list), proposes two or three directions, and shows each one on the carriers where buyers meet the brand (a marketplace search tile first when you sell on a marketplace, a social media grid and a site first screen where they are real) next to how everyone looks. A simulated audience panel, shown the directions blind on your own images, and a simulated rival creative director test them; one direction is recommended by five questions (clear, advantage, believable, recognizable, producible), and every fact and test result carries its status. It checks one backdrop per color of your range at marketplace-tile size, and after you choose, it writes the visual language and a shoot list built from the photos you already have. |
 | **Product Visual** | A product's images, planned frame by frame. Who the product is for and what they need to see, its positioning and UVP, a direction in the brand's chosen look, then a storyboard with a brief and a readiness status per frame for a marketplace, your site, search, or social. It reads your own galleries so the new one changes their formats rather than repeating them, and with two lines of the same kind it tells them apart. Also audits a live gallery and checks finished images before upload. |
 
 The brand run, the product run and the audit and QA checks each end with one page in your language (`/visual-brain:page en` makes an English one), plus Markdown files Claude reads before any visual work.

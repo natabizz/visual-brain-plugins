@@ -48,7 +48,10 @@ section{padding-block:clamp(48px,7vw,88px);border-bottom:1px solid var(--line)}
 .cap{font-size:12.5px;color:var(--muted);margin-top:6px}
 
 /* cover */
-.cover{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:36px;align-items:end}
+.cover{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:36px;align-items:start}
+/* the cover image stays in view next to the summary; a long thesis gets a smaller headline */
+@media (min-width:821px){.cover>div:last-child{position:sticky;top:24px}}
+.cover h1{font-size:clamp(28px,3.6vw,46px);line-height:1.08}
 @media (max-width:820px){.cover{grid-template-columns:1fr}}
 .cover .fig{aspect-ratio:4/3.4}
 .summary{display:grid;gap:12px;margin-top:26px}
@@ -313,13 +316,15 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:4px}
     direction's palette: "To shoot:" and what exactly. Competitors appear only in "as everyone" and as the
     competitor cards of the search carrier.
   - Carriers by the main channel's kind: keep ONE carrier block below (marketplace, own site, search,
-    or social) and delete the others.
+    social, or wholesale) and delete the others. Competitor cards come only from the main channel's own
+    set in market.md (found on that channel, dated), never from another channel's.
   - With a brand direction chosen in Visual Brain, follow its cast and caption rule on every frame.
   - The product is never redrawn: fit, size, material and construction are shown only in real photos.
   - Statuses are visible: every frame card carries one readiness label (concept / needs confirmation:
     what / ready to shoot / ready for production) and a new-or-carried label; facts, claims and test
-    results carry a small mark (confirmed / assumption / owner's decision / simulation), with the
-    .mark class. Simulations are written as "the simulation suggests".
+    results carry a small mark (confirmed / assumption / owner's decision / simulation / not known yet),
+    with the .mark class: the plain-word status only; the evidence labels stay in the .md files.
+    Simulations are written as "the simulation suggests".
   - The first screen is the decision: fill every row of the .decision block from the files.
   - The brand's other lines sit with the competitors (section 2) and get the "which line is yours"
     frame in the storyboard. The carrier's title says "<channel> search, <date>" or "a comparison
@@ -381,7 +386,9 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:4px}
     <p class="eyebrow">2 · {{What competitors say and show}}</p>
     <h2>{{What the competing galleries do}}</h2>
   </div>
-  <!-- The brand's other lines first, when it has any: the same block, titled with the line's name -->
+  <!-- Competitors per channel: one group per channel's set, under a small eyebrow "{{channel}}: {{how found}}, {{date}}".
+       Each product is compared only within its own channel. The brand's other lines first, when it has any:
+       the same block, titled with the line's name -->
   <div class="refrow">
     <div><h3>{{the brand's other line}}</h3><p class="small muted" style="margin-top:6px"><b>{{Is}}:</b> {{what it is made of, where and how; colors; price (date)}}<br><b>{{Differs from this product}}:</b> {{the differences as facts, with status marks}}<br><b>{{For whom}}:</b> {{from positioning: for whom each line is}}</p></div>
     <div class="strip"><!-- REPEAT: up to 6 of its gallery images --><div class="fig"><img src="file:{{gallery image}}" alt="{{what it shows}}"></div></div>
@@ -457,7 +464,7 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:4px}
 </section>
 
 <!-- 5 CARRIERS: the product where the buyer meets it on the main channel. Columns: as everyone, now (if live), each option.
-     Keep ONE of the four carrier blocks inside each column (the main channel's kind) and delete the others. -->
+     Keep ONE of the five carrier blocks inside each column (the main channel's kind) and delete the others. -->
 <section id="carriers">
   <div class="sec-head">
     <p class="eyebrow">5 · {{How it looks}}</p>
@@ -496,6 +503,18 @@ footer ul{margin:0;padding-left:18px;display:grid;gap:4px}
         <div class="card ours"><div class="im"><img src="file:{{our first image}}" alt=""></div><b>{{the product's real title}}</b><small>{{real price · the store}}</small></div>
         <!-- REPEAT x3 -->
         <div class="card"><div class="im"><img src="file:{{competitor result image}}" alt=""></div><b>{{their title}}</b><small>{{their price · store, date}}</small></div>
+      </div>
+
+      <!-- E. WHOLESALE: the line sheet page: hero, all variants (each with its SKU), specs and pack, price and MOQ.
+           Every number from the Trade block in product.md; a value not known yet reads "on request".
+           On Faire, use block A instead, with Faire search cards from the Wholesale set. -->
+      <div class="browser">
+        <div class="b-bar"><i></i><i></i><i></i><span>{{line sheet, season}}</span></div>
+        <div class="pdp-site">
+          <div class="main"><img src="file:{{hero image}}" alt=""></div>
+          <div class="buy"><b>{{the product's real name}}</b><small>{{wholesale price · MSRP}}</small><small>{{MOQ · case pack · lead time}}</small><small>{{specs: measurements, material, GTIN or UPC, certifications}}</small></div>
+        </div>
+        <div class="strip-row"><!-- REPEAT per variant; missing: <div><div class="shoot" style="background:{{#HEX}};color:{{#HEX}}"><b>{{To shoot}}</b>{{what}}</div></div> --><div><img src="file:{{variant image}}" alt="{{variant, SKU}}"></div></div>
       </div>
 
       <!-- D. SOCIAL AND ADS: the carousel in a phone, first frame first -->

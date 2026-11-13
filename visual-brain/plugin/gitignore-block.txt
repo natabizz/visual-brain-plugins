@@ -3,7 +3,9 @@
 raw/visuals/*
 !raw/visuals/README.md
 # Built pages carry those images inside them; their .src.html sources are tracked.
-projects/*/outputs/*.html
-!projects/*/outputs/*.src.html
+projects/visual-brain/outputs/*.html
+!projects/visual-brain/outputs/*.src.html
+projects/product-visual/outputs/*.html
+!projects/product-visual/outputs/*.src.html
 # A Visual Brain run in progress.
 projects/visual-brain/.run-lock

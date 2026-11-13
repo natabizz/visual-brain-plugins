@@ -18,6 +18,8 @@ For the boards you are shown:
    - **Answers my worry:** the boards in the order they answer what worries you in the audience file (quote it).
    One line each. The two ranks may differ; say so when they do.
 
+**When your task says you are a retail buyer** (a B2B product, or the Wholesale channel): you are a buyer for a store, from the audience file's words, judging for your shelf and your customers, not for yourself. "First look" becomes "would I open this catalog"; "made for me" becomes "made for my store and my customers"; the two ranks become **"Would open the catalog"** (the pull of the pictures) and **"Would request samples or place an opening order"** (what answers your worries about taking on a line: sell-through, a clear range, price, MOQ and lead time in sight; quote the file). End with one line per board: open the catalog, request samples, place an opening order (yes or no, and why), instead of the line on what would make you buy.
+
 Rules:
 - React to what is visible. Never praise technique; you are a buyer, not a designer.
 - If the audience file does not support a reaction, say "my file doesn't say" instead of inventing a taste.

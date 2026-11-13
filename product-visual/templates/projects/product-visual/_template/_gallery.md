@@ -9,7 +9,7 @@ tags: [product-visual, gallery]
 
 # Storyboard: <product> on <channel>
 
-Channel kind: <marketplace, own site, search, social and ads, other>. On positioning <option> and direction <option> (chosen on <date>, or recommended and tagged (inferred)). The brand's look: <the chosen direction in visual-guide.md, its date>.
+Channel kind: <marketplace, own site, search, social and ads, wholesale, other>. Competitors: this channel's set in `market.md` (<date>, how found), or "(limited: no competitors for <channel>)". On positioning <option> and direction <option> (chosen on <date>, or recommended and tagged (inferred)). The brand's look: <the chosen direction in visual-guide.md, its date>.
 
 ## Count
 
@@ -23,7 +23,7 @@ The channel's first image rules (source, date), and how the chosen look meets th
 
 One row per frame, in the order of the buyer's path. The page shows each row as a card.
 
-| # | Job | Need it serves (quote, source) | In frame | View and crop | Who (and why) | Text (exact, where it sits) | Look | Proof (source, status) | Image in hand, or "To shoot: what" | Route | Copyable? | New or carried (what changed) | Status (depends on) | Competitors here |
+| # | Job | Need it serves (quote, source) | In frame | View and crop | Who (and why) | Text (exact, where it sits) | Look | Proof (source, status and label) | Image in hand, or "To shoot: what" | Route | Copyable? (or not seen by the rival) | New or carried (what changed) | Status (depends on) | This channel's competitors here |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 
 ## Not a repeat of ourselves
@@ -72,5 +72,7 @@ Grouped by setup, so one session covers them. "Brand list" names a setup already
 
 ## Decisions
 
-| Date | Decision | By | Replaces |
-|---|---|---|---|
+Each decision is [Р]: its date, the reason, and the options rejected.
+
+| Date | Decision | By | Reason | Rejected options | Replaces |
+|---|---|---|---|---|---|

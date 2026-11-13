@@ -14,6 +14,7 @@ tags: [visual-brain, visual-direction]
 
 ## The short version
 
+- **Confidence:** <lines per label: [И] n, [Д] n, [Ц] n, [В] n, [Г] n, [Н] n, [Р] n; which decisions stand on [Г]; stage and what it allows>
 - **Your audience:**
 - **The market:**
 - **The direction:**
@@ -99,7 +100,19 @@ For the recommended direction, and again for the chosen one, when the brand sell
 
 ## Carriers
 
-Chosen from where the audience looks (which, and why). Text on mockups: the brand's own lines or facts from its files, in the customer's language, temporary.
+Chosen from where buyers find the brand (the ICP's channels and the brand's live sales channels first). For each carrier: its source. Defaults left out, and why. Text on mockups: the brand's own lines or facts from its files, in the customer's language, temporary.
+
+| Carrier | Source (ICP line, sales channel, owner) | Status |
+|---|---|---|
+
+### Marketplace search tile
+
+Marketplace, query, date seen.
+
+| Column | Main image | Title (as the listing uses it) | Price and rating as seen |
+|---|---|---|---|
+| As everyone: result 1 | | | |
+| A | | | |
 
 ### Social media grid
 
@@ -169,8 +182,8 @@ Built from the photos in hand. A "to shoot" frame says why none in hand fits; wh
 
 ## Decisions
 
-| Date | Decision | By | Replaces |
-|---|---|---|---|
+| Date | Decision | By | Reason | Options rejected, and why | Replaces |
+|---|---|---|---|---|---|
 
 ## Sources
 

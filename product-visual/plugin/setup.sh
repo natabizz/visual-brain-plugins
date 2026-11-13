@@ -17,6 +17,16 @@ if grep -qx 'raw/visuals/\*' .gitignore; then gi="already there"; else
   printf '\n' >> .gitignore; cat "$ROOT/plugin/gitignore-block.txt" >> .gitignore; gi="added"; fi
 # Lines added in later versions go in once each (after a newline, if the file doesn't end with one).
 [ -s .gitignore ] && [ -n "$(tail -c1 .gitignore)" ] && printf '\n' >> .gitignore
+# Up to 0.8.0 and 0.4.0 the block ignored every project's built pages (projects/*/outputs/*.html),
+# which hid the Marketing Brain's pages too. Narrow it to these two plugins' folders.
+if grep -qxF 'projects/*/outputs/*.html' .gitignore; then
+  python3 - <<'PY'
+p = ".gitignore"; s = open(p).read().split("\n")
+s = [l for l in s if l not in ("projects/*/outputs/*.html", "!projects/*/outputs/*.src.html")]
+open(p, "w").write("\n".join(s))
+PY
+  gi="updated (built-page rule narrowed to Visual Brain and Product Visual)"
+fi
 while IFS= read -r line; do
   case "$line" in ''|'#'*) continue ;; esac
   grep -qxF -- "$line" .gitignore || { printf '%s\n' "$line" >> .gitignore; gi="updated"; }
@@ -36,7 +46,7 @@ if grep -qE '^## Product Visual' CLAUDE.md; then cm="already there"; else
 echo "Folder: $TARGET"
 # Built pages added to git by an earlier version keep their images in the repository: say so, change nothing.
 if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-  tracked="$(git ls-files 'projects/*/outputs/*.html' 2>/dev/null | grep -v '\.src\.html$' || true)"
+  tracked="$(git ls-files 'projects/visual-brain/outputs/*.html' 'projects/product-visual/outputs/*.html' 2>/dev/null | grep -v '\.src\.html$' || true)"
   if [ -n "$tracked" ]; then
     echo "Tracked by git from an earlier version (built pages carry their images):"
     printf '%s\n' "$tracked" | sed 's/^/  /'

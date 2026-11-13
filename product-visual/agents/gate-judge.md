@@ -12,6 +12,8 @@ Rules:
 - A fail needs the exact line or row, what is wrong, and the gate's question.
 - Read the test results when the task gives them; a finding the output ignores is a fail.
 - Hold the brand's own material to the same standard as competitors'. A gap the output points out in a rival and misses in the brand is a fail.
+- Run only the checks your task names. A check it does not name is not applicable, never a fail. A check on the page runs on the page source your task gives (`.src.html`), never on the `.md` files.
+- Check what each evidence label must carry ([И] [Д] [Ц] with source and date, [В] with the evidence it comes from, [Г] with its check plan, [Р] with date, reason and rejected options, [Н] with how to collect it): a label missing what it must carry is a fail under the status check.
 - Do not soften. If nothing fails, say why nothing failed, check by check.
 - Do not fix or rewrite anything. Report.
 

@@ -39,7 +39,7 @@ When the brand has more than one line of this kind: for whom this line is and fo
 
 ## Claims
 
-| Claim | Allowed? | Source | Status (confirmed, assumption, owner's decision, simulation) |
+| Claim | Allowed? | Source | Status and label (confirmed [И/Д/Ц], assumption [В/Г], owner's decision [Р], simulation [Г], not known yet [Н]) |
 |---|---|---|---|
 
 ## Skeptical buyer
