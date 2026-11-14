@@ -1,0 +1,18 @@
+{
+  "source": "wiki/brand/visual-guide.md, Map table, 2026-11-12",
+  "x_axis": ["LOUD PRINTS, NOVELTY", "ONE QUIET COLOR"],
+  "y_axis": ["STUDIO, NO LIFE", "REAL MOMENT"],
+  "open_space": {"x_min": 80, "y_min": 70, "label": ["OPEN SPACE", "one quiet color,", "a real moment"]},
+  "points": [
+    {"name": "Frenchie Bulldog", "x": 15, "y": 10, "kind": "market"},
+    {"name": "Fitwarm", "x": 10, "y": 25, "kind": "market"},
+    {"name": "Frenchiestore", "x": 25, "y": 55, "kind": "market"},
+    {"name": "Maxbone", "x": 30, "y": 40, "kind": "market"},
+    {"name": "Spark Paws", "x": 45, "y": 20, "kind": "market"},
+    {"name": "Milk&Pepper", "x": 45, "y": 15, "kind": "market"},
+    {"name": "Frenchie Shop", "x": 60, "y": 5, "kind": "market"},
+    {"name": "Fabulous Fido now", "x": 90, "y": 20, "kind": "own"},
+    {"name": "Direction A", "x": 92, "y": 20, "kind": "direction"}
+  ],
+  "colors": {"market": "#2E2E2D", "own": "#A86F68", "direction": "#827B56"}
+}

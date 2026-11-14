@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "visual-brain-plugins",
-  "description": "Visual Brain and Product Visual: the visual layer on top of the CXL Marketing Brain.",
+  "description": "Visual Brain, Product Visual and Portfolio: the visual layer and the showcase on top of the Marketing Brain.",
   "owner": {
     "name": "Natalia Bizyukova"
   },
@@ -16,6 +16,12 @@
       "name": "product-visual",
       "description": "A product's images planned frame by frame from what its buyers need to see, in the brand's chosen look, never a repeat of the brand's own galleries, with a readiness status per frame.",
       "source": "./product-visual",
+      "category": "productivity"
+    },
+    {
+      "name": "portfolio",
+      "description": "Professional case studies (Behance-style) from the brand's Marketing Brain and Visual Brain files, with social, website and ad layouts, exported for Behance and PDF.",
+      "source": "./portfolio",
       "category": "productivity"
     }
   ]
