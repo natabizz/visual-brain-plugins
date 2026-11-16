@@ -262,6 +262,46 @@ details.more summary:focus-visible{outline:2px solid var(--red);outline-offset:2
 details.others{margin-top:8px;border-top:1px solid var(--line)}
 details.others>summary{font:600 16px/1.3 var(--f-body);color:var(--ink);padding:18px 0;cursor:pointer}
 details.others>summary:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+/* Layouts by use (0.10.0): feed post, story, phone site, product page top, ads, marketplace main and first frames */
+.use-label{display:inline-block;margin-left:8px;padding:3px 8px;border-radius:99px;font:600 11px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;background:var(--ok-soft);color:var(--ok)}
+.use-label.proposed{background:var(--red-soft);color:var(--red)}
+.screen.tall{aspect-ratio:9/16;position:relative;display:flex;flex-direction:column}
+.post-head{display:flex;gap:8px;align-items:center;padding:10px 12px 8px;font:600 11.5px/1.2 var(--f-brand)}
+.post-head i{width:22px;height:22px;border-radius:50%;background:#111;display:block}
+.post-head .spons{margin-left:auto;font:400 10px/1 var(--f-brand);color:#777}
+.post-img{aspect-ratio:4/5;overflow:hidden;background:#ddd}
+.post-img img{width:100%;height:100%;object-fit:cover}
+.post-img.shoot{display:grid;place-items:center;text-align:center;padding:14px;font:600 12px/1.3 var(--f-body)}
+.post-cap{padding:8px 12px 12px;font:400 11px/1.4 var(--f-brand)}
+.ad-bar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 12px;background:#F2F1EE;font:600 11px/1.2 var(--f-brand)}
+.ad-bar .btn{font:600 10px/1 var(--f-brand);padding:7px 10px;border-radius:4px;background:#111;color:#fff}
+.story-img{position:absolute;inset:0}
+.story-img img{width:100%;height:100%;object-fit:cover}
+.story-img.shoot{display:grid;place-items:center;text-align:center;padding:18px;font:600 13px/1.3 var(--f-body)}
+.story-bars{position:absolute;top:10px;left:10px;right:10px;display:flex;gap:4px}
+.story-bars i{flex:1;height:2px;background:rgba(255,255,255,.6)}
+.story-head{position:absolute;top:20px;left:12px;color:#fff;font:600 11px/1.2 var(--f-brand);text-shadow:0 1px 3px rgba(0,0,0,.45)}
+.story-cta{position:absolute;left:12px;right:12px;bottom:14px;background:#fff;color:#111;border-radius:99px;padding:9px;text-align:center;font:600 11.5px/1.2 var(--f-brand)}
+.m-nav{display:flex;justify-content:space-between;align-items:center;padding:12px 12px 8px}
+.m-nav img{height:16px;width:auto}
+.m-nav span{font:600 16px/1 var(--f-brand)}
+.m-hero{aspect-ratio:4/5;overflow:hidden}
+.m-hero img{width:100%;height:100%;object-fit:cover}
+.m-hero.shoot{display:grid;place-items:center;text-align:center;padding:14px;font:600 12px/1.3 var(--f-body)}
+.pdp{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px;padding:14px}
+.pdp .main{aspect-ratio:1;overflow:hidden;border-radius:4px;background:#eee}
+.pdp .main img{width:100%;height:100%;object-fit:cover}
+.pdp .thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:4px}
+.pdp .thumbs div{aspect-ratio:1;overflow:hidden;border-radius:3px;background:#eee}
+.pdp .thumbs img{width:100%;height:100%;object-fit:cover}
+.pdp .info{display:grid;align-content:start;gap:8px;font:400 11px/1.35 var(--f-brand)}
+.pdp .info b{font:700 14px/1.2 var(--f-brand)}
+.pdp .info .btn{justify-self:start;font:600 10px/1 var(--f-brand);letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;border-radius:4px}
+.mkt-first{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:6px;padding:8px}
+.mkt-first div{aspect-ratio:1;overflow:hidden;border-radius:4px;background:#eee}
+.mkt-first img{width:100%;height:100%;object-fit:cover}
+.mkt-first .shoot{display:grid;place-items:center;text-align:center;padding:6px;font:600 9.5px/1.2 var(--f-body)}
+@media (max-width:720px){.pdp{grid-template-columns:1fr}.mkt-first{grid-template-columns:repeat(2,1fr)}}
 </style>
 <!--
   Visual Brain: direction book template (format visual-brain-2, page v3).
@@ -423,7 +463,21 @@ details.others>summary:focus-visible{outline:2px solid var(--red);outline-offset
   </div>
 </section>
 
-<!-- 4 DIRECTIONS. REPEAT this section per direction (2 or 3). Add class "rec" and the chip to the recommended one.
+<!-- 3b CHANGE BRIEF (0.10.0). From "where you are now" and the handoff card's buyer questions. -->
+<section id="brief">
+  <div class="sec-head">
+    <p class="eyebrow">3b · {{Change brief}}</p>
+    <h2>{{What to keep, strengthen, fix, remove, create}}</h2>
+    <p class="lead">{{The buyer questions it answers, from the handoff card (date) or the ICP. A visual symptom is not the cause of weak sales.}}</p>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>{{List}}</th><th>{{Item}}</th><th>{{Basis}}</th><th>{{Expected effect}}</th><th>{{Checked on}}</th></tr></thead>
+    <tbody><!-- REPEAT per item --><tr><td>{{keep / strengthen / fix / remove / create}}</td><td>{{item}}</td><td>{{observation and source}}</td><td>{{what the buyer should understand or do}}</td><td>{{level}}</td></tr></tbody>
+  </table></div>
+  <p class="note">{{Not a visual problem, handed back to the Marketing Brain:}} {{item, constraint type}}.</p>
+</section>
+
+<!-- 4 DIRECTIONS. Usually two, compared with the current base (the "now" column in every layout). REPEAT this section per direction. Add class "rec" and the chip to the recommended one.
      After the choice, see AFTER THE CHOICE in the first comment: a "chosen" section first, the rest collapsed. -->
 <section id="dir-a">
   <div class="dir">
@@ -559,6 +613,119 @@ details.others>summary:focus-visible{outline:2px solid var(--red);outline-offset
     </div>
   </div>
   <p class="note">{{These are sketches of a direction, not a site design. Where each mockup line comes from.}}</p>
+</section>
+
+<!-- 5 LAYOUTS BY USE (0.10.0): every foundation run shows all four uses (social, site, ads, marketplace) for the current base and each direction.
+     The channel data sets the order and the label of each use: <span class="use-label">main</span>, <span class="use-label">confirmed</span>, <span class="use-label proposed">proposed</span>, with its source in the lead line. A skipped use keeps its section with one line: why it is skipped.
+     The marketplace tile, social grid and site first screen blocks above stay; the blocks below add the feed post, the story, the phone site, the product page top, the ads and the marketplace main image with the first three frames.
+     Columns: now (the brand's material), then each direction (before the choice), the chosen one (after it). Missing frame: a palette tile "To shoot: what exactly". -->
+<section id="social-post">
+  <div class="sec-head">
+    <p class="eyebrow">5 · {{How it looks}}</p>
+    <h2>{{Feed post and story}}<span class="use-label {{proposed or empty}}">{{main / confirmed / proposed}}</span></h2>
+    <p class="lead">{{Label source: ICP line, sales channel, or "no data yet that buyers are here". Formats: post 4:5, story 9:16, from}} {{dated source}}.</p>
+  </div>
+  <div class="carrier-row">
+    <!-- REPEAT per column: a post, then a story -->
+    <div>
+      <p class="col-label">{{column name}} · {{post 4:5}}</p>
+      <div class="phone"><div class="screen">
+        <div class="post-head"><i></i>{{handle}}</div>
+        <div class="post-img"><img src="file:{{image}}" alt=""></div>
+        <!-- missing: <div class="post-img shoot" style="background:{{#HEX}};color:{{#HEX}}">{{To shoot}}: {{what exactly}}</div> -->
+        <div class="post-cap"><b>{{handle}}</b> {{a line the brand already uses}}</div>
+      </div></div>
+    </div>
+    <div>
+      <p class="col-label">{{column name}} · {{story 9:16}}</p>
+      <div class="phone"><div class="screen tall">
+        <div class="story-img"><img src="file:{{image}}" alt=""></div>
+        <div class="story-bars"><i></i><i></i><i></i></div>
+        <div class="story-head">{{handle}}</div>
+        <div class="story-cta">{{a line the brand already uses}}</div>
+      </div></div>
+    </div>
+  </div>
+  <p class="note">{{Mockup text is temporary: the brand's own lines. A sketch of the direction, not a post plan.}}</p>
+</section>
+
+<section id="site-more">
+  <div class="sec-head">
+    <p class="eyebrow">5 · {{How it looks}}</p>
+    <h2>{{Site on a phone and the product page}}<span class="use-label {{proposed or empty}}">{{label}}</span></h2>
+    <p class="lead">{{Label source.}}</p>
+  </div>
+  <div class="carrier-row">
+    <!-- REPEAT per column: the phone first screen -->
+    <div>
+      <p class="col-label">{{column name}} · {{phone}}</p>
+      <div class="phone"><div class="screen tall">
+        <div class="m-nav"><img src="file:{{logo, transparent PNG}}" alt="{{Brand}}"><span>&#9776;</span></div>
+        <div class="m-hero"><img src="file:{{hero image}}" alt=""></div>
+        <div class="s-band" style="background:{{#HEX}};color:{{#HEX}}"><b>{{brand line}}</b><span class="btn" style="background:{{#HEX}};color:{{#HEX}}">{{button}}</span></div>
+      </div></div>
+    </div>
+  </div>
+  <div class="carrier-row" style="margin-top:18px">
+    <!-- REPEAT per column: the top of a product page -->
+    <div>
+      <p class="col-label">{{column name}} · {{product page}}</p>
+      <div class="browser"><div class="b-bar"><i></i><i></i><i></i><span>{{domain}}/products/{{handle}}</span></div>
+        <div class="pdp">
+          <div><div class="main"><img src="file:{{main image}}" alt=""></div>
+            <div class="thumbs"><div><img src="file:{{image}}" alt=""></div><div><img src="file:{{image}}" alt=""></div><div><img src="file:{{image}}" alt=""></div><div><img src="file:{{image}}" alt=""></div></div></div>
+          <div class="info"><b>{{the product's title as the store uses it}}</b><span>{{price from the product file}}</span><span>{{one fact line from the product file}}</span><span class="btn" style="background:{{#HEX}};color:{{#HEX}}">{{button}}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="note">{{Sketches of the direction, not a site design. Title and price from the product file, dated.}}</p>
+</section>
+
+<section id="ads">
+  <div class="sec-head">
+    <p class="eyebrow">5 · {{How it looks}}</p>
+    <h2>{{Ads}}<span class="use-label {{proposed or empty}}">{{label}}</span></h2>
+    <p class="lead">{{Label source. Formats: feed 4:5, story 9:16, from}} {{dated source}}. {{Concept, budget and launch belong to Campaign Engine.}}</p>
+  </div>
+  <div class="carrier-row">
+    <!-- REPEAT per column: a feed ad, then a story ad -->
+    <div>
+      <p class="col-label">{{column name}} · {{feed ad 4:5}}</p>
+      <div class="phone"><div class="screen">
+        <div class="post-head"><i></i>{{Brand}}<span class="spons">{{Sponsored}}</span></div>
+        <div class="post-img"><img src="file:{{image}}" alt=""></div>
+        <div class="ad-bar"><span>{{a line the brand already uses}}</span><span class="btn">{{button}}</span></div>
+      </div></div>
+    </div>
+    <div>
+      <p class="col-label">{{column name}} · {{story ad 9:16}}</p>
+      <div class="phone"><div class="screen tall">
+        <div class="story-img"><img src="file:{{image}}" alt=""></div>
+        <div class="story-head">{{Brand}} · {{Sponsored}}</div>
+        <div class="story-cta">{{button}}</div>
+      </div></div>
+    </div>
+  </div>
+  <p class="note">{{The system applied to ad formats, not a campaign.}}</p>
+</section>
+
+<section id="marketplace-gallery">
+  <div class="sec-head">
+    <p class="eyebrow">5 · {{How it looks}}</p>
+    <h2>{{Marketplace: main image and the first three frames}}<span class="use-label {{proposed or empty}}">{{label}}</span></h2>
+    <p class="lead">{{Marketplace, its image rules and the date seen. The full gallery is Product Visual's.}}</p>
+  </div>
+  <div class="carrier-row">
+    <!-- REPEAT per column -->
+    <div>
+      <p class="col-label">{{column name}}</p>
+      <div class="mkt"><div class="mkt-bar">{{marketplace}} · {{product}}</div>
+        <div class="mkt-first"><div><img src="file:{{main image}}" alt=""></div><div><img src="file:{{frame 2}}" alt=""></div><div><img src="file:{{frame 3}}" alt=""></div><div><img src="file:{{frame 4}}" alt=""></div></div>
+      </div>
+    </div>
+  </div>
+  <p class="note">{{Main image rules of the marketplace (background, product share of the frame) with the source and date.}}</p>
 </section>
 
 <!-- 6 TESTS -->

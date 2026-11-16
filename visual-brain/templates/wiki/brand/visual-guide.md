@@ -1,8 +1,14 @@
 ---
 type: brand
-format: visual-brain-2
+format: visual-brain-3
 status: template
 stage: hypothesis
+evidence: missing        # confirmed | assumption | simulation | missing | conflicting
+decision: candidate      # candidate | chosen | rejected | superseded ([Р] in Decisions for chosen)
+execution: planned       # planned | brief ready | produced | exported | published and verified live
+effect: not measured     # not measured | insufficient data | improved | no change | worse
+mode: foundation         # foundation | task | audit
+inputs: []               # path @ last_updated or git hash, as in projects/visual-brain/state.md
 last_updated: ""
 sources: []
 tags: [visual-brain, visual-direction]
@@ -20,7 +26,8 @@ tags: [visual-brain, visual-direction]
 - **The direction:**
 - **It stands on:** <facts confirmed; which results are simulations>
 - **Not known yet:** <open items and what they hold back>
-- **Carriers shown, and why:**
+- **Layouts by use, and their labels:** <social, site, ads, marketplace: main / confirmed / proposed, each with its source>
+- **Handoff card:** <path and date, or "none: built from the ICP and hub">
 
 ## 1. Who we shoot for
 
@@ -58,7 +65,29 @@ Left out when the brand has no images.
 | What | Source 1 | Source 2 | Status |
 |---|---|---|---|
 
+## 3b. Change brief
+
+From the handoff card's buyer questions (when there is one) and "Where you are now".
+
+| Material looked at | Mark (keep / strengthen / fix / replace / missing / not measured) | Observation | Source | Buyer question it touches |
+|---|---|---|---|---|
+
+| List | Item | Basis | Expected effect | Checked on (facts / visual quality / buyer understanding / technical release / business result) |
+|---|---|---|---|---|
+| Keep | | | | |
+| Strengthen | | | | |
+| Fix | | | | |
+| Remove | | | | |
+| Create | | | | |
+
+**Not a visual problem, handed back to the Marketing Brain:** <item, constraint type, why>
+
 ## 4. Directions
+
+Usually two directions, next to the current base (the brand's look now). With a choice in force: "Applicability" under the chosen direction instead of new ones.
+
+### Current base
+<the brand's look now, from section 3: what each layout column "now" shows>
 
 ### A. <name>
 
@@ -98,12 +127,16 @@ For the recommended direction, and again for the chosen one, when the brand sell
 | Variant | Piece | Backdrop by the rule | Check | Passing options | Example (own photo, preview, reference, or to shoot) | Photos in hand |
 |---|---|---|---|---|---|---|
 
-## Carriers
+## Layouts by use
 
-Chosen from where buyers find the brand (the ICP's channels and the brand's live sales channels first). For each carrier: its source. Defaults left out, and why. Text on mockups: the brand's own lines or facts from its files, in the customer's language, temporary.
+All four uses are shown; the channel data decides the order and the label. Text on mockups: the brand's own lines or facts from its files, in the customer's language, temporary. Platform sizes from a dated source.
 
-| Carrier | Source (ICP line, sales channel, owner) | Status |
-|---|---|---|
+| Use | Label (main / confirmed / proposed) | Source (ICP line, sales channel, owner) | Layouts shown | Skipped, and why |
+|---|---|---|---|---|
+| Social | | | grid 3×3, post 4:5, story 9:16 | |
+| Site | | | desktop first screen, phone first screen, product page top | |
+| Ads | | | feed ad 4:5, story ad 9:16 | |
+| Marketplace | | | search tile, main image, first three frames | |
 
 ### Marketplace search tile
 
@@ -128,6 +161,18 @@ Marketplace, query, date seen.
 |---|---|---|---|
 | Now (screenshot) | | | |
 | A | | | |
+
+### Feed post, story, phone, product page, ads
+
+| Layout | Column | Image (file) | Line (the brand's own) | Method and status |
+|---|---|---|---|---|
+| Feed post 4:5 | Now / A / B | | | |
+| Story 9:16 | | | | |
+| Site on a phone | | | | |
+| Product page top | | | | |
+| Feed ad 4:5 | | | | |
+| Story ad 9:16 | | | | |
+| Marketplace main image and first three frames | | | | |
 
 ## 5. Visual language
 
@@ -173,8 +218,8 @@ For: <the chosen direction, or the recommended one (inferred)>.
 
 Built from the photos in hand. A "to shoot" frame says why none in hand fits; who is in it follows the cast rule.
 
-| # | What it shows | Variant and backdrop | Who, and why this one | Where, light | Need it answers | In hand (file) or to shoot (why) |
-|---|---|---|---|---|---|---|
+| # | What it shows | Variant and backdrop | Who, and why this one | Where, light | Need it answers | In hand (file) or to shoot (why) | Method and status (tool available / not checked / checked on a sample / at volume) |
+|---|---|---|---|---|---|---|---|
 
 ### Handed to Product Visual
 

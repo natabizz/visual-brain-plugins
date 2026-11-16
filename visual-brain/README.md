@@ -41,6 +41,18 @@ Behind the page: `wiki/brand/visual-guide.md` (the file Claude reads before any 
 - **Status on everything.** Every fact, claim and test result is marked confirmed, assumption, your decision or simulation, and the page's first screen says what the recommendation stands on and what is not known yet. If your workspace uses evidence labels ([И] [Д] [Ц] [В] [Г] [Н] [Р]), the files carry them too: an assumption names its evidence or its check, a simulation is a hypothesis with the test on real buyers that would confirm it, and every decision has its date, reason and the options rejected. The stage after the AI tests is called **simulated** (it was "tested" before 0.8.1): nothing has been seen by a real buyer yet.
 - **Tested by someone who didn't write it.** An audience panel played from your ICP's own words reacts to the directions shown blind, on your own images only; the strongest competitor's creative director says what it could wear tomorrow; an independent judge checks the result. All of these are AI simulations, and the page says so.
 
+## What changed in 0.10.0 (Visual Brain 1.0 spec, 2026-11-14)
+
+- **Modes:** `foundation` (no accepted system), `task <material>` (one material, no new research), `audit` (problem before production). Depth (quick, standard, full) is separate.
+- **Handoff card and state record:** the run reads the Marketing Brain's handoff card (7 questions and Boundaries) and writes every input it used, with its version, in `projects/visual-brain/state.md`. The constraint type on the card stops visual work when the problem is availability or economics.
+- **Change brief** between "where you are now" and the directions: keep, strengthen, fix, remove, create, each with its basis, expected effect and level of check.
+- **Directions:** usually two, next to the current base; a choice already in force is checked for applicability, not replaced.
+- **Layouts by use, always four:** social (grid 3×3, post 4:5, story 9:16), site (desktop and phone first screen, product page top), ads (feed 4:5, story 9:16), marketplace (search tile, main image, first three frames). Channel data sets the order and the label (main, confirmed, proposed), never whether a use is shown.
+- **Four status axes** (evidence, decision, execution, effect) replace the single stage; `stage` stays for Product Visual. **Method status** on every shoot-list frame.
+- **Format `visual-brain-3`.** A `visual-brain-2` guide is read as the current base; the new sections are flagged, not failed, until a run writes them (this was the cause of the red gate seen with 0.9.0).
+- **Gate IDs:** VB.19 is rewritten; VB.20 to VB.28 are new. Two unmerged lines used VB.19 to VB.22 for other rules (see the framework, Gate VB). Not ported yet from the ZIP 0.9.0: "The idea" section and the shoot bible.
+- **Hands off to Portfolio:** `projects/visual-brain/outputs/portfolio-handoff.md`.
+
 ## Who it is for
 
 | Business | Supported |

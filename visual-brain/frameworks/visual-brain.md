@@ -74,6 +74,16 @@ Without such a file the four statuses alone are enough. A line with [В] that na
 
 **Blocked pages.** Some sites and most social networks refuse automated viewing. Then say which pages, ask for screenshots in the chat, and continue. Never describe an image you have not opened.
 
+**From the `marketing-inputs` line (ported in 0.10.0), with the state record above as the place inputs are written:**
+
+**When the marketing position is not chosen.** If the position file says the position is open (hypotheses, candidates, "not chosen"), each direction names the marketing hypothesis it serves, what the buyer should understand or feel from it, what that rests on, and where it would be checked. Two directions may both stay open; none is written as the approved winner. The plugin's recommendation is still allowed, marked as a recommendation with its status (assumption).
+
+**When the marketing inputs change.** When the inputs differ from the ones recorded in the guide (a new version, a new hash, a changed status), the run lists, in the guide's section "Inputs changed", every earlier recommendation and owner decision that rested on the changed lines, with what changed under it and whether it stays, needs a check, or is replaced. Earlier files are kept (archive or a new run folder). An earlier owner choice is not carried onto the new basis by itself: it stays recorded with the inputs it was made on until the owner confirms it on the new ones.
+
+**The cast is not the audience.** The people or animals in the brand's pictures are the brand's face. A cast the owner fixed (named animals, one breed) is an owner's decision and is kept as one; it never narrows who the buyers are. Write "who we shoot" and "who buys" apart, and draw no audience line from the cast. A panel reading such as "other breeds read as fits any dog" is a simulation of perception, never a market finding: it may explain a rule the owner chose, never replace the owner's reason.
+
+**Limits per product and claim.** A missing or unlabeled fact (a size chart without labels, a measuring point not fixed) blocks only the lines and frames that depend on it, for that product and channel. It does not block the brand's look or the other products' images.
+
 ## The three groups on the market
 
 Every brand looked at belongs to one group, and the page keeps the groups apart:
@@ -138,7 +148,7 @@ Only when the brand has images. The brand's look on the map, by the same eight l
 
 ## Directions
 
-Two or three visual territories, never one, and different in more than color. When the owner already has a direction (a moodboard, reference boards), build from it: its strongest part is one direction, what it lacks for this audience is another. Each direction has:
+**A new choice (foundation mode):** usually two comparable visual territories, different in more than color, shown next to **the current base** (what the brand does now, from "Where the brand is now") on the same layouts, so the page shows what actually changes. A third direction only when the evidence leaves two genuinely different answers to the same brief, and the page says why. **A choice already in force** (the state record or the guide holds `decision: chosen`): no new directions; check that choice against the change brief and the handoff card (does it still answer the buyer questions, the shelf, the constraint), and propose specific, reasoned changes to it, each with its basis. When the owner already has a direction (a moodboard, reference boards), build from it: its strongest part is one direction, what it lacks for this audience is another. Each direction has:
 - **a name and one line** a photographer could picture;
 - **three words yes and three words no**, so a stranger can tell an image in from an image out;
 - **a collage:** six images, the brand's own best clean frames first (the brand's own photos from the owner's boards count as own), at most two from references or adjacent brands, marked as such; a brand with fewer than four own frames fills the rest with references, every one marked, and says so; plus the palette and one line the brand already uses, set in the brand's own font (template block "scape"). No listing infographics, badges or text-heavy frames in a collage;
@@ -165,14 +175,26 @@ When the brand sells a range (colorways, lines, flavors), a direction must hold 
 
 A brand with one variant gets one row and its check. A brand with no photos at all gets the pairs from its product colors, references and "To shoot" tiles: still the whole system, with what to shoot named. The previews show the idea; they are never published as product images.
 
-## Carriers: the same thing, three ways
+## Layouts by use (required in every foundation run)
 
-The page shows each direction where the buyer will meet it, next to how the category looks, so the difference is seen, not explained. The carriers come from where the buyer meets the brand, in this order:
+Since 0.10.0 (owner's decision, 2026-11-14): a direction is shown as ready layouts where the buyer will meet it, in **all four uses**, next to how the category looks and next to the current base. **Channel data decides the order and the label of each use, never whether it is shown.** Each use carries one label with its source: **main** (the channel buyers find the brand in, by the ICP and the live sales channels), **confirmed** (the brand is live there or the owner confirmed it), **proposed** (no data yet that buyers are there; shown so the owner sees the direction on it). A use may be skipped only with its reason written on the page.
+
+| Use | Required layouts | Format |
+|---|---|---|
+| **Social** | profile grid 3×3; a feed post; a story or reels cover; a pin when the brand uses Pinterest | 1:1 and 4:5 for the feed, 9:16 for stories, 2:3 for a pin |
+| **Site** | first screen on a desktop and on a phone; the top of a product page (gallery, title, price, button); a row of category tiles | the theme's own layout when the brand has one |
+| **Ads** | a feed ad; a story ad; a shopping tile or banner | 1:1 or 4:5, 9:16, by the platform's dated specs |
+| **Marketplace** | the search tile next to the shelf; the main image; the first three gallery frames | by the marketplace's dated specs (the full gallery is Product Visual's) |
+| **On request** | email header, parcel insert, packaging, a B2B line sheet or demo | in the carrier's own shape |
+
+**Columns in every layout:** as everyone (the category shelf), now (the brand's own material), each direction (before the choice), the chosen one (after it).
+
+**Rules for layouts:** only clean frames of the brand; a missing frame is a color tile from the palette captioned "To shoot: what exactly", which is the shoot list. Text only from the brand's lines or facts in its files, marked temporary; no invented prices, reviews or promises. A layout is a sketch of the direction, not a site or campaign design, and its caption says so. Platform sizes come from a dated source, an old one is marked. Ads: Visual Brain applies the system to the format; concept, budget and launch belong to Campaign Engine.
+
+The detail of the three original carriers stays below; the order of the uses on the page follows the labels (main first):
 1. **Where they find you:** the channels in `icp.md` ("where they find you", the channels in the data) and the brand's live sales channels. A marketplace the buyers find the brand in (Chewy, Etsy, Amazon, Walmart, Faire) puts its **search tile** first: on a marketplace the buyer meets the brand as one small tile among others, before any page or post.
 2. **Where they spend time,** when the ICP fills it with evidence.
-3. **The defaults,** the social media grid and the site first screen, only where they are real: the grid when the brand has an account the owner confirmed or the ICP names the network with evidence; the site when the brand has one or is building one.
-
-A blank ICP field is never filled with a default: a network the data does not name is not a carrier. The page says which carriers were chosen, the source of each, and which defaults were left out and why.
+3. **The other uses,** labeled "proposed" when the data does not put buyers there. A blank ICP field is never filled as if it were data: a network the data does not name is shown as proposed, never as where the audience is. The page says the label and the source of each use.
 
 | Carrier | Columns | Built from |
 |---|---|---|
@@ -196,6 +218,52 @@ The page ends with recommendations a person can act on, for the owner and for an
 - **Actions, by priority:** up to eight, grouped "now", "next", "later". Fixes to facts buyers see today (a size chart that disagrees with another, a claim without proof) come first under "now", before anything about the look; one action checks the chosen direction with real buyers (the panel and the rival are simulations). Each says what to do, why (its basis on the page: a pain, a gap, a test result, a discrepancy), and what it takes (a shoot, a fix on the site, a decision). Fixes found in "Where you are now" (a size table that disagrees with itself, text over the product, an old description for search and AI) go here.
 - **The first shoot list:** the first set on the main carrier (the nine frames of the first social media grid by default) and the site's hero, each with what it shows, who (which animal or person), where, light, and the need it answers. Built from what is in hand: frames already in hand are named with their file; the rest are marked "to shoot", each with the reason no photo in hand fits. Who goes in a "to shoot" frame follows the cast rule (the lead in the first frame, everyone in turn, two of different builds where size matters), never at random, and the list says why each one. The backdrop of each frame is the pair from "Every variant" that passed the check.
 - **Handed to Product Visual:** the proof frames the audience asked for (size, fit, how it is used), as a short list for `/product-visual:new`, with a note of which formats the brand's existing galleries already use (so a product gallery changes them rather than repeats them), and the brand's lines of the same kind with how they differ, when there are several.
+
+## Modes
+
+Two independent axes, plus depth (below), which is a third and never replaces the mode.
+
+| Mode (by scope) | When | Minimum result | Steps of `/visual-brain:brand` |
+|---|---|---|---|
+| **foundation** | no accepted system, or a material strategic change | baseline, change brief, directions next to the current base, layouts by use, rules, the first shoot list | all |
+| **task** | a system is in force and one material or fix is needed | the task's context, the brief for that use, sources and method with status, the layout for that use, the touched checks | 0, the inputs the task needs, 4b for that material, 6 for that use, 6b, judge on the touched checks |
+| **audit** | understand the problem before production | observations, likely causes, priorities, the next test | 0 to 4b; no directions, no layouts |
+
+| Mode (by context) | How it works |
+|---|---|
+| **connected** | reads the Marketing Brain files and the handoff card, checks they are enough for this task, records their versions in `state.md` |
+| **standalone** | a brand without a Marketing Brain: not supported yet (the command stops and says so); planned, with five onboarding questions |
+
+Default: foundation when nothing is chosen in `state.md` or the guide; task when a choice is in force and the owner names one material; say the mode and why in the first line.
+
+## The state record
+
+`projects/visual-brain/state.md`, one file: what is in force (with the date and the decision), the candidates, what was rejected and why, the next task, and **the inputs used**: every Marketing Brain file and handoff card read, with its path and its `last_updated` or git hash. A changed input marks the results that depend on it "to review". The accepted variant is never found by "the newest file".
+
+## Change brief
+
+Between "Where the brand is now" and the directions. Every material of the brand looked at (an image group, the site's first screen, a listing's main image, a social grid) gets one mark: **keep, strengthen, fix, replace, missing, not measured**, with the observation, its source and the buyer question it touches. Then the brief, in five lists: **keep, strengthen, fix, remove, create**, each item with its basis; the expected effect (what the buyer should understand or do differently); how it will be checked (which of the five levels: facts, visual quality, buyer understanding, technical release, business result); and what is not a visual problem, handed back to the Marketing Brain with its constraint type. A visual symptom is never taken for the cause of weak sales: a problem in the audience or the promise goes back to the Marketing Brain.
+
+## Method status
+
+Before a result is promised, each frame or layout names its method (reuse, shoot, capture, edit, generate, assemble) and the method's status: **tool available → method not checked → checked on a sample → can be used at volume**. The most fragile element is checked on a small sample before a batch. When a method twice breaks the same hard requirement after real attempts, change the source or the method, not the prompt. Generation is paid and runs only after the owner's yes; it never makes the product's shape, fit, color, knit or fastening.
+
+## Status axes
+
+Four axes, shared with the Marketing Brain, in the guide's front matter and on every result:
+
+| Axis | Values | Shown by |
+|---|---|---|
+| `evidence` | confirmed / assumption / simulation / missing / conflicting | the labels [И] [Д] [Ц] [В] [Г] [Н] |
+| `decision` | candidate / chosen / rejected / superseded | [Р], who, when, why, what was rejected |
+| `execution` | planned / brief ready / produced / exported / published and verified live | a file, a link, the date of the live check |
+| `effect` | not measured / insufficient data / improved / no change / worse | Reporting, with the period and its limits |
+
+`chosen` means a decision was made, not that the direction is proven. `stage` stays in the front matter for Product Visual: hypothesis or simulated while `decision` is candidate, chosen when `decision` is chosen; `validated` is no longer set (it mixed the decision with the effect: use `effect`).
+
+## Hand off to Portfolio
+
+The last step of a run. Visual Brain never lays out a case study; it writes `projects/visual-brain/outputs/portfolio-handoff.md` for the `portfolio` plugin: the cover status (strategy proposed, in testing, or results measured), and for each visual module the source file and section: the direction (palette on its own grounds, shooting rules, yes and no), the signature element, the layouts by use, the change brief, and the image provenance list (each image: own photo, retouched, generated background, to shoot), with its status axes. A module without a source is written "not available", never filled.
 
 ## Depth
 
@@ -243,7 +311,7 @@ Offer the human version of the audience panel once: five people from the audienc
 | VB.6 Observations, not orders | Are judgments written as observations or options with their basis, and facts (discrepancies) with both sources? | Blocking |
 | VB.7 Own work judged equally | Is the brand's own material held to the same standard as competitors'? | Flag |
 | VB.8 Readable | Does the page open with a short version, carry no internal codes, and end with sources? (a check on the page) | Flag |
-| VB.9 Shown on carriers | Is every direction shown on the carriers chosen in the guide (a marketplace search tile first when buyers find the brand on a marketplace; a grid or a site only where they are real), next to "as everyone" (and "now" when it exists), with the reason for each on the page? (a check on the page) | Blocking |
+| VB.9 Shown on carriers | Is every direction, and the current base, shown in the layouts of all four uses (social, site, ads, marketplace; framework, "Layouts by use"), next to "as everyone", each use labeled main, confirmed or proposed with its source, and any skipped use with its reason on the page? (a check on the page) | Blocking |
 | VB.10 No invented copy | Is every line on a mockup the brand's own line or a fact from its files, marked temporary? | Blocking |
 | VB.11 Identity left alone | Does the guide leave the logo, typeface and palette design alone, and show the brand's own assets used differently? | Flag |
 | VB.12 Clean carriers | In the brand's own columns ("now" and each direction; "as everyone" is the shelf by design), do grids and site mockups hold only clean frames of the brand, with "To shoot" tiles where frames are missing, and no other brand's images? (a check on the page) | Blocking |
@@ -253,7 +321,18 @@ Offer the human version of the audience panel once: five people from the audienc
 | VB.16 Panel clean | Did the panel see only the brand's own images and "To shoot" tiles on its blind boards, and was any test artifact followed by a rerun? | Blocking |
 | VB.17 Status stated | Do the market table, the discrepancies, the test results and the short version of the guide carry their statuses (confirmed, assumption, owner's decision, simulation), and, when the workspace uses evidence labels, the label with what it must carry (a [Г] with its check, a [В] with its evidence, a [Р] with date, reason and rejected options)? Does the short version open with the confidence summary? | Blocking |
 | VB.18 First screen | Does the page's first screen say what the recommendation stands on and what is not known yet? (a check on the page) | Blocking |
-| VB.19 Carriers from channels | Are the carriers taken from where buyers find the brand (the ICP's channels, the brand's live sales channels), each with its source, with no default carrier standing in for a blank field, and the defaults left out named with the reason? Is an empty space on the map written as a hypothesis with its check? | Blocking |
+| VB.19 Uses labeled from channels | Does the order and the label of each use (main, confirmed, proposed) follow where buyers find the brand (the ICP's channels, the live sales channels), each with its source, with no blank field written as if it were data? Is an empty space on the map written as a hypothesis with its check? | Blocking |
+| VB.20 Inputs recorded | Does `state.md` list every Marketing Brain file and handoff card read, with path and `last_updated` or hash, and does the guide's front matter name the same versions? | Blocking |
+| VB.21 Simulation kept a simulation | Is every panel, rival, fresh-eyes and judge result labeled as a simulation wherever it appears (guide, tests file, page, handoff), never as buyer evidence? | Blocking |
+| VB.22 Change brief | Does the guide hold the change brief: a mark on every material looked at, the five lists with their basis, the expected effect, the level of check, and what was handed back to the Marketing Brain? | Blocking in foundation and audit |
+| VB.23 Directions against the base | In a new choice: are the directions (usually two) shown next to the current base on the same layouts; with a choice in force: is it checked for applicability instead of replaced? | Blocking in foundation |
+| VB.24 Status axes | Does the guide's front matter carry `evidence`, `decision`, `execution` and `effect`, with `decision: chosen` only when Decisions holds the owner's [Р]? | Blocking |
+| VB.25 Method status | Does every shoot-list frame and every layout image name its method and the method's status, with generation marked as needing the owner's yes? | Blocking |
+| VB.27 Cast apart from audience | Are "who we shoot" and "who buys" written apart, with no audience line drawn from the cast, and is an owner's cast rule kept apart from any perceived reason? | Blocking |
+| VB.28 Position status kept | When the position is open, does each direction name the hypothesis it serves, with its basis and where to check, and is no direction written as the approved winner? | Blocking |
+| VB.26 Handed to Portfolio | Does `outputs/portfolio-handoff.md` exist, with the cover status and a source or "not available" for every visual module? | Flag |
+
+**IDs since 0.10.0.** One ID means one rule. Two unmerged lines used VB.19 to VB.22 for other rules: the ZIP 0.9.0 (VB.19 Idea carried, VB.20 Shoot bible) and the `marketing-inputs` 0.9.0 / 0.9.1 branch (VB.19 Inputs recorded, VB.20 Simulation kept a simulation, VB.21 Cast apart from audience, VB.22 Position status kept). Their content lives here as VB.20, VB.21, VB.27 and VB.28 (Idea carried and Shoot bible: not ported yet, see the README); reports written on those lines keep their old IDs and are read with this note.
 
 A failed blocking check is rewritten from the inputs. What the inputs can't fix goes on the page under "To check and decide", in plain words.
 
@@ -304,7 +383,7 @@ For a B2B physical product, everything above holds, with these changes:
 | **hypothesis** | Required inputs missing, or the tests not run |
 | **simulated** | The AI tests ran (panel, rival, recognition, judge), no blocking fail, the owner has not chosen a direction yet. Called `tested` before version 0.8.1; a file that says `tested` is read as `simulated`. Nothing here has been seen by a real buyer |
 | **chosen** | The owner chose a direction; the date is in Decisions |
-| **validated** | Product Visual's dated results support the direction; set only with the owner's yes, in Decisions |
+| **validated** | Not set since 0.10.0: it mixed the decision with the effect. Read an older `validated` as `decision: chosen` plus `effect` from Product Visual's dated results |
 
 **Stages and readiness.** In a workspace that grades results by readiness (a research contract with statuses such as research candidate, working strategy for a pilot, tested on buyers, tested in market): hypothesis and simulated are a research candidate; chosen is a working direction for a limited, reversible pilot (a first shoot, one gallery), once the owner records it; validated needs real buyers or market results and is never set from simulations alone.
 

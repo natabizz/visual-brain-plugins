@@ -96,7 +96,7 @@ A [В] that names no evidence is a [Г]. A [Г] without a check plan is not writ
 - **Decisions:** every owner rule (what may never change in the product, where text may sit), followed as written.
 - **The rival tests:** what the strongest competitors could copy and what they could not.
 
-If the guide is in `format: visual-brain-2` but has no chosen direction yet, say so once: `/visual-brain:choose` first, or "go" to work on the recommended direction, tagged (inferred) everywhere it is used.
+If the guide is in `format: visual-brain-2` or `visual-brain-3` but has no chosen direction yet, say so once: `/visual-brain:choose` first, or "go" to work on the recommended direction, tagged (inferred) everywhere it is used.
 
 ## Business type: who buys
 
