@@ -1,10 +1,19 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Professional case studies from the brand's Marketing Brain and Visual Brain files: image-led 1400 px modules with social, website and ad layouts, honesty rules on status and results, export for Behance and PDF. Reads the brains, never writes to them; publishes nothing without the owner.",
-  "author": { "name": "Natalia Bizyukova" },
+  "author": {
+    "name": "Natalia Bizyukova"
+  },
   "homepage": "https://github.com/natabizz/visual-brain-plugins",
   "repository": "https://github.com/natabizz/visual-brain-plugins",
   "license": "MIT",
-  "keywords": ["portfolio", "case-study", "behance", "brand", "visual-brain", "marketing-brain"]
+  "keywords": [
+    "portfolio",
+    "case-study",
+    "behance",
+    "brand",
+    "visual-brain",
+    "marketing-brain"
+  ]
 }
