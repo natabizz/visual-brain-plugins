@@ -43,13 +43,13 @@ p{margin:0;max-width:62ch}
 .chap .no{font:500 12px/1 var(--f-mono);letter-spacing:.14em}
 .lede{font-size:clamp(19px,1.7vw,23px);line-height:1.45;max-width:46ch}
 .src{font:400 11.5px/1.5 var(--f-mono);color:var(--ink-2);overflow-wrap:anywhere}
-.status{display:inline-flex;align-items:center;gap:8px;font:500 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;border:1px solid currentColor;border-radius:999px;width:max-content;max-width:100%}
+.status{display:inline-flex;align-items:center;gap:8px;font:500 12px/1.35 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;border:1px solid currentColor;border-radius:999px;width:max-content;max-width:100%}
 .status::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
 
 /* 01 cover */
 .cover{padding:0;background:var(--olive);color:#F6F4EC}
 .cover .frame{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);min-height:min(820px,92vh)}
-.cover .copy{display:grid;align-content:space-between;gap:40px;
+.cover .copy{display:grid;grid-template-columns:minmax(0,1fr);align-content:space-between;gap:40px;
   padding:clamp(28px,4vw,64px) clamp(20px,4vw,64px);padding-left:max(clamp(20px,4vw,64px),env(safe-area-inset-left,0px))}
 .cover .copy h1{color:#F6F4EC;font-stretch:112%;font-size:clamp(34px,5.4vw,78px);line-height:.95}
 .cover .frame>*{min-width:0}
@@ -84,9 +84,9 @@ p{margin:0;max-width:62ch}
 .insight .photo img{width:100%;height:100%;object-fit:cover}
 .insight .copy{padding:clamp(40px,6vw,96px) clamp(20px,5vw,80px);display:grid;align-content:center;gap:28px;
   padding-right:max(clamp(20px,5vw,80px),env(safe-area-inset-right,0px))}
-blockquote{margin:0;font:800 clamp(30px,3.6vw,52px)/1.04 var(--f-display);font-stretch:112%;text-wrap:balance}
-blockquote::before{content:"\201C"}
-blockquote::after{content:"\201D"}
+.insight-synthesis{margin:0;font:800 clamp(30px,3.6vw,52px)/1.04 var(--f-display);font-stretch:112%;text-wrap:balance}
+
+
 .insight .q2{font:500 clamp(18px,1.6vw,22px)/1.35 var(--f-body);border-top:1px solid rgba(251,243,240,.45);padding-top:18px;max-width:40ch}
 .insight .src{color:#F3DDD7}
 @media (max-width:820px){.insight .frame{grid-template-columns:1fr}.insight .photo{aspect-ratio:4/3}}
@@ -251,11 +251,11 @@ blockquote::after{content:"\201D"}
       <div class="tags"><span>Brand strategy</span><span>Positioning</span><span>Visual direction</span><span>E-commerce</span><span>2026</span></div>
       <div style="display:grid;gap:22px">
         <h1>Fit for dogs built differently</h1>
-        <p class="sub">How a small dog-apparel brand found its position in a loud category, and the quiet look that carries it.</p>
+        <p class="sub">A working exploration of a dog-apparel brand's positioning and visual direction. Outcomes have not been measured.</p>
       </div>
-      <span class="status">Strategy proposed / Buyer tests scheduled</span>
+      <span class="status">Historical layout example / Strategy proposed</span>
     </div>
-    <div class="photo"><img data-img="raw/visuals/own/site/ff-materials-olive.jpg" alt="A merle French Bulldog in an olive knit hat with ear openings, on an olive plaster ground"></div>
+    <div class="photo"><img data-img="raw/visuals/own/site/ff-materials-olive.jpg" alt="A dog in an olive knit hat with ear openings, on an olive ground"></div>
   </div>
 </section>
 
@@ -271,9 +271,9 @@ blockquote::after{content:"\201D"}
     <div class="split">
       <div class="chap"><span class="no">01</span><h2>The brief</h2></div>
       <div style="display:grid;gap:18px">
-        <p class="lede">Fabulous Fido makes knit hats with ear openings, sized for flat-headed, broad-chested dogs. The product is specific. The shelf it sits on is not.</p>
+        <p class="lede">Fabulous Fido makes open-ear knit hats in different sizes and materials. This example explores how to explain the product and the size choice.</p>
         <p>On Etsy and Chewy the brand appears next to novelty prints and one-chart-fits-all basics. The task: find what buyers of these dogs actually struggle with, show where the brand can stand apart, and set a look that says it before anyone reads a word.</p>
-        <p class="src">Founder-led project. Research, strategy and art direction: Natalia Bizyukova.</p>
+        <p class="src">Founder-led project. Research, strategy and art direction: the brand team.</p>
       </div>
     </div>
   </div>
@@ -290,7 +290,7 @@ blockquote::after{content:"\201D"}
       <div class="stat"><b>19</b><span>describe a size that missed, too big or too small</span></div>
       <div class="stat"><b>182</b><span>of 250 Etsy hat reviews land between October and January</span></div>
     </div>
-    <p class="src">Source: brand review exports, Etsy and Chewy, collected 2026-10-14 (icp.md). Counts are from the brand's own data, not market totals.</p>
+    <p class="src">Source: brand review exports, Etsy and Chewy, collected 2026-10-14 (icp.md). These figures document a historical working sample. Ownership classification has since been revised; they are not current brand conclusions or market totals.</p>
   </div>
 </section>
 
@@ -300,9 +300,9 @@ blockquote::after{content:"\201D"}
     <div class="photo"><img data-img="raw/visuals/own/site/ff-materials-rose.jpg" alt="A merle French Bulldog with blue eyes in a rose knit hat, on a rose plaster ground"></div>
     <div class="copy">
       <span class="kicker">03 / The insight</span>
-      <blockquote>It's so hard to find anything that fits her right.</blockquote>
-      <p class="q2">The problem is shape, not size. A broad chest, a wide neck and a flat head are a different build. A bigger size fixes none of them.</p>
-      <p class="src">Etsy review ETSY-094, 2024-02-10. Echoed by "would not stay on my dogs head no matter how hard we tried!" (ETSY-087).</p>
+      <p class="insight-synthesis">Choosing a size can be difficult.</p>
+      <p class="q2">Body proportions can make a size label alone unhelpful. This draft explores measurements as a clearer way to choose.</p>
+      <p class="src">Synthesis of historical feedback, not a customer quotation. Individual records and their sources stay in the private working map.</p>
     </div>
   </div>
 </section>
@@ -330,11 +330,11 @@ blockquote::after{content:"\201D"}
     <p class="okm">Fit for dogs built differently.</p>
     <p class="lede" style="color:#E9E6DF">Sized by the measurements that decide each piece, not by breed or weight. For a hat: head circumference in front of the ears, plus the distance between them.</p>
     <div class="pillars">
-      <div class="pillar"><span class="k">Their problem</span><h3>Generic sizes</h3><p>Cut for an average dog. The chest fits, the back hangs, the neck won't close.</p><p class="vq">"Frenchies neck are deceivingly wide."</p></div>
+      <div class="pillar"><span class="k">Their problem</span><h3>Generic sizes</h3><p>Cut for an average dog. The chest fits, the back hangs, the neck won't close.</p><p class="vq">A body measurement is more useful than a size name alone.</p></div>
       <div class="pillar"><span class="k">Our answer</span><h3>Measure two things</h3><p>Head around the front of the ears. Distance between the ears. Pick one size.</p><p class="vq">Built Differently by Nature.</p></div>
-      <div class="pillar"><span class="k">The proof to build</span><h3>Ears out, hat stays</h3><p>Ear openings knitted in and an adjustable chin cord. Next: a frame of the hat staying on a moving dog.</p><p class="vq">"would not stay on my dogs head" is the fear to answer.</p></div>
+      <div class="pillar"><span class="k">The proof to build</span><h3>Ears out, adjustable cord</h3><p>Ear openings and a separate adjustable chin cord. Fit and movement still need checking in use.</p><p class="vq">A product fact is not a promise that the hat stays on.</p></div>
     </div>
-    <p class="src">Quotes: ETSY-095, ETSY-087. "Built Differently by Nature" is the brand's line (owner, 2026-11-13). The key message is a proposal, to be tested with five Frenchie owners before it goes on a listing.</p>
+    <p class="src">Public feedback is summarized without individual quotations or record identifiers. "Built Differently by Nature" is the brand's line. The key message remains a proposal.</p>
   </div>
 </section>
 
@@ -420,7 +420,7 @@ blockquote::after{content:"\201D"}
         <div class="ig-head"><div class="ava"><img data-img="raw/visuals/own/site/FIDO_logo_bl.png" alt=""></div><div><b>fabulousfido.fashion</b><span>Built Differently by Nature.</span></div></div>
         <div class="grid9">
           <img data-img="raw/visuals/own/snug-ears/ff-olive-b.jpg" alt="Olive">
-          <div class="gap" style="background:#B4B2A3"><b>To shoot</b>Walk frame: the hat stays on a moving dog, outdoors</div>
+          <div class="gap" style="background:#B4B2A3"><b>To shoot</b>Walk frame: observe the hat on a moving dog, outdoors</div>
           <img data-img="raw/visuals/own/snug-ears/ff-rose-b.jpg" alt="Rose">
           <img data-img="raw/visuals/own/site-articles/ff-bolivia-hands-beige.jpg" alt="Knitter's hands with a beige hat">
           <img data-img="raw/visuals/own/snug-ears/ff-grey-b.jpg" alt="Grey">
@@ -482,7 +482,7 @@ blockquote::after{content:"\201D"}
           <div class="buy"><span class="kicker">Snug Ears</span><h3 class="ptitle">Snug Ears Dog Beanie: Olive</h3><b class="price">$24.99</b>
             <div class="sw"><i style="background:#7B7A3E"></i><i style="background:#B07B75"></i><i style="background:#9A9AA0"></i><i style="background:#7A4A30"></i><i style="background:#D8C2A6"></i><i style="background:#B3242C"></i></div>
             <span class="btn ghost">Measure first: head in front of the ears</span><span class="btn">Add to cart</span>
-            <p class="mini">Ear openings knitted in. Adjustable chin cord. 75% acrylic, 25% wool.</p></div>
+            <p class="mini">Ear openings. Separate adjustable chin cord. 75% acrylic, 25% wool.</p></div>
         </div></div></div>
     <p class="src">Title and price from the brand's store data, 2026-11-12. Fiber from the brand's product copy. Swatch colors approximate. Layout sketch, not a theme design.</p>
   </div>
@@ -539,9 +539,9 @@ blockquote::after{content:"\201D"}
   <div class="in">
     <img class="logo" data-img="raw/visuals/own/site/FIDO_logo_bl.png" alt="Fabulous Fido logo">
     <div class="cols">
-      <div><h3>Team</h3><ul><li>Natalia Bizyukova: founder, research, strategy, art direction</li><li>The house cast: Mini, Fiona, Otis, Nacho</li></ul></div>
+      <div><h3>Team</h3><ul><li>Fabulous Fido team: research, strategy, art direction</li><li>The house cast: Mini, Fiona, Otis, Nacho</li></ul></div>
       <div><h3>Method</h3><ul><li>Review coding of 419 texts</li><li>Market map of 7 brands, 35 frames</li><li>Index of 55 own frames</li><li>AI panel and rival tests as preparation only</li></ul></div>
-      <div><h3>About the images</h3><ul><li>Snug Ears studio frames: real dogs and hats, generated backgrounds (owner, 2026-11-12)</li><li>Workshop and site frames: brand photography</li><li>No product shape, fit or color was generated</li></ul></div>
+      <div><h3>About the images</h3><ul><li>Visual concepts use background replacements; source photographs must be checked individually.</li><li>Only verified photographs may demonstrate fit or product construction.</li><li>Example mockups are not cleared for a live product listing.</li></ul></div>
     </div>
     <p class="src">Sources: wiki/brand/icp.md, positioning-messaging.md, visual-guide.md; projects/visual-brain/landscape/. Status: strategy proposed, owner decision pending.</p>
   </div>

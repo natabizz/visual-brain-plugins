@@ -11,7 +11,8 @@ A case is the showcase output of a brand run: what a client, a Behance visitor o
 5. **Text on mockups** is only the brand's own lines or facts from its files, and the note says it is temporary. No invented price, review, claim, client logo or metric. A fact not yet confirmed is shown as a placeholder in brackets: "[NAME] / HEAD [__] IN".
 6. **Competitor images** stay in the working page. A public case names rivals and shows the map, not their photos.
 7. **Private until the owner's "ok".** The case is published as a private artifact; Behance, the site or any upload waits for the owner.
-8. **Client-facing language:** U.S. English, the owner's voice rules (my-voice skill), no em dashes.
+8. **Public privacy.** Keep personal names, contact details, customer or order ids and row-level source links in the private working map. If a quotation would identify a person, use an explicitly labeled synthesis without quotation marks. Never invent a testimonial. Public examples show the approved brand, not private attribution.
+9. **Client-facing language:** U.S. English, the owner's voice rules (my-voice skill), no em dashes.
 
 ## Modules, B2C (default order)
 
@@ -20,7 +21,7 @@ A case is the showcase output of a brand run: what a client, a Behance visitor o
 | 01 | Cover | positioning-messaging.md (key message), visual-guide.md (lead frame) | Title, one-line summary, discipline tags, status chip, the lead photo |
 | 02 | Overview | profile or project file | Client, category, channels, scope, team |
 | 03 | Research in numbers | icp.md, baseline | Four big numbers, each with a source line |
-| 04 | Insight | icp.md "Their words" | One buyer quote, verbatim, with record id; the reframe |
+| 04 | Insight | icp.md "Their words" | A permitted, anonymized buyer quote or a clearly labeled synthesis; individual record ids stay in the private working map |
 | 05 | Market map | visual-guide.md map table or comparison.md | The map drawn to scale from map.json, open space marked |
 | 06 | Positioning | positioning-messaging.md | Key message, differentiation, three pillars (problem, answer, proof to build) |
 | 07 | Visual direction | visual-guide.md | Every colorway on its ground, three shooting rules, yes / no |

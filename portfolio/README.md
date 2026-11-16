@@ -10,3 +10,5 @@ Turns a finished brand run into a case study that looks like a studio made it: i
 Needs Python 3 with Pillow, and Node with Playwright for the checks and the export.
 
 Example: `templates/case-b2c.example.src.html` (Fabulous Fido, 2026-11-14) with `templates/map.example.json`.
+
+The public Fabulous Fido example omits personal attribution and individual review identifiers. Its feedback text is labeled as synthesis, not a customer quotation. Keep row-level evidence in the private working map. The example is a historical layout draft; replace its data and verify image provenance before using it as a current case.
