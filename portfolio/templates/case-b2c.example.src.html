@@ -1,0 +1,548 @@
+<meta charset="utf-8">
+<title>Fabulous Fido Case Study</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112..125,500;112..125,800;112..125,900&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an image-led case study built as stacked 1400px modules (one Behance module each).
+   Each chapter sits on the ground color of one Snug Ears colorway, sampled from the brand's own photos:
+   the visual direction, applied to the case itself. Single light look by design. */
+:root{
+  color-scheme:light;
+  --ink:#2E2E2D;          /* logo charcoal, FabulousFido_lockup_MASTER */
+  --ink-2:#5B5853;
+  --paper:#F6F5F2;
+  --stone:#B4B2A3;        /* olive frame ground, sampled */
+  --olive:#827B56;        /* olive materials frame, sampled */
+  --rose:#A86F68;         /* rose frame ground, sampled */
+  --rose-lt:#EBCFC6;
+  --grey:#C8C7CB;         /* grey frame ground, sampled */
+  --brown:#A07352;        /* brown frame ground, sampled */
+  --sand:#E9D6C1;         /* red frame ground (sand), sampled */
+  --line:rgba(46,46,45,.18);
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--f-body);margin:0}
+img{display:block;max-width:100%;height:auto}
+.m{position:relative;padding-block:clamp(56px,7vw,112px);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:1240px;margin:0 auto;display:grid;gap:clamp(24px,3vw,40px)}
+.in>*{min-width:0}
+h1,h2,h3{margin:0;text-wrap:balance;font-family:var(--f-display);font-stretch:125%;letter-spacing:-.01em}
+h1{font-weight:900;font-size:clamp(40px,7.4vw,104px);line-height:.92;text-transform:uppercase}
+h2{font-weight:800;font-size:clamp(28px,3.8vw,54px);line-height:1;text-transform:uppercase}
+h3{font-weight:800;font-size:clamp(17px,1.5vw,21px);line-height:1.15;text-transform:uppercase;font-stretch:112%}
+p{margin:0;max-width:62ch}
+.kicker{font:500 12px/1.3 var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
+.chap{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.chap .no{font:500 12px/1 var(--f-mono);letter-spacing:.14em}
+.lede{font-size:clamp(19px,1.7vw,23px);line-height:1.45;max-width:46ch}
+.src{font:400 11.5px/1.5 var(--f-mono);color:var(--ink-2);overflow-wrap:anywhere}
+.status{display:inline-flex;align-items:center;gap:8px;font:500 12px/1.35 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;border:1px solid currentColor;border-radius:999px;width:max-content;max-width:100%}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+
+/* 01 cover */
+.cover{padding:0;background:var(--olive);color:#F6F4EC}
+.cover .frame{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);min-height:min(820px,92vh)}
+.cover .copy{display:grid;grid-template-columns:minmax(0,1fr);align-content:space-between;gap:40px;
+  padding:clamp(28px,4vw,64px) clamp(20px,4vw,64px);padding-left:max(clamp(20px,4vw,64px),env(safe-area-inset-left,0px))}
+.cover .copy h1{color:#F6F4EC;font-stretch:112%;font-size:clamp(34px,5.4vw,78px);line-height:.95}
+.cover .frame>*{min-width:0}
+.cover .copy .sub{font-size:clamp(18px,1.6vw,22px);max-width:30ch;line-height:1.4}
+.cover .tags{display:flex;flex-wrap:wrap;gap:8px 18px;font:500 12px/1.4 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;opacity:.9}
+.cover .photo{position:relative;overflow:hidden}
+.cover .photo img{width:100%;height:100%;object-fit:cover}
+@media (max-width:820px){.cover .frame{grid-template-columns:1fr}.cover .photo{aspect-ratio:4/3.4}}
+
+/* 02 overview */
+.overview{background:var(--paper)}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink)}
+.facts>div{padding:18px 18px 0 0;display:grid;gap:6px;align-content:start}
+.facts dt{font:500 11.5px/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.facts dd{margin:0;font-weight:500}
+@media (max-width:820px){.facts{grid-template-columns:1fr 1fr;row-gap:18px}}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(24px,5vw,80px);align-items:start}
+@media (max-width:820px){.split{grid-template-columns:1fr}}
+
+/* 03 numbers */
+.numbers{background:var(--stone)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;background:var(--ink)}
+.stat{background:var(--stone);padding:22px 20px 20px;display:grid;gap:8px;align-content:start}
+.stat b{font:900 clamp(44px,5.4vw,78px)/.9 var(--f-display);font-stretch:125%;font-variant-numeric:tabular-nums}
+.stat span{font-size:15px;line-height:1.4}
+@media (max-width:820px){.stats{grid-template-columns:1fr 1fr}}
+
+/* 04 insight */
+.insight{background:var(--rose);color:#FBF3F0;padding:0}
+.insight .frame{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+.insight .frame>*{min-width:0}
+.insight .photo img{width:100%;height:100%;object-fit:cover}
+.insight .copy{padding:clamp(40px,6vw,96px) clamp(20px,5vw,80px);display:grid;align-content:center;gap:28px;
+  padding-right:max(clamp(20px,5vw,80px),env(safe-area-inset-right,0px))}
+.insight-synthesis{margin:0;font:800 clamp(30px,3.6vw,52px)/1.04 var(--f-display);font-stretch:112%;text-wrap:balance}
+
+
+.insight .q2{font:500 clamp(18px,1.6vw,22px)/1.35 var(--f-body);border-top:1px solid rgba(251,243,240,.45);padding-top:18px;max-width:40ch}
+.insight .src{color:#F3DDD7}
+@media (max-width:820px){.insight .frame{grid-template-columns:1fr}.insight .photo{aspect-ratio:4/3}}
+
+/* 05 market map */
+.market{background:var(--paper)}
+.mapwrap{overflow-x:auto;border-top:2px solid var(--ink);padding-top:18px}
+.mapwrap svg{display:block;width:100%;min-width:640px;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:10px 24px;font:500 12px/1.3 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px;vertical-align:-1px}
+
+/* 06 positioning */
+.position{background:var(--ink);color:var(--paper)}
+.position .okm{font:900 clamp(40px,6.6vw,96px)/.92 var(--f-display);font-stretch:125%;text-transform:uppercase;max-width:14ch}
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
+.pillar{border-top:1px solid rgba(246,245,242,.35);padding-top:16px;display:grid;gap:10px;align-content:start}
+.pillar .k{font:500 11.5px/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.pillar p{font-size:16px}
+.pillar .vq{font-style:italic;opacity:.85}
+.position .src{color:#BDBAB2}
+@media (max-width:820px){.pillars{grid-template-columns:1fr}}
+
+/* 07 direction */
+.direction{background:var(--sand)}
+.six{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.six figure{margin:0;display:grid;gap:8px}
+.six img{aspect-ratio:1/1;object-fit:cover;width:100%}
+.six figcaption{font:500 11.5px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.six figcaption i{width:12px;height:12px;border-radius:50%;flex:none;border:1px solid var(--line)}
+@media (max-width:980px){.six{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:440px){.six{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,28px);counter-reset:r}
+.rule{border-top:2px solid var(--ink);padding-top:14px;display:grid;gap:8px;align-content:start}
+.rule h3::before{counter-increment:r;content:counter(r,decimal-leading-zero) "  ";font:500 12px/1 var(--f-mono);vertical-align:3px}
+@media (max-width:820px){.rules{grid-template-columns:1fr}}
+.yesno{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,28px);font:500 13px/1.6 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.yesno div{display:grid;gap:4px;align-content:start}
+.yesno b{font-weight:500;color:var(--ink-2)}
+
+/* 08 signature */
+.signature{background:var(--paper)}
+.sig{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:center}
+.sigphoto{position:relative}
+.sigphoto img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.sigphoto .cap{position:absolute;left:18px;bottom:18px;right:18px;background:rgba(246,245,242,.94);padding:12px 14px;
+  font:500 clamp(12px,1.2vw,15px)/1.3 var(--f-mono);letter-spacing:.06em;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.cast{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;background:var(--ink);border:2px solid var(--ink)}
+.cast div{background:var(--paper);padding:12px;display:grid;gap:2px}
+.cast b{font:800 15px/1.2 var(--f-display);font-stretch:112%;text-transform:uppercase}
+.cast span{font:400 12px/1.4 var(--f-mono);color:var(--ink-2)}
+@media (max-width:820px){.sig{grid-template-columns:1fr}.cast{grid-template-columns:1fr 1fr}}
+
+/* 09 craft */
+.craft{background:var(--brown);color:#FBF5EF}
+.trio{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:6px}
+.trio img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4}
+@media (max-width:820px){.trio{grid-template-columns:1fr 1fr}.trio img:first-child{grid-column:1/-1;aspect-ratio:4/3}}
+.craft .src{color:#EBD8C8}
+
+/* 10 applications */
+.apps{background:var(--grey)}
+.appgrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(16px,2.4vw,32px);align-items:start}
+@media (max-width:820px){.appgrid{grid-template-columns:1fr}}
+.browser{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(46,46,45,.45)}
+.browser .bar{display:flex;gap:6px;padding:10px 12px;background:#EDECEA}
+.browser .bar i{width:9px;height:9px;border-radius:50%;background:#C9C7C2}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tile{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 18px 40px -26px rgba(46,46,45,.5);display:grid}
+.tile img{aspect-ratio:1/1;object-fit:cover;width:100%}
+.tile .t{padding:10px 12px 12px;display:grid;gap:3px;font-size:13px;line-height:1.35}
+.tile .t b{font-weight:600}
+.tile .t span{color:var(--ink-2);font-size:12px}
+.tile.ghost img{filter:grayscale(1) contrast(.9);opacity:.55}
+.app-label{font:500 11.5px/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;display:block}
+
+
+/* applications mockups */
+.site{background:var(--paper)} .ads{background:var(--rose-lt)}
+.phone{background:#1E1E1D;border-radius:34px;padding:10px;width:300px;max-width:100%;box-shadow:0 30px 60px -30px rgba(46,46,45,.55);margin:0 auto}
+.scr{background:#fff;border-radius:26px;overflow:hidden;aspect-ratio:9/16;display:flex;flex-direction:column;position:relative;font-size:11px;color:#1E1E1D}
+.social,.adgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,48px);align-items:start}
+.adgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.3fr)}
+@media (max-width:900px){.social,.adgrid{grid-template-columns:1fr}}
+.social>div,.adgrid>div{display:grid;justify-items:center;text-align:center}
+.adgrid>div:last-child{justify-items:stretch;text-align:left}
+.ig-head{display:flex;gap:10px;align-items:center;padding:30px 12px 10px;text-align:left}
+.ig-head .ava{width:44px;height:44px;border-radius:50%;background:#F6F5F2;display:grid;place-items:center;overflow:hidden;flex:none;border:1px solid #ddd}
+.ig-head .ava img{width:80%}
+.ig-head b{display:block;font-size:12px}.ig-head span{font-size:11px;color:#666}
+.grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.grid9 img,.grid9 .gap{aspect-ratio:1/1;object-fit:cover;width:100%}
+.gap{display:grid;align-content:center;gap:4px;padding:6px;font:500 8.5px/1.25 var(--f-mono);color:var(--ink);text-align:left;letter-spacing:.02em}
+.gap b{font-size:9px;text-transform:uppercase;letter-spacing:.08em}
+.post-head{display:flex;gap:8px;align-items:center;padding:30px 12px 8px;text-align:left}
+.post-head i{width:24px;height:24px;border-radius:50%;background:var(--olive)} .post-head b{font-size:11.5px}
+.spons{font-size:10px;color:#777;margin-left:auto}
+.r45{aspect-ratio:4/5;object-fit:cover;width:100%}
+.post-cap{padding:10px 12px;text-align:left;line-height:1.4}
+.adbar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;background:#F2F1EE;text-align:left;font-weight:600}
+.story img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.story .bars{position:absolute;top:14px;left:12px;right:12px;display:flex;gap:4px}
+.story .bars i{flex:1;height:2px;background:rgba(255,255,255,.5)} .story .bars i.on{background:#fff}
+.story-head{position:absolute;top:26px;left:12px;color:#fff;font-weight:600;font-size:11px;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+.sticker{position:absolute;left:50%;top:62%;transform:translate(-50%,0) rotate(-3deg);background:#F6F5F2;padding:8px 12px;font:500 11px/1 var(--f-mono);letter-spacing:.06em;white-space:nowrap;color:#8A877F}
+.story-cta{position:absolute;left:12px;right:12px;bottom:16px;background:#fff;border-radius:999px;padding:10px;font-weight:600;font-size:12px;text-align:center}
+.btn{display:inline-block;background:var(--ink);color:#F6F5F2;font:600 12.5px/1 var(--f-body);padding:12px 16px;border-radius:2px;width:max-content;max-width:100%}
+.btn.sm{padding:8px 10px;font-size:11px}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.sitegrid{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);gap:clamp(16px,3vw,40px);align-items:start}
+@media (max-width:900px){.sitegrid{grid-template-columns:1fr}}
+.nav{display:flex;gap:22px;align-items:center;padding:14px 20px;font-size:13px;border-bottom:1px solid #eee}
+.nav img{height:22px;width:auto;margin-right:auto}
+.hero{display:grid;grid-template-columns:1fr 1.2fr;background:#B4B2A3;align-items:center}
+.hero img{width:100%;aspect-ratio:5/4;object-fit:cover}
+.hcopy{padding:28px;display:grid;gap:18px}
+.hline{font-size:clamp(18px,2.2vw,30px);text-transform:none;font-stretch:112%;line-height:1.05}
+.row4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:14px 20px 20px}
+.row4 figure{margin:0;display:grid;gap:6px}.row4 img{aspect-ratio:1/1;object-fit:cover;width:100%}
+.row4 figcaption{font-size:11.5px}
+.mob .mnav{display:flex;justify-content:space-between;align-items:center;padding:28px 14px 10px}
+.mob .mnav img{height:16px;width:auto}
+.mhero{width:100%;aspect-ratio:4/5;object-fit:cover}
+.mcopy{padding:14px;display:grid;gap:12px;align-content:start;text-align:left;background:#B4B2A3;flex:1}
+.mcopy .hline{font-size:20px}
+.pdpin{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;padding:22px}
+@media (max-width:700px){.pdpin{grid-template-columns:1fr}}
+.gal{display:grid;grid-template-columns:70px 1fr;gap:10px}
+.gal .main{grid-column:2;grid-row:1;aspect-ratio:1/1;object-fit:cover;width:100%}
+.thumbs{grid-column:1;grid-row:1;display:grid;gap:8px;align-content:start}
+.thumbs img,.thumbs .gap{aspect-ratio:1/1;object-fit:cover;width:100%}
+.buy{display:grid;gap:14px;align-content:start}
+.ptitle{font-size:24px;text-transform:none;font-stretch:100%}
+.price{font:600 20px/1 var(--f-body)}
+.sw{display:flex;gap:8px}.sw i{width:24px;height:24px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #ccc}
+.mini{font-size:13.5px;color:var(--ink-2)}
+
+/* 11 measure */
+.measure{background:var(--paper)}
+.plan{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--ink);border:2px solid var(--ink)}
+.plan div{background:var(--paper);padding:20px;display:grid;gap:10px;align-content:start}
+.plan .when{font:500 12px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+@media (max-width:820px){.plan{grid-template-columns:1fr}}
+.result{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px 28px;align-items:center;border:2px dashed var(--ink);padding:22px}
+.result b{font:900 clamp(26px,3vw,40px)/1 var(--f-display);font-stretch:125%;text-transform:uppercase}
+@media (max-width:620px){.result{grid-template-columns:1fr}}
+
+/* 12 credits */
+.credits{background:var(--ink);color:#D9D6CF}
+.credits .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.credits h3{color:var(--paper)}
+.credits ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:14px}
+.credits .src{color:#A9A59D}
+@media (max-width:820px){.credits .cols{grid-template-columns:1fr}}
+.logo{height:auto;width:min(260px,60%);filter:invert(1) brightness(1.6)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+</style>
+
+<!-- 01 COVER -->
+<section class="m cover" data-module="01-cover">
+  <div class="frame">
+    <div class="copy">
+      <div class="tags"><span>Brand strategy</span><span>Positioning</span><span>Visual direction</span><span>E-commerce</span><span>2026</span></div>
+      <div style="display:grid;gap:22px">
+        <h1>Fit for dogs built differently</h1>
+        <p class="sub">A working exploration of a dog-apparel brand's positioning and visual direction. Outcomes have not been measured.</p>
+      </div>
+      <span class="status">Historical layout example / Strategy proposed</span>
+    </div>
+    <div class="photo"><img data-img="raw/visuals/own/site/ff-materials-olive.jpg" alt="A dog in an olive knit hat with ear openings, on an olive ground"></div>
+  </div>
+</section>
+
+<!-- 02 OVERVIEW -->
+<section class="m overview" data-module="02-overview">
+  <div class="in">
+    <dl class="facts">
+      <div><dt>Client</dt><dd>Fabulous Fido LLC</dd></div>
+      <div><dt>Category</dt><dd>Dog hats and apparel for French Bulldogs and other broad-chested breeds</dd></div>
+      <div><dt>Channels</dt><dd>Etsy, Chewy, Amazon, own Shopify store</dd></div>
+      <div><dt>Scope</dt><dd>Buyer research, market map, positioning, visual direction</dd></div>
+    </dl>
+    <div class="split">
+      <div class="chap"><span class="no">01</span><h2>The brief</h2></div>
+      <div style="display:grid;gap:18px">
+        <p class="lede">Fabulous Fido makes open-ear knit hats in different sizes and materials. This example explores how to explain the product and the size choice.</p>
+        <p>On Etsy and Chewy the brand appears next to novelty prints and one-chart-fits-all basics. The task: find what buyers of these dogs actually struggle with, show where the brand can stand apart, and set a look that says it before anyone reads a word.</p>
+        <p class="src">Founder-led project. Research, strategy and art direction: the brand team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 NUMBERS -->
+<section class="m numbers" data-module="03-research">
+  <div class="in">
+    <div class="chap"><span class="no">02</span><h2>What 419 reviews said</h2></div>
+    <p class="lede">We read every text review the brand had, across Etsy and Chewy, and coded what owners praise, fear and return.</p>
+    <div class="stats">
+      <div class="stat"><b>419</b><span>text reviews read and coded, 2021 to 2026</span></div>
+      <div class="stat"><b>62</b><span>name a French Bulldog, the breed the line is built for</span></div>
+      <div class="stat"><b>19</b><span>describe a size that missed, too big or too small</span></div>
+      <div class="stat"><b>182</b><span>of 250 Etsy hat reviews land between October and January</span></div>
+    </div>
+    <p class="src">Source: brand review exports, Etsy and Chewy, collected 2026-10-14 (icp.md). These figures document a historical working sample. Ownership classification has since been revised; they are not current brand conclusions or market totals.</p>
+  </div>
+</section>
+
+<!-- 04 INSIGHT -->
+<section class="m insight" data-module="04-insight">
+  <div class="frame">
+    <div class="photo"><img data-img="raw/visuals/own/site/ff-materials-rose.jpg" alt="A merle French Bulldog with blue eyes in a rose knit hat, on a rose plaster ground"></div>
+    <div class="copy">
+      <span class="kicker">03 / The insight</span>
+      <p class="insight-synthesis">Choosing a size can be difficult.</p>
+      <p class="q2">Body proportions can make a size label alone unhelpful. This draft explores measurements as a clearer way to choose.</p>
+      <p class="src">Synthesis of historical feedback, not a customer quotation. Individual records and their sources stay in the private working map.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 MARKET -->
+<section class="m market" data-module="05-market">
+  <div class="in">
+    <div class="split">
+      <div class="chap"><span class="no">04</span><h2>The shelf, mapped</h2></div>
+      <div style="display:grid;gap:14px">
+        <p class="lede">Seven brands, 35 product frames. The shelf is loud prints on white seamless. The quiet end of the map is almost empty.</p>
+        <p>No brand we looked at shows one quiet color in a real moment. That corner is open. Whether buyers want it is the next test, not a given.</p>
+      </div>
+    </div>
+    <div class="mapwrap"><!--MAP--></div>
+    <div class="legend"><span><i style="background:#2E2E2D"></i>Market brands</span><span><i style="background:#A86F68"></i>Fabulous Fido now</span><span><i style="background:#827B56"></i>Proposed direction</span><span><i style="background:transparent;border:1.5px dashed #2E2E2D"></i>Open space</span></div>
+    <p class="src">Positions are an expert reading of 35 public frames and 55 own frames, 2026-11-12. Prices on the shelf ranged from $12.50 to $70.</p>
+  </div>
+</section>
+
+<!-- 06 POSITIONING -->
+<section class="m position" data-module="06-positioning">
+  <div class="in">
+    <div class="chap"><span class="no">05</span><span class="kicker">Owned key message / proposed</span></div>
+    <p class="okm">Fit for dogs built differently.</p>
+    <p class="lede" style="color:#E9E6DF">Sized by the measurements that decide each piece, not by breed or weight. For a hat: head circumference in front of the ears, plus the distance between them.</p>
+    <div class="pillars">
+      <div class="pillar"><span class="k">Their problem</span><h3>Generic sizes</h3><p>Cut for an average dog. The chest fits, the back hangs, the neck won't close.</p><p class="vq">A body measurement is more useful than a size name alone.</p></div>
+      <div class="pillar"><span class="k">Our answer</span><h3>Measure two things</h3><p>Head around the front of the ears. Distance between the ears. Pick one size.</p><p class="vq">Built Differently by Nature.</p></div>
+      <div class="pillar"><span class="k">The proof to build</span><h3>Ears out, adjustable cord</h3><p>Ear openings and a separate adjustable chin cord. Fit and movement still need checking in use.</p><p class="vq">A product fact is not a promise that the hat stays on.</p></div>
+    </div>
+    <p class="src">Public feedback is summarized without individual quotations or record identifiers. "Built Differently by Nature" is the brand's line. The key message remains a proposal.</p>
+  </div>
+</section>
+
+<!-- 07 DIRECTION -->
+<section class="m direction" data-module="07-direction">
+  <div class="in">
+    <div class="split">
+      <div class="chap"><span class="no">06</span><h2>Color with character</h2></div>
+      <div style="display:grid;gap:14px">
+        <p class="lede">One named house dog per colorway. Eye level. Ears through the knit. The hat on a matte ground of its own hue.</p>
+        <p>Five of six colors already work this way. The direction makes it the rule, and fixes the one that breaks it.</p>
+      </div>
+    </div>
+    <div class="six">
+      <figure><img data-img="raw/visuals/own/snug-ears/ff-olive-b.jpg" alt="Olive hat on an olive-stone ground"><figcaption><i style="background:#B4B2A3"></i>Olive</figcaption></figure>
+      <figure><img data-img="raw/visuals/own/snug-ears/ff-rose-b.jpg" alt="Rose hat on a rose ground"><figcaption><i style="background:#A86F68"></i>Rose</figcaption></figure>
+      <figure><img data-img="raw/visuals/own/snug-ears/ff-grey-b.jpg" alt="Grey hat on a grey ground"><figcaption><i style="background:#C8C7CB"></i>Grey</figcaption></figure>
+      <figure><img data-img="raw/visuals/own/snug-ears/ff-brown-b.jpg" alt="Brown hat on a brown ground"><figcaption><i style="background:#A07352"></i>Brown</figcaption></figure>
+      <figure><img data-img="raw/visuals/own/snug-ears/ff-beige-b.jpg" alt="Beige hat on a warm ground"><figcaption><i style="background:#DBCEBE"></i>Beige</figcaption></figure>
+      <figure><img data-img="raw/visuals/own/snug-ears/ff-red-b.jpg" alt="Red hat on a sand ground"><figcaption><i style="background:#E9D6C1"></i>Red / on sand, to fix</figcaption></figure>
+    </div>
+    <div class="rules">
+      <div class="rule"><h3>Eye to eye</h3><p>Camera at the dog's eye line. Frontal or a quarter turn. Both ears through and visible. Crown in the upper third, square-safe crop.</p></div>
+      <div class="rule"><h3>Ground in its hue</h3><p>Matte paper or plaster in the hat's own color, lifted a step. One soft side light with one window-shadow stripe. No props.</p></div>
+      <div class="rule"><h3>One dog, by name</h3><p>One of four house dogs per colorway, in turn. Ties braided and hanging straight. The dog is the model, not a prop.</p></div>
+    </div>
+    <div class="yesno"><div><b>Yes</b>Tonal / Named / Frontal / Ears out</div><div><b>No</b>Print / Prop / Costume / White cut-out</div></div>
+  </div>
+</section>
+
+<!-- 08 SIGNATURE -->
+<section class="m signature" data-module="08-signature">
+  <div class="in">
+    <div class="sig">
+      <div class="sigphoto"><img data-img="raw/visuals/own/snug-ears/ff-red-d.jpg" alt="Merle French Bulldog with a blue eye in a red knit hat"><div class="cap"><span>MINI</span><span>HEAD 17.5 IN / 44 CM</span></div></div>
+      <div style="display:grid;gap:22px;align-content:center">
+        <div class="chap"><span class="no">07</span><h2>The signature</h2></div>
+        <p class="lede">Four real dogs, each with a measured head, captioned on the gallery images.</p>
+        <p>No brand on the shelf shows its own recurring, named cast. A buyer can find the dog closest to theirs and read the number. The caption turns the fit claim into something you can check.</p>
+        <div class="cast">
+          <div><b>Mini</b><span>merle, one blue eye</span></div>
+          <div><b>Fiona</b><span>merle</span></div>
+          <div><b>Otis</b><span>fawn</span></div>
+          <div><b>Nacho</b><span>white</span></div>
+        </div>
+        <p class="src">Caption style is the brand's own (store frame OWN-store-snug-red-04). The size worn is added once the two size tables agree. Cast from frames.md, 2026-11-12.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 CRAFT -->
+<section class="m craft" data-module="09-craft">
+  <div class="in">
+    <div class="split">
+      <div class="chap"><span class="no">08</span><h2>Made by hand</h2></div>
+      <div style="display:grid;gap:14px">
+        <p class="lede">The Cozy Ears capsule is knit by artisan knitters in Bolivia and designed in the United States.</p>
+        <p>Real hands, real yarn, real measuring tape. These frames carry the brand's quality story without a single adjective.</p>
+      </div>
+    </div>
+    <div class="trio">
+      <img data-img="raw/visuals/own/site-articles/ff-bolivia-workshop.jpg" alt="A knitter in a workshop in Bolivia surrounded by knitwear">
+      <img data-img="raw/visuals/own/site-articles/ff-bolivia-hands-red.jpg" alt="Hands holding a red knit hat with a pompom">
+      <img data-img="raw/visuals/own/site-articles/ff-bolivia-measuring.jpg" alt="A red knit hat measured with a tape">
+    </div>
+    <p class="src">"Designed in USA. Handmade in Bolivia." Brand insert card and site copy (raw/brand, 2026-10-13). Applies to Cozy Ears only; Snug Ears is a mill knit.</p>
+  </div>
+</section>
+
+<!-- 10 SOCIAL -->
+<section class="m apps" data-module="10-social">
+  <div class="in">
+    <div class="split">
+      <div class="chap"><span class="no">09</span><h2>Social</h2></div>
+      <div style="display:grid;gap:14px">
+        <p class="lede">The profile grid, one feed post and one story, all in the direction. Every tile is a real brand frame or a marked gap.</p>
+        <p>One tile is left as a gap on purpose: the moving dog. It is the frame the shelf lacks and the first one to shoot.</p>
+      </div>
+    </div>
+    <div class="social">
+      <div><span class="app-label">Profile grid 3×3</span><div class="phone"><div class="scr">
+        <div class="ig-head"><div class="ava"><img data-img="raw/visuals/own/site/FIDO_logo_bl.png" alt=""></div><div><b>fabulousfido.fashion</b><span>Built Differently by Nature.</span></div></div>
+        <div class="grid9">
+          <img data-img="raw/visuals/own/snug-ears/ff-olive-b.jpg" alt="Olive">
+          <div class="gap" style="background:#B4B2A3"><b>To shoot</b>Walk frame: observe the hat on a moving dog, outdoors</div>
+          <img data-img="raw/visuals/own/snug-ears/ff-rose-b.jpg" alt="Rose">
+          <img data-img="raw/visuals/own/site-articles/ff-bolivia-hands-beige.jpg" alt="Knitter's hands with a beige hat">
+          <img data-img="raw/visuals/own/snug-ears/ff-grey-b.jpg" alt="Grey">
+          <img data-img="raw/visuals/own/site/ff-crown-measuring-guide.jpg" alt="How to measure the head">
+          <img data-img="raw/visuals/own/snug-ears/ff-brown-b.jpg" alt="Brown">
+          <img data-img="raw/visuals/own/snug-ears/ff-red-d.jpg" alt="Red">
+          <img data-img="raw/visuals/own/snug-ears/ff-beige-b.jpg" alt="Beige">
+        </div>
+      </div></div></div>
+      <div><span class="app-label">Feed post 4:5</span><div class="phone"><div class="scr">
+        <div class="post-head"><i></i><b>fabulousfido.fashion</b></div>
+        <img class="r45" data-img="raw/visuals/own/site/ff-materials-rose.jpg" alt="Rose hat on a rose ground">
+        <div class="post-cap"><b>fabulousfido.fashion</b> Built Differently by Nature. Snug Ears in Rose.</div>
+      </div></div></div>
+      <div><span class="app-label">Story 9:16</span><div class="phone"><div class="scr story">
+        <img data-img="raw/visuals/own/snug-ears/ff-olive-d.jpg" alt="Olive hat, quarter turn">
+        <div class="bars"><i class="on"></i><i></i><i></i></div>
+        <div class="sticker">[NAME] / HEAD [__] IN</div>
+        <div class="story-cta">Find their size by the head</div>
+      </div></div></div>
+    </div>
+    <p class="src">Text on mockups is the brand's own lines (Linktree, size guide) and is temporary. Handle from the brand's insert card. Gray brackets mark a fact still to confirm. A sketch of the direction, not a finished post.</p>
+  </div>
+</section>
+
+<!-- 11 SITE -->
+<section class="m site" data-module="11-site">
+  <div class="in">
+    <div class="split">
+      <div class="chap"><span class="no">10</span><h2>Website</h2></div>
+      <div style="display:grid;gap:14px">
+        <p class="lede">First screen on desktop and phone, and the top of a product page. One line, one button, the color row below.</p>
+        <p>The size selector stays out until the store's two size tables agree. The button sends the buyer to the measuring guide instead.</p>
+      </div>
+    </div>
+    <div class="sitegrid">
+      <div><span class="app-label">Home, desktop</span>
+        <div class="browser"><div class="bar"><i></i><i></i><i></i></div>
+          <div class="nav"><img data-img="raw/visuals/own/site/FIDO_logo_bl.png" alt="Fabulous Fido"><span>Hats</span><span>Size guide</span><span>Our dogs</span></div>
+          <div class="hero"><div class="hcopy"><h3 class="hline">Built Differently by Nature.</h3><span class="btn">Find their size by the head</span></div><img data-img="raw/visuals/own/site/ff-materials-olive.jpg" alt="Olive hat on an olive ground"></div>
+          <div class="row4">
+            <figure><img data-img="raw/visuals/own/snug-ears/ff-rose-b.jpg" alt=""><figcaption>Snug Ears · Rose</figcaption></figure>
+            <figure><img data-img="raw/visuals/own/snug-ears/ff-grey-b.jpg" alt=""><figcaption>Snug Ears · Grey</figcaption></figure>
+            <figure><img data-img="raw/visuals/own/snug-ears/ff-brown-b.jpg" alt=""><figcaption>Snug Ears · Brown</figcaption></figure>
+            <figure><img data-img="raw/visuals/own/snug-ears/ff-beige-b.jpg" alt=""><figcaption>Snug Ears · Beige</figcaption></figure>
+          </div>
+        </div></div>
+      <div><span class="app-label">Home, phone</span>
+        <div class="phone"><div class="scr mob">
+          <div class="mnav"><img data-img="raw/visuals/own/site/FIDO_logo_bl.png" alt="Fabulous Fido"><span>☰</span></div>
+          <img class="mhero" data-img="raw/visuals/own/site/ff-materials-olive.jpg" alt="">
+          <div class="mcopy"><h3 class="hline">Built Differently by Nature.</h3><span class="btn">Find their size by the head</span></div>
+        </div></div></div>
+    </div>
+    <div><span class="app-label">Product page, top</span>
+      <div class="browser pdp"><div class="bar"><i></i><i></i><i></i></div>
+        <div class="pdpin">
+          <div class="gal"><img class="main" data-img="raw/visuals/own/snug-ears/ff-olive-b.jpg" alt="Olive hat"><div class="thumbs"><img data-img="raw/visuals/own/snug-ears/ff-olive-d.jpg" alt=""><img data-img="raw/visuals/own/site/ff-materials-olive.jpg" alt=""><img data-img="raw/visuals/own/snug-ears/ff-snug-olive-hero.jpg" alt=""><div class="gap" style="background:#B4B2A3"><b>To shoot</b>walk frame</div></div></div>
+          <div class="buy"><span class="kicker">Snug Ears</span><h3 class="ptitle">Snug Ears Dog Beanie: Olive</h3><b class="price">$24.99</b>
+            <div class="sw"><i style="background:#7B7A3E"></i><i style="background:#B07B75"></i><i style="background:#9A9AA0"></i><i style="background:#7A4A30"></i><i style="background:#D8C2A6"></i><i style="background:#B3242C"></i></div>
+            <span class="btn ghost">Measure first: head in front of the ears</span><span class="btn">Add to cart</span>
+            <p class="mini">Ear openings. Separate adjustable chin cord. 75% acrylic, 25% wool.</p></div>
+        </div></div></div>
+    <p class="src">Title and price from the brand's store data, 2026-11-12. Fiber from the brand's product copy. Swatch colors approximate. Layout sketch, not a theme design.</p>
+  </div>
+</section>
+
+<!-- 12 ADS AND MARKETPLACE -->
+<section class="m ads" data-module="12-ads-marketplace">
+  <div class="in">
+    <div class="split">
+      <div class="chap"><span class="no">11</span><h2>Ads and marketplace</h2></div>
+      <div style="display:grid;gap:14px">
+        <p class="lede">A feed ad, a story ad and the marketplace search tile. The system applied to the format; the campaign itself belongs to the campaign plan.</p>
+        <p>On the marketplace the tonal tile is tested against the brand's own white-seamless main image, not against a rival's photo.</p>
+      </div>
+    </div>
+    <div class="adgrid">
+      <div><span class="app-label">Feed ad 4:5</span><div class="phone"><div class="scr">
+        <div class="post-head"><i></i><b>Fabulous Fido</b><span class="spons">Sponsored</span></div>
+        <img class="r45" data-img="raw/visuals/own/snug-ears/ff-brown-b.jpg" alt="Brown hat on a brown ground">
+        <div class="adbar"><span>Built Differently by Nature.</span><span class="btn sm">Shop now</span></div>
+      </div></div></div>
+      <div><span class="app-label">Story ad 9:16</span><div class="phone"><div class="scr story">
+        <img data-img="raw/visuals/own/snug-ears/ff-red-b.jpg" alt="Red hat">
+        <div class="bars"><i class="on"></i></div>
+        <div class="story-head">Fabulous Fido · Sponsored</div>
+        <div class="story-cta">Shop Snug Ears</div>
+      </div></div></div>
+      <div><span class="app-label">Marketplace search tiles</span>
+        <div class="tiles">
+          <div class="tile"><img data-img="raw/visuals/own/snug-ears/ff-olive-b.jpg" alt="Tonal tile"><div class="t"><b>Snug Ears Dog Beanie: Olive</b><span>Direction: tonal ground</span></div></div>
+          <div class="tile"><img data-img="raw/visuals/own/snug-ears/ff-snug-olive-hero.jpg" alt="White seamless tile"><div class="t"><b>Snug Ears Dog Beanie: Olive</b><span>Now: the brand's white seamless</span></div></div>
+        </div>
+        <p class="src" style="margin-top:12px">Test: main image A/B on Etsy, 30 days. Rival tiles are shown in the working page, not in a public case.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 MEASURE -->
+<section class="m measure" data-module="13-measurement">
+  <div class="in">
+    <div class="chap"><span class="no">12</span><h2>How we will know</h2></div>
+    <p class="lede">Nothing here is called proven until buyers say so. Three checks are booked.</p>
+    <div class="plan">
+      <div><span class="when">December 2026</span><h3>Five owners, blind</h3><p>Five Frenchie owners from Etsy buyers see the directions without labels and pick. Same boards, same questions.</p></div>
+      <div><span class="when">30 days from first shoot</span><h3>Main image test</h3><p>Etsy main image: the tonal portrait against a lineup. Clicks and orders per view, with traffic and price noted.</p></div>
+      <div><span class="when">Next listing edit</span><h3>Message test</h3><p>"Fit for dogs built differently" against the current title. Read with the five owners before it goes live.</p></div>
+    </div>
+    <div class="result"><b>Results</b><p>Not measured yet. This page will show them with dates and sources when they exist, including the ones that disagree.</p></div>
+  </div>
+</section>
+
+<!-- 12 CREDITS -->
+<section class="m credits" data-module="14-credits">
+  <div class="in">
+    <img class="logo" data-img="raw/visuals/own/site/FIDO_logo_bl.png" alt="Fabulous Fido logo">
+    <div class="cols">
+      <div><h3>Team</h3><ul><li>Fabulous Fido team: research, strategy, art direction</li><li>The house cast: Mini, Fiona, Otis, Nacho</li></ul></div>
+      <div><h3>Method</h3><ul><li>Review coding of 419 texts</li><li>Market map of 7 brands, 35 frames</li><li>Index of 55 own frames</li><li>AI panel and rival tests as preparation only</li></ul></div>
+      <div><h3>About the images</h3><ul><li>Visual concepts use background replacements; source photographs must be checked individually.</li><li>Only verified photographs may demonstrate fit or product construction.</li><li>Example mockups are not cleared for a live product listing.</li></ul></div>
+    </div>
+    <p class="src">Sources: wiki/brand/icp.md, positioning-messaging.md, visual-guide.md; projects/visual-brain/landscape/. Status: strategy proposed, owner decision pending.</p>
+  </div>
+</section>
